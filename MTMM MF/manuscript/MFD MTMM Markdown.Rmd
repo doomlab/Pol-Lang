@@ -1,0 +1,591 @@
+---
+title             : "A Validation of the Moral Foundations Questionnaire and Dictionary" 
+shorttitle        : "VALIDITY OF MFD"
+
+author: 
+  - name          : "Kayla N. Jordan"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Postal address"
+    email         : "my@email.com"
+  - name          : "Erin M. Buchanan"
+    affiliation   : "2"
+  - name          : "William E. Padfield"
+    affiliation   : "2"
+    
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Texas - Austin"
+  - id            : "2"
+    institution   : "Missouri State University"
+
+author_note: |
+  Kayla N. Jordan is a Ph.D. candidate at the University of Texas at Austin. Erin M. Buchanan is an Associate Professor of Quantitative Psychology at Missouri State University. William E. Padfield is a masters degree candidate at Missouri State University. 
+  
+abstract: |
+  Enter abstract here. Each new line herein must be indented, like this line.
+  
+keywords          : "keywords"
+
+bibliography      : ["mtmm_bib.bib"]
+
+figsintext        : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+
+lang              : "english"
+class             : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include = FALSE}
+library(papaja)
+library(lavaan)
+library(semPlot)
+library(ngram)
+
+##percent missing function
+percentmiss = function(x){ sum(is.na(x))/length(x) *100 }
+
+correldata = read.csv("word_analysis_writing.csv", fileEncoding = "latin1")
+```
+
+Examining the construct and measurement validity of psychometric scales can be difficult, especially for complex constructs such as morality. Given the pervasiveness of language as avenue of moral justification and moral argument, it is important to understand how language is indicative of moral reasoning. Hence, the current study sought to examine the validity of one approach to measuring moral language using the framework of moral foundations theory, in comparison to traditional questionnaire style measurements. 
+
+## Moral Foundations Theory
+
+Moral Foundations Theory (MFT) was proposed by @Haidt2004 to explain the differences between political liberals’ and conservatives’ moral thinking processes. The differences in party processing were explained by variable focus on five moral foundations. The first two of these foundations represents concerns for individuals. The *harm/care* foundation encompasses concerns of promoting compassion and/or denigrating cruelty. The *fairness/reciprocity* foundation covers concerns of ensuring equality and justice. The next three foundations represent concerns for the group. The *ingroup/loyalty* foundation encompasses concerns encouraging patriotism and discouraging dissent. The *authority/respect* foundation represents concerns maintaining tradition and respecting social hierarchies. The *purity/sanctity* foundation encompasses concerns engaging in virtues such as chastity and self-control and abstaining from vices such as lust and gluttony. Throughout this manuscript, we will use *harm*, *fairness*, *ingroup*, *authority*, and *purity* to indicate the foundations and their direction. For example, higher endorsement of the *authority* foundation implies a focus on basing moral judgments on respecting tradition and hierarchy, while lower levels of endorsement imply basing moral judgments less on respecting tradition and hierarchy and more on other concerns. 
+
+The endorsement along these moral foundation continuums is related to political orientation. Namely, those of liberal political orientation base moral judgments on the *harm* and *fairness* foundations whereas those of conservative orientation based judgments on all five foundations [@Federico2013; @Graham2009; @Graham2012; @Weber2013]. Furthermore, @Graham2012 found the differences between the two sides of the political spectrum were exaggerated by the opposing party. For example, liberals rated conservatives as more conservative than conservatives rated themselves and vice versa. In addition to political orientation, moral foundations also predicted specific policy preferences and attitudes. @Kertzer2014 found that higher endorsement of the *ingroup*, *authority*, and *purity* foundations predicted support for the Iraq War and a preemptive strike against Iran. However, higher endorsement of *harm* and *fairness* foundations predicted support for the Kyoto protocols. @Koleva2012 examined the relationship between moral foundation endorsement and a wide range of policy attitudes. Greater endorsement of the *harm* foundation predicted opposition to animal testing, the death penalty, and torture, as well as support for gun control. Endorsement of the *ingroup* foundation predicted greater disapproval of flag burning and terrorism, as well as greater support for defense spending. Finally, stronger endorsement of *purity* predicted opposition to abortion, same sex marriage, teaching of evolution, and illegal immigration. 
+
+## Moral Foundations Questionnaire
+
+The Moral Foundations Questionnaire (MFQ) was developed in order to measure the extent to which an individual endorses each moral foundation [@Graham2011]. The MFQ is a 30-item scale divided into two subscales: moral relevance and moral judgments. The 15 moral relevance items are equally divided among the five foundations and examine how relevant a condition is to making a moral judgment on a scale of 1 (*not at all relevant*) to 6 (*extremely relevant*). These relevance items include examples such as: "Whether or not someone used violence (*harm*)," "Whether or not someone was denied his or her rights (*fairness*)," "Whether or not someone showed a lack of loyalty (*ingroup*)," "Whether or not an action caused chaos or disorder (*authority*)," and "Whether or not someone did something disgusting (*purity*)." The moral judgments items are also equally divided between the foundations and ask on a six-point scale how much one agrees with each of the statements. These judgment items include: "One of the worst things a person can do is hurt a defenseless animal (*harm*)," "Justice is the most important requirement of a society (*fairness*)," "I am proud of my country’s history (*ingroup*)," "Men and women each have different roles to play in society (*authority*)," and "Chastity is an important and valuable virtue (*purity*)."
+
+The internal consistency of this version from @Graham2011 was $\alpha$ = .73 averaged across subscales with a range of $\alpha$ = .65-.84. Across six studies, the MFQ was found to have an average Cronbach’s alpha of .63 for *harm*, .64 for *fairness*, .56 for *ingroup*, .59 for *authority*, and .71 for *purity* [@Federico2013; @Graham2009; @Graham2012; @Weber2013]. Test-retest reliability was *r* = .68-.82 using a sample of 123 college students. Confirmatory factor analysis supported a well-fitted five-factor model (*harm/care*, *fairness/reciprocity*, *ingroup/loyalty*, *authority/respect*, and *purity/sanctity*) over two, individual (*harm* and *fairness*) versus group (*ingroup*, *authority*, and *purity*) foundations, or three, autonomy (*harm*, *fairness*), community (*ingroup*, *authority*), and divinity (*purity*) ethics, foundations factor model. The five-factor structure also fit for non-Western samples, thus, providing evidence of the MFQ generalizability. Convergent validity was supported with correlations on other measures of morality [@Schwartz; @Graham2011].
+  
+## Moral Foundations Dictionary
+
+Given the importance of language to political ideology and moral thinking, @Graham2009 developed a moral foundations dictionary (MFD) to examine the use of moral justification in speech and/or writing. A dictionary of roughly 50-60 words was developed for each foundation. Words such as *war* and *peace* should indicate a greater concern with *harm* foundation whereas words such as *homeland* and *terrorism* should indicate a greater concern with the *ingroup* foundation. The other foundation dictionaries include *equal* and *justice* (*fairness*), *honor* and *protest* (*authority*), and *holy* and *sin* (*purity*). To validate the word sets, @Graham2009 examined the frequency of MFD words in liberal and conservative sermons. They found liberal ministers used *harm*, *fairness*, and *ingroup* words more often than conservative ministers who used *authority* and *purity* words more often. Although conservative ministers were expected to use more *ingroup* words based on political ideology and previous research, an examination of the way liberal ministers used *ingroup* words revealed a tendency for the use of *ingroup* words to glorify rebellion and promote independence (i.e., the opposite direction from *ingroup* definitions). Effect sizes indicated relatively sizable difference between liberal and conservative sermons with Cohen’s *d* ranging from 0.56 to 1.27. 
+
+@Graham2009’s validation focused on the frequency of moral words as a dependent variable for the MFD. In contrast to this approach, @Sagi2013 explored how moral words were used paired with other co-occurring concepts using Latent Semantic Analysis (LSA). They examined three different moral issues in different contexts to piece out specific moral words and their collocates. First, they looked at how moral words were used in relation to the World Trade Center compared to the Empire State Building in the New York Times from 1987-2007. After 9-11, the number of moral words associated with the World Trade Center increased, specifically *harm* words from the MFD. Second, they considered the changes in how moral words were paired with mosque used in blogs as a response to the debate of building a mosque near Ground Zero following 9-11. They found words from the MFD were used more often with mosque during the main debate and then the co-occurrence decreased afterwards. Lastly, they examined moral language tied to the abortion debate in Congress. Republicans used more moral language overall; more specifically, Republicans tended to use more words associated with the *purity* foundation; while Democrats used more words associated with the *fairness* foundation.  
+
+These studies are the first steps at supporting the moral foundations dictionary and questionnaire using the moral foundations framework. This study combined both the dictionary and questionnaire to expand the literature on their usefulness and psychometric properties due to the dearth of studies on both measures. Therefore, the purpose of the current study was to explore the reliability and validity of the MFD and MFQ using the following procedures: 
+
+****1) Cronbach’s $\alpha$ of both measurement tools, as previous studies have shown mixed reliabilities 2) a multi-method, multi-trait (MTMM) design comparing the MFD and MFQ on one sample, and 3) the predictive validity of the MFD and MFQ to political orientation using Congressional speech records. ****
+
+going to end up editing here after we finish the four pronged approach part.
+
+# Experiment 1
+
+****this part is going to be word associations study to see what might be driving the MFD****
+
+# Method
+
+##Particpants
+
+```{r demos_study1, include = FALSE}
+exp1data = read.csv("association.csv")
+
+##clear out completely columns we don't need
+crapcolumns = c(1, 2, 3, 5:14)
+finalsample = exp1data[ , -crapcolumns]
+
+ ##accuracy
+
+##use the ngram library to examine the data
+##preprocess only works on one string at a time, so going to use a loop go through all the rows 
+##writing columns are 27, 29, 30, 32, 34 - must make these characters first
+
+finalsample$Q27 = as.character(finalsample$Q27)
+finalsample$Q29 = as.character(finalsample$Q29)
+finalsample$Q30 = as.character(finalsample$Q30)
+finalsample$Q32 = as.character(finalsample$Q32)
+finalsample$Q34 = as.character(finalsample$Q34)
+
+for (i in 1:nrow(finalsample)) {
+  
+  finalsample$Q27[i] = preprocess(finalsample$Q27[i], case="lower", remove.punct=TRUE)
+  finalsample$Q29[i] = preprocess(finalsample$Q29[i], case="lower", remove.punct=TRUE)
+  finalsample$Q30[i] = preprocess(finalsample$Q30[i], case="lower", remove.punct=TRUE)
+  finalsample$Q32[i] = preprocess(finalsample$Q32[i], case="lower", remove.punct=TRUE)
+  finalsample$Q34[i] = preprocess(finalsample$Q34[i], case="lower", remove.punct=TRUE)
+  
+}
+
+```
+
+
+# Experiment 2
+
+## Method
+
+****this part is going to be writing samples to get more words****
+
+##Participants
+
+```{r demos_study2, include=FALSE}
+sample1 = read.csv("sample 1.csv")
+sample2 = read.csv("sample 2.csv")
+
+##merge files together
+fullsample = merge(sample1, sample2, all = T)
+
+##merge together the writing samples
+#q24, q25, q26, q7 
+fullsample$writing = apply(fullsample[, c("Q24", "Q25", "Q26", "Q7")], 
+                           1, function(x) toString(na.omit(x)))
+
+##clear out completely columns we don't need
+crapcolumns = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 51:61)
+finalsample = fullsample[ , -crapcolumns]
+
+##accuracy
+
+##take out the people with less than 50 words
+##use the ngram library to examine the data
+##preprocess only works on one string at a time, so going to use a loop go through all the rows (apply won't work because we only want to work on one column)
+
+for (i in 1:nrow(finalsample)) {
+  
+  finalsample$writing[i] = preprocess(finalsample$writing[i], case="lower", remove.punct=TRUE)
+  finalsample$wordcount[i] = string.summary(finalsample$writing[i])$words
+  
+}
+
+#remove small words people
+finalwords = subset(finalsample, wordcount >=50)
+
+##check out missing data
+#missing by row
+missing = apply(finalwords, 1, percentmiss)
+table(missing)
+goodrows = subset(finalwords, missing <= 5)
+
+#missing by column
+apply(goodrows, 2, percentmiss)
+
+##don't fill in Q10 to the end, be sure to merge these back together
+goodcolumns = goodrows[ , -c(32:42)]
+badcolumns = goodrows[ , c(32:42)]
+
+#fill in missing data points
+
+#merge
+
+```
+
+
+Participants were recruited in two waves as part of a larger investigation on priming political and religious attitudes [@Jordan]. Participants were recruited via an online research system (SONA) and were given course credit for their participation. 
+
+
+
+The sample consisted of 55.52% men (*n* = 161), 44.48% women (*n* = 129), and was 80% Caucasian with an average age of 20.02 (*SD* = 3.07). 
+
+
+
+
+	Materials. Data was collected via an online survey site (Qualtrics). Four fake new stories were presented to participants, which were roughly 400 words each. First, all news stories included a few sentences describing the use of chemical weapons in the Syrian civil war. The news stories were manipulated with political (Republican v. Democrat) and religious (religious v. not) quotes in a 2 x 2 design. News stories can be provided upon request. Participants also completed the 30-item version of the MFQ as described in the introduction. In addition to basic demographics (gender, age, political orientation, party affiliation, and religious affiliation), participant political orientation was assessed with: "Rate your political orientation on the following scale. 1 (*conservative*) to 10 (*liberal*)."
+	Procedure. After consenting to participate in the study, participants were randomly shown one of the four new articles about Syria’s use of chemical weapons. Participants were then asked to write for 5-10 minutes about their reaction to Syria’s use of chemical weapons and the needed response from the United States. After this section, participants then completed the MFQ and demographics sections.
+#Sample 2
+	Participants. A total of 160 participants completed the second half of this study, which was collected to increase sample size to examine the MFQ and MFD. The sample included 29.63% men (*n* = 48) and 81.73% women (*n* = 114) with 89% identifying as Caucasian and an average age of 19.36 (*SD* = 2.81). Participants were recruited and given course credit in the same manner as sample 1. 
+	Materials. Data for this study was also collected via Qualtrics with the same basic research design. The following writing prompt was used, "Please write about your attitudes on abortion (or same-sex marriage or environmentalism) as well as your reason for this stance." The three prompts were chosen to create a more varied word set by using topics that should elicit words from each moral foundations category by soliciting a moral response. Participants again completed the MFQ, demographics, and the political orientation scale from sample 1. 
+	Procedure. After consenting to participate in this study, participants were asked to write at least 1200 characters about their attitudes on abortion, same-sex marriage, or environmentalism, which were randomly assigned. Participants then completed the MFQ and demographics section. 
+	
+```{r mtmm code}
+##find very small words
+columndata = apply(correldata, 2, sum) 
+correldata2 = correldata[ , columndata > 5]
+
+allcorrels = cor(correldata2[ , c(2:ncol(correldata2))])
+imptcorrels = as.data.frame(allcorrels[-c(1:5,(nrow(allcorrels)-29):nrow(allcorrels)) , 1:5])
+
+M = apply(imptcorrels, 2, mean)
+SD = apply(imptcorrels, 2, sd)
+
+cutoffH = M + 2*SD
+cutoffL = M - 2*SD
+
+harmwords = rownames(subset(imptcorrels, harm > cutoffH["harm"] | harm < cutoffL["harm"]))
+fairwords = rownames(subset(imptcorrels, fair > cutoffH["fair"] | fair < cutoffL["fair"]))
+ingroupwords = rownames(subset(imptcorrels, ingroup > cutoffH["ingroup"] | ingroup < cutoffL["ingroup"]))
+authoritywords = rownames(subset(imptcorrels, authority > cutoffH["authority"] | authority < cutoffL["authority"]))
+puritywords = rownames(subset(imptcorrels, purity > cutoffH["purity"] | purity < cutoffL["purity"]))
+
+##the amount of times people used the words in THIS dataset on Syria
+mtmmdata = correldata[ , 1:6]
+mtmmdata$h1 = apply(correldata[ , harmwords], 1, sum)
+mtmmdata$f1 = apply(correldata[ , fairwords], 1, sum)
+mtmmdata$i1 = apply(correldata[ , ingroupwords], 1, sum)
+mtmmdata$a1 = apply(correldata[ , authoritywords], 1, sum)
+mtmmdata$p1 = apply(correldata[ , puritywords], 1, sum)
+
+##the amount of time people used the original MFD words
+original_mfd = read.csv("original_mfd.csv", stringsAsFactors = F)
+
+mtmmdata$h2 = apply(correldata[ , original_mfd$h2[1:26] ], 1, sum)
+mtmmdata$f2 = apply(correldata[ , original_mfd$f2[1:19] ], 1, sum)
+mtmmdata$i2 = apply(correldata[ , original_mfd$i2[1:15] ], 1, sum)
+mtmmdata$a2 = apply(correldata[ , original_mfd$a2[1:30] ], 1, sum)
+mtmmdata$p2 = apply(correldata[ , original_mfd$p2[1:20] ], 1, sum)
+
+##the amount of times people used the new dictionary words from the norming study
+new_data = read.csv("new_data.csv", stringsAsFactors = F)
+mtmmdata$h3 = apply(correldata[ , new_data$h3[1:24] ], 1, sum)
+mtmmdata$f3 = apply(correldata[ , new_data$f3[1:21] ], 1, sum)
+mtmmdata$i3 = apply(correldata[ , new_data$i3[1:11] ], 1, sum)
+mtmmdata$a3 = apply(correldata[ , new_data$a3[1:16] ], 1, sum)
+mtmmdata$p3 = apply(correldata[ , new_data$p3[1:21] ], 1, sum)
+
+##remember that original data is number 2
+
+##intersection data original + 1
+mtmmdata$h12 = apply(correldata[ , unique(c(original_mfd$h2[1:26], harmwords))], 1, sum)
+mtmmdata$f12 = apply(correldata[ , unique(c(original_mfd$f2[1:19], fairwords)) ], 1, sum)
+mtmmdata$i12 = apply(correldata[ , unique(c(original_mfd$i2[1:15], ingroupwords)) ], 1, sum)
+mtmmdata$a12 = apply(correldata[ , unique(c(original_mfd$a2[1:30], authoritywords)) ], 1, sum)
+mtmmdata$p12 = apply(correldata[ , unique(c(original_mfd$p2[1:20], puritywords)) ], 1, sum)
+
+##intersection data original + 3
+mtmmdata$h23 = apply(correldata[ , unique(c(original_mfd$h2[1:26], new_data$h3[1:24]))], 1, sum)
+mtmmdata$f23 = apply(correldata[ , unique(c(original_mfd$f2[1:19], new_data$f3[1:21])) ], 1, sum)
+mtmmdata$i23 = apply(correldata[ , unique(c(original_mfd$i2[1:15], new_data$i3[1:11])) ], 1, sum)
+mtmmdata$a23 = apply(correldata[ , unique(c(original_mfd$a2[1:30], new_data$a3[1:16] )) ], 1, sum)
+mtmmdata$p23 = apply(correldata[ , unique(c(original_mfd$p2[1:20], new_data$p3[1:21] )) ], 1, sum)
+
+##intersection data all
+mtmmdata$h123 = apply(correldata[ , unique(c(original_mfd$h2[1:26], harmwords, new_data$h3[1:24]))], 1, sum)
+mtmmdata$f123 = apply(correldata[ , unique(c(original_mfd$f2[1:19], fairwords, new_data$f3[1:21])) ], 1, sum)
+mtmmdata$i123 = apply(correldata[ , unique(c(original_mfd$i2[1:15], ingroupwords, new_data$i3[1:11])) ], 1, sum)
+mtmmdata$a123 = apply(correldata[ , unique(c(original_mfd$a2[1:30], authoritywords, new_data$a3[1:16] )) ], 1, sum)
+mtmmdata$p123 = apply(correldata[ , unique(c(original_mfd$p2[1:20], puritywords, new_data$p3[1:21] )) ], 1, sum)
+
+##normalize the whole damn thing
+totalwords = apply(correldata[ , 7:ncol(correldata)], 1, sum)
+mtmmdata[ , 7:ncol(mtmmdata)] = mtmmdata[ , 7:ncol(mtmmdata)]/totalwords*100
+mtmmdata = cbind(mtmmdata, correldata[ , 2049:ncol(correldata)])
+
+##now run some MTMM!
+library(semPlot)
+library(lavaan)
+
+####mtmm our data correlation 1####
+model1 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h1
+fairL =~ X7+X8+X9+X10+X11+X12+f1
+ingroupL =~ X13+X14+X15+X16+X17+X18+i1
+authorityL =~ X19+X20+X21+X22+X23+X24+a1
+purityL=~ X25+X26+X27+X28+X29+X30+p1
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h1+f1+i1+a1+p1
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+ingroupL~~-.29*harmL
+f1~~1.35*f1
+'
+
+model1.fit = cfa(model1, data=mtmmdata, std.lv=TRUE)
+summary(model1.fit, rsquare=TRUE, standardized=TRUE)
+semPaths(model1.fit, whatLabels = "std", layout = "tree")
+fitMeasures(model1.fit, fit.measures = "aic")
+
+
+####mtmm original data 2####
+model2 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h2
+fairL =~ X7+X8+X9+X10+X11+X12+f2
+ingroupL =~ X13+X14+X15+X16+X17+X18+i2
+authorityL =~ X19+X20+X21+X22+X23+X24+a2
+purityL=~ X25+X26+X27+X28+X29+X30+p2
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h2+f2+i2+a2+p2
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+a2~~1.56*a2
+h2~~2.14*h2
+f2~~1.84*f2
+'
+
+model2.fit = cfa(model2, data=mtmmdata, std.lv=TRUE)
+summary(model2.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model2.fit, fit.measures = "aic")
+
+####mtmm participant word data 3####
+model3 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h3
+fairL =~ X7+X8+X9+X10+X11+X12+f3
+ingroupL =~ X13+X14+X15+X16+X17+X18+i3
+authorityL =~ X19+X20+X21+X22+X23+X24+a3
+purityL=~ X25+X26+X27+X28+X29+X30+p3
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h3+f3+i3+a3+p3
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+h3~~.66*h3
+i3~~.56*i3
+f3~~1.97*f3
+'
+
+model3.fit = cfa(model3, data=mtmmdata, std.lv=TRUE)
+summary(model3.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model3.fit, fit.measures = "aic")
+
+####mtmm model 1 and 2 together####
+model4 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h12
+fairL =~ X7+X8+X9+X10+X11+X12+f12
+ingroupL =~ X13+X14+X15+X16+X17+X18+i12
+authorityL =~ X19+X20+X21+X22+X23+X24+a12
+purityL=~ X25+X26+X27+X28+X29+X30+p12
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h12+f12+i12+a12+p12
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.5*purityL
+'
+
+model4.fit = cfa(model4, data=mtmmdata, std.lv=TRUE)
+summary(model4.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model4.fit, fit.measures = "aic")
+
+####mtmm model 2 and 3 together####
+model5 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h23
+fairL =~ X7+X8+X9+X10+X11+X12+f23
+ingroupL =~ X13+X14+X15+X16+X17+X18+i23
+authorityL =~ X19+X20+X21+X22+X23+X24+a23
+purityL=~ X25+X26+X27+X28+X29+X30+p23
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h23+f23+i23+a23+p23
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+h23~~2.07*h23
+a23~~1.70*a23
+'
+
+model5.fit = cfa(model5, data=mtmmdata, std.lv=TRUE)
+summary(model5.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model5.fit, fit.measures = "aic")
+
+####mtmm model 1 2 and 3 together####
+model6 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h123
+fairL =~ X7+X8+X9+X10+X11+X12+f123
+ingroupL =~ X13+X14+X15+X16+X17+X18+i123
+authorityL =~ X19+X20+X21+X22+X23+X24+a123
+purityL=~ X25+X26+X27+X28+X29+X30+p123
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h123+f123+i123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.80*purityL
+'
+
+model6.fit = cfa(model6, data=mtmmdata, std.lv=TRUE)
+summary(model6.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model6.fit, fit.measures = "aic")
+
+
+####focus on final model####
+##traits only model
+model6.1 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h123
+fairL =~ X7+X8+X9+X10+X11+X12+f123
+ingroupL =~ X13+X14+X15+X16+X17+X18+i123
+authorityL =~ X19+X20+X21+X22+X23+X24+a123
+purityL=~ X25+X26+X27+X28+X29+X30+p123
+'
+model6.1.fit = cfa(model6.1, data=mtmmdata, std.lv=TRUE)
+summary(model6.1.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model6.1.fit)
+
+##perfectly correlated traits
+model6.2 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h123
+fairL =~ X7+X8+X9+X10+X11+X12+f123
+ingroupL =~ X13+X14+X15+X16+X17+X18+i123
+authorityL =~ X19+X20+X21+X22+X23+X24+a123
+purityL=~ X25+X26+X27+X28+X29+X30+p123
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h123+f123+i123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+
+harmL~~1*fairL
+harmL~~1*authorityL
+harmL~~1*purityL
+harmL~~1*ingroupL
+fairL~~1*authorityL
+fairL~~1*purityL
+fairL~~1*ingroupL
+authorityL~~1*purityL
+authorityL~~1*ingroupL
+purityL~~1*ingroupL
+'
+
+model6.2.fit = cfa(model6.2, data=mtmmdata, std.lv=TRUE)
+summary(model6.2.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model6.2.fit)
+
+##no method correl
+model6.3 = '
+harmL =~ X1+X2+X3+X4+X5+X6+h123
+fairL =~ X7+X8+X9+X10+X11+X12+f123
+ingroupL =~ X13+X14+X15+X16+X17+X18+i123
+authorityL =~ X19+X20+X21+X22+X23+X24+a123
+purityL=~ X25+X26+X27+X28+X29+X30+p123
+mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+mfd =~ h123+f123+i123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.80*purityL
+mfq~~0*mfd
+'
+
+model6.3.fit = cfa(model6.3, data=mtmmdata, std.lv=TRUE)
+summary(model6.3.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model6.3.fit)
+
+####fix the model####
+model6.4 = '
+harmL =~ X1+X2+X4+X5+X6+h123
+fairL =~ X7+X8+X9+X10+X11+X12+f123
+ingroupL =~ X13+X14+X15+X17
+authorityL =~ X22+X23+X24+a123
+purityL=~ X25+X26+X27+X29+X30+p123
+mfq =~ X1+X2+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X17+X22+X23+X24+X25+X26+X27+X29+X30
+mfd =~ h123+f123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.60*purityL
+h123~~2.44*h123
+f123~~1.85*f123
+'
+
+model6.4.fit = cfa(model6.4, data=mtmmdata, std.lv=TRUE)
+summary(model6.4.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model6.4.fit) 
+```
+
+## Results
+  Data Cleaning and Descriptives. In sample 1, participants who wrote less than 50 words were deleted (*n* = 69) leaving *n* = 221 participants. The average political orientation was 4.80 (*SD* = 2.21) on a scale of 1 (*conservative*) to 10 (*liberal*). In sample 2, all 160 participants wrote at least 50 words. The mean political orientation was 5.01 (*SD* = 2.33) for sample 2. The data from sample 1 and sample 2 were combined. Before any analyses were conducted, participants who did not use any words from the MFD were deleted; 16 participants were deleted from sample 1 and 25 from sample 2. The final sample size for analysis was *N* = 340 which had a mean political orientation of 4.90 (*SD* = 2.28). MFD scores were computed using NVivo *(CITE)* as both frequency for each foundation and percent coverage for each foundation. Frequency was simply the count of the number of words used from a given foundation dictionary; for example, a participant using the word *war* once and the word *peace* twice would have a frequency score of 3 for the *harm* dictionary. Percent coverage was calculated by taking the frequency and dividing by the word count; for example, given a frequency score of 3 for the *harm* dictionary and a word count of 100, then the percent coverage would be .03 for the *harm* dictionary. MFQ scores for each foundation were calculated by averaging the six items pertaining to each foundation. 
+	Reliability. Here we should talk about the reliability of the MFQ for each piece, as well as the reliability of the words for the MFD. I think to do that you might need a thing that has each word as frequency count yes/no or however the LIWC version thing was done. 
+	MTMM. BASIC SEM STUFF HERE (also that you used bayes)
+Data screening was conducted using SPSS version 22 and AMOS version 22. Participants who were missing data for the MFD, MFQ, or political orientation were deleted from all analyses. Given the distribution of the dictionary variables, participants whose writing sample were less than 2% words from the MFD were deleted resulting in a sample size of 252. Additionally, 7 outliers were deleted.
+Widaman’s (1985; as cited in @Byrne2009) four-step nested method was used to test the convergent and divergent validity of the MFD and MFQ. The first step is the baseline model (Model 1), which establishes correlation among traits (*harm*, *purity*, *fairness*, *authority*, and *ingroup*) as well as correlation among methods (MFD and MFQ) but no cross correlation of traits and methods. The individual questions from the 30 item version of the MFQ and the total frequency of concepts from each foundation in the MFD were used as measured variables. 
+The fit of this first model indicated some misfit, as fit indices were a mix of poor and acceptable, $\chi$ 2 (514) = 977.46, $\chi$ 2/df = 1.90, CFI = .842, RMSEA = .061 [95% CI = .055-.067], SRMR = .0623. In this model, the MFD *harm*, *fairness*, and *ingroup* items significantly loaded onto their trait factors, while *authority* and *purity* did not. All foundations but *authority* loaded significantly on the method traits. All but two of the *ingroup* questions and one *authority* question loaded onto the MFQ trait factors. Several questions of the MFQ did not load significantly onto the methods factors; however, this result was taken as an indicator that traits variance was higher than methods variance. Generally, trait loadings were higher than method loadings for both the MFD and MFQ for *harm* and *fairness* traits. However, the *purity*, *ingroup*, and *authority* foundations did not show this loading pattern. 
+ERIN STOPPED HERE CUZ HEADACHE. 
+The second step (Model 2) involved eliminating the latent traits from the model. This model was significantly worse than Model 1 indicating the traits are important to the model ($\delta$ $\chi$ 2 = 1141.09, $\delta$ df = 45, $\delta$ CFI = .351). This supports convergent validity for the traits measured by both methods which in this case are the five moral foundations. The third step (Model 3) involved forcing the five traits to be perfectly correlated. This model was significantly worse than Model 1 indicating the usefulness of five unique traits ($\delta$ $\chi$ 2 = 311.09, $\delta$ df = 10, $\delta$ CFI = .097). This supports discriminant validity for the existence of five unique moral foundations. The final step (Model 4) involved allowing the correlations between the traits to be freely estimated and forcing the methods to be uncorrelated. This model was similar to Model 1 indicating the methods both measure the traits but they are both unique methods ($\delta$ $\chi$ 2 = 2.23, $\delta$ df = 1, $\delta$ CFI = .001). This supports discriminant validity for the methods. This set of analyses suggests the MFD is a possibly valid measure of moral foundations but does not measure them well enough to be useful in all applications and may be measuring them differently than the MFQ. 
+	Regression predicting Political Orientation. The MFQ has predicted political orientation across many studies [@Federico2013; @Graham2009; @Haidt2009; @Weber2013]. Therefore, in addition to the MTMM analysis, we compared how well the MFD score predicted political orientation compared to how well the MFQ predicted the political orientation. First, total MFQ scores were calculated for each foundation by averaging all six items. Then, a regression analysis was conducted with the five MFQ foundation score predicting political orientation. The overall model was significant, *R2* = .35, *F* (5, 255) = 26.91, *p* < .05. Higher scores on the harm and fairness foundations predicted a more liberal political orientation with harm accounting for 3% of the variance and fairness accounting for 6%. Higher scores on ingroup, authority, and purity predicted a more conservative orientation accounting for 1%, 2%, and 8% on the variance respectively. See *table ?* for regression coefficients. Next, a regression analysis was conducted to determine how well the five MFD scores predicted political orientation. The overall model was not significant, *R2* = .16, *F* (5, 255) = 1.36, *p* = .241. Higher harm scores somewhat predicted more liberal orientation accounting for 1% of the variance in political orientation. Higher purity scores somewhat predicted more conservative orientation accounting for 1% of the variance. See *table ?* for regression coefficients.
+	
+## Study 2
+  In Study 2, the MFD was applied to real-world data, U.S. Congressional speeches. The purpose of this study was to further test the predictive validity of the MFD. If valid, the MFD should detect political party differences in congressional speeches. 
+
+## Method
+# Sample
+  Speeches were gathered through the Congressional Record available through the U.S. Government Publishing Office. Speeches were gathered from the following venues from 1998-2013: Senate, House of Representatives, Senate Foreign Affairs Committee, and House Foreign Affairs Committee. The topics of the speeches were U.S. foreign policy with the following nations: Iraq, Iran, North Korea, Afghanistan, Kosovo, Libya, Russia, Sudan, and Syria. These speeches often deal with the use of military force and the enforcement of sanctions which should include moral arguments. A total of 5207 Congressional speeches were gathered. These speeches were made by 509 unique speakers. Republicans gave 2268 speeches, and Democrats gave 2939 speeches. 
+# Data Processing
+  For each speech, the number of words used from each of the five foundation dictionary was calculated. So, each speech had a word frequency count for each foundation. Speeches which did not contain any words from any foundation dictionary were excluded. Across speeches, there were a total of 2,026,243 words. Of these, 7838 (.39%) were *harm* words, 1976 (.10%) were *fairness* words, 2985 (.15%) were *ingroup* words, 4057 (.20%) were *authority* words, and 717 (.04%) were *purity* words. 
+  
+## Results
+  Bayesian *t*-tests were used to compare the Democratic and Republican use of MFD words. For *harm* words, the Bayes factor comparing a model of equal use between Democrats and Republicans and a model of greater use by Democrats was .08. In other words, equal use of *harm* words by both parties is more likely. Examining the means revealed that Democrats (*M* = 5.62, *SD* = 8.12), on average, used less than one more *harm* word than Republicans (*M* = 4.87, *SD* = 6.32). For *fairness* words, the Bayes factor was .04; once again, equal use of *fairness* words by both parties is more likely. Essentially no difference exists between the mean use for Democrats (*M* = 2.46, *SD* = 2.74) and Republicans (*M* = 2.66, *SD* = 3.34). For *ingroup*, *authority*, and *purity* words, a model of equal use was tested against a model of greater use by Republicans. A Bayes factor of .10 supported greater probability for the equal use of *ingroup* words with little difference between Republicans (*M* = 2.55, *SD* = 2.83) and Democrats (*M* = 2.48, *SD* = 2.10). A Bayes factor of .04 also supported greater likelihood of the equal use of *authority* words with no substantial difference between Republicans (*M* = 3.06, *SD* = 3.43) and Democrats (*M* = 3.22, *SD* = 3.19). Likewise, a Bayes factor of .09 demonstrated a greater probability for the equal use of *purity* words with little to no difference between Republicans (*M* = 1.52, *SD* = 1.03) and Democrats (*M* = 1.54, *SD* = 1.04). See *figure ?* for all comparisons. 
+  
+##  Discussion
+	The preceding analyses seem to suggest the MFD has limited validity. While the step procedure of the MTMM supports the assumptions that the MFD is measuring the same constructs as the MFQ, the models themselves suggest the MFD measures moral foundations rather poorly. Furthermore, the MFD fails to have the predictive validity found in the MFQ predicting political orientation. Based on the initial work of [@Graham2009], it is possible that the MFD is measuring the moral foundation constructs differently than the MFQ as they did find ingroup words to predict liberal orientation rather than conservative. The problems with the MFD may be due to the use of word frequency. As we found in the current study, the words of the MFD are not used very often which forced us to delete many participants and also left many participants who used only 2 or 3 words from the dictionary. The infrequent use of the MFD words may have caused some mismeasurement of the foundations. The LSA approach taken by @Sagi2013 may be a solution to this problem and may represent a better application of the dictionary. A limitation of the current study was word count for the texts, which could have exacerbated the word frequency problem. The average word count in our study was around 100-200 words; increasing the word count may yield better results in future studies. However, overall it seems that the word frequency method of the MFD is a poor measure of moral foundations theory. Further research is required to either improve the MFD or determine what exactly it is measuring. 
