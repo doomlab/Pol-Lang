@@ -99,8 +99,16 @@ crapcolumns = c(1, 2, 3, 5:14)
 finalsample = exp1data[ , -crapcolumns]
 
  ##accuracy
+summary(finalsample) #Check Q15_1 and Q23 for in-range scores -WP
+missing_demo1 = apply(finalsample, 1, percentmiss) 
+table(missing_demo1)
+
+#replacepeople_demo1 = subset(finalsample, missing <= 5)  #we are using 5%, yes? -WP
+#dontpeople_demo1 = subset(finalsample, missing > 5)
+#apply(replacepeople, 2, percentmiss) 
 
 ##use the ngram library to examine the data
+
 ##preprocess only works on one string at a time, so going to use a loop go through all the rows 
 ##writing columns are 27, 29, 30, 32, 34 - must make these characters first
 
@@ -120,6 +128,7 @@ for (i in 1:nrow(finalsample)) {
   
 }
 
+ngram(finalsample[,2:6], n = 2, sep = ",") 
 ```
 
 
@@ -148,6 +157,7 @@ crapcolumns = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 51:61)
 finalsample = fullsample[ , -crapcolumns]
 
 ##accuracy
+summary(finalsample)
 
 ##take out the people with less than 50 words
 ##use the ngram library to examine the data
@@ -177,9 +187,13 @@ goodcolumns = goodrows[ , -c(32:42)]
 badcolumns = goodrows[ , c(32:42)]
 
 #fill in missing data points
-
+library(mice)
+tempnomiss = mice(goodcolumns)
+nomiss = complete(tempnomiss, 1)
+summary(nomiss)
 #merge
-
+allcolumns = cbind(badcolumns, nomiss) 
+summary(allcolumns)
 ```
 
 
