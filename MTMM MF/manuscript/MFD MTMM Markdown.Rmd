@@ -42,7 +42,7 @@ output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
 ```{r load_packages, include = FALSE}
@@ -54,7 +54,7 @@ library(ngram)
 ##percent missing function
 percentmiss = function(x){ sum(is.na(x))/length(x) *100 }
 
-correldata = read.csv("word_analysis_writing.csv", fileEncoding = "latin1")
+#correldata = read.csv("word_analysis_writing.csv", fileEncoding = "latin1")
 ```
 
 Examining the construct and measurement validity of psychometric scales can be difficult, especially for complex constructs such as morality. Given the pervasiveness of language as avenue of moral justification and moral argument, it is important to understand how language is indicative of moral reasoning. Hence, the current study sought to examine the validity of one approach to measuring moral language using the framework of moral foundations theory, in comparison to traditional questionnaire style measurements. 
@@ -98,20 +98,11 @@ exp1data = read.csv("association.csv")
 crapcolumns = c(1, 2, 3, 5:14)
 finalsample = exp1data[ , -crapcolumns]
 
- ##accuracy
+##accuracy
 summary(finalsample) #Check Q15_1 and Q23 for in-range scores -WP
-missing_demo1 = apply(finalsample, 1, percentmiss) 
-table(missing_demo1)
-
-#replacepeople_demo1 = subset(finalsample, missing <= 5)  #we are using 5%, yes? -WP
-#dontpeople_demo1 = subset(finalsample, missing > 5)
-#apply(replacepeople, 2, percentmiss) 
-
-##use the ngram library to examine the data
 
 ##preprocess only works on one string at a time, so going to use a loop go through all the rows 
 ##writing columns are 27, 29, 30, 32, 34 - must make these characters first
-
 finalsample$Q27 = as.character(finalsample$Q27)
 finalsample$Q29 = as.character(finalsample$Q29)
 finalsample$Q30 = as.character(finalsample$Q30)
@@ -128,7 +119,30 @@ for (i in 1:nrow(finalsample)) {
   
 }
 
-ngram(finalsample[,2:6], n = 2, sep = ",") 
+#missing 
+missing_demo1 = apply(finalsample, 1, percentmiss) 
+table(missing_demo1)
+
+#replacepeople_demo1 = subset(finalsample, missing <= 5)  #we are using 5%, yes? -WP
+#dontpeople_demo1 = subset(finalsample, missing > 5)
+#apply(replacepeople, 2, percentmiss) 
+
+##be sure to exclude the writing columns columns 2:6 
+
+##outliers
+
+##assumptions
+#correlations for MFQ
+
+#normal
+
+#linear
+
+#homog + s
+
+##the end goal
+##use the ngram library to examine the data
+#ngram(finalsample[,2:6], n = 2, sep = ",") 
 ```
 
 
@@ -157,7 +171,7 @@ crapcolumns = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 51:61)
 finalsample = fullsample[ , -crapcolumns]
 
 ##accuracy
-summary(finalsample)
+summary(finalsample[ , 2:40])
 
 ##take out the people with less than 50 words
 ##use the ngram library to examine the data
@@ -192,8 +206,19 @@ tempnomiss = mice(goodcolumns)
 nomiss = complete(tempnomiss, 1)
 summary(nomiss)
 #merge
-allcolumns = cbind(badcolumns, nomiss) 
+allcolumns = cbind(nomiss, badcolumns) 
 summary(allcolumns)
+
+##outliers
+
+##assumptions on the questions i.e. not Q10 to the end
+#correlations
+
+#normal
+
+#linear
+
+#homog + s
 ```
 
 
