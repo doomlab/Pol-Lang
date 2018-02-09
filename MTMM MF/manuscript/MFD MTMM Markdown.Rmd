@@ -123,23 +123,43 @@ for (i in 1:nrow(finalsample)) {
 missing_demo1 = apply(finalsample, 1, percentmiss) 
 table(missing_demo1)
 
-#replacepeople_demo1 = subset(finalsample, missing <= 5)  #we are using 5%, yes? -WP
+#replacepeople_demo1 = subset(finalsample, missing <= 5)  #we are using 5%, yes? 
 #dontpeople_demo1 = subset(finalsample, missing > 5)
 #apply(replacepeople, 2, percentmiss) 
 
 ##be sure to exclude the writing columns columns 2:6 
-
+#I take it I should also remove column 1: ResponseId? 
 ##outliers
+mahal1 = mahalanobis(finalsample[ , -c(1:6)], 
+                    colMeans(finalsample[ , -c(1:6)], na.rm = TRUE),
+                    cov(finalsample[ , -c(1:6)], use="pairwise.complete.obs"))
+mahal1
+cutoff1 = qchisq(1 - .001,ncol(finalsample[ , -c(1:6)]))
+cutoff1
+ncol(finalsample[ , -c(1:6)])
+summary(mahal1 < cutoff) #Hmm what to do w/ NAs?? -WP
+noout1 = subset(finalsample, mahal1 < cutoff)
 
 ##assumptions
 #correlations for MFQ
+correlations1 = cor(noout1[,-c(1:6)], use="pairwise.complete.obs")
+correlations1
+symnum(correlations1)
 
+#making the random stuff
+random1 = rchisq(nrow(noout1), 7)
+fake1 = lm(random~., data=noout1)
 #normal
-
+standardized1 = rstudent(fake1)
+hist(standardized1, breaks=15) #ugh, look at the error we get for this one...
 #linear
-
+{qqnorm(standardized1) #...and this one...
+abline(0,1)}
 #homog + s
-
+fitvalues1 = scale(fake1$fitted.values)
+plot(fitvalues1, standardized1) 
+{abline(0,0)
+abline(v = 0)}
 ##the end goal
 ##use the ngram library to examine the data
 #ngram(finalsample[,2:6], n = 2, sep = ",") 
@@ -210,15 +230,37 @@ allcolumns = cbind(nomiss, badcolumns)
 summary(allcolumns)
 
 ##outliers
+mahal2 = mahalanobis(finalsample[ , -c(1,32:42)], 
+                    colMeans(finalsample[ , -c(1,32:42)], na.rm = TRUE),
+                    cov(finalsample[ , -c(1,32:42)], use="pairwise.complete.obs"))
+mahal2
+cutoff2 = qchisq(1 - .001,ncol(finalsample[ , -c(1,32:42)]))
+cutoff2
+ncol(finalsample[ , -c(1,32:42)])
+summary(mahal2 < cutoff) #Hmm what to do w/ NAs?? 
+noout2 = subset(finalsample, mahal2 < cutoff)
 
 ##assumptions on the questions i.e. not Q10 to the end
 #correlations
+correlations2 = cor(noout2[,-c(1,32:42)], use="pairwise.complete.obs")
+correlations2
+symnum(correlations2)
+
+#the random stuff
+random2 = rchisq(nrow(noout2), 7)
+fake2 = lm(random2~., data=noout2)
 
 #normal
-
+standardized2 = rstudent(fake2)
+hist(standardized2, breaks=15) # The errors are making me sad :(  
 #linear
-
+{qqnorm(standardized2)   
+abline(0,1)}    #Oy vey, these errors!
 #homog + s
+fitvalues2 = scale(fake2$fitted.values)
+{plot(fitvalues2, standardized2) 
+abline(0,0)
+abline(v = 0)}
 ```
 
 
