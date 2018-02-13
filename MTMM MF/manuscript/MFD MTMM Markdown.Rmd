@@ -48,7 +48,7 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```{r load_packages, include = FALSE}
 library(papaja)
 library(lavaan)
-library(semPlot)
+#library(semPlot)
 library(ngram)
 
 ##percent missing function
@@ -100,6 +100,9 @@ finalsample = exp1data[ , -crapcolumns]
 
 ##accuracy
 summary(finalsample) #Check Q15_1 and Q23 for in-range scores -WP
+finalsample$Q23 = factor(finalsample$Q23,
+                         levels = 1:3,
+                         labels = c("Democrat", "Republican", "Independent"))
 
 ##preprocess only works on one string at a time, so going to use a loop go through all the rows 
 ##writing columns are 27, 29, 30, 32, 34 - must make these characters first
@@ -120,45 +123,50 @@ for (i in 1:nrow(finalsample)) {
 }
 
 #missing 
+#by people 
 missing_demo1 = apply(finalsample, 1, percentmiss) 
 table(missing_demo1)
 
-#replacepeople_demo1 = subset(finalsample, missing <= 5)  #we are using 5%, yes? 
-#dontpeople_demo1 = subset(finalsample, missing > 5)
-#apply(replacepeople, 2, percentmiss) 
+replacepeople1 = subset(finalsample, missing_demo1 <= 5)  #we are using 5%, yes? 
+#by column 
+apply(replacepeople1, 2, percentmiss) 
+#missing data is on the politics scale which we don't want to replace 
+
+finalsample = replacepeople1
 
 ##be sure to exclude the writing columns columns 2:6 
 #I take it I should also remove column 1: ResponseId? 
 ##outliers
-mahal1 = mahalanobis(finalsample[ , -c(1:6)], 
-                    colMeans(finalsample[ , -c(1:6)], na.rm = TRUE),
-                    cov(finalsample[ , -c(1:6)], use="pairwise.complete.obs"))
-mahal1
-cutoff1 = qchisq(1 - .001,ncol(finalsample[ , -c(1:6)]))
+mahal1 = mahalanobis(finalsample[ , -c(1:6,23)], 
+                    colMeans(finalsample[ , -c(1:6,23)], na.rm = TRUE),
+                    cov(finalsample[ , -c(1:6,23)], use="pairwise.complete.obs"))
+#mahal1
+cutoff1 = qchisq(1 - .001,ncol(finalsample[ , -c(1:6,23)]))
 cutoff1
-ncol(finalsample[ , -c(1:6)])
-summary(mahal1 < cutoff) #Hmm what to do w/ NAs?? -WP
-noout1 = subset(finalsample, mahal1 < cutoff)
+ncol(finalsample[ , -c(1:6,23)])
+summary(mahal1 < cutoff1) #Hmm what to do w/ NAs?? -WP
+noout1 = subset(finalsample, mahal1 < cutoff1)
 
 ##assumptions
 #correlations for MFQ
-correlations1 = cor(noout1[,-c(1:6)], use="pairwise.complete.obs")
+correlations1 = cor(noout1[,-c(1:6,23)], use="pairwise.complete.obs")
 correlations1
 symnum(correlations1)
 
 #making the random stuff
 random1 = rchisq(nrow(noout1), 7)
-fake1 = lm(random~., data=noout1)
+fake1 = lm(random1~., data=noout1[ , -c(1:6)])
 #normal
 standardized1 = rstudent(fake1)
-hist(standardized1, breaks=15) #ugh, look at the error we get for this one...
+hist(standardized1, breaks=15) 
+
 #linear
-{qqnorm(standardized1) #...and this one...
+{qqnorm(standardized1) 
 abline(0,1)}
 #homog + s
 fitvalues1 = scale(fake1$fitted.values)
-plot(fitvalues1, standardized1) 
-{abline(0,0)
+{plot(fitvalues1, standardized1) 
+abline(0,0)
 abline(v = 0)}
 ##the end goal
 ##use the ngram library to examine the data
@@ -179,7 +187,7 @@ sample1 = read.csv("sample 1.csv")
 sample2 = read.csv("sample 2.csv")
 
 ##merge files together
-fullsample = merge(sample1, sample2, all = T)
+fullsample = merge(sample1, sample2, all = TRUE)
 
 ##merge together the writing samples
 #q24, q25, q26, q7 
@@ -192,6 +200,17 @@ finalsample = fullsample[ , -crapcolumns]
 
 ##accuracy
 summary(finalsample[ , 2:40])
+
+finalsample$Q10 = factor(finalsample$Q10,
+                         levels = 1:2,
+                         labels = c("Man", "Woman"))
+finalsample$Q11 = as.numeric(finalsample$Q11)
+finalsample$Q12 = factor(finalsample$Q12,
+                         levels = 1:7,
+                         labels = c("White", "Black", 
+                                    "Hispanic", "Asian",
+                                    "Native American", 
+                                    "Mixed", "Other"))
 
 ##take out the people with less than 50 words
 ##use the ngram library to examine the data
@@ -233,29 +252,31 @@ summary(allcolumns)
 mahal2 = mahalanobis(finalsample[ , -c(1,32:42)], 
                     colMeans(finalsample[ , -c(1,32:42)], na.rm = TRUE),
                     cov(finalsample[ , -c(1,32:42)], use="pairwise.complete.obs"))
-mahal2
+#mahal2
 cutoff2 = qchisq(1 - .001,ncol(finalsample[ , -c(1,32:42)]))
 cutoff2
 ncol(finalsample[ , -c(1,32:42)])
-summary(mahal2 < cutoff) #Hmm what to do w/ NAs?? 
-noout2 = subset(finalsample, mahal2 < cutoff)
+summary(mahal2 < cutoff2) #Hmm what to do w/ NAs?? 
+noout2 = subset(finalsample, mahal2 < cutoff2)
 
 ##assumptions on the questions i.e. not Q10 to the end
 #correlations
 correlations2 = cor(noout2[,-c(1,32:42)], use="pairwise.complete.obs")
-correlations2
+#correlations2
 symnum(correlations2)
 
 #the random stuff
 random2 = rchisq(nrow(noout2), 7)
-fake2 = lm(random2~., data=noout2)
+fake2 = lm(random2~., data=noout2[ , -c(1,32:42)])
 
 #normal
 standardized2 = rstudent(fake2)
-hist(standardized2, breaks=15) # The errors are making me sad :(  
+hist(standardized2, breaks=15)
+
 #linear
 {qqnorm(standardized2)   
-abline(0,1)}    #Oy vey, these errors!
+abline(0,1)}    
+
 #homog + s
 fitvalues2 = scale(fake2$fitted.values)
 {plot(fitvalues2, standardized2) 
