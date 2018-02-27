@@ -47,9 +47,9 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 
 ```{r load_packages, include = FALSE}
 library(papaja)
+library(tm)
+library(corpus)
 library(lavaan)
-#library(semPlot)
-library(ngram)
 
 ##percent missing function
 percentmiss = function(x){ sum(is.na(x))/length(x) *100 }
@@ -104,24 +104,6 @@ finalsample$Q23 = factor(finalsample$Q23,
                          levels = 1:3,
                          labels = c("Democrat", "Republican", "Independent"))
 
-##preprocess only works on one string at a time, so going to use a loop go through all the rows 
-##writing columns are 27, 29, 30, 32, 34 - must make these characters first
-finalsample$Q27 = as.character(finalsample$Q27)
-finalsample$Q29 = as.character(finalsample$Q29)
-finalsample$Q30 = as.character(finalsample$Q30)
-finalsample$Q32 = as.character(finalsample$Q32)
-finalsample$Q34 = as.character(finalsample$Q34)
-
-for (i in 1:nrow(finalsample)) {
-  
-  finalsample$Q27[i] = preprocess(finalsample$Q27[i], case="lower", remove.punct=TRUE)
-  finalsample$Q29[i] = preprocess(finalsample$Q29[i], case="lower", remove.punct=TRUE)
-  finalsample$Q30[i] = preprocess(finalsample$Q30[i], case="lower", remove.punct=TRUE)
-  finalsample$Q32[i] = preprocess(finalsample$Q32[i], case="lower", remove.punct=TRUE)
-  finalsample$Q34[i] = preprocess(finalsample$Q34[i], case="lower", remove.punct=TRUE)
-  
-}
-
 #missing 
 #by people 
 missing_demo1 = apply(finalsample, 1, percentmiss) 
@@ -168,11 +150,55 @@ fitvalues1 = scale(fake1$fitted.values)
 {plot(fitvalues1, standardized1) 
 abline(0,0)
 abline(v = 0)}
-##the end goal
-##use the ngram library to examine the data
-#ngram(finalsample[,2:6], n = 2, sep = ",") 
+
+####create the MFQ subscales####
+noout1$harmMFQ = apply(noout1[ , 7:9], 1, sum)
+noout1$fairMFQ = apply(noout1[ , 10:12], 1, sum)
+noout1$ingroupMFQ = apply(noout1[ , 13:15], 1, sum)
+noout1$authorityMFQ = apply(noout1[ , 16:18], 1, sum)
+noout1$purityMFQ = apply(noout1[ , 19:21], 1, sum)
 ```
 
+```{r harm-analysis1, include = FALSE}
+#q27 through 34 are the writing columns
+noout1$Q27 = as.character(noout1$Q27)
+
+##stem the data
+for (i in 1:nrow(noout1)) {
+  noout1$Q27[i] = paste(unlist(
+    text_tokens(noout1$Q27[i], stemmer = "en")), collapse = " ")
+}
+
+##create a corpus
+harm_corpus = Corpus(VectorSource(noout1$Q27))
+harm_TDM = as.matrix(TermDocumentMatrix(harm_corpus,
+                              control = list(removePunctuation = TRUE,
+                                             stopwords = TRUE)))
+
+##view the most frequent words
+harm_freq = data.frame(Word = rownames(harm_TDM),
+                       Freq = rowSums(harm_TDM),
+                       row.names = NULL)
+harm_freq$Word = as.character(harm_freq$Word)
+harm_freq$percent = harm_freq$Freq/nrow(noout1) *100
+
+##subset out to only words with 1% mentions
+harm_words = harm_freq$Word[harm_freq$percent >=1]
+##turn sideways to add to dataset
+harm_TDM = as.data.frame(t(harm_TDM))
+harm_TDM = harm_TDM[ , harm_words]
+
+##final dataset for harm
+harm_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "harmMFQ")],
+                   harm_TDM)
+
+####correlations ? t-tests? figure out a good way to do something here####
+##here's an example of how to get correlations for stuff, you could trade
+##out harmMFQ for maybe Q15_1 politics question
+apply(harm_final[ , 5:102], 2, function (x) { cor(x, harm_final$harmMFQ)})
+
+#apply(harm_final[ , 5:102], 2, function (x) { chisq.test(x, harm_final$Q23)})
+```
 
 # Experiment 2
 
