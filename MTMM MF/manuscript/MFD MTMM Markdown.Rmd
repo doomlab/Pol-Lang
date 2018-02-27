@@ -193,10 +193,9 @@ harm_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "harmMFQ")],
                    harm_TDM)
 
 ####correlations ? t-tests? figure out a good way to do something here####
-##here's an example of how to get correlations for stuff, you could trade
-##out harmMFQ for maybe Q15_1 politics question
+##here's an example of how to get correlations for stuff
 apply(harm_final[ , 5:102], 2, function (x) { cor(x, harm_final$harmMFQ)})
-
+apply(harm_final[ , 5:102], 2, function (x) { cor(x, harm_final$Q15_1)})
 #apply(harm_final[ , 5:102], 2, function (x) { chisq.test(x, harm_final$Q23)})
 ```
 
