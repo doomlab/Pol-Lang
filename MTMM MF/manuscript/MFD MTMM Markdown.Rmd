@@ -199,6 +199,166 @@ apply(harm_final[ , 5:102], 2, function (x) { cor(x, harm_final$Q15_1)})
 #apply(harm_final[ , 5:102], 2, function (x) { chisq.test(x, harm_final$Q23)})
 ```
 
+```{r fair-analysis1, include = FALSE}
+#q27 through 34 are the writing columns
+noout1$Q29 = as.character(noout1$Q29)
+
+##stem the data
+for (i in 1:nrow(noout1)) {
+  noout1$Q29[i] = paste(unlist(
+    text_tokens(noout1$Q29[i], stemmer = "en")), collapse = " ")
+}
+
+##create a corpus
+fair_corpus = Corpus(VectorSource(noout1$Q29))
+fair_TDM = as.matrix(TermDocumentMatrix(fair_corpus,
+                              control = list(removePunctuation = TRUE,
+                                             stopwords = TRUE)))
+
+##view the most frequent words
+fair_freq = data.frame(Word = rownames(fair_TDM),
+                       Freq = rowSums(fair_TDM),
+                       row.names = NULL)
+fair_freq$Word = as.character(fair_freq$Word)
+fair_freq$percent = fair_freq$Freq/nrow(noout1) *100
+
+##subset out to only words with 1% mentions
+fair_words = fair_freq$Word[fair_freq$percent >=1]
+##turn sideways to add to dataset
+fair_TDM = as.data.frame(t(fair_TDM))
+fair_TDM = fair_TDM[ , fair_words]
+
+##final dataset for fair
+fair_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "fairMFQ")],
+                   fair_TDM)
+
+####correlations ? t-tests? figure out a good way to do something here####
+##here's an example of how to get correlations for stuff
+apply(fair_final[ , 5:102], 2, function (x) { cor(x, fair_final$fairMFQ)})
+apply(fair_final[ , 5:102], 2, function (x) { cor(x, fair_final$Q15_1)})
+#apply(fair_final[ , 5:102], 2, function (x) { chisq.test(x, fair_final$Q23)})
+```
+
+````{r ingroup-analysis1, include = FALSE}
+#q27 through 34 are the writing columns
+noout1$Q30 = as.character(noout1$Q30)
+
+##stem the data
+for (i in 1:nrow(noout1)) {
+  noout1$Q30[i] = paste(unlist(
+    text_tokens(noout1$Q30[i], stemmer = "en")), collapse = " ")
+}
+
+##create a corpus
+ingroup_corpus = Corpus(VectorSource(noout1$Q30))
+ingroup_TDM = as.matrix(TermDocumentMatrix(ingroup_corpus,
+                              control = list(removePunctuation = TRUE,
+                                             stopwords = TRUE)))
+
+##view the most frequent words
+ingroup_freq = data.frame(Word = rownames(ingroup_TDM),
+                       Freq = rowSums(ingroup_TDM),
+                       row.names = NULL)
+ingroup_freq$Word = as.character(ingroup_freq$Word)
+ingroup_freq$percent = ingroup_freq$Freq/nrow(noout1) *100
+
+##subset out to only words with 1% mentions
+ingroup_words = ingroup_freq$Word[ingroup_freq$percent >=1]
+##turn sideways to add to dataset
+ingroup_TDM = as.data.frame(t(ingroup_TDM))
+ingroup_TDM = ingroup_TDM[ , ingroup_words]
+
+##final dataset for ingroup
+ingroup_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "ingroupMFQ")],
+                   ingroup_TDM)
+
+####correlations ? t-tests? figure out a good way to do something here####
+##here's an example of how to get correlations for stuff
+apply(ingroup_final[ , 5:102], 2, function (x) { cor(x, ingroup_final$ingroupMFQ)})
+apply(ingroup_final[ , 5:102], 2, function (x) { cor(x, ingroup_final$Q15_1)})
+#apply(ingroup_final[ , 5:102], 2, function (x) { chisq.test(x, ingroup_final$Q23)})
+```
+
+````{r authority-analysis1, include = FALSE}
+#q27 through 34 are the writing columns
+noout1$Q32 = as.character(noout1$Q32)
+
+##stem the data
+for (i in 1:nrow(noout1)) {
+  noout1$Q32[i] = paste(unlist(
+    text_tokens(noout1$Q32[i], stemmer = "en")), collapse = " ")
+}
+
+##create a corpus
+authority_corpus = Corpus(VectorSource(noout1$Q32))
+authority_TDM = as.matrix(TermDocumentMatrix(authority_corpus,
+                              control = list(removePunctuation = TRUE,
+                                             stopwords = TRUE)))
+
+##view the most frequent words
+authority_freq = data.frame(Word = rownames(authority_TDM),
+                       Freq = rowSums(authority_TDM),
+                       row.names = NULL)
+authority_freq$Word = as.character(authority_freq$Word)
+authority_freq$percent = authority_freq$Freq/nrow(noout1) *100
+
+##subset out to only words with 1% mentions
+authority_words = authority_freq$Word[authority_freq$percent >=1]
+##turn sideways to add to dataset
+authority_TDM = as.data.frame(t(authority_TDM))
+authority_TDM = authority_TDM[ , authority_words]
+
+##final dataset for authority
+authority_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "authorityMFQ")],
+                   authority_TDM)
+
+####correlations ? t-tests? figure out a good way to do something here####
+##here's an example of how to get correlations for stuff
+apply(authority_final[ , 5:102], 2, function (x) { cor(x, authority_final$authorityMFQ)})
+apply(authority_final[ , 5:102], 2, function (x) { cor(x, authority_final$Q15_1)})
+#apply(authority_final[ , 5:102], 2, function (x) { chisq.test(x, authority_final$Q23)})
+```
+
+````{r purity-analysis1, include = FALSE}
+#q27 through 34 are the writing columns
+noout1$Q34 = as.character(noout1$Q34)
+
+##stem the data
+for (i in 1:nrow(noout1)) {
+  noout1$Q34[i] = paste(unlist(
+    text_tokens(noout1$Q34[i], stemmer = "en")), collapse = " ")
+}
+
+##create a corpus
+purity_corpus = Corpus(VectorSource(noout1$Q34))
+purity_TDM = as.matrix(TermDocumentMatrix(purity_corpus,
+                              control = list(removePunctuation = TRUE,
+                                             stopwords = TRUE)))
+
+##view the most frequent words
+purity_freq = data.frame(Word = rownames(purity_TDM),
+                       Freq = rowSums(purity_TDM),
+                       row.names = NULL)
+purity_freq$Word = as.character(purity_freq$Word)
+purity_freq$percent = purity_freq$Freq/nrow(noout1) *100
+
+##subset out to only words with 1% mentions
+purity_words = purity_freq$Word[purity_freq$percent >=1]
+##turn sideways to add to dataset
+purity_TDM = as.data.frame(t(purity_TDM))
+purity_TDM = purity_TDM[ , purity_words]
+
+##final dataset for purity
+purity_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "purityMFQ")],
+                   purity_TDM)
+
+####correlations ? t-tests? figure out a good way to do something here####
+##here's an example of how to get correlations for stuff
+apply(purity_final[ , 5:102], 2, function (x) { cor(x, purity_final$purityMFQ)})
+apply(purity_final[ , 5:102], 2, function (x) { cor(x, purity_final$Q15_1)})
+#apply(purity_final[ , 5:102], 2, function (x) { chisq.test(x, purity_final$Q23)})
+```
+
 # Experiment 2
 
 ## Method
@@ -308,6 +468,7 @@ fitvalues2 = scale(fake2$fitted.values)
 abline(0,0)
 abline(v = 0)}
 ```
+
 
 
 Participants were recruited in two waves as part of a larger investigation on priming political and religious attitudes [@Jordan]. Participants were recruited via an online research system (SONA) and were given course credit for their participation. 
