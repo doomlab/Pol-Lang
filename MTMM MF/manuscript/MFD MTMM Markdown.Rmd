@@ -234,9 +234,9 @@ fair_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "fairMFQ")],
 
 ####correlations ? t-tests? figure out a good way to do something here####
 ##here's an example of how to get correlations for stuff
-apply(fair_final[ , 5:102], 2, function (x) { cor(x, fair_final$fairMFQ)})
-apply(fair_final[ , 5:102], 2, function (x) { cor(x, fair_final$Q15_1)})
-#apply(fair_final[ , 5:102], 2, function (x) { chisq.test(x, fair_final$Q23)})
+apply(fair_final[ , 5:80], 2, function (x) { cor(x, fair_final$fairMFQ)})
+apply(fair_final[ , 5:80], 2, function (x) { cor(x, fair_final$Q15_1)})
+#apply(fair_final[ , 5:80], 2, function (x) { chisq.test(x, fair_final$Q23)})
 ```
 
 ````{r ingroup-analysis1, include = FALSE}
