@@ -1,4 +1,4 @@
----
+ ---
 title             : "Focus on the Target: The Role of Attentional Focus in Decisions about War and Peace"
 shorttitle        : "ATTENTION IN WAR DECISIONS"
 
