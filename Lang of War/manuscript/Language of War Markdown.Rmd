@@ -50,7 +50,7 @@ library(boot)
 library(nlme)
 library(MOTE)
 knitr::opts_chunk$set(cache = TRUE)
-nsim = 10
+nsim = 1000
 
 library(ggplot2)
 cleanup = theme(panel.grid.major = element_blank(), 
