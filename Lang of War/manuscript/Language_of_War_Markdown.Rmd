@@ -54,7 +54,7 @@ library(forestplot)
 library(boot)
 library(nlme)
 library(MOTE)
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
 nsim = 10
 
 library(ggplot2)
