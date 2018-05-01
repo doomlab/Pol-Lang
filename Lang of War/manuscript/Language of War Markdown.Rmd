@@ -1,9 +1,4 @@
 ---
-output:
-  pdf_document: default
-  html_document: default
----
- ---
 title             : "Focus on the Target: The Role of Attentional Focus in Decisions about War and Peace"
 shorttitle        : "ATTENTION IN WAR DECISIONS"
 
@@ -31,7 +26,7 @@ author_note: |
 abstract: |
   Choosing to start a war carries with it great consequences; therefore, it is of utmost importance to understand what predicts support for war. We examined how word use predicted support for military action in the U.S. Congress. Previous research has tied political language to legislative success, party differences, and war, while others have examined the role of the executive and public support for war. However, the role of the legislative in war has been understudied. The present study hypothesized that word frequencies of function and content words would predict support for military action in the U.S. Congress. From the Congressional Record, speeches were obtained pertaining to the decisions for the U.S. to take military action in Kosovo, Iraq, and Libya. We found the use of singular third person pronouns to strongly relate to support for war among both senators and representatives. 
   
-keywords          : "keywords"
+keywords          : "language, war, congress, pronouns, verbs"
 
 bibliography      : ["LangWar.bib"]
 
@@ -116,7 +111,7 @@ Just as a person's gaze can illuminate where their attention is so can the words
 
 ## Language Samples
 
-Linguistic frequency analysis was conducted on political speeches gleaned from Congress. The source of language samples was the Congressional Record, a searchable database containing a record of each session of Congress since 1995 available at https://www.congress.gov/congressional-record, which is maintained by the U.S. Government Publishing Office. For this study, we searched for pertinent speeches from January 27, 1998 to September 19, 2013. Records were included if they pertained to U.S. relations with the following countries: Iraq, Libya, and Kosovo (see below for explanation of country selection). Samples were split by session date and person speaking, and therefore, each person could be represented multiple times in the dataset. Each file in the Congressional Record includes all speeches from the day selected, therefore, we separated each person's speeches by day into different files for processing. For example, a Senator may respond back and forth with an invited guest speaker, and all the Senators spoken words would be combined into one file for that day. Only Senators and Representatives were included in this analysis. These speeches were then coded for party affiliation of the Congressperson. All processed data, as well as an *R* markdown document with data analysis scripts inline with this manuscript [@R-papaja] can be found at https://osf.io/r8qp2/. 
+Linguistic frequency analysis was conducted on political speeches gleaned from Congress. The source of language samples was the Congressional Record, a searchable database containing a record of each session of Congress since 1995 available at https://www.congress.gov/congressional-record, which is maintained by the U.S. Government Publishing Office. For this study, we searched for pertinent speeches from January 27, 1998 to September 19, 2013. Records were included if they pertained to U.S. relations with the following countries: Iraq, Libya, and Kosovo (see below for explanation of country selection). Samples were split by session date and person speaking, and therefore, each person could be represented multiple times in the dataset. Each file in the Congressional Record includes all speeches from the day selected, therefore, we separated each person's speeches by day into different files for processing. For example, a Senator may respond back and forth with an invited guest speaker, and all the Senators spoken words would be combined into one file for that day. Only Senators and Representatives were included in this analysis. These speeches were then coded for party affiliation of the Congressperson. All processed data, as well as an *R* markdown document with data analysis scripts inline with this manuscript [@Aust2017] can be found at https://osf.io/r8qp2/. 
 
 ## Variables
 
@@ -1410,18 +1405,19 @@ Ktable = table1[1:10]
 Ktable = subset(Ktable, Region == "Kosovo")
 Ktable = Ktable[order(Ktable$Chamber), ]
 
-apa_table(Ktable,
+apa_table.latex(as.data.frame(Ktable),
           align = c("l", rep("c",9)),
           caption = "Descriptive statistics for each dependent variable by chamber, 
           region, and military support for Kosovo", 
           note = "Confidence intervals for $d_s$ were calculated using 
           non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
           small = T,
+          escape = F,
           col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$",
                        "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
 ```
 
-```{r Kpic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Kosovo. ", fig.height=4, fig.width=6}
+```{r Kpic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Kosovo.", fig.height=6, fig.width=8}
 Kpic = table1[ , c(1:4, 6, 11:14)]
 Kpic = subset(Kpic, Region == "Kosovo")
 KpicO = Kpic[, c(1:4, 6, 7)]
@@ -1435,7 +1431,7 @@ Kpic$Mlow = as.numeric(Kpic$Mlow)
 Kpic$Mhigh = as.numeric(Kpic$Mhigh)
 
 Khouse = fplot(Kpic[Kpic$Chamber == "House", ], upperlimit = 8)
-Ksenate = fplot(Kpic[Kpic$Chamber == "Senate", ], upperlimit = 12)
+Ksenate = fplot(Kpic[Kpic$Chamber == "Senate", ], upperlimit = 11.5)
 
 legend = get_legend(Khouse)
 plot_grid( Khouse + theme(legend.position="none"),
@@ -1447,7 +1443,7 @@ plot_grid( Khouse + theme(legend.position="none"),
 
 # Study 1A - Kosovo in the House
 
-In early 1998, violence erupted in the Serbian region of Kosovo between ethnic Albanians and the Serbian government. A peace agreement later in the year lasted until the beginning of 1999 when several Albanian civilians were killed, prompting a resurrection of hostilities. When the Serbian government, namely President Slobodan Milosevic, failed to concede to allowing a NATO peacekeeping force in Kosovo during February 1999 negotiations, NATO authorized air strikes against Serbian targets. This decision subsequently prompted debate within the U.S. Congress as to the involvement of the U.S. military in NATO's operations in Serbia and Kosovo [@Kim1999].
+In early 1998, violence erupted in the Serbian region of Kosovo between ethnic Albanians and the Serbian government. A peace agreement later in the year lasted until the beginning of 1999 when several Albanian civilians were killed, prompting a resurrection of hostilities. When the Serbian government, namely President Slobodan Milosevic, failed to concede to allowing a NATO peacekeeping force in Kosovo during February 1999 negotiations, NATO authorized air strikes against Serbian targets. This decision subsequently prompted debate within the U.S. Congress as to the involvement of the U.S. military in NATO's operations in Serbia and Kosovo [@Woehrel2006].
 
 In this study, we examine this debate in the U.S. House of Representatives to determine if members of Congress who supported U.S. military involvement focused on people or events differently than those who opposed it. 
 
@@ -1491,10 +1487,9 @@ Analyses were conducted in the same manner as the first part of the study with b
   
 # Discussion
 
-HEYO REWRITE ME BECAUSE SOME OF THE HOUSE THINGS ARE SMALL BUT DIFFERENT FROM ZERO. 
-The results of this first study are inconsistent and contrary to our hypotheses. The results were inconsistent in that effects were found for the Senate but no effects were found for the House. It is difficult to know exactly why this is the case; however there are several possible explanations. First, voting in Congress is exceedingly complex and is influenced by much more than floor debates in a given chamber. In this case, the Senate vote on the resolution occurred before the main debate in the House, which may have influenced what the debate focused on. Second, the Senate and the House are composed differently. Members of the House serve two year terms while Senators serve six year terms. Furthermore, Senators typically have more political experience than members of the House. These, as well as other factors, may help explain the differential effects for the two chambers of Congress. 
+The results of this first study are inconsistent and contrary to our hypotheses. The results were inconsistent in that effects found for the House and Senate are non-overlapping. For the House, supporters of war used more first person and future tense verbs, while opposition in the Senate used more third person and present tense verbs. It is difficult to know exactly why this is the case; however there are several possible explanations. First, voting in Congress is exceedingly complex and is influenced by much more than floor debates in a given chamber. In this case, the Senate vote on the resolution occurred before the main debate in the House, which may have influenced what the debate focused on. Second, the Senate and the House are composed differently. Members of the House serve two year terms while Senators serve six year terms. Furthermore, Senators typically have more political experience than members of the House. These, as well as other factors, may help explain the differential effects for the two chambers of Congress. 
 	
-The results of the second part of this study were also contrary to our hypotheses. At least in the Senate, those who supported taking military action used fewer third person plural pronouns while there was no difference in third person singular pronouns. Those who supported military action also used fewer third person singular pronouns. This suggests that those who opposed military action focused on both on their ingroup and on the outgroup. Based on the findings of @Abe2012 and @Matsumoto2015, we expected those who supported military action to show this focus. However, the results could be explained by the situation posed by the particular resolution. In this conflict, rather than responding to an act of aggression or a perceived threat, the U.S. was deciding the extent to which the U.S. would be involved in ongoing NATO, a treaty organization of which the U.S. is a member, operations in Kosovo and Serbia. It is possible that some viewed the outgroup as NATO rather than Serbians. In this case, with no clear, immediate threat to the U.S., for those making ingroup-outgroup distinctions, protecting the ingroup may have meant opposing the war rather than supporting it. In order to determine if the situation surrounding the Kosovo conflict may have impacted the first study, we next turned to examine the Iraq War which was had more support and also represented a possible clear threat to the U.S.
+The results of the second part of this study were also contrary to our hypotheses. At least in the Senate, those who supported taking military action used fewer third person plural pronouns while there was no difference in third person singular pronouns. Those who supported military action also used fewer third person singular pronouns. This finding suggests that those who opposed military action focused on both on their ingroup and on the outgroup. Based on the findings of @Abe2012 and @Matsumoto2015, we expected those who supported military action to show this focus. However, the results could be explained by the situation posed by the particular resolution. In this conflict, rather than responding to an act of aggression or a perceived threat, the U.S. was deciding the extent to which the U.S. would be involved in ongoing NATO, a treaty organization of which the U.S. is a member, operations in Kosovo and Serbia. It is possible that some viewed the outgroup as NATO rather than Serbians. In this case, with no clear, immediate threat to the U.S., for those making ingroup-outgroup distinctions, protecting the ingroup may have meant opposing the war rather than supporting it. In order to determine if the situation surrounding the Kosovo conflict may have impacted the first study, we next turned to examine the Iraq War which was had more support and also represented a possible clear threat to the U.S.
 	
 # Study 2A - Iraq in the House
 
@@ -1520,18 +1515,19 @@ Itable = table1[1:10]
 Itable = subset(Itable, Region == "Iraq")
 Itable = Itable[order(Itable$Chamber), ]
 
-apa_table(Itable,
+apa_table.latex(as.data.frame(Itable),
           align = c("l", rep("c",9)),
           caption = "Descriptive statistics for each dependent variable by chamber, 
           region, and military support for Iraq", 
           note = "Confidence intervals for $d_s$ were calculated using 
           non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
           small = T,
+          escape = F,
           col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$",
                        "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
 ```
 
-```{r Ipic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Iraq.", fig.height=4, fig.width=6}
+```{r Ipic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Iraq.", fig.height=6, fig.width=8}
 Ipic = table1[ , c(1:4, 6, 11:14)]
 Ipic = subset(Ipic, Region == "Iraq")
 IpicO = Ipic[, c(1:4, 6, 7)]
@@ -1545,7 +1541,7 @@ Ipic$Mlow = as.numeric(Ipic$Mlow)
 Ipic$Mhigh = as.numeric(Ipic$Mhigh)
 
 Ihouse = fplot(Ipic[Ipic$Chamber == "House", ], upperlimit = 8)
-Isenate = fplot(Ipic[Ipic$Chamber == "Senate", ], upperlimit = 12)
+Isenate = fplot(Ipic[Ipic$Chamber == "Senate", ], upperlimit = 8)
 
 legend = get_legend(Ihouse)
 plot_grid( Ihouse + theme(legend.position="none"),
@@ -1555,7 +1551,7 @@ plot_grid( Ihouse + theme(legend.position="none"),
 )
 ```
 
-As in the first study, bootstrapped means and confidence intervals as well as effect sizes (Cohen's *d*) were calculated for speeches of those supporting the measure versus those opposing the measure for the following LIWC categories: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*), past-tense, present-tense, and future tense. Results can be seen as a forest plot in Figure \@ref(fig:Ipic) and in Table \@ref(tab:Itable). A sizable difference emerged in the use of third-person singular pronouns. Representatives who supported the military measure used other references at a higher rate than those who opposed taking military action.
+As in the first study, bootstrapped means and confidence intervals as well as effect sizes (Cohen's *d*) were calculated for speeches of those supporting the measure versus those opposing the measure for the following LIWC categories: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*), past-tense, present-tense, and future tense. Results can be seen as a forest plot in Figure \@ref(fig:Ipic) and in Table \@ref(tab:Itable). A non-zero effect size difference emerged in the use of third-person singular pronouns. Representatives who supported the military measure used other references at a higher rate than those who opposed taking military action.
 	
 # Study 2B - Iraq in the Senate
 
@@ -1580,10 +1576,9 @@ Analyses were conducted in the same manner as the first part of the study to det
 	
 # Discussion
 
-HEYO MAKE SURE YOU STILL LIKE THIS AND IT'S CORRECTO
-The results from this second study more closely matched our hypotheses. For both the House and Senate, members of Congress who supported taking military action used more singular third person pronouns (*he*, *his*) than those who opposed taking military action. Contrary to our hypothesis, no differences were found for plural third person pronouns (*they*, *theirs*) meaning those who supported taking action made more references to others as specific individuals and not as groups. Although this was not quite the result we expected, these differences make sense in light of the situation. In the case of the Iraq War, the threat was seen not as a group of people but rather a single individual, Saddam Hussein. Hence, for supporters of military action, their focus was still external as was expected [@Abe2012; @Matsumoto2015]; however, their focus was on an individual rather than a group. 
+The results from this second study more closely matched our hypotheses. For both the House and Senate, members of Congress who supported taking military action used more singular third person pronouns (*he*, *his*) than those who opposed taking military action. Contrary to our hypothesis, no differences were found for plural third person pronouns (*they*, *theirs*) meaning those who supported taking action made more references to others as specific individuals and not as groups. Although this finding was not quite the result we expected, these differences make sense in light of the situation. In the case of the Iraq War, the threat was seen not as a group of people but rather a single individual, Saddam Hussein. Hence, for supporters of military action, their focus was still external as was expected [@Abe2012; @Matsumoto2015]; however, their focus was on an individual rather than a group. 
 
-The second hypothesis was partially supported. In the Senate, those who supported taking military action used more references to the past than those opposed to military action. However, this difference was not found in the House. As was stated previously, this difference in results could be due to voting procedures or compositional differences in the House and Senate. As a final test of our hypotheses, we examined the Congressional debate surrounding U.S. involvement in Libya during its 2011 civil war. We expect to find similar results to Study 1 as, like the Kosovo war, there was less support for U.S. military involvement as well as a lack of a perceived clear, immediate threat to the U.S.
+The second hypothesis was partially supported. In the Senate, those who supported taking military action used more references to the past than those opposed to military action. However, this difference was not found in the House. As was stated previously, this difference in results could be due to voting procedures or compositional differences in the House and Senate. As a final test of our hypotheses, we examined the Congressional debate surrounding U.S. involvement in Libya during its 2011 civil war. We might expect to find similar results to Study 1 as, like the Kosovo war, there was less support for U.S. military involvement as well as a lack of a perceived clear, immediate threat to the U.S.
 	
 # Study 3 - Libya in the House
 
@@ -1609,7 +1604,7 @@ Ltable = table1[1:10]
 Ltable = subset(Ltable, Region == "Libya")
 Ltable = Ltable[order(Ltable$Chamber), ]
 
-apa_table(Ltable,
+apa_table.latex(as.data.frame(Ltable),
           row.names = F,
           align = c("l", rep("c",9)),
           caption = "Descriptive statistics for each dependent variable by chamber, 
@@ -1617,11 +1612,12 @@ apa_table(Ltable,
           note = "Confidence intervals for $d_s$ were calculated using 
           non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
           small = T,
+          escape = F,
           col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$", 
                         "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
 ```
 
-```{r Lpic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Libya.", fig.height=4, fig.width=6}
+```{r Lpic, echo=FALSE, warning= FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Libya.", fig.height=6, fig.width=8}
 Lpic = table1[ , c(1:4, 6, 11:14)]
 Lpic = subset(Lpic, Region == "Libya")
 LpicO = Lpic[, c(1:4, 6, 7)]
@@ -1647,19 +1643,19 @@ As in the first two studies, analyses consisted on comparing the bootstrapped me
 
 # Discussion
 
-HEYO MAKE SURE THIS IS STILL OK. 
-As expected, no attentional differences between those who supported and opposed taking military action in Libya in the House of Representatives were found. This finding could indicate that in situations where there is less Congressional support for military action and no clear, immediate threat to the U.S., the difference between support and opposition for military action is not a matter of attention but something else entirely. 
+As might be expected given Study 1, no attentional differences between those who supported and opposed taking military action in Libya in the House of Representatives were found. This finding could indicate that in situations where there is less Congressional support for military action and no clear, immediate threat to the U.S., the difference between support and opposition for military action is not a matter of attention but other social and political forces. 
 	
 # General Discussion
 
-The most probable reason for this finding is the change in the dynamics of war. Historically, the U.S. would declare war on another nation (i.e. fighting the Germans in WWI). In WWII, a slight shift occurred where the U.S. was fighting not only another nation but also an ideology (Nazi Germany, Fascist Italy). With the beginning of the Cold War, another movement happened where the U.S. did not directly fight another nation (USSR) but instead fought indirectly with proxy wars (Korean War, Vietnam War) while battling against enemy ideology (Communism). After the Cold War and the fall of the Soviet Union, the focus shifted to the United States’ main conflict being the war on terror [@Matthews2014] *NO MENDELEY*. Furthermore, Balas, Owsiak, and Diehl [-@Balas2012] argued that one possible motivation for war, since the end of the Cold War, was the increased emphasis on the international norms of democratization and humanitarianism. Hence, the use of singular third person pronouns could reflect a focus on dictators violating human rights as a cause for conflict (i.e Hussein in Iraq, Milosevic in Kosovo, and Qaddafi in Libya). Furthermore, the use of masculine pronouns would seem to lend some support for this explanation.
+The most probable reason for these findings is the change in the dynamics of war. Historically, the U.S. would declare war on another nation (i.e., fighting the Germans in WWI). In WWII, a slight shift occurred where the U.S. was fighting not only another nation but also an ideology (Nazi Germany, Fascist Italy). With the beginning of the Cold War, another movement happened where the U.S. did not directly fight another nation (USSR) but instead fought indirectly with proxy wars (Korean War, Vietnam War) while battling against enemy ideology (Communism). After the Cold War and the fall of the Soviet Union, the focus shifted to the United States’ main conflict being the war on terror [@Matthews2014]. Furthermore, @Balas2012 argued that one possible motivation for war, since the end of the Cold War, was the increased emphasis on the international norms of democratization and humanitarianism. Hence, the use of singular third person pronouns could reflect a focus on dictators violating human rights as a cause for conflict (i.e., Hussein in Iraq, Milosevic in Kosovo, and Qaddafi in Libya). Furthermore, the use of masculine pronouns would seem to lend some support for this explanation.
 
-##Limitations
-The sample and methods used in the study, while useful, can also be somewhat limited in scope. First, even though the Congressional Record represents everything said on the floor of Congress, it does not necessarily represent the entirety of Congress. Our sample incorporates nearly 15 years in Congress. This time period encompassed seven election cycles and at any given time, there are 100 senators and 435 congressmen and women. While our data set likely included speeches from the more influential senators and congressmen and women, we cannot predict voting from those who did not speak. Furthermore, our findings regarding masculine versus feminine pronouns could be confounded by the underrepresentation of women in Congress. In the 113th Congress, women comprised 20% of the Senate and 18% of the House [@Manning2014]. For the years of voting records we used, there were 96 women in Congress in 2011, 73 in 2002, and 67 in 1999 compared to 105 women in the current Congress.
+## Limitations
+
+The sample and methods used in the study, while useful, can also be somewhat limited in scope. First, even though the Congressional Record represents everything said on the floor of Congress, it does not necessarily represent the entirety of Congress. Our sample incorporates nearly 15 years in Congress. This time period encompassed seven election cycles and at any given time, there are 100 senators and 435 congressmen and women. While our data set likely included speeches from the more influential senators and congressmen and women, we cannot predict voting from those who did not speak. Furthermore, our findings regarding masculine versus feminine pronouns could be confounded by the underrepresentation of women in Congress. In the 113th Congress, women comprised 20% of the Senate and 18% of the House [@Manning2014]. For the years of voting records we used, there were 96 women in Congress in 2011, 73 in 2002, and 67 in 1999 compared to 105 women in the current Congress. Another limitation is tied to using word frequency as an independent measure, although @Tausczik2010 have provided support for this research. Word frequency is a meaningful measure of language, though it does fail to take into account context, sarcasm, and other subtle aspects of language. 
 
 ## Future Directions
 
-While our data set likely included speeches from the more influential senators and congressmen and women, we cannot predict voting from those who did not speak. Furthermore, our findings regarding masculine versus feminine pronouns could be confounded by the underrepresentation of women in Congress. In the 113th Congress, women comprised 20% of the Senate and 18% of the House [@Manning2014]. For the years of voting records we used, there were 96 women in Congress in 2011, 73 in 2002, and 67 in 1999 compared to 102 women in the current Congress.
+While word frequency is an interesting and relatively easy method of linguistic analysis, other methods of content analysis could demonstrate usefulness in understanding support for war. The current study focused on the three most recent conflicts in Congress, but the next step might be to discover if pronoun use has changed in discussions of war in the last century. Finally, we studied the U.S. Congress because of a dearth in the literature, and studies of legislative bodies of other countries would be an excellent avenue to continue in this area. From the present study, it is clear that language can be a useful tool to further our understanding of the political process and its impact on war and peace. 
 
 \newpage
 
