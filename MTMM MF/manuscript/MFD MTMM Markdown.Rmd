@@ -84,8 +84,6 @@ going to end up editing here after we finish the four pronged approach part.
 
 # Experiment 1
 
-****this part is going to be word associations study to see what might be driving the MFD****
-
 # Method
 
 ##Particpants
@@ -114,23 +112,25 @@ apply(replacepeople1, 2, percentmiss)
 #missing data is on the politics scale which we don't want to replace 
 
 finalsample = replacepeople1
+summary(finalsample)
 
+party = table(finalsample$Q23)
 ##be sure to exclude the writing columns columns 2:6 
 #I take it I should also remove column 1: ResponseId? 
 ##outliers
-mahal1 = mahalanobis(finalsample[ , -c(1:6,23)], 
-                    colMeans(finalsample[ , -c(1:6,23)], na.rm = TRUE),
-                    cov(finalsample[ , -c(1:6,23)], use="pairwise.complete.obs"))
+mahal1 = mahalanobis(finalsample[ , -c(1:6,22,23)], 
+                    colMeans(finalsample[ , -c(1:6,22,23)], na.rm = TRUE),
+                    cov(finalsample[ , -c(1:6,22,23)], use="pairwise.complete.obs"))
 #mahal1
-cutoff1 = qchisq(1 - .001,ncol(finalsample[ , -c(1:6,23)]))
+cutoff1 = qchisq(1 - .001,ncol(finalsample[ , -c(1:6,22,23)]))
 cutoff1
-ncol(finalsample[ , -c(1:6,23)])
+ncol(finalsample[ , -c(1:6,22,23)])
 summary(mahal1 < cutoff1) #Hmm what to do w/ NAs?? -WP
 noout1 = subset(finalsample, mahal1 < cutoff1)
 
 ##assumptions
 #correlations for MFQ
-correlations1 = cor(noout1[,-c(1:6,23)], use="pairwise.complete.obs")
+correlations1 = cor(noout1[,-c(1:6,22,23)], use="pairwise.complete.obs")
 correlations1
 symnum(correlations1)
 
@@ -157,6 +157,26 @@ noout1$ingroupMFQ = apply(noout1[ , 13:15], 1, sum)
 noout1$authorityMFQ = apply(noout1[ , 16:18], 1, sum)
 noout1$purityMFQ = apply(noout1[ , 19:21], 1, sum)
 ```
+
+`r nrow(exp1data)` participants were collected from a large Midwestern university. Participants were given course credit for their introductory psychology course for completing the study. `r nrow(finalsample)` participants had less than five percent missing data and were retained for analyses. Participants were asked to denote their political party, and `r printnum(party["Democrat"]/sum(party)*100,digits = 1)`% indicated they were Democrats, `r printnum(party["Republican"]/sum(party)*100,digits = 1)`% were Republican, and `r printnum(party["Independent"]/sum(party)*100,digits = 1)`% indicated they were Independent.
+
+# Materials and Procedure
+
+A complete example of the survey can be found online at OSF LINK. First, participants were given a description of associative memory as the relation between words that comes about through many pairings in writing and speech. Next, the free association task, similar to that used in @Nelson2004 and @SWOW_FIX_THIS was described to the participants as listing the "first word that pops into mind". The participants were then given three example free association cues, *lost*, *old*, and *article*. For each cue, participants were asked to write all the words that come to mind. To elicit free association to the moral foundation areas, participants were given the following instructions:
+
+"Moral Foundations Theory states that when making moral judgments/decisions, the concerns people have can be divided into five categories. Below are labels of each of these five categories. You will then be asked to list words you think are associated with each of the labels."
+
+Each of the foundation pairs were listed together (i.e. *harm/care*, *fairness/cheating*) with a space for participants to list their free association concepts. After the free association task, participants were then given the 15-items from the moral relevance section of the MFQ as described in the introduction. Last, participants were asked to denote their political orientation from 1 *conservative* to 10 *liberal*, as well as which political party they associated with: Democrat, Republican, and Independent. The survey was delivered through Qualtrics, and participants were recruited through the online participant management system for the university (SONA). Each participant signed an online consent form at the beginning of the study and was given participation credit at the end of the study. 
+
+# Results 
+
+All data was screening for inaccurate responses, as well as missing data, as described in the participant section. Two participants were missing data on the political orientation scale after excluding participants with more than five percent missing data, and this data was excluded pairwise. The MFQ data was screened for multivariate outliers with Mahalanobis distance as described in @Tabachnick2012, and fourteen outliers were found using $\chi^2_{p < .001}$(`r ncol(finalsample[ , -c(1:6,22,23)])`) = `r cutoff1`. These participants were excluded from further analyses, representing `nrow(noout1)` final participants. The final data was screened for assumptions of normality, linearity, homogeneity and homoscedasticity, and these were found to be satisfactory. 
+
+The sum of each moral foundation area was calculated in order to determine which words were linked to their respective moral foundation. The average scores for 
+
+blah blah blah
+
+Participants free association responses were processed using the *tm* library [@CITE]. Each set of answers was cleaned for punctuation, English stop words (e.g., *the*, *an*, *of*) were removed, and each word was stemmed using the English library in *tm*. 
 
 ```{r harm-analysis1, include = FALSE}
 #q27 through 34 are the writing columns
@@ -360,11 +380,9 @@ apply(purity_final[ , 5:102], 2, function (x) { cor(x, purity_final$Q15_1)})
 
 # Experiment 2
 
-## Method
+# Method
 
-****this part is going to be writing samples to get more words****
-
-##Participants
+## Participants
 
 ```{r demos_study2, include=FALSE}
 sample1 = read.csv("sample 1.csv")
@@ -468,24 +486,24 @@ abline(0,0)
 abline(v = 0)}
 ```
 
-
-
 Participants were recruited in two waves as part of a larger investigation on priming political and religious attitudes [@Jordan]. Participants were recruited via an online research system (SONA) and were given course credit for their participation. 
-
-
 
 The sample consisted of 55.52% men (*n* = 161), 44.48% women (*n* = 129), and was 80% Caucasian with an average age of 20.02 (*SD* = 3.07). 
 
+A total of 160 participants completed the second half of this study, which was collected to increase sample size to examine the MFQ and MFD. The sample included 29.63% men (*n* = 48) and 81.73% women (*n* = 114) with 89% identifying as Caucasian and an average age of 19.36 (*SD* = 2.81). Participants were recruited and given course credit in the same manner as sample 1. 
 
+##	Materials and Procedure
 
+Data was collected via an online survey site (Qualtrics). Four fake new stories were presented to participants, which were roughly 400 words each. First, all news stories included a few sentences describing the use of chemical weapons in the Syrian civil war. The news stories were manipulated with political (Republican v. Democrat) and religious (religious v. not) quotes in a 2 x 2 design. News stories can be provided upon request. Participants also completed the 30-item version of the MFQ as described in the introduction. In addition to basic demographics (gender, age, political orientation, party affiliation, and religious affiliation), participant political orientation was assessed with: "Rate your political orientation on the following scale. 1 (*conservative*) to 10 (*liberal*)." 
 
-	Materials. Data was collected via an online survey site (Qualtrics). Four fake new stories were presented to participants, which were roughly 400 words each. First, all news stories included a few sentences describing the use of chemical weapons in the Syrian civil war. The news stories were manipulated with political (Republican v. Democrat) and religious (religious v. not) quotes in a 2 x 2 design. News stories can be provided upon request. Participants also completed the 30-item version of the MFQ as described in the introduction. In addition to basic demographics (gender, age, political orientation, party affiliation, and religious affiliation), participant political orientation was assessed with: "Rate your political orientation on the following scale. 1 (*conservative*) to 10 (*liberal*)."
-	Procedure. After consenting to participate in the study, participants were randomly shown one of the four new articles about Syria’s use of chemical weapons. Participants were then asked to write for 5-10 minutes about their reaction to Syria’s use of chemical weapons and the needed response from the United States. After this section, participants then completed the MFQ and demographics sections.
-#Sample 2
-	Participants. A total of 160 participants completed the second half of this study, which was collected to increase sample size to examine the MFQ and MFD. The sample included 29.63% men (*n* = 48) and 81.73% women (*n* = 114) with 89% identifying as Caucasian and an average age of 19.36 (*SD* = 2.81). Participants were recruited and given course credit in the same manner as sample 1. 
-	Materials. Data for this study was also collected via Qualtrics with the same basic research design. The following writing prompt was used, "Please write about your attitudes on abortion (or same-sex marriage or environmentalism) as well as your reason for this stance." The three prompts were chosen to create a more varied word set by using topics that should elicit words from each moral foundations category by soliciting a moral response. Participants again completed the MFQ, demographics, and the political orientation scale from sample 1. 
-	Procedure. After consenting to participate in this study, participants were asked to write at least 1200 characters about their attitudes on abortion, same-sex marriage, or environmentalism, which were randomly assigned. Participants then completed the MFQ and demographics section. 
+After consenting to participate in the study, participants were randomly shown one of the four new articles about Syria’s use of chemical weapons. Participants were then asked to write for 5-10 minutes about their reaction to Syria’s use of chemical weapons and the needed response from the United States. After this section, participants then completed the MFQ and demographics sections.
+
+Data for this study was also collected via Qualtrics with the same basic research design. The following writing prompt was used, "Please write about your attitudes on abortion (or same-sex marriage or environmentalism) as well as your reason for this stance." The three prompts were chosen to create a more varied word set by using topics that should elicit words from each moral foundations category by soliciting a moral response. Participants again completed the MFQ, demographics, and the political orientation scale from sample 1. 
+
+After consenting to participate in this study, participants were asked to write at least 1200 characters about their attitudes on abortion, same-sex marriage, or environmentalism, which were randomly assigned. Participants then completed the MFQ and demographics section. 
 	
+# Experiment 3
+
 ```{r mtmm code}
 ##find very small words
 columndata = apply(correldata, 2, sum) 
