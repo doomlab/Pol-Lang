@@ -42,7 +42,7 @@ output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+knitr::opts_chunk$set(cache = TRUE)
 ```
 
 ```{r load_packages, include = FALSE}
