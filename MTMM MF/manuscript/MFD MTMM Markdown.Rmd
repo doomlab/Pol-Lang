@@ -208,8 +208,6 @@ harm_TDM = harm_TDM[ , harm_words]
 harm_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "harmMFQ")],
                    harm_TDM)
 
-####correlations ? t-tests? figure out a good way to do something here####
-##here's an example of how to get correlations for stuff
 harm_cor = apply(harm_final[ , 5:ncol(harm_final)], 2, function (x) { cor(x, harm_final$harmMFQ)})
 
 harmcut = mean(harm_cor) + 2*sd(harm_cor)
@@ -251,8 +249,6 @@ fair_TDM = fair_TDM[ , fair_words]
 fair_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "fairMFQ")],
                    fair_TDM)
 
-####correlations ? t-tests? figure out a good way to do something here####
-##here's an example of how to get correlations for stuff
 fair_cor = apply(fair_final[ , 5:ncol(fair_final)], 2, function (x) { cor(x, fair_final$fairMFQ)})
 
 faircut = mean(fair_cor) + 2*sd(fair_cor)
@@ -294,8 +290,6 @@ ingroup_TDM = ingroup_TDM[ , ingroup_words]
 ingroup_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "ingroupMFQ")],
                    ingroup_TDM)
 
-####correlations ? t-tests? figure out a good way to do something here####
-##here's an example of how to get correlations for stuff
 ingroup_cor = apply(ingroup_final[ , 5:ncol(ingroup_final)], 2, function (x) { cor(x, ingroup_final$ingroupMFQ)})
 
 ingroupcut = mean(ingroup_cor) + 2*sd(ingroup_cor)
@@ -337,8 +331,6 @@ authority_TDM = authority_TDM[ , authority_words]
 authority_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "authorityMFQ")],
                    authority_TDM)
 
-####correlations ? t-tests? figure out a good way to do something here####
-##here's an example of how to get correlations for stuff
 authority_cor = apply(authority_final[ , 5:ncol(authority_final)], 2, function (x) { cor(x, authority_final$authorityMFQ)})
 
 authoritycut = mean(authority_cor) + 2*sd(authority_cor)
@@ -380,8 +372,6 @@ purity_TDM = purity_TDM[ , purity_words]
 purity_final = cbind(noout1[ , c("ResponseId", "Q15_1", "Q23", "purityMFQ")],
                    purity_TDM)
 
-####correlations ? t-tests? figure out a good way to do something here####
-##here's an example of how to get correlations for stuff
 purity_cor = apply(purity_final[ , 5:ncol(purity_final)], 2, function (x) { cor(x, purity_final$purityMFQ)})
 
 puritycut = mean(purity_cor) + 2*sd(purity_cor)
@@ -512,7 +502,7 @@ Participants were recruited in two waves as part of a larger investigation on pr
 
 ##	Materials and Procedure
 
-Data was againt collected via Qualtrics. Four fake new stories were presented to participants, which were roughly 400 words each. First, all news stories included a few sentences describing the use of chemical weapons in the Syrian civil war. The news stories were manipulated with political (Republican v. Democrat) and religious (religious v. not) quotes in a 2 x 2 design. News stories can be found in the online materials. Participants also completed the 30-item version of the MFQ as described in the introduction. In addition to basic demographics (gender, age), participant political orientation was assessed with the same scale described in Experiment 1. 
+Data was again collected via Qualtrics. Four fake new stories were presented to participants, which were roughly 400 words each. First, all news stories included a few sentences describing the use of chemical weapons in the Syrian civil war. The news stories were manipulated with political (Republican v. Democrat) and religious (religious v. not) quotes in a 2 x 2 design. News stories can be found in the online materials. Participants also completed the 30-item version of the MFQ as described in the introduction. In addition to basic demographics (gender, age), participant political orientation was assessed with the same scale described in Experiment 1. 
 
 After consenting to participate in the study, participants were randomly shown one of the four new articles about Syria's use of chemical weapons. Participants were then asked to write for 5-10 minutes about their reaction to Syria's use of chemical weapons and the needed response from the United States. The second wave of data collection included different writing prompts designed to capture more of the moral foundation areas in their writing. The following writing prompt was used, "Please write about your attitudes on abortion (or same-sex marriage or environmentalism) as well as your reason for this stance." The three prompts were chosen to create a more varied word set by using topics that should elicit words from each moral foundations category by soliciting a moral response. In each wave of data collection (Syria prompts, moral prompts) the prompt material was randomized between participants. Participants then completed the MFQ, demographics, and the political orientation scale. 
 
@@ -555,22 +545,59 @@ overall_TDM = overall_TDM[ , all_words]
 overall_final = cbind(noout2[ , c("ResponseId", "harmMFQ", "fairMFQ",
                                   "authorityMFQ", "purityMFQ","ingroupMFQ")],
                    overall_TDM)
+```
 
+```{r exp2-mfq-cor, include = FALSE}
+##harm
 harm_cor = apply(overall_final[ , 7:ncol(overall_final)], 2, function (x) { cor(x, overall_final$harmMFQ)})
 
 harmcut = mean(harm_cor) + 2*sd(harm_cor)
-harm_words_reduce = names(harm_cor[abs(harm_cor) >= harmcut])
+harm_words_reduce_exp2 = names(harm_cor[abs(harm_cor) >= harmcut])
 
-##repeat this part for the rest of the words
+##fair
+fair_cor = apply(overall_final[ , 7:ncol(overall_final)], 2, function (x) { cor(x, overall_final$fairMFQ)})
+
+faircut = mean(fair_cor) + 2*sd(fair_cor)
+fair_words_reduce_exp2 = names(fair_cor[abs(fair_cor) >= faircut])
+
+##purity
+purity_cor = apply(overall_final[ , 7:ncol(overall_final)], 2, function (x) { cor(x, overall_final$purityMFQ)})
+
+puritycut = mean(purity_cor) + 2*sd(purity_cor)
+purity_words_reduce_exp2 = names(purity_cor[abs(purity_cor) >= puritycut])
+
+##authority
+authority_cor = apply(overall_final[ , 7:ncol(overall_final)], 2, function (x) { cor(x, overall_final$authorityMFQ)})
+
+authoritycut = mean(authority_cor) + 2*sd(authority_cor)
+authority_words_reduce_exp2 = names(authority_cor[abs(authority_cor) >= authoritycut])
+
+##ingroup
+ingroup_cor = apply(overall_final[ , 7:ncol(overall_final)], 2, function (x) { cor(x, overall_final$ingroupMFQ)})
+
+ingroupcut = mean(ingroup_cor) + 2*sd(ingroup_cor)
+ingroup_words_reduce_exp2 = names(ingroup_cor[abs(ingroup_cor) >= ingroupcut])
+
+##print out words list to look at for further analysis
+#write.csv(harm_words_reduce_exp2, "words/harm_exp2.csv", row.names = F)
+#write.csv(fair_words_reduce_exp2, "words/fair_exp2.csv", row.names = F)
+#write.csv(authority_words_reduce_exp2, "words/authority_exp2.csv", row.names = F)
+#write.csv(purity_words_reduce_exp2, "words/purity_exp2.csv", row.names = F)
+#write.csv(ingroup_words_reduce_exp2, "words/ingroup_exp2.csv", row.names = F)
+
+##read in the final lists
+#DO ThiS HERE AFTER WE EDIT THE LISTS. 
 ```
 
-In the first study, only free association responses were collected, but in this study, full writing samples were collected. Therefore, we expected many of the words listed to be part of creating a cohesive discourse, rather than only related to the moral foundation targeted. To find only the most related words, the correlation between word frequency and moral foundation was calculated and words with correlations greater than two standard deviations outside the mean were selected for the dictionary analysis in Experiment 3.  The sum of each moral foundation area was calculated in order to determine which words were linked to their respective moral foundation. The average scores were: harm (*M* = `r printnum(mean(noout2$harmMFQ))`, *SD* = `r printnum(sd(noout2$harmMFQ))`), fairness  (*M* = `r printnum(mean(noout2$fairMFQ))`, *SD* = `r printnum(sd(noout2$fairMFQ))`), ingroup (*M* = `r printnum(mean(noout2$ingroupMFQ))`, *SD* = `r printnum(sd(noout2$ingroupMFQ))`), authority  (*M* = `r printnum(mean(noout2$authorityMFQ))`, *SD* = `r printnum(sd(noout2$authorityMFQ))`), and purity (*M* = `r printnum(mean(noout2$purityMFQ))`, *SD* = `r printnum(sd(noout2$purityMFQ))`).
-
+In the first study, only free association responses were collected, but in this study, full writing samples were collected. Therefore, we expected many of the words listed to be part of creating a cohesive discourse, rather than only related to the moral foundation targeted. To find only the most related words, the correlation between word frequency and moral foundation was calculated and words with correlations greater than two standard deviations outside the mean were selected for the dictionary analysis in Experiment 3.  The sum of each moral foundation area was calculated in order to determine which words were linked to their respective moral foundation. The average scores were: harm (*M* = `r printnum(mean(noout2$harmMFQ))`, *SD* = `r printnum(sd(noout2$harmMFQ))`), fairness  (*M* = `r printnum(mean(noout2$fairMFQ))`, *SD* = `r printnum(sd(noout2$fairMFQ))`), ingroup (*M* = `r printnum(mean(noout2$ingroupMFQ))`, *SD* = `r printnum(sd(noout2$ingroupMFQ))`), authority  (*M* = `r printnum(mean(noout2$authorityMFQ))`, *SD* = `r printnum(sd(noout2$authorityMFQ))`), and purity (*M* = `r printnum(mean(noout2$purityMFQ))`, *SD* = `r printnum(sd(noout2$purityMFQ))`). This set of words was then coded by two of the authors for relevant words with a third author constituting a tiebreaker. For example, for harm words in this study both *also* and *Syria* appeared as correlated words to the harm foundation. The first word does not meet face validity of correlation with the dictionary, and these type of function words or ambiguous verbs (i.e., *get*, *can*) were usually excluded. The second example is likely because of the writing prompt, and therefore, proper nouns were also excluded. The reduced dataset included the following number of words for each foundation: harm `r length(harm_words_reduce_exp2)`, fairness `r length(fair_words_reduce_exp2)`, ingroup `r length(ingroup_words_reduce_exp2)`, authority `r length(authority_words_reduce_exp2)`, and purity `r length(purity_words_reduce_exp2)`.
 ##DEFINITELY STOPPED HERE
 	
 # Experiment 3
 
 ```{r mtmm_code, eval = FALSE}
+##ok so use 
+
+
 ##find very small words
 columndata = apply(correldata, 2, sum) 
 correldata2 = correldata[ , columndata > 5]
