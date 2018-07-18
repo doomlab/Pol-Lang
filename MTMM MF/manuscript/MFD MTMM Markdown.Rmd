@@ -590,8 +590,34 @@ ingroup_words_reduce_exp2 = names(ingroup_cor[abs(ingroup_cor) >= ingroupcut])
 ```
 
 In the first study, only free association responses were collected, but in this study, full writing samples were collected. Therefore, we expected many of the words listed to be part of creating a cohesive discourse, rather than only related to the moral foundation targeted. To find only the most related words, the correlation between word frequency and moral foundation was calculated and words with correlations greater than two standard deviations outside the mean were selected for the dictionary analysis in Experiment 3.  The sum of each moral foundation area was calculated in order to determine which words were linked to their respective moral foundation. The average scores were: harm (*M* = `r printnum(mean(noout2$harmMFQ))`, *SD* = `r printnum(sd(noout2$harmMFQ))`), fairness  (*M* = `r printnum(mean(noout2$fairMFQ))`, *SD* = `r printnum(sd(noout2$fairMFQ))`), ingroup (*M* = `r printnum(mean(noout2$ingroupMFQ))`, *SD* = `r printnum(sd(noout2$ingroupMFQ))`), authority  (*M* = `r printnum(mean(noout2$authorityMFQ))`, *SD* = `r printnum(sd(noout2$authorityMFQ))`), and purity (*M* = `r printnum(mean(noout2$purityMFQ))`, *SD* = `r printnum(sd(noout2$purityMFQ))`). This set of words was then coded by two of the authors for relevant words with a third author constituting a tiebreaker. For example, for harm words in this study both *also* and *Syria* appeared as correlated words to the harm foundation. The first word does not meet face validity of correlation with the dictionary, and these type of function words or ambiguous verbs (i.e., *get*, *can*) were usually excluded. The second example is likely because of the writing prompt, and therefore, proper nouns were also excluded. The reduced dataset included the following number of words for each foundation: harm `r length(harm_words_reduce_exp2)`, fairness `r length(fair_words_reduce_exp2)`, ingroup `r length(ingroup_words_reduce_exp2)`, authority `r length(authority_words_reduce_exp2)`, and purity `r length(purity_words_reduce_exp2)`.
+
 ##DEFINITELY STOPPED HERE
-	
+
+```{r compare-ratings, include = FALSE}
+authority_erin = read.csv("words/authority_exp2 erin.csv")
+authority_will = read.csv("words/authority_exp2 will.csv")
+authority_erin$x[authority_erin$use != authority_will$use]
+
+fair_erin = read.csv("words/fair_exp2 erin.csv")
+fair_will = read.csv("words/fair_exp2 will.csv")
+fair_erin$x[fair_erin$use != fair_will$use]
+
+purity_erin = read.csv("words/purity_exp2 erin.csv")
+purity_will = read.csv("words/purity_exp2 will.csv")
+purity_erin$x[purity_erin$use != purity_will$use]
+#before 
+
+ingroup_erin = read.csv("words/ingroup_exp2 erin.csv")
+ingroup_will = read.csv("words/ingroup_exp2 will.csv")
+ingroup_erin$x[ingroup_erin$use != ingroup_will$use]
+#mean
+
+harm_erin = read.csv("words/harm_exp2 erin.csv")
+harm_will = read.csv("words/harm_exp2 will.csv")
+harm_erin$x[harm_erin$use != harm_will$use]
+#import for important 
+```
+
 # Experiment 3
 
 ```{r mtmm_code, eval = FALSE}
