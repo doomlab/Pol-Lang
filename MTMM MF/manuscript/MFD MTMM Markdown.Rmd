@@ -783,13 +783,37 @@ library(lavaan)
 ##remember the survey is in the folder (or use the total sum coding above)
 ##do we need all thirty items? looks to me like we are only using 1-15 for the total scores in the first set of experimental results 
 
-model1 = '
-harmL =~ X1+X2+X3+X4+X5+X6+h1
-fairL =~ X7+X8+X9+X10+X11+X12+f1
-ingroupL =~ X13+X14+X15+X16+X17+X18+i1
-authorityL =~ X19+X20+X21+X22+X23+X24+a1
-purityL=~ X25+X26+X27+X28+X29+X30+p1
-mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23+X24+X25+X26+X27+X28+X29+X30
+#{model1 = '  ##KEEPING THE OLD ONES HERE IN CASE I RUIN EVERYTHING :)
+#harmL =~ X1+X2+X3+X4+X5+X6+h1
+#fairL =~ X7+X8+X9+X10+X11+X12+f1
+#ingroupL =~ X13+X14+X15+X16+X17+X18+i1
+#authorityL =~ X19+X20+X21+X22+X23+X24+a1
+#purityL=~ X25+X26+X27+X28+X29+X30+p1
+#mfq =~ X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20+X21+X22+X23#+X24+X25+X26+X27+X28+X29+X30
+#mfd =~ h1+f1+i1+a1+p1
+
+##fix the covariances
+#harmL~~0*mfq
+#fairL~~0*mfq
+#ingroupL~~0*mfq
+#authorityL~~0*mfq
+#purityL~~0*mfq
+#harmL~~0*mfd
+#fairL~~0*mfd
+#ingroupL~~0*mfd
+#authorityL~~0*mfd
+#purityL~~0*mfd
+#ingroupL~~-.29*harmL
+#f1~~1.35*f1
+#'}
+
+{model1 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h1
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f1
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i1 #check 8_11!
+authorityL =~ 8_10+9_10+9_12+a1
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p1 #check 8_12 and 9_11!
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
 mfd =~ h1+f1+i1+a1+p1
 
 ##fix the covariances
@@ -805,8 +829,7 @@ authorityL~~0*mfd
 purityL~~0*mfd
 ingroupL~~-.29*harmL
 f1~~1.35*f1
-'
-
+'}
 model1.fit = cfa(model1, data=mtmmdata, std.lv=TRUE)
 summary(model1.fit, rsquare=TRUE, standardized=TRUE)
 semPaths(model1.fit, whatLabels = "std", layout = "tree")
@@ -839,6 +862,30 @@ h2~~2.14*h2
 f2~~1.84*f2
 '
 
+model2 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h2
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f2
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i2
+authorityL =~ 8_10+9_10+9_12+a2
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p2
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h2+f2+i2+a2+p2
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+a2~~1.56*a2
+h2~~2.14*h2
+f2~~1.84*f2
+'
 model2.fit = cfa(model2, data=mtmmdata, std.lv=TRUE)
 summary(model2.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model2.fit, fit.measures = "aic")
@@ -869,6 +916,30 @@ i3~~.56*i3
 f3~~1.97*f3
 '
 
+model3 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h3
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f3
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i3
+authorityL =~ 8_10+9_10+9_12+a1
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p3
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h3+f3+i3+a3+p3
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+h3~~.66*h3
+i3~~.56*i3
+f3~~1.97*f3
+'
 model3.fit = cfa(model3, data=mtmmdata, std.lv=TRUE)
 summary(model3.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model3.fit, fit.measures = "aic")
@@ -897,6 +968,28 @@ purityL~~0*mfd
 authorityL~~.5*purityL
 '
 
+model4 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h12
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f12
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i12
+authorityL =~ 8_10+9_10+9_12+a1
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p12
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h12+f12+i12+a12+p12
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.5*purityL
+'
 model4.fit = cfa(model4, data=mtmmdata, std.lv=TRUE)
 summary(model4.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model4.fit, fit.measures = "aic")
@@ -926,6 +1019,29 @@ h23~~2.07*h23
 a23~~1.70*a23
 '
 
+model5 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h23
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f23
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i23
+authorityL =~ 8_10+9_10+9_12+a1
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p23
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h23+f23+i23+a23+p23
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+h23~~2.07*h23
+a23~~1.70*a23
+'
 model5.fit = cfa(model5, data=mtmmdata, std.lv=TRUE)
 summary(model5.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model5.fit, fit.measures = "aic")
@@ -954,6 +1070,28 @@ purityL~~0*mfd
 authorityL~~.80*purityL
 '
 
+model6 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h123
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f123
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i123
+authorityL =~ 8_10+9_10+9_12+a123
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p123
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h123+f123+i123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.80*purityL
+'
 model6.fit = cfa(model6, data=mtmmdata, std.lv=TRUE)
 summary(model6.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model6.fit, fit.measures = "aic")
@@ -967,6 +1105,14 @@ fairL =~ X7+X8+X9+X10+X11+X12+f123
 ingroupL =~ X13+X14+X15+X16+X17+X18+i123
 authorityL =~ X19+X20+X21+X22+X23+X24+a123
 purityL=~ X25+X26+X27+X28+X29+X30+p123
+'
+
+model6.1 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h123
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f123
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i123
+authorityL =~ 8_10+9_10+9_12+a1
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p123
 '
 model6.1.fit = cfa(model6.1, data=mtmmdata, std.lv=TRUE)
 summary(model6.1.fit, rsquare=TRUE, standardized=TRUE)
@@ -1006,6 +1152,38 @@ authorityL~~1*ingroupL
 purityL~~1*ingroupL
 '
 
+model6.2 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h123
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f123
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i123
+authorityL =~ 8_10+9_10+9_12+a123
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p123
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h123+f123+i123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+
+harmL~~1*fairL
+harmL~~1*authorityL
+harmL~~1*purityL
+harmL~~1*ingroupL
+fairL~~1*authorityL
+fairL~~1*purityL
+fairL~~1*ingroupL
+authorityL~~1*purityL
+authorityL~~1*ingroupL
+purityL~~1*ingroupL
+'
 model6.2.fit = cfa(model6.2, data=mtmmdata, std.lv=TRUE)
 summary(model6.2.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model6.2.fit)
@@ -1035,18 +1213,41 @@ authorityL~~.80*purityL
 mfq~~0*mfd
 '
 
+model6.3 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h123
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f123
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i123
+authorityL =~ 8_10+9_10+9_12+a123
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p123
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h123+f123+i123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.80*purityL
+mfq~~0*mfd
+'
 model6.3.fit = cfa(model6.3, data=mtmmdata, std.lv=TRUE)
 summary(model6.3.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model6.3.fit)
 
 ####fix the model####
 model6.4 = '
-harmL =~ X1+X2+X4+X5+X6+h123
-fairL =~ X7+X8+X9+X10+X11+X12+f123
-ingroupL =~ X13+X14+X15+X17
-authorityL =~ X22+X23+X24+a123
-purityL=~ X25+X26+X27+X29+X30+p123
-mfq =~ X1+X2+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X17+X22+X23+X24+X25+X26+X27+X29+X30
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h1
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f1
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i1 #check 8_11!
+authorityL =~ 8_10+9_10+9_12+a1
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p1 #check 8_12 and 9_11!
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
 mfd =~ h123+f123+a123+p123
 
 ##fix the covariances
@@ -1065,6 +1266,30 @@ h123~~2.44*h123
 f123~~1.85*f123
 '
 
+model6.4 = '
+harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h123
+fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f123
+ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i123
+authorityL =~ 8_10+9_10+9_12+a123
+purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p123
+mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
+mfd =~ h123+f123+a123+p123
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+authorityL~~.60*purityL
+h123~~2.44*h123
+f123~~1.85*f123
+'
 model6.4.fit = cfa(model6.4, data=mtmmdata, std.lv=TRUE)
 summary(model6.4.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model6.4.fit) 
