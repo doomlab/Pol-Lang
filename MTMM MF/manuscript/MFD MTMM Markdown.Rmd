@@ -808,13 +808,13 @@ library(lavaan)
 #'}
 
 {model1 = '
-harmL =~ 8_1+8_2+8_3+9_1+9_2+9_3+h1
-fairL =~ 8_4+8_5+8_6+9_4+9_5+9_6+f1
-ingroupL =~ 8_7+8_8+8_9+8_11+9_7+9_8+9_9+i1 #check 8_11!
-authorityL =~ 8_10+9_10+9_12+a1
-purityL=~ 8_12+8_13+8_14+8_15+9_11+9_13+9_14+9_15+p1 #check 8_12 and 9_11!
-mfq =~ 8_1+8_2+8_3+9_1+9_2+9_3+8_4+8_5+8_6+9_4+9_5+9_6+8_7+8_8+8_9+8_11+9_7+9_8+9_9+8_10+9_10+9_12+9_13+9_14+9_15
-mfd =~ h1+f1+i1+a1+p1
+harmL =~ Q8_1+Q8_2+Q8_3+harm_orig
+fairL =~ Q8_4+Q8_5+Q8_6+fair_orig
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_orig
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_orig
+purityL=~ Q8_13+Q8_14+Q8_15+purity_orig 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_orig+fair_orig+ingroup_orig+authority_orig+purity_orig
 
 ##fix the covariances
 harmL~~0*mfq
@@ -827,9 +827,8 @@ fairL~~0*mfd
 ingroupL~~0*mfd
 authorityL~~0*mfd
 purityL~~0*mfd
-ingroupL~~-.29*harmL
-f1~~1.35*f1
 '}
+
 model1.fit = cfa(model1, data=mtmmdata, std.lv=TRUE)
 summary(model1.fit, rsquare=TRUE, standardized=TRUE)
 semPaths(model1.fit, whatLabels = "std", layout = "tree")
