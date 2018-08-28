@@ -772,17 +772,13 @@ Here I will write about the overall percents and all that jazz for these results
 
 ####edit below here however you want
 
-```{r mtmm_code, eval = FALSE}
+```{r mtmm_orig, include = FALSE}
 
 ##now run some MTMM!
 library(semPlot)
 library(lavaan)
 
-####mtmm our data correlation 1####
-
-####NOTE HERE FIGURE OUT THE QUESTION NUMBER MAPPING ONTO THE ITEMS
-##remember the survey is in the folder (or use the total sum coding above)
-##do we need all thirty items? looks to me like we are only using 1-15 for the total scores in the first set of experimental results 
+####mtmm original dictionary####
 
 {model1 = '
 harmL =~ Q8_1+Q8_2+Q8_3+harm_orig
@@ -840,7 +836,6 @@ summary(model1.2.fit, rsquare=TRUE, standardized=TRUE)
 semPaths(model1.2.fit, whatLabels = "std", layout = "tree")
 fitMeasures(model1.2.fit, fit.measures = "aic")
 
-####mtmm original data 2####
 {model2 ='
 mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
 mfd =~ harm_orig+fair_orig+ingroup_orig+authority_orig+purity_orig
@@ -852,8 +847,7 @@ model2.fit = cfa(model2, data=mtmmdata, std.lv=TRUE)
 summary(model2.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model2.fit, fit.measures = "aic")
 
-####mtmm participant word data 3####
-{model3 = '    ##WTF DO I DO HERE TO CORRELATE THE TRAITS? 
+{model3 = '
 harmL =~ Q8_1+Q8_2+Q8_3+harm_orig
 fairL =~ Q8_4+Q8_5+Q8_6+fair_orig
 ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_orig
@@ -873,6 +867,16 @@ fairL~~0*mfd
 ingroupL~~0*mfd
 authorityL~~0*mfd
 purityL~~0*mfd
+harmL~~1*fairL
+harmL~~1*ingroupL
+harmL~~1*authorityL
+harmL~~1*purityL
+fairL~~1*ingroupL
+fairL~~1*authorityL
+fairL~~1*purityL
+ingroupL~~1*authorityL
+ingroupL~~1*purityL
+authorityL~~1*purityL
 
 fair_orig ~~ 1167.145*fair_orig
 '}
@@ -881,7 +885,6 @@ model3.fit = cfa(model3, data=mtmmdata, std.lv=TRUE)
 summary(model3.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model3.fit, fit.measures = "aic")
 
-####mtmm model 1 and 2 together####\
 {model4 = '
 harmL =~ Q8_1+Q8_2+Q8_3+harm_orig
 fairL =~ Q8_4+Q8_5+Q8_6+fair_orig
@@ -912,6 +915,210 @@ summary(model4.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model4.fit, fit.measures = "aic")
 ```
 
+
+```{r mtmm_reduce, include = FALSE}
+
+{model1 = '
+harmL =~ Q8_1+Q8_2+Q8_3+harm_reduce
+fairL =~ Q8_4+Q8_5+Q8_6+fair_reduce
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_reduce
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_reduce
+purityL=~ Q8_13+Q8_14+Q8_15+purity_reduce 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_reduce+fair_reduce+ingroup_reduce+authority_reduce+purity_reduce
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+'}
+
+model1.fit = cfa(model1, data=mtmmdata, std.lv=TRUE)
+summary(model1.fit, rsquare=TRUE, standardized=TRUE)
+semPaths(model1.fit, whatLabels = "std", layout = "tree")
+fitMeasures(model1.fit, fit.measures = "aic")
+
+{model2 ='
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_reduce+fair_reduce+ingroup_reduce+authority_reduce+purity_reduce
+'}
+
+model2.fit = cfa(model2, data=mtmmdata, std.lv=TRUE)
+summary(model2.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model2.fit, fit.measures = "aic")
+
+{model3 = '
+harmL =~ Q8_1+Q8_2+Q8_3+harm_reduce
+fairL =~ Q8_4+Q8_5+Q8_6+fair_reduce
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_reduce
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_reduce
+purityL=~ Q8_13+Q8_14+Q8_15+purity_reduce 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_reduce+fair_reduce+ingroup_reduce+authority_reduce+purity_reduce
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+harmL~~1*fairL
+harmL~~1*ingroupL
+harmL~~1*authorityL
+harmL~~1*purityL
+fairL~~1*ingroupL
+fairL~~1*authorityL
+fairL~~1*purityL
+ingroupL~~1*authorityL
+ingroupL~~1*purityL
+authorityL~~1*purityL
+'}
+
+model3.fit = cfa(model3, data=mtmmdata, std.lv=TRUE)
+summary(model3.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model3.fit, fit.measures = "aic")
+
+{model4 = '
+harmL =~ Q8_1+Q8_2+Q8_3+harm_reduce
+fairL =~ Q8_4+Q8_5+Q8_6+fair_reduce
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_reduce
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_reduce
+purityL=~ Q8_13+Q8_14+Q8_15+purity_reduce 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_reduce+fair_reduce+ingroup_reduce+authority_reduce+purity_reduce
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+mfq ~~ 0*mfd
+'}
+
+model4.fit = cfa(model4, data=mtmmdata, std.lv=TRUE)
+summary(model4.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model4.fit, fit.measures = "aic")
+```
+
+```{r mtmm_all, include = FALSE}
+
+{model1 = '
+harmL =~ Q8_1+Q8_2+Q8_3+harm_all
+fairL =~ Q8_4+Q8_5+Q8_6+fair_all
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_all
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_all
+purityL=~ Q8_13+Q8_14+Q8_15+purity_all 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_all+fair_all+ingroup_all+authority_all+purity_all
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+'}
+
+model1.fit = cfa(model1, data=mtmmdata, std.lv=TRUE)
+summary(model1.fit, rsquare=TRUE, standardized=TRUE)
+semPaths(model1.fit, whatLabels = "std", layout = "tree")
+fitMeasures(model1.fit, fit.measures = "aic")
+
+{model2 ='
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_all+fair_all+ingroup_all+authority_all+purity_all
+'}
+
+model2.fit = cfa(model2, data=mtmmdata, std.lv=TRUE)
+summary(model2.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model2.fit, fit.measures = "aic")
+
+{model3 = '
+harmL =~ Q8_1+Q8_2+Q8_3+harm_all
+fairL =~ Q8_4+Q8_5+Q8_6+fair_all
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_all
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_all
+purityL=~ Q8_13+Q8_14+Q8_15+purity_all 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_all+fair_all+ingroup_all+authority_all+purity_all
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+harmL~~1*fairL
+harmL~~1*ingroupL
+harmL~~1*authorityL
+harmL~~1*purityL
+fairL~~1*ingroupL
+fairL~~1*authorityL
+fairL~~1*purityL
+ingroupL~~1*authorityL
+ingroupL~~1*purityL
+authorityL~~1*purityL
+'}
+
+model3.fit = cfa(model3, data=mtmmdata, std.lv=TRUE)
+summary(model3.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model3.fit, fit.measures = "aic")
+
+{model4 = '
+harmL =~ Q8_1+Q8_2+Q8_3+harm_all
+fairL =~ Q8_4+Q8_5+Q8_6+fair_all
+ingroupL =~ Q8_7+Q8_8+Q8_9+ingroup_all
+authorityL =~ Q8_10+Q8_11+Q8_12+authority_all
+purityL=~ Q8_13+Q8_14+Q8_15+purity_all 
+mfq =~ Q8_1+Q8_2+Q8_3+Q8_4+Q8_5+Q8_6+Q8_7+Q8_8+Q8_9+Q8_10+Q8_11+Q8_12+Q8_13+Q8_14+Q8_15
+mfd =~ harm_all+fair_all+ingroup_all+authority_all+purity_all
+
+##fix the covariances
+harmL~~0*mfq
+fairL~~0*mfq
+ingroupL~~0*mfq
+authorityL~~0*mfq
+purityL~~0*mfq
+harmL~~0*mfd
+fairL~~0*mfd
+ingroupL~~0*mfd
+authorityL~~0*mfd
+purityL~~0*mfd
+mfq ~~ 0*mfd
+'}
+
+model4.fit = cfa(model4, data=mtmmdata, std.lv=TRUE)
+summary(model4.fit, rsquare=TRUE, standardized=TRUE)
+fitMeasures(model4.fit, fit.measures = "aic")
+```
 ## Results
   Data Cleaning and Descriptives. In sample 1, participants who wrote less than 50 words were deleted (*n* = 69) leaving *n* = 221 participants. The average political orientation was 4.80 (*SD* = 2.21) on a scale of 1 (*conservative*) to 10 (*liberal*). In sample 2, all 160 participants wrote at least 50 words. The mean political orientation was 5.01 (*SD* = 2.33) for sample 2. The data from sample 1 and sample 2 were combined. Before any analyses were conducted, participants who did not use any words from the MFD were deleted; 16 participants were deleted from sample 1 and 25 from sample 2. The final sample size for analysis was *N* = 340 which had a mean political orientation of 4.90 (*SD* = 2.28). MFD scores were computed using NVivo *(CITE)* as both frequency for each foundation and percent coverage for each foundation. Frequency was simply the count of the number of words used from a given foundation dictionary; for example, a participant using the word *war* once and the word *peace* twice would have a frequency score of 3 for the *harm* dictionary. Percent coverage was calculated by taking the frequency and dividing by the word count; for example, given a frequency score of 3 for the *harm* dictionary and a word count of 100, then the percent coverage would be .03 for the *harm* dictionary. MFQ scores for each foundation were calculated by averaging the six items pertaining to each foundation. 
 	Reliability. Here we should talk about the reliability of the MFQ for each piece, as well as the reliability of the words for the MFD. I think to do that you might need a thing that has each word as frequency count yes/no or however the LIWC version thing was done. 
