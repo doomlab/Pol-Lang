@@ -1119,7 +1119,9 @@ model4.fit = cfa(model4, data=mtmmdata, std.lv=TRUE)
 summary(model4.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model4.fit, fit.measures = "aic")
 ```
+
 ## Results
+
   Data Cleaning and Descriptives. In sample 1, participants who wrote less than 50 words were deleted (*n* = 69) leaving *n* = 221 participants. The average political orientation was 4.80 (*SD* = 2.21) on a scale of 1 (*conservative*) to 10 (*liberal*). In sample 2, all 160 participants wrote at least 50 words. The mean political orientation was 5.01 (*SD* = 2.33) for sample 2. The data from sample 1 and sample 2 were combined. Before any analyses were conducted, participants who did not use any words from the MFD were deleted; 16 participants were deleted from sample 1 and 25 from sample 2. The final sample size for analysis was *N* = 340 which had a mean political orientation of 4.90 (*SD* = 2.28). MFD scores were computed using NVivo *(CITE)* as both frequency for each foundation and percent coverage for each foundation. Frequency was simply the count of the number of words used from a given foundation dictionary; for example, a participant using the word *war* once and the word *peace* twice would have a frequency score of 3 for the *harm* dictionary. Percent coverage was calculated by taking the frequency and dividing by the word count; for example, given a frequency score of 3 for the *harm* dictionary and a word count of 100, then the percent coverage would be .03 for the *harm* dictionary. MFQ scores for each foundation were calculated by averaging the six items pertaining to each foundation. 
 	Reliability. Here we should talk about the reliability of the MFQ for each piece, as well as the reliability of the words for the MFD. I think to do that you might need a thing that has each word as frequency count yes/no or however the LIWC version thing was done. 
 	MTMM. BASIC SEM STUFF HERE (also that you used bayes)
@@ -1140,6 +1142,14 @@ The second step (Model 2) involved eliminating the latent traits from the model.
   For each speech, the number of words used from each of the five foundation dictionary was calculated. So, each speech had a word frequency count for each foundation. Speeches which did not contain any words from any foundation dictionary were excluded. Across speeches, there were a total of 2,026,243 words. Of these, 7838 (.39%) were *harm* words, 1976 (.10%) were *fairness* words, 2985 (.15%) were *ingroup* words, 4057 (.20%) were *authority* words, and 717 (.04%) were *purity* words. 
   
 ## Results
+
+democrats should be harm/care, fairness/reciprocity in contrast to the other foundations and more than republicans 
+
+republicans should be equal across the foundations, purity/sanctity, authority/respect, ingroup/loyalty more than democrats 
+
+potentially think about valence
+
+
   Bayesian *t*-tests were used to compare the Democratic and Republican use of MFD words. For *harm* words, the Bayes factor comparing a model of equal use between Democrats and Republicans and a model of greater use by Democrats was .08. In other words, equal use of *harm* words by both parties is more likely. Examining the means revealed that Democrats (*M* = 5.62, *SD* = 8.12), on average, used less than one more *harm* word than Republicans (*M* = 4.87, *SD* = 6.32). For *fairness* words, the Bayes factor was .04; once again, equal use of *fairness* words by both parties is more likely. Essentially no difference exists between the mean use for Democrats (*M* = 2.46, *SD* = 2.74) and Republicans (*M* = 2.66, *SD* = 3.34). For *ingroup*, *authority*, and *purity* words, a model of equal use was tested against a model of greater use by Republicans. A Bayes factor of .10 supported greater probability for the equal use of *ingroup* words with little difference between Republicans (*M* = 2.55, *SD* = 2.83) and Democrats (*M* = 2.48, *SD* = 2.10). A Bayes factor of .04 also supported greater likelihood of the equal use of *authority* words with no substantial difference between Republicans (*M* = 3.06, *SD* = 3.43) and Democrats (*M* = 3.22, *SD* = 3.19). Likewise, a Bayes factor of .09 demonstrated a greater probability for the equal use of *purity* words with little to no difference between Republicans (*M* = 1.52, *SD* = 1.03) and Democrats (*M* = 1.54, *SD* = 1.04). See *figure ?* for all comparisons. 
   
 ##  Discussion
