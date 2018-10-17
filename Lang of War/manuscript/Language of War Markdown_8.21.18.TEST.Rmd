@@ -156,7 +156,6 @@ houseIraq$thirdperson = with(houseIraq, shehe + they)
 houseKosovo$thirdperson = with(houseKosovo, shehe + they)
 houseLibya$thirdperson = with(houseLibya, shehe + they)
 
-
 sIraqOppose = subset(senateIraq, Oppose.Support==0)
 sIraqSupport = subset(senateIraq, Oppose.Support==1)
 hIraqOppose = subset(houseIraq, Oppose.Support==0)
