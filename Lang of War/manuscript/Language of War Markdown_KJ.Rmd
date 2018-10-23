@@ -180,12 +180,13 @@ BSfunction = function (formula, dataset, random) {
                na.action = "na.omit",
                random = list(~1|Party.Affiliation, ~1|Name),
                control=lmeControl(opt = "nlminb")) 
-    meanvalue = summary(model1)$tTable[1]
-    sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
-  
-  }, error = function (x) {meanvalue = NA; sdvalue = NA})
 
+  meanvalue = summary(model1)$tTable[1]
+  sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
   return(c(meanvalue, sdvalue))
+  
+  }, error = function (x) {})
+
 }
 
 
