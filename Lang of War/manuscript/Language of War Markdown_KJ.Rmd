@@ -1455,10 +1455,10 @@ Kpic$Mhigh = as.numeric(Kpic$Mhigh)
 
 Khouse = fplot(Kpic[Kpic$Chamber == "House", ], 
                lowerlimit = floor(min(Kpic$Mlow[Kpic$Chamber == "House"])),
-               upperlimit = ceiling(max(Kpic$Mlow[Kpic$Chamber == "House"])))
+               upperlimit = ceiling(max(Kpic$Mhigh[Kpic$Chamber == "House"])))
 Ksenate = fplot(Kpic[Kpic$Chamber == "Senate", ], 
                lowerlimit = floor(min(Kpic$Mlow[Kpic$Chamber == "Senate"])),
-               upperlimit = ceiling(max(Kpic$Mlow[Kpic$Chamber == "Senate"])))
+               upperlimit = ceiling(max(Kpic$Mhigh[Kpic$Chamber == "Senate"])))
 
 legend = get_legend(Khouse)
 plot_grid( Khouse + theme(legend.position="none"),
@@ -1570,10 +1570,10 @@ Ipic$Mhigh = as.numeric(Ipic$Mhigh)
 
 Ihouse = fplot(Ipic[Ipic$Chamber == "House", ], 
                lowerlimit = floor(min(Ipic$Mlow[Ipic$Chamber == "House"])),
-               upperlimit = ceiling(max(Ipic$Mlow[Ipic$Chamber == "House"])))
+               upperlimit = ceiling(max(Ipic$Mhigh[Ipic$Chamber == "House"])))
 Isenate = fplot(Ipic[Ipic$Chamber == "Senate", ], 
                lowerlimit = floor(min(Ipic$Mlow[Ipic$Chamber == "Senate"])),
-               upperlimit = ceiling(max(Ipic$Mlow[Ipic$Chamber == "Senate"])))
+               upperlimit = ceiling(max(Ipic$Mhigh[Ipic$Chamber == "Senate"])))
 
 legend = get_legend(Ihouse)
 plot_grid( Ihouse + theme(legend.position="none"),
@@ -1665,7 +1665,7 @@ Lpic$Mhigh = as.numeric(Lpic$Mhigh)
 
 Lhouse = fplot(Lpic[Lpic$Chamber == "House", ], 
                lowerlimit = floor(min(Lpic$Mlow[Lpic$Chamber == "House"])),
-               upperlimit = ceiling(max(Lpic$Mlow[Lpic$Chamber == "House"])))
+               upperlimit = ceiling(max(Lpic$Mhigh[Lpic$Chamber == "House"])))
 
 legend = get_legend(Lhouse)
 plot_grid( Lhouse + theme(legend.position=c(.75, .75)),
