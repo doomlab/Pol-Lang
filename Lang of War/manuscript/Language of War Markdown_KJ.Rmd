@@ -50,7 +50,7 @@ library(boot)
 library(nlme)
 library(MOTE)
 knitr::opts_chunk$set(cache = TRUE)
-nsim = 10
+nsim = 100
 
 library(ggplot2)
 cleanup = theme(panel.grid.major = element_blank(), 
@@ -173,16 +173,22 @@ hLibyaSupport = subset(houseLibya, Oppose.Support==1)
 BSfunction = function (formula, dataset, random) {
   d = dataset[random, ] ##randomize by row
   
+  tryCatch({
   model1 = lme(formula, 
                data = d, 
                method = "ML", 
                na.action = "na.omit",
                random = list(~1|Party.Affiliation, ~1|Name),
                control=lmeControl(opt = "nlminb")) 
-  meanvalue = summary(model1)$tTable[1]
-  sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
+    meanvalue = summary(model1)$tTable[1]
+    sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
+  
+  }, error = function (x) {meanvalue = NA; sdvalue = NA})
+
   return(c(meanvalue, sdvalue))
 }
+
+
 
 ####make the table####
 table1 = matrix(NA, ncol = 14, nrow = 35)
