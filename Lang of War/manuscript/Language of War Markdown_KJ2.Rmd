@@ -28,7 +28,7 @@ author_note: |
   Submitted to Meta-Psychology. Click here to follow the fully transparent editorial process of this submission. Participate in open peer review by commenting through hypothes.is directly on this preprint.
   
 abstract: |
-  Legislative bodies have very important roles and understanding the psychology of their decision-making processes is a useful area of study. We add to this area by replicating two previous studies @Abe2012 and @Matsumoto2015 in the context of a legislative body. The present study hypothesized that legislators who support war measures be externally focused and less cognitively complex in their speeches while opponents of war measures would be internally focused. Speeches were obtained pertaining to the decisions for the U.S. to take military action in Kosovo, Iraq, and Libya. While we found mixed results depending on the circumstances of a specific conflict, we demonstrate how automated language analysis can be combined with voting records to better understand behavioral action, such as legislative decision. 
+  Legislative bodies have very important roles and understanding the psychology of their decision-making processes is a useful area of study. We add to this area by replicating two previous studies: @Abe2012 and @Matsumoto2015 in the context of a legislative body. The present study hypothesized that legislators who support war measures would be externally focused and less cognitively complex in their speeches, while opponents of war measures would be internally focused. Speeches were obtained pertaining to the decisions for the U.S. to take military action in Kosovo, Iraq, and Libya. While we found mixed results depending on the circumstances of a specific conflict, we demonstrate how automated language analysis can be combined with voting records to better understand behavioral action, such as legislative decision. 
   
 keywords          : "language, war, congress, pronouns, verbs"
 
@@ -54,7 +54,7 @@ library(boot)
 library(nlme)
 library(MOTE)
 knitr::opts_chunk$set(cache = TRUE)
-nsim = 100
+nsim = 1000
 
 library(ggplot2)
 cleanup = theme(panel.grid.major = element_blank(), 
@@ -77,7 +77,7 @@ fplot = function(dataframe, xlab = "Average Text Percent", ylab = "Type of Word"
     cleanup +
     scale_color_manual(values = c("black", "gray"),
                        name = "Vote") +
-    scale_x_discrete(limits = c("external", "internal", "complex", 
+    scale_x_discrete(limits = c("External", "Internal", "Complex", 
                                 "They", "She/He", "We", "I")) +
     scale_y_continuous(limits = c(0,upperlimit))
 
@@ -85,11 +85,13 @@ fplot = function(dataframe, xlab = "Average Text Percent", ylab = "Type of Word"
 }
 
 library(cowplot)
+
+knitr::opts_chunk$set(warning = F)
 ```
 
 In the last few years, numerous civil disputes worldwide, which might threaten American interests and human rights, have spurred considerable debate over American military intervention. Despite declines in legislative control of foreign policy, the U.S. Congress still plays an important role in deciding how the military is used by retaining the rights to formally declare war, limit the use of military force, and control military appropriations [@Phelps2002]. Previous research examined the predictors of presidential use of military force [@Clark2005; @Keller2012] and predictors of public support for war [@Cohrs2002; @Friese2009; @McCleary2009]. However, the predictors of legislative support of military action have been understudied, thus presenting an interesting opportunity for exploration as well as replication of past studies in new contexts [@Kriner2014]. 
 
-In this study, we sought to replicate two studies of the role of linguistic style in predicting war attitudes and behaviors, @Abe2012 and @Matsumoto2015. Rather than use what people were thinking about, these studies focused on how people were thinking about the issues surrounding war freeing the investigation from issues of context as well as allowing a more psychological understanding of the process of conflict decisions and rationalizations. @Abe2012 analyzed the cognitive styles and attentional focus of online discussions of the Iraq War finding supporters of the war tended to have an external focus while opponents tended to have an internal focus. Those without a strong stance on the war exhibited greater cognitive complexity. @Matsumoto2015 analyzed the same linguistic constructs for texts of world leaders preceding acts of aggression, such as wars or bombings, finding similar results with higher external focus and lower cognitive complexity preceding aggressive acts. In our replication of these studies, we analyze the same linguistic constructs in the context of a legislative body (i.e. U.S. Congress) voting on war measures.  
+In this study, we sought to replicate two studies of the role of linguistic style in predicting war attitudes and behaviors, @Abe2012 and @Matsumoto2015. These studies focused on how people were discussing (written and spoken language) the issues surrounding war allowing for a more psychological understanding of the process of conflict decisions and rationalizations. @Abe2012 analyzed the cognitive styles and attentional focus of online discussions of the Iraq War finding supporters of the war tended to have an external focus while opponents tended to have an internal focus. Those without a strong stance on the war exhibited greater cognitive complexity. @Matsumoto2015 analyzed the same linguistic constructs for texts of world leaders preceding acts of aggression, such as wars or bombings, finding similar results with higher external focus and lower cognitive complexity preceding aggressive acts. In our replication of these studies, we analyze the same linguistic constructs in the context of a legislative body (i.e., U.S. Congress) voting on war measures.  
 
 ## Psychological Language Analysis
 
@@ -97,7 +99,7 @@ Language, including political rhetoric, is the fusion of content and style words
 
 In many fields including social psychology, the LIWC analysis has become a common way to better understand psychological processes through the words people use. @Tausczik2010 reviewed over 100 articles that used language as a basis for studying other constructs; specifically, these studies investigated how categories in the LIWC are related to psychological phenomena, such as attention, dominance, and deception. In the current investigation, we focus on attention as a potential mechanism for understanding how legislator's might work through decisions about war.
 
-Just as a person's gaze can illuminate where their attention is so can the words they use. Specifically, pronouns and verb tense can demonstrate attentional focus by indicating who or what someone is attending to in a situation and how they are processing the situation. Therefore, greater use of first person pronouns indicated a self-focus, third person pronouns indicated a focus on others, and verb tense indicated whether the focus was on past, present, or future events [@Tausczik2010]. Attentional focus in the form of pronouns has been linked to depression [@Rude2004], bullying [@Kowalski2000], and marital satisfaction [@Simmons2005]. In the studies we seek to replicate, @Abe2012 found supporters of the war tended to have an external focus, using more third person pronouns, while opponents of the war tended to have an internal focus, using more first person pronouns. @Matsumoto2015 also found greater use of plural third person pronouns (i.e., *we*, *us*) predicted aggressive acts by groups by examining historical texts. 
+Just as a person's gaze can illuminate where their attention is so can the words they use. Specifically, pronouns and verb tense can demonstrate attentional focus by indicating who or what someone is attending to in a situation and how they are processing the situation. Therefore, greater use of first person pronouns indicates a self-focus, higher use of third person pronouns indicates a focus on others, and verb tense can indicate whether the focus was on past, present, or future events [@Tausczik2010]. Attentional focus, in the form of pronouns, has been linked to depression [@Rude2004], bullying [@Kowalski2000], and marital satisfaction [@Simmons2005]. In the studies we seek to replicate, @Abe2012 found supporters of the war tended to have an external focus, using more third person pronouns, while opponents of the war tended to have an internal focus, using more first person pronouns. @Matsumoto2015 also found greater use of plural third person pronouns (i.e., *we*, *us*) predicted aggressive acts by groups by examining historical texts. 
 
 Another construct which can be automatically measured from language is cognitive complexity. Originally developed by @Pennebaker1999, cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extroversion and conscientiousness [@Pennebaker1999], aggressive behaviors [@Pennebaker2011], and reactions to negative events [@Abe2011]. Most relevant to the current study, @Matsumoto2015 found cognitive complexity to decrease immediately before acts of aggression which is the effect we wish to replicate. 
 
@@ -105,9 +107,9 @@ The purpose of the current studies is to determine if past studies on war decisi
    
 ## Hypotheses
 
-  H1: Legislators supporting war measure will have an external focus and use more 3rd person pronouns (particularly 3rd person plural pronouns) [@Abe2012; @Matsumoto2015].
+  H1: Legislators supporting war measure will have an external focus and use more third person pronouns (particularly 3rd person plural pronouns) [@Abe2012; @Matsumoto2015].
   
-  H2: Legislators opposing war measure will have an internal focus and use more 1st person pronouns [@Abe2012].
+  H2: Legislators opposing war measure will have an internal focus and use more first person pronouns [@Abe2012].
   
   H3: Legislators supporting wars measure will exhibit lower cognitive complexity than those opposing the measure [@Matsumoto2015].
 
@@ -121,7 +123,7 @@ Linguistic frequency analysis was conducted on political speeches gleaned from C
 
 ### Language
 
-Each language sample was analyzed using the Language Inquiry and Word Count [@Pennebaker2007]. The LIWC provides percentages of each individual text that fall into each category of words. We examined pronouns for Hypotheses 1 and 2. The pronouns category included first person singular and plural pronouns (*I, me, we*), second person pronouns (*you, your*), and third person singular and plural pronouns (*he, she, they*). To measure external focus, third person singular and third person plural pronouns were added together. To measure internal focus, first person pronouns both singular and plural were added together. For Hypothesis 3, cognitive complexity was calculated using the same formula as @Abe2012. The LIWC categories of exclusives, negations, tentative words, and conjunctions were z-scored and summed together.
+Each language sample was analyzed using the Language Inquiry and Word Count [@Pennebaker2007]. The LIWC provides percentages of each individual text that fall into each category of words. We examined pronouns for Hypotheses 1 and 2. The pronouns category included first person singular and plural pronouns (*I, me, we*), second person pronouns (*you, your*), and third person singular and plural pronouns (*he, she, they*). To measure external focus, third person singular and third person plural pronouns were added together. To measure internal focus, first person pronouns both singular and plural were added together. For Hypothesis 3, cognitive complexity was calculated using the same formula as @Abe2012. The LIWC categories of exclusives, negations, tentative words, and conjunctions were *z*-scored and summed together.
 
 ### Military Action
 
@@ -177,14 +179,20 @@ hLibyaSupport = subset(houseLibya, Oppose.Support==1)
 BSfunction = function (formula, dataset, random) {
   d = dataset[random, ] ##randomize by row
   
+  tryCatch({
   model1 = lme(formula, 
                data = d, 
                method = "ML", 
                na.action = "na.omit",
-               random = list(~1|Party.Affiliation, ~1|Name))
+               random = list(~1|Party.Affiliation, ~1|Name),
+               control=lmeControl(opt = "nlminb")) 
+
   meanvalue = summary(model1)$tTable[1]
   sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
   return(c(meanvalue, sdvalue))
+  
+  }, error = function (x) {})
+
 }
 
 ####make the table####
@@ -339,31 +347,31 @@ ciHLSi = boot.ci(bHLSi,
                    type = "norm",
                    index = 1)
 
-table1[1 , ] = c("House", "Kosovo", "i", bHKOi$t0[1],
+table1[1 , ] = c("House", "Kosovo", "I", bHKOi$t0[1],
                  bHKOi$t0[2], bHKSi$t0[1], bHKSi$t0[2], 
                  dHKi$d, dHKi$dlow, dHKi$dhigh,
                  ciHKOi$normal[2], ciHKOi$normal[3],
                  ciHKSi$normal[2], ciHKSi$normal[3])
 
-table1[2 , ] = c("Senate", "Kosovo", "i", bSKOi$t0[1],
+table1[2 , ] = c("Senate", "Kosovo", "I", bSKOi$t0[1],
                  bSKOi$t0[2], bSKSi$t0[1], bSKSi$t0[2], 
                  dSKi$d, dSKi$dlow, dSKi$dhigh,
                  ciSKOi$normal[2], ciSKOi$normal[3],
                  ciSKSi$normal[2], ciSKSi$normal[3])
 
-table1[3 , ] = c("House", "Iraq", "i", bHIOi$t0[1],
+table1[3 , ] = c("House", "Iraq", "I", bHIOi$t0[1],
                  bHIOi$t0[2], bHISi$t0[1], bHISi$t0[2], 
                  dHIi$d, dHIi$dlow, dHIi$dhigh,
                  ciHIOi$normal[2], ciHIOi$normal[3],
                  ciHISi$normal[2], ciHISi$normal[3])
 
-table1[4 , ] = c("Senate", "Iraq", "i", bSIOi$t0[1],
+table1[4 , ] = c("Senate", "Iraq", "I", bSIOi$t0[1],
                  bSIOi$t0[2], bSISi$t0[1], bSISi$t0[2], 
                  dSIi$d, dSIi$dlow, dSIi$dhigh,
                  ciSIOi$normal[2], ciSIOi$normal[3],
                  ciSISi$normal[2], ciSISi$normal[3])
 
-table1[5 , ] = c("House", "Libya", "i", bHLOi$t0[1],
+table1[5 , ] = c("House", "Libya", "I", bHLOi$t0[1],
                  bHLOi$t0[2], bHLSi$t0[1], bHLSi$t0[2], 
                  dHLi$d, dHLi$dlow, dHLi$dhigh,
                  ciHLOi$normal[2], ciHLOi$normal[3],
@@ -509,31 +517,31 @@ ciHLSwe = boot.ci(bHLSwe,
                    type = "norm",
                    index = 1)
 
-table1[6 , ] = c("House", "Kosovo", "we", bHKOwe$t0[1],
+table1[6 , ] = c("House", "Kosovo", "We", bHKOwe$t0[1],
                  bHKOwe$t0[2], bHKSwe$t0[1], bHKSwe$t0[2], 
                  dHKwe$d, dHKwe$dlow, dHKwe$dhigh,
                  ciHKOwe$normal[2], ciHKOwe$normal[3],
                  ciHKSwe$normal[2], ciHKSwe$normal[3])
 
-table1[7 , ] = c("Senate", "Kosovo", "we", bSKOwe$t0[1],
+table1[7 , ] = c("Senate", "Kosovo", "We", bSKOwe$t0[1],
                  bSKOwe$t0[2], bSKSwe$t0[1], bSKSwe$t0[2], 
                  dSKwe$d, dSKwe$dlow, dSKwe$dhigh,
                  ciSKOwe$normal[2], ciSKOwe$normal[3],
                  ciSKSwe$normal[2], ciSKSwe$normal[3])
 
-table1[8 , ] = c("House", "Iraq", "we", bHIOwe$t0[1],
+table1[8 , ] = c("House", "Iraq", "We", bHIOwe$t0[1],
                  bHIOwe$t0[2], bHISwe$t0[1], bHISwe$t0[2], 
                  dHIwe$d, dHIwe$dlow, dHIwe$dhigh,
                  ciHIOwe$normal[2], ciHIOwe$normal[3],
                  ciHISwe$normal[2], ciHISwe$normal[3])
 
-table1[9 , ] = c("Senate", "Iraq", "we", bSIOwe$t0[1],
+table1[9 , ] = c("Senate", "Iraq", "We", bSIOwe$t0[1],
                  bSIOwe$t0[2], bSISwe$t0[1], bSISwe$t0[2], 
                  dSIwe$d, dSIwe$dlow, dSIwe$dhigh,
                  ciSIOwe$normal[2], ciSIOwe$normal[3],
                  ciSISwe$normal[2], ciSISwe$normal[3])
 
-table1[10 , ] = c("House", "Libya", "we", bHLOwe$t0[1],
+table1[10 , ] = c("House", "Libya", "We", bHLOwe$t0[1],
                  bHLOwe$t0[2], bHLSwe$t0[1], bHLSwe$t0[2], 
                  dHLwe$d, dHLwe$dlow, dHLwe$dhigh,
                  ciHLOwe$normal[2], ciHLOwe$normal[3],
@@ -684,31 +692,31 @@ ciHLSshehe = boot.ci(bHLSshehe,
                    type = "norm",
                    index = 1)
 
-table1[11 , ] = c("House", "Kosovo", "shehe", bHKOshehe$t0[1],
+table1[11 , ] = c("House", "Kosovo", "She/He", bHKOshehe$t0[1],
                  bHKOshehe$t0[2], bHKSshehe$t0[1], bHKSshehe$t0[2], 
                  dHKshehe$d, dHKshehe$dlow, dHKshehe$dhigh,
                  ciHKOshehe$normal[2], ciHKOshehe$normal[3],
                  ciHKSshehe$normal[2], ciHKSshehe$normal[3])
 
-table1[12 , ] = c("Senate", "Kosovo", "shehe", bSKOshehe$t0[1],
+table1[12 , ] = c("Senate", "Kosovo", "She/He", bSKOshehe$t0[1],
                  bSKOshehe$t0[2], bSKSshehe$t0[1], bSKSshehe$t0[2], 
                  dSKshehe$d, dSKshehe$dlow, dSKshehe$dhigh,
                  ciSKOshehe$normal[2], ciSKOshehe$normal[3],
                  ciSKSshehe$normal[2], ciSKSshehe$normal[3])
 
-table1[13 , ] = c("House", "Iraq", "shehe", bHIOshehe$t0[1],
+table1[13 , ] = c("House", "Iraq", "She/He", bHIOshehe$t0[1],
                  bHIOshehe$t0[2], bHISshehe$t0[1], bHISshehe$t0[2], 
                  dHIshehe$d, dHIshehe$dlow, dHIshehe$dhigh,
                  ciHIOshehe$normal[2], ciHIOshehe$normal[3],
                  ciHISshehe$normal[2], ciHISshehe$normal[3])
 
-table1[14 , ] = c("Senate", "Iraq", "shehe", bSIOshehe$t0[1],
+table1[14 , ] = c("Senate", "Iraq", "She/He", bSIOshehe$t0[1],
                  bSIOshehe$t0[2], bSISshehe$t0[1], bSISshehe$t0[2], 
                  dSIshehe$d, dSIshehe$dlow, dSIshehe$dhigh,
                  ciSIOshehe$normal[2], ciSIOshehe$normal[3],
                  ciSISshehe$normal[2], ciSISshehe$normal[3])
 
-table1[15 , ] = c("House", "Libya", "shehe", bHLOshehe$t0[1],
+table1[15 , ] = c("House", "Libya", "She/He", bHLOshehe$t0[1],
                  bHLOshehe$t0[2], bHLSshehe$t0[1], bHLSshehe$t0[2], 
                  dHLshehe$d, dHLshehe$dlow, dHLshehe$dhigh,
                  ciHLOshehe$normal[2], ciHLOshehe$normal[3],
@@ -859,31 +867,31 @@ ciHLSthey = boot.ci(bHLSthey,
                    type = "norm",
                    index = 1)
 
-table1[16 , ] = c("House", "Kosovo", "they", bHKOthey$t0[1],
+table1[16 , ] = c("House", "Kosovo", "They", bHKOthey$t0[1],
                  bHKOthey$t0[2], bHKSthey$t0[1], bHKSthey$t0[2], 
                  dHKthey$d, dHKthey$dlow, dHKthey$dhigh,
                  ciHKOthey$normal[2], ciHKOthey$normal[3],
                  ciHKSthey$normal[2], ciHKSthey$normal[3])
 
-table1[17 , ] = c("Senate", "Kosovo", "they", bSKOthey$t0[1],
+table1[17 , ] = c("Senate", "Kosovo", "They", bSKOthey$t0[1],
                  bSKOthey$t0[2], bSKSthey$t0[1], bSKSthey$t0[2], 
                  dSKthey$d, dSKthey$dlow, dSKthey$dhigh,
                  ciSKOthey$normal[2], ciSKOthey$normal[3],
                  ciSKSthey$normal[2], ciSKSthey$normal[3])
 
-table1[18 , ] = c("House", "Iraq", "they", bHIOthey$t0[1],
+table1[18 , ] = c("House", "Iraq", "They", bHIOthey$t0[1],
                  bHIOthey$t0[2], bHISthey$t0[1], bHISthey$t0[2], 
                  dHIthey$d, dHIthey$dlow, dHIthey$dhigh,
                  ciHIOthey$normal[2], ciHIOthey$normal[3],
                  ciHISthey$normal[2], ciHISthey$normal[3])
 
-table1[19 , ] = c("Senate", "Iraq", "they", bSIOthey$t0[1],
+table1[19 , ] = c("Senate", "Iraq", "They", bSIOthey$t0[1],
                  bSIOthey$t0[2], bSISthey$t0[1], bSISthey$t0[2], 
                  dSIthey$d, dSIthey$dlow, dSIthey$dhigh,
                  ciSIOthey$normal[2], ciSIOthey$normal[3],
                  ciSISthey$normal[2], ciSISthey$normal[3])
 
-table1[20 , ] = c("House", "Libya", "they", bHLOthey$t0[1],
+table1[20 , ] = c("House", "Libya", "They", bHLOthey$t0[1],
                  bHLOthey$t0[2], bHLSthey$t0[1], bHLSthey$t0[2], 
                  dHLthey$d, dHLthey$dlow, dHLthey$dhigh,
                  ciHLOthey$normal[2], ciHLOthey$normal[3],
@@ -1035,31 +1043,31 @@ ciHLScomplex = boot.ci(bHLScomplex,
                    type = "norm",
                    index = 1)
 
-table1[21 , ] = c("House", "Kosovo", "complex", bHKOcomplex$t0[1],
+table1[21 , ] = c("House", "Kosovo", "Complex", bHKOcomplex$t0[1],
                  bHKOcomplex$t0[2], bHKScomplex$t0[1], bHKScomplex$t0[2], 
                  dHKcomplex$d, dHKcomplex$dlow, dHKcomplex$dhigh,
                  ciHKOcomplex$normal[2], ciHKOcomplex$normal[3],
                  ciHKScomplex$normal[2], ciHKScomplex$normal[3])
 
-table1[22 , ] = c("Senate", "Kosovo", "complex", bSKOcomplex$t0[1],
+table1[22 , ] = c("Senate", "Kosovo", "Complex", bSKOcomplex$t0[1],
                  bSKOcomplex$t0[2], bSKScomplex$t0[1], bSKScomplex$t0[2], 
                  dSKcomplex$d, dSKcomplex$dlow, dSKcomplex$dhigh,
                  ciSKOcomplex$normal[2], ciSKOcomplex$normal[3],
                  ciSKScomplex$normal[2], ciSKScomplex$normal[3])
 
-table1[23 , ] = c("House", "Iraq", "complex", bHIOcomplex$t0[1],
+table1[23 , ] = c("House", "Iraq", "Complex", bHIOcomplex$t0[1],
                  bHIOcomplex$t0[2], bHIScomplex$t0[1], bHIScomplex$t0[2], 
                  dHIcomplex$d, dHIcomplex$dlow, dHIcomplex$dhigh,
                  ciHIOcomplex$normal[2], ciHIOcomplex$normal[3],
                  ciHIScomplex$normal[2], ciHIScomplex$normal[3])
 
-table1[24 , ] = c("Senate", "Iraq", "complex", bSIOcomplex$t0[1],
+table1[24 , ] = c("Senate", "Iraq", "Complex", bSIOcomplex$t0[1],
                  bSIOcomplex$t0[2], bSIScomplex$t0[1], bSIScomplex$t0[2], 
                  dSIcomplex$d, dSIcomplex$dlow, dSIcomplex$dhigh,
                  ciSIOcomplex$normal[2], ciSIOcomplex$normal[3],
                  ciSIScomplex$normal[2], ciSIScomplex$normal[3])
 
-table1[25 , ] = c("House", "Libya", "complex", bHLOcomplex$t0[1],
+table1[25 , ] = c("House", "Libya", "Complex", bHLOcomplex$t0[1],
                  bHLOcomplex$t0[2], bHLScomplex$t0[1], bHLScomplex$t0[2], 
                  dHLcomplex$d, dHLcomplex$dlow, dHLcomplex$dhigh,
                  ciHLOcomplex$normal[2], ciHLOcomplex$normal[3],
@@ -1210,31 +1218,31 @@ ciHLSinternal = boot.ci(bHLSinternal,
                    type = "norm",
                    index = 1)
 
-table1[26 , ] = c("House", "Kosovo", "internal", bHKOinternal$t0[1],
+table1[26 , ] = c("House", "Kosovo", "Internal", bHKOinternal$t0[1],
                  bHKOinternal$t0[2], bHKSinternal$t0[1], bHKSinternal$t0[2], 
                  dHKinternal$d, dHKinternal$dlow, dHKinternal$dhigh,
                  ciHKOinternal$normal[2], ciHKOinternal$normal[3],
                  ciHKSinternal$normal[2], ciHKSinternal$normal[3])
 
-table1[27 , ] = c("Senate", "Kosovo", "internal", bSKOinternal$t0[1],
+table1[27 , ] = c("Senate", "Kosovo", "Internal", bSKOinternal$t0[1],
                  bSKOinternal$t0[2], bSKSinternal$t0[1], bSKSinternal$t0[2], 
                  dSKinternal$d, dSKinternal$dlow, dSKinternal$dhigh,
                  ciSKOinternal$normal[2], ciSKOinternal$normal[3],
                  ciSKSinternal$normal[2], ciSKSinternal$normal[3])
 
-table1[28 , ] = c("House", "Iraq", "internal", bHIOinternal$t0[1],
+table1[28 , ] = c("House", "Iraq", "Internal", bHIOinternal$t0[1],
                  bHIOinternal$t0[2], bHISinternal$t0[1], bHISinternal$t0[2], 
                  dHIinternal$d, dHIinternal$dlow, dHIinternal$dhigh,
                  ciHIOinternal$normal[2], ciHIOinternal$normal[3],
                  ciHISinternal$normal[2], ciHISinternal$normal[3])
 
-table1[29 , ] = c("Senate", "Iraq", "internal", bSIOinternal$t0[1],
+table1[29 , ] = c("Senate", "Iraq", "Internal", bSIOinternal$t0[1],
                  bSIOinternal$t0[2], bSISinternal$t0[1], bSISinternal$t0[2], 
                  dSIinternal$d, dSIinternal$dlow, dSIinternal$dhigh,
                  ciSIOinternal$normal[2], ciSIOinternal$normal[3],
                  ciSISinternal$normal[2], ciSISinternal$normal[3])
 
-table1[30 , ] = c("House", "Libya", "internal", bHLOinternal$t0[1],
+table1[30 , ] = c("House", "Libya", "Internal", bHLOinternal$t0[1],
                  bHLOinternal$t0[2], bHLSinternal$t0[1], bHLSinternal$t0[2], 
                  dHLinternal$d, dHLinternal$dlow, dHLinternal$dhigh,
                  ciHLOinternal$normal[2], ciHLOinternal$normal[3],
@@ -1386,31 +1394,31 @@ ciHLSexternal = boot.ci(bHLSexternal,
                    type = "norm",
                    index = 1)
 
-table1[31 , ] = c("House", "Kosovo", "external", bHKOexternal$t0[1],
+table1[31 , ] = c("House", "Kosovo", "External", bHKOexternal$t0[1],
                  bHKOexternal$t0[2], bHKSexternal$t0[1], bHKSexternal$t0[2], 
                  dHKexternal$d, dHKexternal$dlow, dHKexternal$dhigh,
                  ciHKOexternal$normal[2], ciHKOexternal$normal[3],
                  ciHKSexternal$normal[2], ciHKSexternal$normal[3])
 
-table1[32 , ] = c("Senate", "Kosovo", "external", bSKOexternal$t0[1],
+table1[32 , ] = c("Senate", "Kosovo", "External", bSKOexternal$t0[1],
                  bSKOexternal$t0[2], bSKSexternal$t0[1], bSKSexternal$t0[2], 
                  dSKexternal$d, dSKexternal$dlow, dSKexternal$dhigh,
                  ciSKOexternal$normal[2], ciSKOexternal$normal[3],
                  ciSKSexternal$normal[2], ciSKSexternal$normal[3])
 
-table1[33 , ] = c("House", "Iraq", "external", bHIOexternal$t0[1],
+table1[33 , ] = c("House", "Iraq", "External", bHIOexternal$t0[1],
                  bHIOexternal$t0[2], bHISexternal$t0[1], bHISexternal$t0[2], 
                  dHIexternal$d, dHIexternal$dlow, dHIexternal$dhigh,
                  ciHIOexternal$normal[2], ciHIOexternal$normal[3],
                  ciHISexternal$normal[2], ciHISexternal$normal[3])
 
-table1[34 , ] = c("Senate", "Iraq", "external", bSIOexternal$t0[1],
+table1[34 , ] = c("Senate", "Iraq", "External", bSIOexternal$t0[1],
                  bSIOexternal$t0[2], bSISexternal$t0[1], bSISexternal$t0[2], 
                  dSIexternal$d, dSIexternal$dlow, dSIexternal$dhigh,
                  ciSIOexternal$normal[2], ciSIOexternal$normal[3],
                  ciSISexternal$normal[2], ciSISexternal$normal[3])
 
-table1[35 , ] = c("House", "Libya", "external", bHLOexternal$t0[1],
+table1[35 , ] = c("House", "Libya", "External", bHLOexternal$t0[1],
                  bHLOexternal$t0[2], bHLSexternal$t0[1], bHLSexternal$t0[2], 
                  dHLexternal$d, dHLexternal$dlow, dHLexternal$dhigh,
                  ciHLOexternal$normal[2], ciHLOexternal$normal[3],
@@ -1461,7 +1469,7 @@ Ksenate = fplot(Kpic[Kpic$Chamber == "Senate", ], upperlimit = 11.5)
 
 legend = get_legend(Khouse)
 plot_grid( Khouse + theme(legend.position="none"),
-           Ksenate + theme(legend.position=c(.75, .75)),
+           Ksenate + theme(legend.position=c(.65, .75)),
            hjust = -1,
            nrow = 1
 )
@@ -1516,7 +1524,7 @@ Analyses were conducted in the same manner as the first part of the study with b
 The results of this first study only consistently support Hypothesis 3 (supporters of war measures would be less cognitively complex). The results were inconsistent for Hypothesis 1 and 2 (supporters of war measures would be more externally focus while those opposing would be internally focused) in that effects found for the House and Senate are non-overlapping. For Hypothesis 1, supporters of war in the House were marginally more externally focused but the effect was not replicated for the Senate. For Hypothesis 2, those opposing the measure in the Senate were more internally focused, but the same could not be said for those in the House.
 It is difficult to know exactly why this is the case; however there are several possible explanations. First, voting in Congress is exceedingly complex and is influenced by much more than floor debates in a given chamber. In this case, the Senate vote on the resolution occurred before the main debate in the House, which may have influenced what the debate focused on. Second, the Senate and the House are composed differently. Members of the House serve two year terms while Senators serve six year terms. Furthermore, Senators typically have more political experience than members of the House. These, as well as other factors, may help explain the differential effects for the two chambers of Congress. 
 	
-Based on the findings of @Abe2012 and @Matsumoto2015, we expected more consistent support for our hypotheses. However, the results could also be explained by the situation posed by the particular resolution. In this conflict, rather than responding to an act of aggression or a perceived threat, the U.S. was deciding the extent to which the U.S. would be involved in ongoing NATO (a treaty organization of which the U.S. is a member) operations in Kosovo and Serbia. It is possible that some viewed the outgroup as NATO rather than Serbians. In this case, with no clear, immediate threat to the U.S., for those making ingroup-outgroup distinctions, protecting the ingroup may have meant opposing the war rather than supporting it. In order to determine if the situation surrounding the Kosovo conflict may have impacted the first study, we next turned to examine the Iraq War which was had more support and also represented a possible clear threat to the U.S.
+Based on the findings of @Abe2012 and @Matsumoto2015, we expected more consistent support for our hypotheses. However, the results could also be explained by the situation posed by the particular resolution. In this conflict, rather than responding to an act of aggression or a perceived threat, the U.S. was deciding the extent to which the U.S. would be involved in ongoing NATO (a treaty organization of which the U.S. is a member) operations in Kosovo and Serbia. It is possible that some viewed the outgroup as NATO rather than Serbians. In this case, with no clear, immediate threat to the U.S., for those making ingroup-outgroup distinctions, protecting the ingroup may have meant opposing the war rather than supporting it. In order to determine if the situation surrounding the Kosovo conflict may have impacted the first study, we next turned to examine the Iraq War which had more support and also represented a possible clear threat to the U.S.
 
 	
 # Study 2A - Iraq in the House
@@ -1574,7 +1582,7 @@ Isenate = fplot(Ipic[Ipic$Chamber == "Senate", ], upperlimit = 8)
 
 legend = get_legend(Ihouse)
 plot_grid( Ihouse + theme(legend.position="none"),
-           Isenate + theme(legend.position=c(.75, .75)),
+           Isenate + theme(legend.position=c(.65, .75)),
            hjust = -1,
            nrow = 1
 )
@@ -1666,25 +1674,26 @@ Lpic$Mhigh = as.numeric(Lpic$Mhigh)
 Lhouse = fplot(Lpic[Lpic$Chamber == "House", ], upperlimit = 8)
 
 legend = get_legend(Lhouse)
-plot_grid( Lhouse + theme(legend.position=c(.75, .75)),
+plot_grid( Lhouse + theme(legend.position=c(.65, .75)),
            hjust = -1,
            nrow = 1
 )
 ```
 
-As in the first two studies, analyses consisted on comparing the bootstrapped means, CIs, and effects sizes for those who supported the military measure versus those who opposed it on the following linguistic measures: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*), past-tense, present-tense, and future tense. These results are displayed in Figure \@ref(fig:Lpic) as a forest plot and in Table \@ref(tab:Ltable). No differences emerged on any measure. 
+As in the first two studies, analyses consisted on comparing the bootstrapped means, CIs, and effects sizes for those who supported the military measure versus those who opposed it. These results are displayed in Figure \@ref(fig:Lpic) as a forest plot and in Table \@ref(tab:Ltable). No differences emerged on any measure. 
 
 # Discussion
 
-Though the evidence from this third study is somewhat weak, all three hypothesis were at least partially supported. The relatively small sample size limited the power of the study, but trends in each case were in the hypothesized direction. In addition to potentially limited power, our finding from Studies 1 and 3 could indicate that in situations where there is less Congressional support for military action and no clear, immediate threat to the U.S., the difference between support and opposition for military action is not a matter of attentional focus but rather other social and political forces. 
+The relatively small sample size limited the power of the study, but trends in each case were in the hypothesized direction, although the results were weak. In addition to potentially limited power, our finding from Studies 1 and 3 could indicate that in situations where there is less Congressional support for military action and no clear, immediate threat to the U.S., the difference between support and opposition for military action is not a matter of attentional focus but rather other social and political forces. 
 	
 # General Discussion
 
 Across all three studies, we found consistent, if somewhat weak evidence that supporters of war measures show less cognitive complexity in their speeches than those on the opposing side (Hypothesis 3) replicating part of the @Matsumoto2015 study. When it comes to consideration of aggressive acts like war, our studies would suggest that legislators (at least in the U.S.) reason similarly to the executive leaders analyzed by @Matsumoto2015. Political figures in favor of aggressive measures seek to simplify the debate whereas those against aggressive measure may seek to consider the issue more deeply. Whether the decreased cognitive complexity before aggression is a rhetorical strategy, ideological beliefs, cognitive style, or some other factor is worth further investigation. 
 
-Our hypotheses regarding internal and external focus were not consistently supported. Support for hypothesis 1 was found only in the case of the debate around the Iraq War. Interestingly, the Iraq War legislation was the only of our case in our three studies which received majority support in both the House and Senate. Differences in external focus may depend partially on the aggressive act having the support of the majority or having popular support or there being a potentially immediate, clear threat to the U.S. legislators could point to. In the cases of Kosovo and Libya, legislators may have supported the war measures for reasons other than aggression such as to support the president's agenda. 
+Our hypotheses regarding internal and external focus were not consistently supported. Support for Hypothesis 1 was found only in the case of the debate around the Iraq War. Interestingly, the Iraq War legislation was the only of our case in our three studies which received majority support in both the House and Senate. Differences in external focus may depend partially on the aggressive act having the support of the majority or having popular support or there being a potentially immediate, clear threat to the U.S. legislators could point to. In the cases of Kosovo and Libya, legislators may have supported the war measures for reasons other than aggression such as to support the president's agenda.
 
 Hypothesis 2 received the least support of any of our hypothesis with significant differences found only in the Senate debate of the Kosovo resolution failing to replicate @Abe2012. Unlike Hypotheses 1 and 3 which are at least partially based in @Matsumoto2015's study of executive, Hypothesis 2 is solely based in @Abe2012's study of the war attitudes of ordinary citizens. Our results suggest that findings of @Abe2012 may only generalize to laypeople and fail to capture the processes at work with the war decisions of political elites. 
+
 Additionally, we may have only partially replicated @Matsumoto2015 is due to changes in the dynamics of war. While @Matsumoto2015 examined events spanning 1830 to 2010, our study focused on three recent conflicts within the context of U.S. legislator bodies. Historically, the U.S. would declare war on another nation (i.e., fighting the Germans in WWI). In WWII, a slight shift occurred where the U.S. was fighting not only another nation but also an ideology (Nazi Germany, Fascist Italy). With the beginning of the Cold War, another movement happened where the U.S. did not directly fight another nation (USSR) but instead fought indirectly with proxy wars (Korean War, Vietnam War) while battling against enemy ideology (Communism). After the Cold War and the fall of the Soviet Union, the focus shifted to the United States' main conflict being the war on terror in which there is no nation to battle against just an idea [@Matthews2014]. Furthermore, @Balas2012 argued that one possible motivation for war, since the end of the Cold War, was the increased emphasis on the international norms of democratization and humanitarianism. Hence, rather than capturing solely support for aggressive actions, our study of congressional debates in this context may have also captured legislators' attitudes toward humanitarianism, globalization, and terrorism. Further work would be necessary to the different reasons why political figures might support or oppose a war measure.
 
 
