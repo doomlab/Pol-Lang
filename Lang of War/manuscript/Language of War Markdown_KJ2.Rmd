@@ -11,17 +11,21 @@ author:
   - name          : "Erin M. Buchanan"
     affiliation   : "2"
   - name          : "William E. Padfield"
-    affiliation   : "2"
+    affiliation   : "3"
     
 
 affiliation:
   - id            : "1"
     institution   : "University of Texas - Austin"
   - id            : "2"
+    institution   : "Harrisburg University of Science and Technology"
+  - id            : "3"
     institution   : "Missouri State University"
 
 author_note: |
-  Kayla N. Jordan is a Ph.D. candidate at the University of Texas at Austin. Erin M. Buchanan is an Associate Professor of Quantitative Psychology at Missouri State University. William E. Padfield is a Masters degree candidate at Missouri State University. 
+  Kayla N. Jordan is a Ph.D. candidate at the University of Texas at Austin. Erin M. Buchanan is an  Professor of Cognitive Analytics and Harrisburg University of Science and Technology. William E. Padfield is a Masters degree candidate at Missouri State University.
+  
+  Submitted to Meta-Psychology. Click here to follow the fully transparent editorial process of this submission. Participate in open peer review by commenting through hypothes.is directly on this preprint.
   
 abstract: |
   Legislative bodies have very important roles and understanding the psychology of their decision-making processes is a useful area of study. We add to this area by replicating two previous studies @Abe2012 and @Matsumoto2015 in the context of a legislative body. The present study hypothesized that legislators who support war measures be externally focused and less cognitively complex in their speeches while opponents of war measures would be internally focused. Speeches were obtained pertaining to the decisions for the U.S. to take military action in Kosovo, Iraq, and Libya. While we found mixed results depending on the circumstances of a specific conflict, we demonstrate how automated language analysis can be combined with voting records to better understand behavioral action, such as legislative decision. 
@@ -30,7 +34,7 @@ keywords          : "language, war, congress, pronouns, verbs"
 
 bibliography      : ["LangWar.bib"]
 
-figsintext        : no
+figsintext        : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
@@ -95,7 +99,7 @@ In many fields including social psychology, the LIWC analysis has become a commo
 
 Just as a person's gaze can illuminate where their attention is so can the words they use. Specifically, pronouns and verb tense can demonstrate attentional focus by indicating who or what someone is attending to in a situation and how they are processing the situation. Therefore, greater use of first person pronouns indicated a self-focus, third person pronouns indicated a focus on others, and verb tense indicated whether the focus was on past, present, or future events [@Tausczik2010]. Attentional focus in the form of pronouns has been linked to depression [@Rude2004], bullying [@Kowalski2000], and marital satisfaction [@Simmons2005]. In the studies we seek to replicate, @Abe2012 found supporters of the war tended to have an external focus, using more third person pronouns, while opponents of the war tended to have an internal focus, using more first person pronouns. @Matsumoto2015 also found greater use of plural third person pronouns (i.e., *we*, *us*) predicted aggressive acts by groups by examining historical texts. 
 
-Another construct which can be automatically measured from language is cognitive complexity. Originally developed by @Pennebaker1999, cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extraversion and conscientiousness [@Pennebaker1999], aggressive behaviors [@Pennebaker2011], and reactions to negative events [@Abe2011]. Most relevant to the current study, @Matsumoto2015 found cognitive complexity to decrease immediately before acts of aggression which is the effect we wish to replicate. 
+Another construct which can be automatically measured from language is cognitive complexity. Originally developed by @Pennebaker1999, cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extroversion and conscientiousness [@Pennebaker1999], aggressive behaviors [@Pennebaker2011], and reactions to negative events [@Abe2011]. Most relevant to the current study, @Matsumoto2015 found cognitive complexity to decrease immediately before acts of aggression which is the effect we wish to replicate. 
 
 The purpose of the current studies is to determine if past studies on war decisions and aggression replicate in the context of the U.S. Congress when voting on war measures.
    

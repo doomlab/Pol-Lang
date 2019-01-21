@@ -1,4 +1,4 @@
-\documentclass[english,,man]{apa6}
+\documentclass[english,,man,floatsintext]{apa6}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -70,13 +70,13 @@
 
 
   \title{The Language of War: A Replication and Extension of Abe (2012) and Matsumoto et al. (2015)}
-    \author{Kayla N. Jordan\textsuperscript{1}, Erin M. Buchanan\textsuperscript{2}, \& William E. Padfield\textsuperscript{2}}
+    \author{Kayla N. Jordan\textsuperscript{1}, Erin M. Buchanan\textsuperscript{2}, \& William E. Padfield\textsuperscript{3}}
     \date{}
   
 \shorttitle{LANGUAGE OF WAR}
 \affiliation{
 \vspace{0.5cm}
-\textsuperscript{1} University of Texas - Austin\\\textsuperscript{2} Missouri State University}
+\textsuperscript{1} University of Texas - Austin\\\textsuperscript{2} Harrisburg University of Science and Technology\\\textsuperscript{3} Missouri State University}
 \keywords{language, war, congress, pronouns, verbs}
 \usepackage{csquotes}
 \usepackage{upgreek}
@@ -98,17 +98,13 @@
 \newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
 
 
-\DeclareDelayedFloatFlavor{ThreePartTable}{table}
-\DeclareDelayedFloatFlavor{lltable}{table}
-\DeclareDelayedFloatFlavor*{longtable}{table}
-\makeatletter
-\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
-\makeatother
 \usepackage{lineno}
 
 \linenumbers
 
-\authornote{Kayla N. Jordan is a Ph.D.~candidate at the University of Texas at Austin. Erin M. Buchanan is an Associate Professor of Quantitative Psychology at Missouri State University. William E. Padfield is a Masters degree candidate at Missouri State University.
+\authornote{Kayla N. Jordan is a Ph.D.~candidate at the University of Texas at Austin. Erin M. Buchanan is an Professor of Cognitive Analytics and Harrisburg University of Science and Technology. William E. Padfield is a Masters degree candidate at Missouri State University.
+
+Submitted to Meta-Psychology. Click here to follow the fully transparent editorial process of this submission. Participate in open peer review by commenting through hypothes.is directly on this preprint.
 
 Correspondence concerning this article should be addressed to Kayla N. Jordan, 108 E Dean Keeton St, Austin, TX 78712. E-mail: \href{mailto:kaylajordan@utexas.edu}{\nolinkurl{kaylajordan@utexas.edu}}}
 
@@ -134,7 +130,7 @@ In many fields including social psychology, the LIWC analysis has become a commo
 
 Just as a person's gaze can illuminate where their attention is so can the words they use. Specifically, pronouns and verb tense can demonstrate attentional focus by indicating who or what someone is attending to in a situation and how they are processing the situation. Therefore, greater use of first person pronouns indicated a self-focus, third person pronouns indicated a focus on others, and verb tense indicated whether the focus was on past, present, or future events (Tausczik \& Pennebaker, 2010). Attentional focus in the form of pronouns has been linked to depression (Rude, Gortner, \& Pennebaker, 2004), bullying (Kowalski, 2000), and marital satisfaction (Simmons, Gordon, \& Chambless, 2005). In the studies we seek to replicate, Abe (2012) found supporters of the war tended to have an external focus, using more third person pronouns, while opponents of the war tended to have an internal focus, using more first person pronouns. Matsumoto et al. (2015) also found greater use of plural third person pronouns (i.e., \emph{we}, \emph{us}) predicted aggressive acts by groups by examining historical texts.
 
-Another construct which can be automatically measured from language is cognitive complexity. Originally developed by ({\textbf{???}}), cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extraversion and conscientiousness ({\textbf{???}}), aggressive behaviors (Pennebaker, 2011), and reactions to negative events (Abe, 2011). Most relevant to the current study, Matsumoto et al. (2015) found cognitive complexity to decrease immediately before acts of aggression which is the effect we wish to replicate.
+Another construct which can be automatically measured from language is cognitive complexity. Originally developed by Pennebaker and King (1999), cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extroversion and conscientiousness (Pennebaker \& King, 1999), aggressive behaviors (Pennebaker, 2011), and reactions to negative events (Abe, 2011). Most relevant to the current study, Matsumoto et al. (2015) found cognitive complexity to decrease immediately before acts of aggression which is the effect we wish to replicate.
 
 The purpose of the current studies is to determine if past studies on war decisions and aggression replicate in the context of the U.S. Congress when voting on war measures.
 
@@ -505,6 +501,9 @@ Pennebaker, J. W. (2011). Using computer analyses to identify language style and
 
 \leavevmode\hypertarget{ref-Pennebaker2007}{}%
 Pennebaker, J. W., Booth, R. J., \& Frances, M. E. (2007). Liwc2007: Linguistic inquiry and word count. Austin, TX.
+
+\leavevmode\hypertarget{ref-Pennebaker1999}{}%
+Pennebaker, J. W., \& King, L. A. (1999). Linguistic styles: Language use as an individual difference. \emph{Journal of Personality and Social Psychology}, \emph{77}(6), 1296--1312. doi:\href{https://doi.org/10.1037//0022-3514.77.6.1296}{10.1037//0022-3514.77.6.1296}
 
 \leavevmode\hypertarget{ref-Phelps2002}{}%
 Phelps, G. A., \& Boylan, T. S. (2002). Discourses of war: The landscape of congressional rhetoric. \emph{Armed Forces \& Society}, \emph{28}(4), 641--667. doi:\href{https://doi.org/10.1177/0095327X0202800407}{10.1177/0095327X0202800407}
