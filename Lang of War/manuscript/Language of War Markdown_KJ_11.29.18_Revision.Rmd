@@ -1,0 +1,1697 @@
+---
+title             : "The Language of War: A Replication and Extension of @Abe2012 and @Matsumoto2015"
+shorttitle        : "LANGUAGE OF WAR"
+
+author: 
+  - name          : "Kayla N. Jordan"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "108 E Dean Keeton St, Austin, TX 78712"
+    email         : "kaylajordan@utexas.edu"
+  - name          : "Erin M. Buchanan"
+    affiliation   : "2"
+  - name          : "William E. Padfield"
+    affiliation   : "2"
+    
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Texas - Austin"
+  - id            : "2"
+    institution   : "Missouri State University"
+
+author_note: |
+  Kayla N. Jordan is a Ph.D. candidate at the University of Texas at Austin. Erin M. Buchanan is an Associate Professor of Quantitative Psychology at Missouri State University. William E. Padfield is a Masters degree candidate at Missouri State University. 
+  
+abstract: |
+  Legislative bodies have very important roles and understanding the psychology of their decision-making processes is a useful area of study. We add to this area by replicating two previous studies @Abe2012 and @Matsumoto2015 in the context of a legislative body. The present study hypothesized that legislators who support war measures be externally focused and less cognitively complex in their speeches while opponents of war measures would be internally focused. Speeches were obtained pertaining to the decisions for the U.S. to take military action in Kosovo, Iraq, and Libya. While we found mixed results depending on the circumstances of a specific conflict, we demonstrate how automated language analysis can be combined with voting records to better understand behavioral action, such as legislative decision. 
+  
+keywords          : "language, war, congress, pronouns, verbs"
+
+bibliography      : ["LangWar.bib"]
+
+figsintext        : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+
+lang              : "english"
+class             : "man"
+output            : papaja::apa6_pdf
+csl               : apa6.csl
+replace_ampersands: yes
+---
+
+```{r load_packages, include = FALSE}
+library(papaja)
+library(forestplot)
+library(boot)
+library(nlme)
+library(MOTE)
+knitr::opts_chunk$set(cache = TRUE)
+nsim = 1000
+
+library(ggplot2)
+cleanup = theme(panel.grid.major = element_blank(), 
+                panel.grid.minor = element_blank(), 
+                panel.background = element_blank(), 
+                axis.line.x = element_line(color = "black"),
+                axis.line.y = element_line(color = "black"),
+                legend.key = element_rect(fill = "white"),
+                text = element_text(size = 12))
+
+fplot = function(dataframe, xlab = "Average Text Percent", ylab = "Type of Word", upperlimit){ #xlab will be Estimated Percent of Text
+  require(ggplot2)
+  p = ggplot(data=dataframe, aes(DV, bmean, color = groupOS)) +
+    geom_pointrange(aes(x=DV, y=bmean, 
+                        ymin=Mlow, ymax=Mhigh),
+                        shape = 18) +
+    coord_flip() +
+    ylab(xlab) +
+    xlab(ylab) +
+    cleanup +
+    scale_color_manual(values = c("black", "gray"),
+                       name = "Vote") +
+    scale_x_discrete(limits = c("external", "internal", "complex", 
+                                "They", "She/He", "We", "I")) +
+    scale_y_continuous(limits = c(0,upperlimit))
+
+  return(p)
+}
+
+library(cowplot)
+```
+
+In the last few years, numerous civil disputes worldwide, which might threaten American interests and human rights, have spurred considerable debate over American military intervention. Despite declines in legislative control of foreign policy, the U.S. Congress still plays an important role in deciding how the military is used by retaining the rights to formally declare war, limit the use of military force, and control military appropriations [@Phelps2002]. Previous research examined the predictors of presidential use of military force [@Clark2005; @Keller2012] and predictors of public support for war [@Cohrs2002; @Friese2009; @McCleary2009]. However, the predictors of legislative support of military action have been understudied, thus presenting an interesting opportunity for exploration as well as replication of past studies in new contexts [@Kriner2014]. 
+
+In this study, we sought to replicate two studies of the role of linguistic style in predicting war attitudes and behaviors, @Abe2012 and @Matsumoto2015. Rather than use what people were thinking about, these studies focused on how people were thinking about the issues surrounding war freeing the investigation from issues of context as well as allowing a more psychological understanding of the process of conflict decisions and rationalizations. @Abe2012 analyzed the cognitive styles and attentional focus of online discussions of the Iraq War finding supporters of the war tended to have an external focus while opponents tended to have an internal focus. Those without a strong stance on the war exhibited greater cognitive complexity. @Matsumoto2015 analyzed the same linguistic constructs for texts of world leaders preceding acts of aggression, such as wars or bombings, finding similar results with higher external focus and lower cognitive complexity preceding aggressive acts. In our replication of these studies, we analyze the same linguistic constructs in the context of a legislative body (i.e. U.S. Congress) voting on war measures.  
+
+## Psychological Language Analysis
+
+Language, including political rhetoric, is the fusion of content and style words. Within any given sample of language, content words answer the question of what is being said, while style words answer the question of how it is being said. Content words include nouns, verbs, and adjectives, and style words include pronouns, prepositions, articles, conjunctions, negations, and quantifiers [@Pennebaker2011]. The Linguistic Inquiry and Word Count program [LIWC2007; @Pennebaker2007] is text analysis software developed to summarize these types of words by breaking them down into 82 language categories. Besides style words, the LIWC measures constructs including: a) cognitive processes, such as *know*, *because*, and *none* reflecting causation, exclusivity, and certainty, b) emotionality, which include words such as *happy*, *sad*, and *angry*, c) relativity, such as *go*, *down*, and *until* reflecting motion, space, and time, and d) personal concerns like money, death, and religion among others. 
+
+In many fields including social psychology, the LIWC analysis has become a common way to better understand psychological processes through the words people use. @Tausczik2010 reviewed over 100 articles that used language as a basis for studying other constructs; specifically, these studies investigated how categories in the LIWC are related to psychological phenomena, such as attention, dominance, and deception. In the current investigation, we focus on attention as a potential mechanism for understanding how legislator's might work through decisions about war.
+
+Just as a person's gaze can illuminate where their attention is so can the words they use. Specifically, pronouns and verb tense can demonstrate attentional focus by indicating who or what someone is attending to in a situation and how they are processing the situation. Therefore, greater use of first person pronouns indicated a self-focus, third person pronouns indicated a focus on others, and verb tense indicated whether the focus was on past, present, or future events [@Tausczik2010]. Attentional focus in the form of pronouns has been linked to depression [@Rude2004], bullying [@Kowalski2000], and marital satisfaction [@Simmons2005]. In the studies we seek to replicate, @Abe2012 found supporters of the war tended to have an external focus, using more third person pronouns, while opponents of the war tended to have an internal focus, using more first person pronouns. @Matsumoto2015 also found greater use of plural third person pronouns (i.e., *we*, *us*) predicted aggressive acts by groups by examining historical texts. 
+
+Another construct which can be automatically measured from language is cognitive complexity. Originally developed by @Pennebaker1999, cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extraversion and conscientiousness [@Pennebaker1999], aggressive behaviors [@Pennebaker2011], and reactions to negative events [@Abe2011]. Most relevant to the current study, @Matsumoto2015 found cognitive complexity to decrease immediately before acts of aggression which is the effect we wish to replicate. 
+
+The purpose of the current studies is to determine if past studies on war decisions and aggression replicate in the context of the U.S. Congress when voting on war measures.
+   
+## Hypotheses
+
+  H1: Legislators supporting war measure will have an external focus and use more 3rd person pronouns (particularly 3rd person plural pronouns) [@Abe2012; @Matsumoto2015].
+  
+  H2: Legislators opposing war measure will have an internal focus and use more 1st person pronouns [@Abe2012].
+  
+  H3: Legislators supporting wars measure will exhibit lower cognitive complexity than those opposing the measure [@Matsumoto2015].
+
+# Method
+
+## Language Samples
+
+Linguistic frequency analysis was conducted on political speeches gleaned from Congress. The source of language samples was the Congressional Record, a searchable database containing a record of each session of Congress since 1995 available at https://www.congress.gov/congressional-record, which is maintained by the U.S. Government Publishing Office. For this study, we searched for pertinent speeches from January 27, 1998 to September 19, 2013. Records were included if they pertained to U.S. relations with the following countries: Iraq, Libya, and Kosovo (see below for explanation of country selection). Samples were split by session date and person speaking, and therefore, each person could be represented multiple times in the dataset. Each file in the Congressional Record includes all speeches from the day selected, therefore, we separated each person's speeches by day into different files for processing. For example, a Senator may respond back and forth with an invited guest speaker, and all the Senators spoken words would be combined into one file for that day. Only Senators and Representatives were included in this analysis. These speeches were then coded for party affiliation of the Congressperson. All processed data, as well as an *R* markdown document with data analysis scripts inline with this manuscript [@Aust2017] can be found at https://osf.io/r8qp2/. 
+
+## Variables
+
+### Language
+
+Each language sample was analyzed using the Language Inquiry and Word Count [@Pennebaker2007]. The LIWC provides percentages of each individual text that fall into each category of words. We examined pronouns for Hypotheses 1 and 2. The pronouns category included first person singular and plural pronouns (*I, me, we*), second person pronouns (*you, your*), and third person singular and plural pronouns (*he, she, they*). To measure external focus, third person singular and third person plural pronouns were added together. To measure internal focus, first person pronouns both singular and plural were added together. For Hypothesis 3, cognitive complexity was calculated using the same formula as @Abe2012. The LIWC categories of exclusives, negations, tentative words, and conjunctions were z-scored and summed together.
+
+### Military Action
+
+For the purpose of this study, military action was defined as military personnel being sent into another nation to coerce the actions of that nation. In the past 15 years, the U.S. has taken military action against Iraq, Afghanistan, Kosovo, and Libya, although Congress did not explicitly approve action in Afghanistan or Libya. Operational definitions for support for war were voting records (yay, nay) on bills authorizing military action for Iraq, Kosovo, and Libya (only voted on in the House). These bills were House Joint Resolution 114, 107th Congress (2002); Senate Concurrent Resolution 21, 106th Congress (1999); and House Joint Resolution 68, 112th Congress (2011). Oppose or support information was combined with the LIWC percentages described above. 
+
+## Data Analytic Technique
+
+The data collected include multiple language samples by the same senator and are structured by both party affiliation and region of interest. This structure was best analyzed with multilevel modeling, which allowed us to control for the correlated error terms of senator and party. We used the *nlme* package to calculate the means and standard deviation for each variable by voting recording [@Pinheiro2017]. The intercept was used to predict the dependent variable (LIWC category percent), which creates a mean score for the dependent variable. Party affiliation and Congressperson name were controlled as random intercept factors [@Gelman2006]. The standard error of the estimate was translated into standard deviation by multiplying by the square root of n for the sample. This analysis was bootstrapped using the *boot* library 1000 times, and the normal confidence interval for the mean was calculated using this function [@Canty2017]. These values were separated by voting record, Senate/House, and country of interest. The means and confidence intervals are presented in forest plots to show the relative percentages for each combination. The bootstrapped standard deviation values were used to calculate $d_s$ values using the MOTE library with the pooled standard deviation as the denominator [@Lakens2013; @Buchanan2017]. 
+
+```{r data-setup, include = FALSE}
+
+senateIraq = read.csv("senate iraq.csv")
+senateKosovo = read.csv("senate kosovo.csv")
+houseIraq = read.csv("house iraq.csv")
+houseKosovo = read.csv("house kosovo.csv")
+houseLibya = read.csv("house libya.csv")
+
+#REPLACE past, present, and future with cognitive complexity, internal focus, and external focus
+
+senateIraq$complexity = with(senateIraq, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
+senateKosovo$complexity = with(senateKosovo, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
+houseIraq$complexity = with(houseIraq, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
+houseKosovo$complexity = with(houseKosovo, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
+houseLibya$complexity = with(houseLibya, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
+
+senateIraq$firstperson = with(senateIraq, i + we)
+senateKosovo$firstperson = with(senateKosovo, i + we)
+houseIraq$firstperson = with(houseIraq, i + we)
+houseKosovo$firstperson = with(houseKosovo, i + we)
+houseLibya$firstperson = with(houseLibya, i + we)
+
+senateIraq$thirdperson = with(senateIraq, shehe + they)
+senateKosovo$thirdperson = with(senateKosovo, shehe + they)
+houseIraq$thirdperson = with(houseIraq, shehe + they)
+houseKosovo$thirdperson = with(houseKosovo, shehe + they)
+houseLibya$thirdperson = with(houseLibya, shehe + they)
+
+
+sIraqOppose = subset(senateIraq, Oppose.Support==0)
+sIraqSupport = subset(senateIraq, Oppose.Support==1)
+hIraqOppose = subset(houseIraq, Oppose.Support==0)
+hIraqSupport = subset(houseIraq, Oppose.Support==1)
+
+sKosovoOppose = subset(senateKosovo, Oppose.Support==0)
+sKosovoSupport = subset(senateKosovo, Oppose.Support==1)
+hKosovoOppose = subset(houseKosovo, Oppose.Support==0)
+hKosovoSupport = subset(houseKosovo, Oppose.Support==1)
+
+hLibyaOppose = subset(houseLibya, Oppose.Support==0)
+hLibyaSupport = subset(houseLibya, Oppose.Support==1)
+
+####bootstrap function #####
+BSfunction = function (formula, dataset, random) {
+  d = dataset[random, ] ##randomize by row
+  
+  model1 = lme(formula, 
+               data = d, 
+               method = "ML", 
+               na.action = "na.omit",
+               random = list(~1|Party.Affiliation, ~1|Name))
+  meanvalue = summary(model1)$tTable[1]
+  sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
+  return(c(meanvalue, sdvalue))
+}
+
+####make the table####
+table1 = matrix(NA, ncol = 14, nrow = 35)
+colnames(table1) = c("Chamber", "Region", "DV", "Moppose", 
+                     "SDoppose", "Msupport", "SDsupport", 
+                     "d", "dlow", "dhigh", "bcilowO", "bcihighO", 
+                     "bcilowS", "bcihighS")
+table1 = as.data.frame(table1)
+```
+
+```{r bootstrap, include=FALSE}
+
+#i, we, shehe, they, complex, internal, external
+####i####
+##calculate the bs for oppose for i 
+##b for boot, H house, K kosove, O oppose, i is DV
+bHKOi = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKSi = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOi = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKSi = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOi = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHISi = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOi = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSISi = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOi = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLSi = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = i ~ 1, 
+                   R = nsim)
+##effect size
+#House Kosovo
+dHKi = d.ind.t(m1 = bHKOi$t0[1], m2 = bHKSi$t0[1], 
+                 sd1 = bHKOi$t0[2], sd2 = bHKSi$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$i)), n2 = length(na.omit(hKosovoSupport$i)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKi = d.ind.t(m1 = bSKOi$t0[1], m2 = bSKSi$t0[1], 
+                 sd1 = bSKOi$t0[2], sd2 = bSKSi$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$i)), n2 = length(na.omit(sKosovoSupport$i)), 
+                 a = .05)
+#House Iraq
+dHIi = d.ind.t(m1 = bHIOi$t0[1], m2 = bHISi$t0[1], 
+                 sd1 = bHIOi$t0[2], sd2 = bHISi$t0[2],
+                 n1 = length(na.omit(hIraqOppose$i)), n2 = length(na.omit(hIraqSupport$i)), 
+                 a = .05)
+
+#Senate Iraq
+dSIi = d.ind.t(m1 = bSIOi$t0[1], m2 = bSISi$t0[1], 
+                 sd1 = bSIOi$t0[2], sd2 = bSISi$t0[2],
+                 n1 = length(na.omit(sIraqOppose$i)), n2 = length(na.omit(sIraqSupport$i)), 
+                 a = .05)
+
+#House Libya
+dHLi = d.ind.t(m1 = bHLOi$t0[1], m2 = bHLSi$t0[1], 
+                 sd1 = bHLOi$t0[2], sd2 = bHLSi$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$i)), n2 = length(na.omit(hLibyaSupport$i)), 
+                 a = .05)
+##ci for forest plots
+ciHKOi = boot.ci(bHKOi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKSi = boot.ci(bHKSi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOi = boot.ci(bSKOi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKSi = boot.ci(bSKSi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOi = boot.ci(bHIOi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHISi = boot.ci(bHISi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOi = boot.ci(bSIOi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSISi = boot.ci(bSISi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOi = boot.ci(bHLOi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLSi = boot.ci(bHLSi, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[1 , ] = c("House", "Kosovo", "i", bHKOi$t0[1],
+                 bHKOi$t0[2], bHKSi$t0[1], bHKSi$t0[2], 
+                 dHKi$d, dHKi$dlow, dHKi$dhigh,
+                 ciHKOi$normal[2], ciHKOi$normal[3],
+                 ciHKSi$normal[2], ciHKSi$normal[3])
+
+table1[2 , ] = c("Senate", "Kosovo", "i", bSKOi$t0[1],
+                 bSKOi$t0[2], bSKSi$t0[1], bSKSi$t0[2], 
+                 dSKi$d, dSKi$dlow, dSKi$dhigh,
+                 ciSKOi$normal[2], ciSKOi$normal[3],
+                 ciSKSi$normal[2], ciSKSi$normal[3])
+
+table1[3 , ] = c("House", "Iraq", "i", bHIOi$t0[1],
+                 bHIOi$t0[2], bHISi$t0[1], bHISi$t0[2], 
+                 dHIi$d, dHIi$dlow, dHIi$dhigh,
+                 ciHIOi$normal[2], ciHIOi$normal[3],
+                 ciHISi$normal[2], ciHISi$normal[3])
+
+table1[4 , ] = c("Senate", "Iraq", "i", bSIOi$t0[1],
+                 bSIOi$t0[2], bSISi$t0[1], bSISi$t0[2], 
+                 dSIi$d, dSIi$dlow, dSIi$dhigh,
+                 ciSIOi$normal[2], ciSIOi$normal[3],
+                 ciSISi$normal[2], ciSISi$normal[3])
+
+table1[5 , ] = c("House", "Libya", "i", bHLOi$t0[1],
+                 bHLOi$t0[2], bHLSi$t0[1], bHLSi$t0[2], 
+                 dHLi$d, dHLi$dlow, dHLi$dhigh,
+                 ciHLOi$normal[2], ciHLOi$normal[3],
+                 ciHLSi$normal[2], ciHLSi$normal[3])
+
+####we####
+bHKOwe = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKSwe = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOwe = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKSwe = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOwe = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHISwe = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOwe = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSISwe = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOwe = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLSwe = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = we ~ 1, 
+                   R = nsim)
+
+##effect size
+#House Kosovo
+dHKwe = d.ind.t(m1 = bHKOwe$t0[1], m2 = bHKSwe$t0[1], 
+                 sd1 = bHKOwe$t0[2], sd2 = bHKSwe$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$we)), n2 = length(na.omit(hKosovoSupport$we)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKwe = d.ind.t(m1 = bSKOwe$t0[1], m2 = bSKSwe$t0[1], 
+                 sd1 = bSKOwe$t0[2], sd2 = bSKSwe$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$we)), n2 = length(na.omit(sKosovoSupport$we)), 
+                 a = .05)
+#House Iraq
+dHIwe = d.ind.t(m1 = bHIOwe$t0[1], m2 = bHISwe$t0[1], 
+                 sd1 = bHIOwe$t0[2], sd2 = bHISwe$t0[2],
+                 n1 = length(na.omit(hIraqOppose$we)), n2 = length(na.omit(hIraqSupport$we)), 
+                 a = .05)
+
+#Senate Iraq
+dSIwe = d.ind.t(m1 = bSIOwe$t0[1], m2 = bSISwe$t0[1], 
+                 sd1 = bSIOwe$t0[2], sd2 = bSISwe$t0[2],
+                 n1 = length(na.omit(sIraqOppose$we)), n2 = length(na.omit(sIraqSupport$we)), 
+                 a = .05)
+
+#House Libya
+dHLwe = d.ind.t(m1 = bHLOwe$t0[1], m2 = bHLSwe$t0[1], 
+                 sd1 = bHLOwe$t0[2], sd2 = bHLSwe$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$we)), n2 = length(na.omit(hLibyaSupport$we)), 
+                 a = .05)
+
+##ci for forest plots
+ciHKOwe = boot.ci(bHKOwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKSwe = boot.ci(bHKSwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOwe = boot.ci(bSKOwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKSwe = boot.ci(bSKSwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOwe = boot.ci(bHIOwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHISwe = boot.ci(bHISwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOwe = boot.ci(bSIOwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSISwe = boot.ci(bSISwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOwe = boot.ci(bHLOwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLSwe = boot.ci(bHLSwe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[6 , ] = c("House", "Kosovo", "we", bHKOwe$t0[1],
+                 bHKOwe$t0[2], bHKSwe$t0[1], bHKSwe$t0[2], 
+                 dHKwe$d, dHKwe$dlow, dHKwe$dhigh,
+                 ciHKOwe$normal[2], ciHKOwe$normal[3],
+                 ciHKSwe$normal[2], ciHKSwe$normal[3])
+
+table1[7 , ] = c("Senate", "Kosovo", "we", bSKOwe$t0[1],
+                 bSKOwe$t0[2], bSKSwe$t0[1], bSKSwe$t0[2], 
+                 dSKwe$d, dSKwe$dlow, dSKwe$dhigh,
+                 ciSKOwe$normal[2], ciSKOwe$normal[3],
+                 ciSKSwe$normal[2], ciSKSwe$normal[3])
+
+table1[8 , ] = c("House", "Iraq", "we", bHIOwe$t0[1],
+                 bHIOwe$t0[2], bHISwe$t0[1], bHISwe$t0[2], 
+                 dHIwe$d, dHIwe$dlow, dHIwe$dhigh,
+                 ciHIOwe$normal[2], ciHIOwe$normal[3],
+                 ciHISwe$normal[2], ciHISwe$normal[3])
+
+table1[9 , ] = c("Senate", "Iraq", "we", bSIOwe$t0[1],
+                 bSIOwe$t0[2], bSISwe$t0[1], bSISwe$t0[2], 
+                 dSIwe$d, dSIwe$dlow, dSIwe$dhigh,
+                 ciSIOwe$normal[2], ciSIOwe$normal[3],
+                 ciSISwe$normal[2], ciSISwe$normal[3])
+
+table1[10 , ] = c("House", "Libya", "we", bHLOwe$t0[1],
+                 bHLOwe$t0[2], bHLSwe$t0[1], bHLSwe$t0[2], 
+                 dHLwe$d, dHLwe$dlow, dHLwe$dhigh,
+                 ciHLOwe$normal[2], ciHLOwe$normal[3],
+                 ciHLSwe$normal[2], ciHLSwe$normal[3])
+
+####shehe####
+bHKOshehe = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKSshehe = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOshehe = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKSshehe = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOshehe = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHISshehe = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOshehe = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSISshehe = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOshehe = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLSshehe = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = shehe ~ 1, 
+                   R = nsim)
+
+##effect size
+#House Kosovo
+dHKshehe = d.ind.t(m1 = bHKOshehe$t0[1], m2 = bHKSshehe$t0[1], 
+                 sd1 = bHKOshehe$t0[2], sd2 = bHKSshehe$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$shehe)), 
+                 n2 = length(na.omit(hKosovoSupport$shehe)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKshehe = d.ind.t(m1 = bSKOshehe$t0[1], m2 = bSKSshehe$t0[1], 
+                 sd1 = bSKOshehe$t0[2], sd2 = bSKSshehe$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$shehe)), 
+                n2 = length(na.omit(sKosovoSupport$shehe)), 
+                 a = .05)
+#House Iraq
+dHIshehe = d.ind.t(m1 = bHIOshehe$t0[1], m2 = bHISshehe$t0[1], 
+                 sd1 = bHIOshehe$t0[2], sd2 = bHISshehe$t0[2],
+                 n1 = length(na.omit(hIraqOppose$shehe)), 
+                 n2 = length(na.omit(hIraqSupport$shehe)), 
+                 a = .05)
+
+#Senate Iraq
+dSIshehe = d.ind.t(m1 = bSIOshehe$t0[1], m2 = bSISshehe$t0[1], 
+                 sd1 = bSIOshehe$t0[2], sd2 = bSISshehe$t0[2],
+                 n1 = length(na.omit(sIraqOppose$shehe)), 
+                n2 = length(na.omit(sIraqSupport$shehe)), 
+                 a = .05)
+
+#House Libya
+dHLshehe = d.ind.t(m1 = bHLOshehe$t0[1], m2 = bHLSshehe$t0[1], 
+                 sd1 = bHLOshehe$t0[2], sd2 = bHLSshehe$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$shehe)), 
+                 n2 = length(na.omit(hLibyaSupport$shehe)), 
+                 a = .05)
+
+##ci for forest plots
+ciHKOshehe = boot.ci(bHKOshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKSshehe = boot.ci(bHKSshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOshehe = boot.ci(bSKOshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKSshehe = boot.ci(bSKSshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOshehe = boot.ci(bHIOshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHISshehe = boot.ci(bHISshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOshehe = boot.ci(bSIOshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSISshehe = boot.ci(bSISshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOshehe = boot.ci(bHLOshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLSshehe = boot.ci(bHLSshehe, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[11 , ] = c("House", "Kosovo", "shehe", bHKOshehe$t0[1],
+                 bHKOshehe$t0[2], bHKSshehe$t0[1], bHKSshehe$t0[2], 
+                 dHKshehe$d, dHKshehe$dlow, dHKshehe$dhigh,
+                 ciHKOshehe$normal[2], ciHKOshehe$normal[3],
+                 ciHKSshehe$normal[2], ciHKSshehe$normal[3])
+
+table1[12 , ] = c("Senate", "Kosovo", "shehe", bSKOshehe$t0[1],
+                 bSKOshehe$t0[2], bSKSshehe$t0[1], bSKSshehe$t0[2], 
+                 dSKshehe$d, dSKshehe$dlow, dSKshehe$dhigh,
+                 ciSKOshehe$normal[2], ciSKOshehe$normal[3],
+                 ciSKSshehe$normal[2], ciSKSshehe$normal[3])
+
+table1[13 , ] = c("House", "Iraq", "shehe", bHIOshehe$t0[1],
+                 bHIOshehe$t0[2], bHISshehe$t0[1], bHISshehe$t0[2], 
+                 dHIshehe$d, dHIshehe$dlow, dHIshehe$dhigh,
+                 ciHIOshehe$normal[2], ciHIOshehe$normal[3],
+                 ciHISshehe$normal[2], ciHISshehe$normal[3])
+
+table1[14 , ] = c("Senate", "Iraq", "shehe", bSIOshehe$t0[1],
+                 bSIOshehe$t0[2], bSISshehe$t0[1], bSISshehe$t0[2], 
+                 dSIshehe$d, dSIshehe$dlow, dSIshehe$dhigh,
+                 ciSIOshehe$normal[2], ciSIOshehe$normal[3],
+                 ciSISshehe$normal[2], ciSISshehe$normal[3])
+
+table1[15 , ] = c("House", "Libya", "shehe", bHLOshehe$t0[1],
+                 bHLOshehe$t0[2], bHLSshehe$t0[1], bHLSshehe$t0[2], 
+                 dHLshehe$d, dHLshehe$dlow, dHLshehe$dhigh,
+                 ciHLOshehe$normal[2], ciHLOshehe$normal[3],
+                 ciHLSshehe$normal[2], ciHLSshehe$normal[3])
+
+####they####
+bHKOthey = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKSthey = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOthey = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKSthey = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOthey = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHISthey = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOthey = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSISthey = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOthey = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLSthey = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = they ~ 1, 
+                   R = nsim)
+
+##effect size
+#House Kosovo
+dHKthey = d.ind.t(m1 = bHKOthey$t0[1], m2 = bHKSthey$t0[1], 
+                 sd1 = bHKOthey$t0[2], sd2 = bHKSthey$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$they)), 
+                 n2 = length(na.omit(hKosovoSupport$they)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKthey = d.ind.t(m1 = bSKOthey$t0[1], m2 = bSKSthey$t0[1], 
+                 sd1 = bSKOthey$t0[2], sd2 = bSKSthey$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$they)), 
+                n2 = length(na.omit(sKosovoSupport$they)), 
+                 a = .05)
+#House Iraq
+dHIthey = d.ind.t(m1 = bHIOthey$t0[1], m2 = bHISthey$t0[1], 
+                 sd1 = bHIOthey$t0[2], sd2 = bHISthey$t0[2],
+                 n1 = length(na.omit(hIraqOppose$they)), 
+                 n2 = length(na.omit(hIraqSupport$they)), 
+                 a = .05)
+
+#Senate Iraq
+dSIthey = d.ind.t(m1 = bSIOthey$t0[1], m2 = bSISthey$t0[1], 
+                 sd1 = bSIOthey$t0[2], sd2 = bSISthey$t0[2],
+                 n1 = length(na.omit(sIraqOppose$they)), 
+                n2 = length(na.omit(sIraqSupport$they)), 
+                 a = .05)
+
+#House Libya
+dHLthey = d.ind.t(m1 = bHLOthey$t0[1], m2 = bHLSthey$t0[1], 
+                 sd1 = bHLOthey$t0[2], sd2 = bHLSthey$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$they)), 
+                 n2 = length(na.omit(hLibyaSupport$they)), 
+                 a = .05)
+
+##ci for forest plots
+ciHKOthey = boot.ci(bHKOthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKSthey = boot.ci(bHKSthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOthey = boot.ci(bSKOthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKSthey = boot.ci(bSKSthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOthey = boot.ci(bHIOthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHISthey = boot.ci(bHISthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOthey = boot.ci(bSIOthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSISthey = boot.ci(bSISthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOthey = boot.ci(bHLOthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLSthey = boot.ci(bHLSthey, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[16 , ] = c("House", "Kosovo", "they", bHKOthey$t0[1],
+                 bHKOthey$t0[2], bHKSthey$t0[1], bHKSthey$t0[2], 
+                 dHKthey$d, dHKthey$dlow, dHKthey$dhigh,
+                 ciHKOthey$normal[2], ciHKOthey$normal[3],
+                 ciHKSthey$normal[2], ciHKSthey$normal[3])
+
+table1[17 , ] = c("Senate", "Kosovo", "they", bSKOthey$t0[1],
+                 bSKOthey$t0[2], bSKSthey$t0[1], bSKSthey$t0[2], 
+                 dSKthey$d, dSKthey$dlow, dSKthey$dhigh,
+                 ciSKOthey$normal[2], ciSKOthey$normal[3],
+                 ciSKSthey$normal[2], ciSKSthey$normal[3])
+
+table1[18 , ] = c("House", "Iraq", "they", bHIOthey$t0[1],
+                 bHIOthey$t0[2], bHISthey$t0[1], bHISthey$t0[2], 
+                 dHIthey$d, dHIthey$dlow, dHIthey$dhigh,
+                 ciHIOthey$normal[2], ciHIOthey$normal[3],
+                 ciHISthey$normal[2], ciHISthey$normal[3])
+
+table1[19 , ] = c("Senate", "Iraq", "they", bSIOthey$t0[1],
+                 bSIOthey$t0[2], bSISthey$t0[1], bSISthey$t0[2], 
+                 dSIthey$d, dSIthey$dlow, dSIthey$dhigh,
+                 ciSIOthey$normal[2], ciSIOthey$normal[3],
+                 ciSISthey$normal[2], ciSISthey$normal[3])
+
+table1[20 , ] = c("House", "Libya", "they", bHLOthey$t0[1],
+                 bHLOthey$t0[2], bHLSthey$t0[1], bHLSthey$t0[2], 
+                 dHLthey$d, dHLthey$dlow, dHLthey$dhigh,
+                 ciHLOthey$normal[2], ciHLOthey$normal[3],
+                 ciHLSthey$normal[2], ciHLSthey$normal[3])
+
+####complex####
+bHKOcomplex = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKScomplex = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOcomplex = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKScomplex = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOcomplex = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHIScomplex = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOcomplex = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSIScomplex = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOcomplex = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLScomplex = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = complexity ~ 1, 
+                   R = nsim)
+
+
+##effect size
+#House Kosovo
+dHKcomplex = d.ind.t(m1 = bHKOcomplex$t0[1], m2 = bHKScomplex$t0[1], 
+                 sd1 = bHKOcomplex$t0[2], sd2 = bHKSthey$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$complexity)), 
+                 n2 = length(na.omit(hKosovoSupport$complexity)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKcomplex = d.ind.t(m1 = bSKOcomplex$t0[1], m2 = bSKScomplex$t0[1], 
+                 sd1 = bSKOcomplex$t0[2], sd2 = bSKScomplex$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$complexity)), 
+                n2 = length(na.omit(sKosovoSupport$complexity)), 
+                 a = .05)
+#House Iraq
+dHIcomplex = d.ind.t(m1 = bHIOcomplex$t0[1], m2 = bHIScomplex$t0[1], 
+                 sd1 = bHIOcomplex$t0[2], sd2 = bHIScomplex$t0[2],
+                 n1 = length(na.omit(hIraqOppose$complexity)), 
+                 n2 = length(na.omit(hIraqSupport$complexity)), 
+                 a = .05)
+
+#Senate Iraq
+dSIcomplex = d.ind.t(m1 = bSIOcomplex$t0[1], m2 = bSIScomplex$t0[1], 
+                 sd1 = bSIOcomplex$t0[2], sd2 = bSIScomplex$t0[2],
+                 n1 = length(na.omit(sIraqOppose$complexity)), 
+                n2 = length(na.omit(sIraqSupport$complexity)), 
+                 a = .05)
+
+#House Libya
+dHLcomplex = d.ind.t(m1 = bHLOcomplex$t0[1], m2 = bHLScomplex$t0[1], 
+                 sd1 = bHLOcomplex$t0[2], sd2 = bHLScomplex$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$complexity)), 
+                 n2 = length(na.omit(hLibyaSupport$complexity)), 
+                 a = .05)
+
+##ci for forest plots
+ciHKOcomplex = boot.ci(bHKOcomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKScomplex = boot.ci(bHKScomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOcomplex = boot.ci(bSKOcomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKScomplex = boot.ci(bSKScomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOcomplex = boot.ci(bHIOcomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIScomplex = boot.ci(bHIScomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOcomplex = boot.ci(bSIOcomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIScomplex = boot.ci(bSIScomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOcomplex = boot.ci(bHLOcomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLScomplex = boot.ci(bHLScomplex, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[21 , ] = c("House", "Kosovo", "complex", bHKOcomplex$t0[1],
+                 bHKOcomplex$t0[2], bHKScomplex$t0[1], bHKScomplex$t0[2], 
+                 dHKcomplex$d, dHKcomplex$dlow, dHKcomplex$dhigh,
+                 ciHKOcomplex$normal[2], ciHKOcomplex$normal[3],
+                 ciHKScomplex$normal[2], ciHKScomplex$normal[3])
+
+table1[22 , ] = c("Senate", "Kosovo", "complex", bSKOcomplex$t0[1],
+                 bSKOcomplex$t0[2], bSKScomplex$t0[1], bSKScomplex$t0[2], 
+                 dSKcomplex$d, dSKcomplex$dlow, dSKcomplex$dhigh,
+                 ciSKOcomplex$normal[2], ciSKOcomplex$normal[3],
+                 ciSKScomplex$normal[2], ciSKScomplex$normal[3])
+
+table1[23 , ] = c("House", "Iraq", "complex", bHIOcomplex$t0[1],
+                 bHIOcomplex$t0[2], bHIScomplex$t0[1], bHIScomplex$t0[2], 
+                 dHIcomplex$d, dHIcomplex$dlow, dHIcomplex$dhigh,
+                 ciHIOcomplex$normal[2], ciHIOcomplex$normal[3],
+                 ciHIScomplex$normal[2], ciHIScomplex$normal[3])
+
+table1[24 , ] = c("Senate", "Iraq", "complex", bSIOcomplex$t0[1],
+                 bSIOcomplex$t0[2], bSIScomplex$t0[1], bSIScomplex$t0[2], 
+                 dSIcomplex$d, dSIcomplex$dlow, dSIcomplex$dhigh,
+                 ciSIOcomplex$normal[2], ciSIOcomplex$normal[3],
+                 ciSIScomplex$normal[2], ciSIScomplex$normal[3])
+
+table1[25 , ] = c("House", "Libya", "complex", bHLOcomplex$t0[1],
+                 bHLOcomplex$t0[2], bHLScomplex$t0[1], bHLScomplex$t0[2], 
+                 dHLcomplex$d, dHLcomplex$dlow, dHLcomplex$dhigh,
+                 ciHLOcomplex$normal[2], ciHLOcomplex$normal[3],
+                 ciHLScomplex$normal[2], ciHLScomplex$normal[3])
+
+####first-person####
+bHKOinternal = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKSinternal = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOinternal = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKSinternal = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOinternal = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHISinternal = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOinternal = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSISinternal = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOinternal = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLSinternal = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = firstperson ~ 1, 
+                   R = nsim)
+
+##effect size
+#House Kosovo
+dHKinternal = d.ind.t(m1 = bHKOinternal$t0[1], m2 = bHKSinternal$t0[1], 
+                 sd1 = bHKOinternal$t0[2], sd2 = bHKSinternal$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$firstperson)), 
+                 n2 = length(na.omit(hKosovoSupport$firstperson)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKinternal = d.ind.t(m1 = bSKOinternal$t0[1], m2 = bSKSinternal$t0[1], 
+                 sd1 = bSKOinternal$t0[2], sd2 = bSKSinternal$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$firstperson)), 
+                n2 = length(na.omit(sKosovoSupport$firstperson)), 
+                 a = .05)
+#House Iraq
+dHIinternal = d.ind.t(m1 = bHIOinternal$t0[1], m2 = bHISinternal$t0[1], 
+                 sd1 = bHIOinternal$t0[2], sd2 = bHISinternal$t0[2],
+                 n1 = length(na.omit(hIraqOppose$firstperson)), 
+                 n2 = length(na.omit(hIraqSupport$firstperson)), 
+                 a = .05)
+
+#Senate Iraq
+dSIinternal = d.ind.t(m1 = bSIOinternal$t0[1], m2 = bSISinternal$t0[1], 
+                 sd1 = bSIOinternal$t0[2], sd2 = bSISinternal$t0[2],
+                 n1 = length(na.omit(sIraqOppose$firstperson)), 
+                n2 = length(na.omit(sIraqSupport$firstperson)), 
+                 a = .05)
+
+#House Libya
+dHLinternal = d.ind.t(m1 = bHLOinternal$t0[1], m2 = bHLSinternal$t0[1], 
+                 sd1 = bHLOinternal$t0[2], sd2 = bHLSinternal$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$firstperson)), 
+                 n2 = length(na.omit(hLibyaSupport$firstperson)), 
+                 a = .05)
+
+##ci for forest plots
+ciHKOinternal = boot.ci(bHKOinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKSinternal = boot.ci(bHKSinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOinternal = boot.ci(bSKOinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKSinternal = boot.ci(bSKSinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOinternal = boot.ci(bHIOinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHISinternal = boot.ci(bHISinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOinternal = boot.ci(bSIOinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSISinternal = boot.ci(bSISinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOinternal = boot.ci(bHLOinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLSinternal = boot.ci(bHLSinternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[26 , ] = c("House", "Kosovo", "internal", bHKOinternal$t0[1],
+                 bHKOinternal$t0[2], bHKSinternal$t0[1], bHKSinternal$t0[2], 
+                 dHKinternal$d, dHKinternal$dlow, dHKinternal$dhigh,
+                 ciHKOinternal$normal[2], ciHKOinternal$normal[3],
+                 ciHKSinternal$normal[2], ciHKSinternal$normal[3])
+
+table1[27 , ] = c("Senate", "Kosovo", "internal", bSKOinternal$t0[1],
+                 bSKOinternal$t0[2], bSKSinternal$t0[1], bSKSinternal$t0[2], 
+                 dSKinternal$d, dSKinternal$dlow, dSKinternal$dhigh,
+                 ciSKOinternal$normal[2], ciSKOinternal$normal[3],
+                 ciSKSinternal$normal[2], ciSKSinternal$normal[3])
+
+table1[28 , ] = c("House", "Iraq", "internal", bHIOinternal$t0[1],
+                 bHIOinternal$t0[2], bHISinternal$t0[1], bHISinternal$t0[2], 
+                 dHIinternal$d, dHIinternal$dlow, dHIinternal$dhigh,
+                 ciHIOinternal$normal[2], ciHIOinternal$normal[3],
+                 ciHISinternal$normal[2], ciHISinternal$normal[3])
+
+table1[29 , ] = c("Senate", "Iraq", "internal", bSIOinternal$t0[1],
+                 bSIOinternal$t0[2], bSISinternal$t0[1], bSISinternal$t0[2], 
+                 dSIinternal$d, dSIinternal$dlow, dSIinternal$dhigh,
+                 ciSIOinternal$normal[2], ciSIOinternal$normal[3],
+                 ciSISinternal$normal[2], ciSISinternal$normal[3])
+
+table1[30 , ] = c("House", "Libya", "internal", bHLOinternal$t0[1],
+                 bHLOinternal$t0[2], bHLSinternal$t0[1], bHLSinternal$t0[2], 
+                 dHLinternal$d, dHLinternal$dlow, dHLinternal$dhigh,
+                 ciHLOinternal$normal[2], ciHLOinternal$normal[3],
+                 ciHLSinternal$normal[2], ciHLSinternal$normal[3])
+
+####external####
+bHKOexternal = boot(data = hKosovoOppose,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+##House Kosovo Support
+bHKSexternal = boot(data = hKosovoSupport,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Oppose
+bSKOexternal = boot(data = sKosovoOppose,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#Senate Kosovo Support
+bSKSexternal = boot(data = sKosovoSupport,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#House Iraq Oppose
+bHIOexternal = boot(data = hIraqOppose,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#House Iraq Support
+bHISexternal = boot(data = hIraqSupport,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Oppose
+bSIOexternal = boot(data = sIraqOppose,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#Senate Iraq Support
+bSISexternal = boot(data = sIraqSupport,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#House Libya Oppose
+bHLOexternal = boot(data = hLibyaOppose,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+#House Libya Support
+bHLSexternal = boot(data = hLibyaSupport,
+                   statistic = BSfunction,
+                   formula = thirdperson ~ 1, 
+                   R = nsim)
+
+##effect size
+#House Kosovo
+dHKexternal = d.ind.t(m1 = bHKOexternal$t0[1], m2 = bHKSexternal$t0[1], 
+                 sd1 = bHKOexternal$t0[2], sd2 = bHKSexternal$t0[2],
+                 n1 = length(na.omit(hKosovoOppose$thirdperson)), 
+                 n2 = length(na.omit(hKosovoSupport$thirdperson)), 
+                 a = .05)
+
+#Senate Kosovo
+dSKexternal = d.ind.t(m1 = bSKOexternal$t0[1], m2 = bSKSexternal$t0[1], 
+                 sd1 = bSKOexternal$t0[2], sd2 = bSKSexternal$t0[2],
+                 n1 = length(na.omit(sKosovoOppose$thirdperson)), 
+                n2 = length(na.omit(sKosovoSupport$thirdperson)), 
+                 a = .05)
+#House Iraq
+dHIexternal = d.ind.t(m1 = bHIOexternal$t0[1], m2 = bHISexternal$t0[1], 
+                 sd1 = bHIOexternal$t0[2], sd2 = bHISexternal$t0[2],
+                 n1 = length(na.omit(hIraqOppose$thirdperson)), 
+                 n2 = length(na.omit(hIraqSupport$thirdperson)), 
+                 a = .05)
+
+#Senate Iraq
+dSIexternal = d.ind.t(m1 = bSIOexternal$t0[1], m2 = bSISexternal$t0[1], 
+                 sd1 = bSIOexternal$t0[2], sd2 = bSISexternal$t0[2],
+                 n1 = length(na.omit(sIraqOppose$thirdperson)), 
+                n2 = length(na.omit(sIraqSupport$thirdperson)), 
+                 a = .05)
+
+#House Libya
+dHLexternal = d.ind.t(m1 = bHLOexternal$t0[1], m2 = bHLSexternal$t0[1], 
+                 sd1 = bHLOexternal$t0[2], sd2 = bHLSexternal$t0[2],
+                 n1 = length(na.omit(hLibyaOppose$thirdperson)), 
+                 n2 = length(na.omit(hLibyaSupport$thirdperson)), 
+                 a = .05)
+
+
+##ci for forest plots
+ciHKOexternal = boot.ci(bHKOexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHKSexternal = boot.ci(bHKSexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKOexternal = boot.ci(bSKOexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSKSexternal = boot.ci(bSKSexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHIOexternal = boot.ci(bHIOexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHISexternal = boot.ci(bHISexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSIOexternal = boot.ci(bSIOexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciSISexternal = boot.ci(bSISexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLOexternal = boot.ci(bHLOexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+ciHLSexternal = boot.ci(bHLSexternal, 
+                   conf = .95,
+                   type = "norm",
+                   index = 1)
+
+table1[31 , ] = c("House", "Kosovo", "external", bHKOexternal$t0[1],
+                 bHKOexternal$t0[2], bHKSexternal$t0[1], bHKSexternal$t0[2], 
+                 dHKexternal$d, dHKexternal$dlow, dHKexternal$dhigh,
+                 ciHKOexternal$normal[2], ciHKOexternal$normal[3],
+                 ciHKSexternal$normal[2], ciHKSexternal$normal[3])
+
+table1[32 , ] = c("Senate", "Kosovo", "external", bSKOexternal$t0[1],
+                 bSKOexternal$t0[2], bSKSexternal$t0[1], bSKSexternal$t0[2], 
+                 dSKexternal$d, dSKexternal$dlow, dSKexternal$dhigh,
+                 ciSKOexternal$normal[2], ciSKOexternal$normal[3],
+                 ciSKSexternal$normal[2], ciSKSexternal$normal[3])
+
+table1[33 , ] = c("House", "Iraq", "external", bHIOexternal$t0[1],
+                 bHIOexternal$t0[2], bHISexternal$t0[1], bHISexternal$t0[2], 
+                 dHIexternal$d, dHIexternal$dlow, dHIexternal$dhigh,
+                 ciHIOexternal$normal[2], ciHIOexternal$normal[3],
+                 ciHISexternal$normal[2], ciHISexternal$normal[3])
+
+table1[34 , ] = c("Senate", "Iraq", "external", bSIOexternal$t0[1],
+                 bSIOexternal$t0[2], bSISexternal$t0[1], bSISexternal$t0[2], 
+                 dSIexternal$d, dSIexternal$dlow, dSIexternal$dhigh,
+                 ciSIOexternal$normal[2], ciSIOexternal$normal[3],
+                 ciSISexternal$normal[2], ciSISexternal$normal[3])
+
+table1[35 , ] = c("House", "Libya", "external", bHLOexternal$t0[1],
+                 bHLOexternal$t0[2], bHLSexternal$t0[1], bHLSexternal$t0[2], 
+                 dHLexternal$d, dHLexternal$dlow, dHLexternal$dhigh,
+                 ciHLOexternal$normal[2], ciHLOexternal$normal[3],
+                 ciHLSexternal$normal[2], ciHLSexternal$normal[3])
+```
+
+```{r Ktable, echo = FALSE, results = 'asis'}
+table1[,4] = apa(as.numeric(table1[,4]), 2)
+table1[,5] = apa(as.numeric(table1[,5]), 2)
+table1[,6] = apa(as.numeric(table1[,6]), 2)
+table1[,7] = apa(as.numeric(table1[,7]), 2)
+table1[,8] = apa(as.numeric(table1[,8]), 2)
+table1[,9] = apa(as.numeric(table1[,9]), 2)
+table1[,10] = apa(as.numeric(table1[,10]), 2)
+
+Ktable = table1[1:10]
+Ktable = subset(Ktable, Region == "Kosovo")
+Ktable = Ktable[order(Ktable$Chamber), ]
+
+apa_table.latex(as.data.frame(Ktable),
+          align = c("l", rep("c",9)),
+          caption = "Descriptive statistics for each dependent variable by chamber, 
+          region, and military support for Kosovo", 
+          note = "Confidence intervals for $d_s$ were calculated using 
+          non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
+          small = T,
+          escape = F,
+          col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$",
+                       "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
+```
+
+```{r Kpic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Kosovo.", fig.height=6, fig.width=8}
+Kpic = table1[ , c(1:4, 6, 11:14)]
+Kpic = subset(Kpic, Region == "Kosovo")
+KpicO = Kpic[, c(1:4, 6, 7)]
+KpicS = Kpic[, c(1:3, 5, 8, 9)]
+colnames(KpicO)[4:6] = c("bmean", "Mlow", "Mhigh")
+colnames(KpicS)[4:6] = c("bmean", "Mlow", "Mhigh")
+Kpic = rbind(KpicO, KpicS)
+Kpic$groupOS = c(rep("Oppose", nrow(KpicO)), rep("Support", nrow(KpicS)))
+Kpic$bmean = as.numeric(Kpic$bmean)
+Kpic$Mlow = as.numeric(Kpic$Mlow)
+Kpic$Mhigh = as.numeric(Kpic$Mhigh)
+
+Khouse = fplot(Kpic[Kpic$Chamber == "House", ], upperlimit = 8)
+Ksenate = fplot(Kpic[Kpic$Chamber == "Senate", ], upperlimit = 11.5)
+
+legend = get_legend(Khouse)
+plot_grid( Khouse + theme(legend.position="none"),
+           Ksenate + theme(legend.position=c(.75, .75)),
+           hjust = -1,
+           nrow = 1
+)
+```
+
+# Study 1A - Kosovo in the House
+
+In early 1998, violence erupted in the Serbian region of Kosovo between ethnic Albanians and the Serbian government. A peace agreement later in the year lasted until the beginning of 1999 when several Albanian civilians were killed, prompting a resurrection of hostilities. When the Serbian government, namely President Slobodan Milosevic, failed to concede to allowing a NATO peacekeeping force in Kosovo during February 1999 negotiations, NATO authorized air strikes against Serbian targets. This decision subsequently prompted debate within the U.S. Congress as to the involvement of the U.S. military in NATO's operations in Serbia and Kosovo [@Woehrel2006].
+
+In this study, we examine this debate in the U.S. House of Representatives to determine if members of Congress who supported U.S. military involvement focused on people or events differently than those who opposed it. 
+
+# Method
+
+```{r house-kosovo, eval=FALSE, include=FALSE}
+nrow(houseKosovo)
+mean(houseKosovo$WC)
+sd(houseKosovo$WC)
+table(houseKosovo$Party.Affiliation)
+length(levels(houseKosovo$Name))
+nrow(houseKosovo) - sum(table(houseKosovo$Oppose.Support))
+```
+
+Speeches made in the House of Representatives pertaining to the use of military force in Kosovo/Serbia were gathered from the Congressional Record available from the U.S. Government Publishing Office. In total, 210 speeches were collected. Speeches were limited to those made in the year preceding the vote on Senate Concurrent Resolution 21 made on April 28, 1999 to allow the President to conduct air and missile strikes against Yugoslavia (Serbia and Montenegro). This resolution failed in the House with 213-213 with 86% of Democrats supporting the resolution and 84% of Republicans opposing. These speeches were made by 156 unique speakers where where Republicans gave 108 speeches, Democrats gave 98 speeches, one Independent, one Non-Partisan, and two non-Representatives. Five speeches were excluded for no voting record. The average word count was 700.51 (*SD* = 814.04).
+  
+# Results
+
+A forest plot of the results can be found in Figure \@ref(fig:Kpic), and all descriptive statistics can be found in Table \@ref(tab:Ktable). Results only weakly supported Hypothesis 1. The trend is in the hypothesized direction with supporters of military action displaying greater external focus, but the effect is non-significant. Hypothesis 2 was not supported; legislators opposing the war measure did not display a greater internal focus. In fact, supporters of the measure used more 1st person singular pronouns (e.g. I-words) contrary to our hypothesis. Hypothesis 3 was supported with supporters of the war measure showing lower cognitive complexity than those who opposed it.	
+	
+# Study 1B - Kosovo in the Senate
+
+In the second part of this study, we examined the Kosovo debate in the U.S. Senate to determine if the differences found in the first part of the study replicate in a slightly different context.
+
+# Method
+
+```{r senate-kosovo, eval=FALSE, include=FALSE}
+nrow(senateKosovo)
+mean(senateKosovo$WC)
+sd(senateKosovo$WC)
+table(senateKosovo$Party.Affiliation)
+length(levels(senateKosovo$Name))
+nrow(senateKosovo) - sum(table(senateKosovo$Oppose.Support))
+```
+
+Speeches were gathered in the same manner as in the first part of the study. All speeches made in the Senate in the year before the March 23, 1999 vote on Senate Concurrent Resolution 21. This resolution passed the Senate with 58 supporting and 41 opposing. All but 3 Democrats supported the resolution while 70% of Republicans opposed it. A total of 49 speeches were collected. These speeches were made by 25 unique senators with 12 speeches by Democrats and 37 by Republicans. The average word count for these speeches was 1413.14 (*SD* = 1076.37).
+	
+# Results
+
+Analyses were conducted in the same manner as the first part of the study with bootstrapped means and CIs calculated for the seven categories marking attention. Results can be seen as a forest plot in Figure \@ref(fig:Kpic) and Table \@ref(tab:Ktable). For the Senate, Hypothesis 1 was not supported. No significant differences in external focus or 3rd person plural pronouns were found. Hypothesis 2 was supported with legislators opposing the war measure displaying a much higher internal focus than legislators supporting the war measure. Hypothesis 3 was partially supported. While not statistically significant, supporters of the war measure tended to show lower cognitive complexity than those who opposed it.
+
+# Discussion
+
+The results of this first study only consistently support Hypothesis 3 (supporters of war measures would be less cognitively complex). The results were inconsistent for Hypothesis 1 and 2 (supporters of war measures would be more externally focus while those opposing would be internally focused) in that effects found for the House and Senate are non-overlapping. For Hypothesis 1, supporters of war in the House were marginally more externally focused but the effect was not replicated for the Senate. For Hypothesis 2, those opposing the measure in the Senate were more internally focused, but the same could not be said for those in the House.
+It is difficult to know exactly why this is the case; however there are several possible explanations. First, voting in Congress is exceedingly complex and is influenced by much more than floor debates in a given chamber. In this case, the Senate vote on the resolution occurred before the main debate in the House, which may have influenced what the debate focused on. Second, the Senate and the House are composed differently. Members of the House serve two year terms while Senators serve six year terms. Furthermore, Senators typically have more political experience than members of the House. These, as well as other factors, may help explain the differential effects for the two chambers of Congress. 
+	
+Based on the findings of @Abe2012 and @Matsumoto2015, we expected more consistent support for our hypotheses. However, the results could also be explained by the situation posed by the particular resolution. In this conflict, rather than responding to an act of aggression or a perceived threat, the U.S. was deciding the extent to which the U.S. would be involved in ongoing NATO (a treaty organization of which the U.S. is a member) operations in Kosovo and Serbia. It is possible that some viewed the outgroup as NATO rather than Serbians. In this case, with no clear, immediate threat to the U.S., for those making ingroup-outgroup distinctions, protecting the ingroup may have meant opposing the war rather than supporting it. In order to determine if the situation surrounding the Kosovo conflict may have impacted the first study, we next turned to examine the Iraq War which was had more support and also represented a possible clear threat to the U.S.
+
+	
+# Study 2A - Iraq in the House
+
+In this next study, we examined the debate preceding the congressional approval of the use of military force against Iraq. Regime change had been a long-standing position of the U.S. toward Iraq following the Gulf War; however serious military action was not considered until after the World Trade Center attacks on September 11, 2001. In 2002, President Bush declared Iraq part of an "axis of evil" in his State of the Union address. Iraq's repeated violations of nuclear arms agreements, ties to terrorist organizations, and pursuit of weapons of mass destruction were argued by the Bush Administration to potentially pose a major threat to U.S. national security. This prompted the debate within Congress as to whether or not to approve President Bush's request for military action [@Katzman2002]. These studies were used to determine if the findings from the first study extend to a different conflict. Specifically, in the first part of this study, we examined the debate in the House of Representatives to determine if members of Congress who supported taking military action used more self and future references. 
+  
+# Method
+
+```{r house-iraq, eval=FALSE, include=FALSE}
+nrow(houseIraq)
+mean(houseIraq$WC)
+sd(houseIraq$WC)
+table(houseIraq$Party.Affiliation)
+length(levels(houseIraq$Name))
+nrow(houseIraq) - sum(table(houseIraq$Oppose.Support))
+```
+
+Once again using the Government Publishing Office, we collected speeches given in the House of Representatives pertaining to the use of U.S. military force against Iraq in the three months before the vote on House Joint Resolution 114 on October 10, 2002. This bill passed the House with a 296-133 majority; with most Republicans supporting the measure and 60% of Democrats opposing. A total of 274 speeches were collected representing 233 unique speakers. Of these speeches, 155 speeches were made by Democrats, 119 were made by Republicans. The average word count of the speeches was 742.34 (*SD* = 1053.45). Four speeches were excluded for no voting record.
+
+# Results
+
+```{r Itable, echo = FALSE, results = 'asis'}
+Itable = table1[1:10]
+Itable = subset(Itable, Region == "Iraq")
+Itable = Itable[order(Itable$Chamber), ]
+
+apa_table.latex(as.data.frame(Itable),
+          align = c("l", rep("c",9)),
+          caption = "Descriptive statistics for each dependent variable by chamber, 
+          region, and military support for Iraq", 
+          note = "Confidence intervals for $d_s$ were calculated using 
+          non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
+          small = T,
+          escape = F,
+          col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$",
+                       "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
+```
+
+```{r Ipic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Iraq.", fig.height=6, fig.width=8}
+Ipic = table1[ , c(1:4, 6, 11:14)]
+Ipic = subset(Ipic, Region == "Iraq")
+IpicO = Ipic[, c(1:4, 6, 7)]
+IpicS = Ipic[, c(1:3, 5, 8, 9)]
+colnames(IpicO)[4:6] = c("bmean", "Mlow", "Mhigh")
+colnames(IpicS)[4:6] = c("bmean", "Mlow", "Mhigh")
+Ipic = rbind(IpicO, IpicS)
+Ipic$groupOS = c(rep("Oppose", nrow(IpicO)), rep("Support", nrow(IpicS)))
+Ipic$bmean = as.numeric(Ipic$bmean)
+Ipic$Mlow = as.numeric(Ipic$Mlow)
+Ipic$Mhigh = as.numeric(Ipic$Mhigh)
+
+Ihouse = fplot(Ipic[Ipic$Chamber == "House", ], upperlimit = 8)
+Isenate = fplot(Ipic[Ipic$Chamber == "Senate", ], upperlimit = 8)
+
+legend = get_legend(Ihouse)
+plot_grid( Ihouse + theme(legend.position="none"),
+           Isenate + theme(legend.position=c(.75, .75)),
+           hjust = -1,
+           nrow = 1
+)
+```
+
+As in the first study, bootstrapped means and confidence intervals as well as effect sizes (Cohen's $d_s$) were calculated for speeches of those supporting the measure versus those opposing the measure for the following LIWC categories: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*) as well as composite measure for external focus, internal focus, and cognitive complexity. Results can be seen as a forest plot in Figure \@ref(fig:Ipic) and in Table \@ref(tab:Itable). Support was found for Hypothesis 1. Legislators supporting the war measure were more externally focused. However, rather than being primarily driven by third-person plural pronouns (*they*), the largest differences was in third-person singular pronouns (*he*). Hypothesis 2 was not supported; no significant difference was found in internal focus. Hypothesis 3 was supported; supporters of the war measure were significantly less cognitively complex than those who opposed it.
+	
+# Study 2B - Iraq in the Senate
+
+In the second part of this study, we examined the debate in the Senate. We wished to determine if, like senators who opposed military action in Kosovo, senators who opposed action against Iraq used more group references as well as more reference to current events or if senators were more like House members debating Iraq.
+  
+# Method
+
+```{r senate-Iraq, eval=FALSE, include=FALSE}
+nrow(senateIraq)
+mean(senateIraq$WC)
+sd(senateIraq$WC)
+table(senateIraq$Party.Affiliation)
+length(levels(senateIraq$Name))
+nrow(senateIraq) - sum(table(senateIraq$Oppose.Support))
+```
+
+In this part of the study, speeches from the Senate were gathered for the 6 months before the Senate vote on House Joint Resolution 114 conducted on October 11, 2002. The bill passed with a 77-23 majority. All but one Republican supported the measure as did 58% of Democrats. In total, 138 speeches were collected representing 85 unique speakers. Of these speeches, 74 were given by Democrats and 64 by Republicans. The average word count for these speeches were 1991.23 (*SD* = 1671.70). 
+  	
+# Results
+
+Analyses were conducted in the same manner as the first part of the study to determine differences between supporters and opponents of military action in Iraq in terms of the use of first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*) as well as composite measure for external focus, internal focus, and cognitive complexity. Figure \@ref(fig:Ipic) displays these results as a forest plot, and all values are in Table \@ref(tab:Itable). Hypothesis 1 was once again supported. Senators supporting the war legislations were more externally focus, and like in the House, tended to use third-person singular pronouns (*he*) at higher rates.  Once again, we failed to find support for Hypothesis 2 with no significant differences found in internal focus. Finally, while not statistically significant, cognitive complexity tended to be lower for Senators supporting the war measure providing at least partial support for Hypothesis 3.
+	
+# Discussion
+
+The results from this second study more closely matched our hypotheses. For both the House and Senate, members of Congress who supported taking military action were more externally focused than those who opposed taking military action. However contrary to our hypothesis, the difference in external focus was driven by third person singular pronouns (*he*) rather than third person plural pronouns (*they*). Although this finding was not quite the result we expected, these differences make sense in light of the situation. In the case of the Iraq War, the threat was seen not as a group of people but rather a single individual, Saddam Hussein. Hence, for supporters of military action, their focus was still external as was expected [@Abe2012; @Matsumoto2015]; however, their focus was on an individual rather than a group. 
+
+The second hypothesis was not supported. In both the House and Senate, legislators who opposed the war measure were not more internally focused than those who supported it. As was stated previously, this difference in results could be due to voting procedures or compositional differences in the House and Senate. Finally, our third hypothesis was once again consistently supported. Those who supported the war measures showed less cognitive complexity than those who opposed them in both the House and Senate.
+
+As a final test of our hypotheses, we examined the Congressional debate surrounding U.S. involvement in Libya during its 2011 civil war. We might expect to find similar results to Study 1 as, like the Kosovo war, there was less support for U.S. military involvement as well as a lack of a perceived clear, immediate threat to the U.S.
+
+	
+# Study 3 - Libya in the House
+
+In this final study, we examine the debate in the House of Representatives surrounding U.S. military involvement in Libya during its revolution. In February 2011, a revolt against Libyan dictator, Muammar Qaddafi, prompted the intervention of NATO when Qaddafi violently suppressed all opposition. The involvement of NATO lead to debate within Congress as to the exact role of the U.S. in military operations in Libya and the extent of U.S involvement [@Blanchard2011]. In examining this debate, we wished to determine if the language of those who supported or opposed military action was similar to those of either of the first two studies. 
+
+# Method
+
+```{r house-Libya, eval=FALSE, include=FALSE}
+nrow(houseLibya)
+mean(houseLibya$WC)
+sd(houseLibya$WC)
+table(houseLibya$Party.Affiliation)
+length(levels(houseLibya$Name))
+nrow(houseLibya) - sum(table(houseLibya$Oppose.Support))
+```
+
+In this final study, the Congressional Record was searched for speeches given in the House of Representatives pertaining to the debate of the authorization of military action against Libya in the three months before the vote on House Joint Resolution 68 on June 24, 2011. The bill failed in the House 123-295. All but 14 Republicans voted against the resolution while 60% of Democrats supported the resolution. A total of 104 speeches were collected representing 76 unique speakers. Democrats made 53 of these speeches while 51 speeches were made by Republicans. The average word count for these speeches was 465.93 (*SD* = 477.41). As the resolution failed in the House, it was not possible to examine this debate in the Senate. Five speeches were excluded for no voting record.
+	
+# Results
+
+```{r Ltable, echo = FALSE, results = 'asis'}
+Ltable = table1[1:10]
+Ltable = subset(Ltable, Region == "Libya")
+Ltable = Ltable[order(Ltable$Chamber), ]
+
+apa_table.latex(as.data.frame(Ltable),
+          row.names = F,
+          align = c("l", rep("c",9)),
+          caption = "Descriptive statistics for each dependent variable by chamber, 
+          region, and military support for Libya", 
+          note = "Confidence intervals for $d_s$ were calculated using 
+          non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
+          small = T,
+          escape = F,
+          col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$", 
+                        "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
+```
+
+```{r Lpic, echo=FALSE, warning= FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval for pronouns and verb tenses for Libya.", fig.height=6, fig.width=8}
+Lpic = table1[ , c(1:4, 6, 11:14)]
+Lpic = subset(Lpic, Region == "Libya")
+LpicO = Lpic[, c(1:4, 6, 7)]
+LpicS = Lpic[, c(1:3, 5, 8, 9)]
+colnames(LpicO)[4:6] = c("bmean", "Mlow", "Mhigh")
+colnames(LpicS)[4:6] = c("bmean", "Mlow", "Mhigh")
+Lpic = rbind(LpicO, LpicS)
+Lpic$groupOS = c(rep("Oppose", nrow(LpicO)), rep("Support", nrow(LpicS)))
+Lpic$bmean = as.numeric(Lpic$bmean)
+Lpic$Mlow = as.numeric(Lpic$Mlow)
+Lpic$Mhigh = as.numeric(Lpic$Mhigh)
+
+Lhouse = fplot(Lpic[Lpic$Chamber == "House", ], upperlimit = 8)
+
+legend = get_legend(Lhouse)
+plot_grid( Lhouse + theme(legend.position=c(.75, .75)),
+           hjust = -1,
+           nrow = 1
+)
+```
+
+As in the first two studies, analyses consisted on comparing the bootstrapped means, CIs, and effects sizes for those who supported the military measure versus those who opposed it on the following linguistic measures: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*), past-tense, present-tense, and future tense. These results are displayed in Figure \@ref(fig:Lpic) as a forest plot and in Table \@ref(tab:Ltable). No differences emerged on any measure. 
+
+# Discussion
+
+Though the evidence from this third study is somewhat weak, all three hypothesis were at least partially supported. The relatively small sample size limited the power of the study, but trends in each case were in the hypothesized direction. In addition to potentially limited power, our finding from Studies 1 and 3 could indicate that in situations where there is less Congressional support for military action and no clear, immediate threat to the U.S., the difference between support and opposition for military action is not a matter of attentional focus but rather other social and political forces. 
+	
+# General Discussion
+
+Across all three studies, we found consistent, if somewhat weak evidence that supporters of war measures show less cognitive complexity in their speeches than those on the opposing side (Hypothesis 3) replicating part of the @Matsumoto2015 study. When it comes to consideration of aggressive acts like war, our studies would suggest that legislators (at least in the U.S.) reason similarly to the executive leaders analyzed by @Matsumoto2015. Political figures in favor of aggressive measures seek to simplify the debate whereas those against aggressive measure may seek to consider the issue more deeply. Whether the decreased cognitive complexity before aggression is a rhetorical strategy, ideological beliefs, cognitive style, or some other factor is worth further investigation. 
+
+Our hypotheses regarding internal and external focus were not consistently supported. Support for hypothesis 1 was found only in the case of the debate around the Iraq War. Interestingly, the Iraq War legislation was the only of our case in our three studies which received majority support in both the House and Senate. Differences in external focus may depend partially on the aggressive act having the support of the majority or having popular support or there being a potentially immediate, clear threat to the U.S. legislators could point to. In the cases of Kosovo and Libya, legislators may have supported the war measures for reasons other than aggression such as to support the president's agenda. 
+
+Hypothesis 2 received the least support of any of our hypothesis with significant differences found only in the Senate debate of the Kosovo resolution failing to replicate @Abe2012. Unlike Hypotheses 1 and 3 which are at least partially based in @Matsumoto2015's study of executive, Hypothesis 2 is solely based in @Abe2012's study of the war attitudes of ordinary citizens. Our results suggest that findings of @Abe2012 may only generalize to laypeople and fail to capture the processes at work with the war decisions of political elites. 
+Additionally, we may have only partially replicated @Matsumoto2015 is due to changes in the dynamics of war. While @Matsumoto2015 examined events spanning 1830 to 2010, our study focused on three recent conflicts within the context of U.S. legislator bodies. Historically, the U.S. would declare war on another nation (i.e., fighting the Germans in WWI). In WWII, a slight shift occurred where the U.S. was fighting not only another nation but also an ideology (Nazi Germany, Fascist Italy). With the beginning of the Cold War, another movement happened where the U.S. did not directly fight another nation (USSR) but instead fought indirectly with proxy wars (Korean War, Vietnam War) while battling against enemy ideology (Communism). After the Cold War and the fall of the Soviet Union, the focus shifted to the United States' main conflict being the war on terror in which there is no nation to battle against just an idea [@Matthews2014]. Furthermore, @Balas2012 argued that one possible motivation for war, since the end of the Cold War, was the increased emphasis on the international norms of democratization and humanitarianism. Hence, rather than capturing solely support for aggressive actions, our study of congressional debates in this context may have also captured legislators' attitudes toward humanitarianism, globalization, and terrorism. Further work would be necessary to the different reasons why political figures might support or oppose a war measure.
+
+
+## Limitations
+
+The sample and methods used in the study, while useful, can also be somewhat limited in scope. First, even though the Congressional Record represents everything said on the floor of Congress, it does not necessarily represent the entirety of Congress. Our sample incorporates nearly 15 years in Congress. This time period encompassed seven election cycles and at any given time, there are 100 senators and 435 congressmen and women. While our data set likely included speeches from the more influential senators and congressmen and women, we cannot predict voting from those who did not speak. Furthermore, our findings regarding masculine versus feminine pronouns could be confounded by the under-representation of women in Congress. In the 113th Congress, women comprised 20% of the Senate and 18% of the House [@Manning2014]. For the years of voting records we used, there were 96 women in Congress in 2011, 73 in 2002, and 67 in 1999 compared to 105 women in the current Congress. Another limitation is tied to using word frequency as an independent measure, although @Tausczik2010 have provided support for this research. Word frequency is a meaningful measure of language, though it does fail to take into account context, sarcasm, and other subtle aspects of language. 
+
+## Future Directions
+
+While we were unable to completely replicate the previous studies, the method used has great potential for replicating past work on political behaviors and attitudes in a legislative context as well as enhancing the understanding of legislative decision making. We examined only one small area of policy using a single psychological process, but future research could explore foreign policy more widely or education policy or any number of legislative areas where there is recurrent debate. Furthermore, our investigation was limited to studying attentional focus and cognitive complexity, but with LIWC2015 or other language analysis methods, future research could examine thinking style, emotionality, authenticity, cognitive processing, or any number of other psychological constructs. When it comes to politics there is no lack of political language, making language analysis a powerful tool for political psychology, especially when combined with other behavioral data such as voting records.
+
+\newpage
+
+# References
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
