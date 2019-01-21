@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/r,macos,windows
 
+old_backup/
+
 ### macOS ###
 *.DS_Store
 .AppleDouble
