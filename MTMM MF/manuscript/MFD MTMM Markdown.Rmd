@@ -769,6 +769,7 @@ summary(mtmmdata[ , 33:47])
 ```
 
 Here I will write about the overall percents and all that jazz for these results. 
+Work on the MTMM part 
 
 ####edit below here however you want
 
@@ -1131,6 +1132,56 @@ The fit of this first model indicated some misfit, as fit indices were a mix of 
 ERIN STOPPED HERE CUZ HEADACHE. 
 The second step (Model 2) involved eliminating the latent traits from the model. This model was significantly worse than Model 1 indicating the traits are important to the model ($\delta$ $\chi$ 2 = 1141.09, $\delta$ df = 45, $\delta$ CFI = .351). This supports convergent validity for the traits measured by both methods which in this case are the five moral foundations. The third step (Model 3) involved forcing the five traits to be perfectly correlated. This model was significantly worse than Model 1 indicating the usefulness of five unique traits ($\delta$ $\chi$ 2 = 311.09, $\delta$ df = 10, $\delta$ CFI = .097). This supports discriminant validity for the existence of five unique moral foundations. The final step (Model 4) involved allowing the correlations between the traits to be freely estimated and forcing the methods to be uncorrelated. This model was similar to Model 1 indicating the methods both measure the traits but they are both unique methods ($\delta$ $\chi$ 2 = 2.23, $\delta$ df = 1, $\delta$ CFI = .001). This supports discriminant validity for the methods. This set of analyses suggests the MFD is a possibly valid measure of moral foundations but does not measure them well enough to be useful in all applications and may be measuring them differently than the MFQ. 
 	Regression predicting Political Orientation. The MFQ has predicted political orientation across many studies [@Federico2013; @Graham2009; @Haidt2009; @Weber2013]. Therefore, in addition to the MTMM analysis, we compared how well the MFD score predicted political orientation compared to how well the MFQ predicted the political orientation. First, total MFQ scores were calculated for each foundation by averaging all six items. Then, a regression analysis was conducted with the five MFQ foundation score predicting political orientation. The overall model was significant, *R2* = .35, *F* (5, 255) = 26.91, *p* < .05. Higher scores on the harm and fairness foundations predicted a more liberal political orientation with harm accounting for 3% of the variance and fairness accounting for 6%. Higher scores on ingroup, authority, and purity predicted a more conservative orientation accounting for 1%, 2%, and 8% on the variance respectively. See *table ?* for regression coefficients. Next, a regression analysis was conducted to determine how well the five MFD scores predicted political orientation. The overall model was not significant, *R2* = .16, *F* (5, 255) = 1.36, *p* = .241. Higher harm scores somewhat predicted more liberal orientation accounting for 1% of the variance in political orientation. Higher purity scores somewhat predicted more conservative orientation accounting for 1% of the variance. See *table ?* for regression coefficients.
+
+# Experiment 4
+
+```{r read_doc, echo = F}
+#load the library
+library(textreadr)
+library(readxl)
+
+#read the list of files in each working folder
+folder = here::here()
+files2read = c(
+  list.files(paste0(folder, "/War Congress Data/House - Conflict"), full.names = T),
+  list.files(paste0(folder, "/War Congress Data/House - Kosovo"), full.names = T),
+  list.files(paste0(folder, "/War Congress Data/House Hearings - Foreign Affairs"), full.names = T),
+  list.files(paste0(folder, "/War Congress Data/Post War Iraq"), full.names = T),
+  list.files(paste0(folder, "/War Congress Data/Prez - Conflict"), full.names = T),
+  list.files(paste0(folder, "/War Congress Data/Senate - Conflict"), full.names = T),
+  list.files(paste0(folder, "/War Congress Data/Senate - Foreign Affairs"), full.names = T)
+  )
+
+#create blank list
+listofiles = list()
+
+#read them all in
+for (i in 1:length(files2read)) {
+  listofiles[i] = paste(read_docx(files2read[i]), collapse = " ")
+  names(listofiles)[i] = basename(files2read[i])
+}
+
+#create a final dataframe of the title + text
+docDF = as.data.frame(do.call(rbind, listofiles))
+docDF$filename = rownames(docDF)
+
+#merge with other data information
+congress_information = read_excel(paste0(folder, 
+                                         "/War Congress Data/", 
+                                         "List of files.xlsx"))
+colnames(congress_information)[1] = "filename"
+
+final_exp4 = merge(congress_information, 
+                   docDF,
+                   by = "filename",
+                   all = T)
+
+##save this for later
+#unlist(strsplit(basename(files2read[1]), split = "[.]"))[1]
+
+```
+
+
 	
 ## Study 2
   In Study 2, the MFD was applied to real-world data, U.S. Congressional speeches. The purpose of this study was to further test the predictive validity of the MFD. If valid, the MFD should detect political party differences in congressional speeches. 
