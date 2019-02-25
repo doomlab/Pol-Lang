@@ -1239,6 +1239,9 @@ library(ggplot2)
 library(reshape)
 melted = melt(final_exp4[ , c(13, 19:33)],
               id = "Party")
+melted = subset(melted, Party != "I")
+melted$Party = droplevels(melted$Party)
+melted = na.omit(melted)
 
 cleanup = theme(panel.grid.major = element_blank(), 
                 panel.grid.minor = element_blank(), 
@@ -1248,9 +1251,16 @@ cleanup = theme(panel.grid.major = element_blank(),
                 legend.key = element_rect(fill = "white"),
                 text = element_text(size = 15))
 
-ggplot(melted, aes(variable, value, group = Party)) + 
-  stat_summary() +
+ggplot(melted, aes(variable, value, fill = Party)) + 
+  stat_summary(fun.y = mean,
+               geom = "bar",
+               position = "dodge") +
+  stat_summary(fun.data = mean_cl_normal,
+               geom = "errorbar", 
+               position = position_dodge(width = 0.90),
+               width = .2) +
   cleanup + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
   NULL
 
 ```
