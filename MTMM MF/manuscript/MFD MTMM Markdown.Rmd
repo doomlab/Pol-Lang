@@ -916,7 +916,6 @@ summary(model4.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model4.fit, fit.measures = "aic")
 ```
 
-
 ```{r mtmm_reduce, include = FALSE}
 
 {model1 = '
@@ -1121,21 +1120,9 @@ summary(model4.fit, rsquare=TRUE, standardized=TRUE)
 fitMeasures(model4.fit, fit.measures = "aic")
 ```
 
-## Results
-
-  Data Cleaning and Descriptives. In sample 1, participants who wrote less than 50 words were deleted (*n* = 69) leaving *n* = 221 participants. The average political orientation was 4.80 (*SD* = 2.21) on a scale of 1 (*conservative*) to 10 (*liberal*). In sample 2, all 160 participants wrote at least 50 words. The mean political orientation was 5.01 (*SD* = 2.33) for sample 2. The data from sample 1 and sample 2 were combined. Before any analyses were conducted, participants who did not use any words from the MFD were deleted; 16 participants were deleted from sample 1 and 25 from sample 2. The final sample size for analysis was *N* = 340 which had a mean political orientation of 4.90 (*SD* = 2.28). MFD scores were computed using NVivo *(CITE)* as both frequency for each foundation and percent coverage for each foundation. Frequency was simply the count of the number of words used from a given foundation dictionary; for example, a participant using the word *war* once and the word *peace* twice would have a frequency score of 3 for the *harm* dictionary. Percent coverage was calculated by taking the frequency and dividing by the word count; for example, given a frequency score of 3 for the *harm* dictionary and a word count of 100, then the percent coverage would be .03 for the *harm* dictionary. MFQ scores for each foundation were calculated by averaging the six items pertaining to each foundation. 
-	Reliability. Here we should talk about the reliability of the MFQ for each piece, as well as the reliability of the words for the MFD. I think to do that you might need a thing that has each word as frequency count yes/no or however the LIWC version thing was done. 
-	MTMM. BASIC SEM STUFF HERE (also that you used bayes)
-Data screening was conducted using SPSS version 22 and AMOS version 22. Participants who were missing data for the MFD, MFQ, or political orientation were deleted from all analyses. Given the distribution of the dictionary variables, participants whose writing sample were less than 2% words from the MFD were deleted resulting in a sample size of 252. Additionally, 7 outliers were deleted.
-Widaman's (1985; as cited in @Byrne2009) four-step nested method was used to test the convergent and divergent validity of the MFD and MFQ. The first step is the baseline model (Model 1), which establishes correlation among traits (*harm*, *purity*, *fairness*, *authority*, and *ingroup*) as well as correlation among methods (MFD and MFQ) but no cross correlation of traits and methods. The individual questions from the 30 item version of the MFQ and the total frequency of concepts from each foundation in the MFD were used as measured variables. 
-The fit of this first model indicated some misfit, as fit indices were a mix of poor and acceptable, $\chi$ 2 (514) = 977.46, $\chi$ 2/df = 1.90, CFI = .842, RMSEA = .061 [95% CI = .055-.067], SRMR = .0623. In this model, the MFD *harm*, *fairness*, and *ingroup* items significantly loaded onto their trait factors, while *authority* and *purity* did not. All foundations but *authority* loaded significantly on the method traits. All but two of the *ingroup* questions and one *authority* question loaded onto the MFQ trait factors. Several questions of the MFQ did not load significantly onto the methods factors; however, this result was taken as an indicator that traits variance was higher than methods variance. Generally, trait loadings were higher than method loadings for both the MFD and MFQ for *harm* and *fairness* traits. However, the *purity*, *ingroup*, and *authority* foundations did not show this loading pattern. 
-ERIN STOPPED HERE CUZ HEADACHE. 
-The second step (Model 2) involved eliminating the latent traits from the model. This model was significantly worse than Model 1 indicating the traits are important to the model ($\delta$ $\chi$ 2 = 1141.09, $\delta$ df = 45, $\delta$ CFI = .351). This supports convergent validity for the traits measured by both methods which in this case are the five moral foundations. The third step (Model 3) involved forcing the five traits to be perfectly correlated. This model was significantly worse than Model 1 indicating the usefulness of five unique traits ($\delta$ $\chi$ 2 = 311.09, $\delta$ df = 10, $\delta$ CFI = .097). This supports discriminant validity for the existence of five unique moral foundations. The final step (Model 4) involved allowing the correlations between the traits to be freely estimated and forcing the methods to be uncorrelated. This model was similar to Model 1 indicating the methods both measure the traits but they are both unique methods ($\delta$ $\chi$ 2 = 2.23, $\delta$ df = 1, $\delta$ CFI = .001). This supports discriminant validity for the methods. This set of analyses suggests the MFD is a possibly valid measure of moral foundations but does not measure them well enough to be useful in all applications and may be measuring them differently than the MFQ. 
-	Regression predicting Political Orientation. The MFQ has predicted political orientation across many studies [@Federico2013; @Graham2009; @Haidt2009; @Weber2013]. Therefore, in addition to the MTMM analysis, we compared how well the MFD score predicted political orientation compared to how well the MFQ predicted the political orientation. First, total MFQ scores were calculated for each foundation by averaging all six items. Then, a regression analysis was conducted with the five MFQ foundation score predicting political orientation. The overall model was significant, *R2* = .35, *F* (5, 255) = 26.91, *p* < .05. Higher scores on the harm and fairness foundations predicted a more liberal political orientation with harm accounting for 3% of the variance and fairness accounting for 6%. Higher scores on ingroup, authority, and purity predicted a more conservative orientation accounting for 1%, 2%, and 8% on the variance respectively. See *table ?* for regression coefficients. Next, a regression analysis was conducted to determine how well the five MFD scores predicted political orientation. The overall model was not significant, *R2* = .16, *F* (5, 255) = 1.36, *p* = .241. Higher harm scores somewhat predicted more liberal orientation accounting for 1% of the variance in political orientation. Higher purity scores somewhat predicted more conservative orientation accounting for 1% of the variance. See *table ?* for regression coefficients.
-
 # Experiment 4
 
-```{r read_doc, echo = F}
+```{r read_doc, include = F, eval = F}
 #load the library
 library(textreadr)
 library(readxl)
@@ -1176,11 +1163,90 @@ final_exp4 = merge(congress_information,
                    by = "filename",
                    all = T)
 
-##save this for later
-#unlist(strsplit(basename(files2read[1]), split = "[.]"))[1]
+write.csv(final_exp4, "final_exp4.csv", row.names = F)
+```
+
+```{r create_percent, include = F}
+final_exp4 = read.csv("final_exp4.csv", stringsAsFactors = F)
+
+#word lists include
+#original_mfd, harm_words, harm_words_reduce, harm_words_reduce_exp2
+#original_mfd would be one comparison
+#just reduced would be original + both reduces
+#all would be all added together (harm_words + harm_words_reduce is repetitive but ok)
+
+##stem the data
+for (i in 1:nrow(final_exp4)) {
+  final_exp4$writing2[i] = paste(unlist(
+    text_tokens(final_exp4$V1[i], stemmer = "en")), collapse = " ")
+  final_exp4$wordcount[i] = string.summary(final_exp4$V1[i])$words
+}
+
+##create a corpus
+overall_corpus = Corpus(VectorSource(final_exp4$writing2))
+overall_TDM = as.matrix(TermDocumentMatrix(overall_corpus,
+                              control = list(removePunctuation = TRUE,
+                                             stopwords = TRUE)))
+
+##create sum totals
+for (i in 1:nrow(final_exp4)) {
+  
+  ##figure out the sum for just the original mfd
+  final_exp4$harm_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"])])
+  
+  final_exp4$purity_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"])])
+    
+  final_exp4$fair_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"])])
+
+  final_exp4$authority_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"])])
+  
+  final_exp4$ingroup_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"])])
+  
+  ##figure out the sum for all words ever 
+  final_exp4$harm_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"], harm_words, harm_words_reduce_exp2))])
+  
+  final_exp4$purity_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"], purity_words, purity_words_reduce_exp2))])
+    
+  final_exp4$fair_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"], fair_words, fair_words_reduce_exp2))])
+
+  final_exp4$authority_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"], authority_words, authority_words_reduce_exp2))])
+  
+  final_exp4$ingroup_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"], ingroup_words, ingroup_words_reduce_exp2))])
+  
+  ##figure out the sum for reduced words
+  final_exp4$harm_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"], harm_words_reduce, harm_words_reduce_exp2))])
+  
+  final_exp4$purity_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"], purity_words_reduce, purity_words_reduce_exp2))])
+    
+  final_exp4$fair_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"], fair_words_reduce, fair_words_reduce_exp2))])
+
+  final_exp4$authority_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"], authority_words_reduce, authority_words_reduce_exp2))])
+  
+  final_exp4$ingroup_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"], ingroup_words_reduce, ingroup_words_reduce_exp2))])
+
+}
+
+#create percents instead of frequencies
+final_exp4[ , c(33:47)] = final_exp4[ , c(33:47)] / final_exp4$wordcount * 100 
+
 
 ```
 
+
+
+
+
+
+
+  Data Cleaning and Descriptives. In sample 1, participants who wrote less than 50 words were deleted (*n* = 69) leaving *n* = 221 participants. The average political orientation was 4.80 (*SD* = 2.21) on a scale of 1 (*conservative*) to 10 (*liberal*). In sample 2, all 160 participants wrote at least 50 words. The mean political orientation was 5.01 (*SD* = 2.33) for sample 2. The data from sample 1 and sample 2 were combined. Before any analyses were conducted, participants who did not use any words from the MFD were deleted; 16 participants were deleted from sample 1 and 25 from sample 2. The final sample size for analysis was *N* = 340 which had a mean political orientation of 4.90 (*SD* = 2.28). MFD scores were computed using NVivo *(CITE)* as both frequency for each foundation and percent coverage for each foundation. Frequency was simply the count of the number of words used from a given foundation dictionary; for example, a participant using the word *war* once and the word *peace* twice would have a frequency score of 3 for the *harm* dictionary. Percent coverage was calculated by taking the frequency and dividing by the word count; for example, given a frequency score of 3 for the *harm* dictionary and a word count of 100, then the percent coverage would be .03 for the *harm* dictionary. MFQ scores for each foundation were calculated by averaging the six items pertaining to each foundation. 
+	Reliability. Here we should talk about the reliability of the MFQ for each piece, as well as the reliability of the words for the MFD. I think to do that you might need a thing that has each word as frequency count yes/no or however the LIWC version thing was done. 
+	MTMM. BASIC SEM STUFF HERE (also that you used bayes)
+Data screening was conducted using SPSS version 22 and AMOS version 22. Participants who were missing data for the MFD, MFQ, or political orientation were deleted from all analyses. Given the distribution of the dictionary variables, participants whose writing sample were less than 2% words from the MFD were deleted resulting in a sample size of 252. Additionally, 7 outliers were deleted.
+Widaman's (1985; as cited in @Byrne2009) four-step nested method was used to test the convergent and divergent validity of the MFD and MFQ. The first step is the baseline model (Model 1), which establishes correlation among traits (*harm*, *purity*, *fairness*, *authority*, and *ingroup*) as well as correlation among methods (MFD and MFQ) but no cross correlation of traits and methods. The individual questions from the 30 item version of the MFQ and the total frequency of concepts from each foundation in the MFD were used as measured variables. 
+The fit of this first model indicated some misfit, as fit indices were a mix of poor and acceptable, $\chi$ 2 (514) = 977.46, $\chi$ 2/df = 1.90, CFI = .842, RMSEA = .061 [95% CI = .055-.067], SRMR = .0623. In this model, the MFD *harm*, *fairness*, and *ingroup* items significantly loaded onto their trait factors, while *authority* and *purity* did not. All foundations but *authority* loaded significantly on the method traits. All but two of the *ingroup* questions and one *authority* question loaded onto the MFQ trait factors. Several questions of the MFQ did not load significantly onto the methods factors; however, this result was taken as an indicator that traits variance was higher than methods variance. Generally, trait loadings were higher than method loadings for both the MFD and MFQ for *harm* and *fairness* traits. However, the *purity*, *ingroup*, and *authority* foundations did not show this loading pattern. 
+ERIN STOPPED HERE CUZ HEADACHE. 
+The second step (Model 2) involved eliminating the latent traits from the model. This model was significantly worse than Model 1 indicating the traits are important to the model ($\delta$ $\chi$ 2 = 1141.09, $\delta$ df = 45, $\delta$ CFI = .351). This supports convergent validity for the traits measured by both methods which in this case are the five moral foundations. The third step (Model 3) involved forcing the five traits to be perfectly correlated. This model was significantly worse than Model 1 indicating the usefulness of five unique traits ($\delta$ $\chi$ 2 = 311.09, $\delta$ df = 10, $\delta$ CFI = .097). This supports discriminant validity for the existence of five unique moral foundations. The final step (Model 4) involved allowing the correlations between the traits to be freely estimated and forcing the methods to be uncorrelated. This model was similar to Model 1 indicating the methods both measure the traits but they are both unique methods ($\delta$ $\chi$ 2 = 2.23, $\delta$ df = 1, $\delta$ CFI = .001). This supports discriminant validity for the methods. This set of analyses suggests the MFD is a possibly valid measure of moral foundations but does not measure them well enough to be useful in all applications and may be measuring them differently than the MFQ. 
+	Regression predicting Political Orientation. The MFQ has predicted political orientation across many studies [@Federico2013; @Graham2009; @Haidt2009; @Weber2013]. Therefore, in addition to the MTMM analysis, we compared how well the MFD score predicted political orientation compared to how well the MFQ predicted the political orientation. First, total MFQ scores were calculated for each foundation by averaging all six items. Then, a regression analysis was conducted with the five MFQ foundation score predicting political orientation. The overall model was significant, *R2* = .35, *F* (5, 255) = 26.91, *p* < .05. Higher scores on the harm and fairness foundations predicted a more liberal political orientation with harm accounting for 3% of the variance and fairness accounting for 6%. Higher scores on ingroup, authority, and purity predicted a more conservative orientation accounting for 1%, 2%, and 8% on the variance respectively. See *table ?* for regression coefficients. Next, a regression analysis was conducted to determine how well the five MFD scores predicted political orientation. The overall model was not significant, *R2* = .16, *F* (5, 255) = 1.36, *p* = .241. Higher harm scores somewhat predicted more liberal orientation accounting for 1% of the variance in political orientation. Higher purity scores somewhat predicted more conservative orientation accounting for 1% of the variance. See *table ?* for regression coefficients.
 
 	
 ## Study 2
