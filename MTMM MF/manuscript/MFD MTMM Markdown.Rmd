@@ -1228,7 +1228,6 @@ final_exp4[ , c(19:33)] = final_exp4[ , c(19:33)] / final_exp4$wordcount * 100
 write.csv(final_exp4, "final_exp4.csv", row.names = F)
 ```
 
-
 ```{r analysis_exp4, include = F}
 final_exp4 = read.csv("final_exp4.csv", stringsAsFactors = F)
 final_exp4$Party = as.factor(final_exp4$Party)
@@ -1263,9 +1262,22 @@ ggplot(melted, aes(variable, value, fill = Party)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
   NULL
 
+#non-zero
+melted2 = subset(melted, value > 0)
+ggplot(melted2, aes(variable, value, fill = Party)) + 
+  stat_summary(fun.y = mean,
+               geom = "bar",
+               position = "dodge") +
+  stat_summary(fun.data = mean_cl_normal,
+               geom = "errorbar", 
+               position = position_dodge(width = 0.90),
+               width = .2) +
+  cleanup + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  NULL
 ```
 
-
+number of zeros in datasets are they different 
 
 
 
