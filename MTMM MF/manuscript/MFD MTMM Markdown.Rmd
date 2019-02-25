@@ -1122,7 +1122,7 @@ fitMeasures(model4.fit, fit.measures = "aic")
 
 # Experiment 4
 
-```{r read_doc, include = F, eval = F}
+```{r read_doc_create_per, include = F, eval = F}
 #load the library
 library(textreadr)
 library(readxl)
@@ -1163,17 +1163,10 @@ final_exp4 = merge(congress_information,
                    by = "filename",
                    all = T)
 
-write.csv(final_exp4, "final_exp4.csv", row.names = F)
-```
-
-```{r create_percent, include = F}
-final_exp4 = read.csv("final_exp4.csv", stringsAsFactors = F)
-
-#word lists include
-#original_mfd, harm_words, harm_words_reduce, harm_words_reduce_exp2
-#original_mfd would be one comparison
-#just reduced would be original + both reduces
-#all would be all added together (harm_words + harm_words_reduce is repetitive but ok)
+#originally wrote this out and imported but it's slow AF
+#so save it at the end without all the extra text stuff
+##write.csv(final_exp4, "final_exp4.csv", row.names = F)
+##final_exp4 = read.csv("final_exp4.csv", stringsAsFactors = F)
 
 ##stem the data
 for (i in 1:nrow(final_exp4)) {
@@ -1187,52 +1180,80 @@ overall_corpus = Corpus(VectorSource(final_exp4$writing2))
 overall_TDM = as.matrix(TermDocumentMatrix(overall_corpus,
                               control = list(removePunctuation = TRUE,
                                              stopwords = TRUE)))
+#convert
+overall_exp4 = as.data.frame(t(overall_TDM))
+rm(overall_TDM);rm(overall_corpus)
 
 ##create sum totals
 for (i in 1:nrow(final_exp4)) {
   
   ##figure out the sum for just the original mfd
-  final_exp4$harm_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"])])
+  final_exp4$harm_orig[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"])])
   
-  final_exp4$purity_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"])])
+  final_exp4$purity_orig[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"])])
     
-  final_exp4$fair_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"])])
+  final_exp4$fair_orig[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"])])
 
-  final_exp4$authority_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"])])
+  final_exp4$authority_orig[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"])])
   
-  final_exp4$ingroup_orig[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"])])
+  final_exp4$ingroup_orig[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"])])
   
   ##figure out the sum for all words ever 
-  final_exp4$harm_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"], harm_words, harm_words_reduce_exp2))])
+  final_exp4$harm_all[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"], harm_words, harm_words_reduce_exp2))])
   
-  final_exp4$purity_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"], purity_words, purity_words_reduce_exp2))])
+  final_exp4$purity_all[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"], purity_words, purity_words_reduce_exp2))])
     
-  final_exp4$fair_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"], fair_words, fair_words_reduce_exp2))])
+  final_exp4$fair_all[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"], fair_words, fair_words_reduce_exp2))])
 
-  final_exp4$authority_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"], authority_words, authority_words_reduce_exp2))])
+  final_exp4$authority_all[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"], authority_words, authority_words_reduce_exp2))])
   
-  final_exp4$ingroup_all[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"], ingroup_words, ingroup_words_reduce_exp2))])
+  final_exp4$ingroup_all[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"], ingroup_words, ingroup_words_reduce_exp2))])
   
   ##figure out the sum for reduced words
-  final_exp4$harm_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"], harm_words_reduce, harm_words_reduce_exp2))])
+  final_exp4$harm_reduce[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$h2[original_mfd$h2 != "" & original_mfd$h2 != "NA"], harm_words_reduce, harm_words_reduce_exp2))])
   
-  final_exp4$purity_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"], purity_words_reduce, purity_words_reduce_exp2))])
+  final_exp4$purity_reduce[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$p2[original_mfd$p2 != "" & original_mfd$p2 != "NA"], purity_words_reduce, purity_words_reduce_exp2))])
     
-  final_exp4$fair_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"], fair_words_reduce, fair_words_reduce_exp2))])
+  final_exp4$fair_reduce[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$f2[original_mfd$f2 != "" & original_mfd$f2 != "NA"], fair_words_reduce, fair_words_reduce_exp2))])
 
-  final_exp4$authority_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"], authority_words_reduce, authority_words_reduce_exp2))])
+  final_exp4$authority_reduce[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$a2[original_mfd$a2 != "" & original_mfd$a2 != "NA"], authority_words_reduce, authority_words_reduce_exp2))])
   
-  final_exp4$ingroup_reduce[i] = sum(overall_final[ i , colnames(overall_final) %in% unique(c(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"], ingroup_words_reduce, ingroup_words_reduce_exp2))])
+  final_exp4$ingroup_reduce[i] = sum(overall_exp4[ i , colnames(overall_exp4) %in% unique(c(original_mfd$i2[original_mfd$i2 != "" & original_mfd$i2 != "NA"], ingroup_words_reduce, ingroup_words_reduce_exp2))])
 
 }
 
 #create percents instead of frequencies
-final_exp4[ , c(33:47)] = final_exp4[ , c(33:47)] / final_exp4$wordcount * 100 
+final_exp4[ , c(19:33)] = final_exp4[ , c(19:33)] / final_exp4$wordcount * 100 
 
-
+write.csv(final_exp4, "final_exp4.csv", row.names = F)
 ```
 
 
+```{r analysis_exp4, include = F}
+final_exp4 = read.csv("final_exp4.csv", stringsAsFactors = F)
+final_exp4$Party = as.factor(final_exp4$Party)
+final_exp4$Venue = as.factor(final_exp4$Venue)
+final_exp4$Region = as.factor(final_exp4$Region)
+
+library(ggplot2)
+library(reshape)
+melted = melt(final_exp4[ , c(13, 19:33)],
+              id = "Party")
+
+cleanup = theme(panel.grid.major = element_blank(), 
+                panel.grid.minor = element_blank(), 
+                panel.background = element_blank(), 
+                axis.line.x = element_line(color = "black"),
+                axis.line.y = element_line(color = "black"),
+                legend.key = element_rect(fill = "white"),
+                text = element_text(size = 15))
+
+ggplot(melted, aes(variable, value, group = Party)) + 
+  stat_summary() +
+  cleanup + 
+  NULL
+
+```
 
 
 
