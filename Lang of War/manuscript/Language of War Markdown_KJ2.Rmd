@@ -54,7 +54,7 @@ library(boot)
 library(nlme)
 library(MOTE)
 knitr::opts_chunk$set(cache = TRUE)
-nsim = 10000
+nsim = 10
 
 library(ggplot2)
 cleanup = theme(panel.grid.major = element_blank(), 
@@ -91,9 +91,10 @@ knitr::opts_chunk$set(warning = F)
 In the last few years, numerous civil disputes worldwide, which might threaten American interests and human rights, have spurred considerable debate over American military intervention. Despite declines in legislative control of foreign policy, the U.S. Congress still plays an important role in deciding how the military is used by retaining the rights to formally declare war, limit the use of military force, and control military appropriations [@Phelps2002]. Previous research examined the predictors of presidential use of military force [@Clark2005; @Keller2012] and predictors of public support for war [@Cohrs2002; @Friese2009; @McCleary2009]. However, the predictors of legislative support of military action have been understudied, thus presenting an interesting opportunity for exploration as well as replication of past studies in new contexts [@Kriner2014]. Specifically, the current study examines linguistic styles as a predictor of support for war in the contexts of the U.S. Congress by conceptually replicating @Abe2012 and @Matsumoto2013.
 
 ## Predictors of Support for Military Action
+
 While the current study focuses on linguistic style predictors of support, it is worth briefly reviewing past work on the various factors which predict support for war. When it comes to executive leaders like presidents, there is much variance across time and context, but some predictors emerge. For example, @Keller2012 found presidents high in internal locus of control to be more likely to engage in military conflict, and @Leudar2004 found executives engaging or planning to engage in conflict tended to use more us versus them rhetoric. Despite the executive making the ultimate decision to go to war, public opinion about the war is an important consideration for leaders (at least in a democracy). Furthermore, public opinion is generally easier to measure and has been the focus on much work not only in psychology but also in other fields like political science. Numerous studies have found robust predictors of support for war among citizens/voters including militarism, blind patriotism, and concern for national security [@Cohrs2012; @Friese2009; @McCleary2009]. 
 
-Less work has been conducted exploring predictors of support for war among legislators. @Kriner2014 did study ongoing support for the Iraq War by members of Congress and found opposition to the war generally related to the number of casualties from the member's home district. Beyond understanding how support for war changes through political rhetoric, it would also be useful to understand how legislators come to support war in the first place. In the wake of several incidences of the U.S. president acting alone to engage the nation in military conflict (i.e. the Vietnam War), Congress enacted the War Powers Act and sought to exert its power by forcing the president to consult with them and gain approval to keep the U.S. military fighting overseas. In other words, Congress becomes involved only after troops have begun fighting and must either vote in support of continuing U.S military involvement (as was the case for the Iraq War) or in opposition to the president's continued use of the military in the conflict (as was the case for the 1999 conflict in Kosovo and the 2011 Libyan conflict)[@Bessette2017]. We sought to expand past work in the area by using the debates and speeches about these votes given on the floor on Congress to predict how different members of Congress eventually voted to either support the president's use of military force or oppose it. As we use psychological text analysis to measure our predictors, the next section provides a brief overview on language analysis before we discuss the specific linguistic styles measured in the current study. 
+Less work has been conducted exploring predictors of support for war among legislators. @Kriner2014 did study ongoing support for the Iraq War by members of Congress and found opposition to the war generally related to the number of casualties from the member's home district. Beyond understanding how support for war changes through political rhetoric, it would also be useful to understand how legislators come to support war in the first place. In the wake of several incidences of the U.S. president acting alone to engage the nation in military conflict (i.e., the Vietnam War), Congress enacted the War Powers Act and sought to exert its power by forcing the president to consult with them and gain approval to keep the U.S. military fighting overseas. In other words, Congress becomes involved only after troops have begun fighting and must either vote in support of continuing U.S military involvement (as was the case for the Iraq War) or in opposition to the president's continued use of the military in the conflict [as was the case for the 1999 conflict in Kosovo and the 2011 Libyan conflict; @Bessette2017]. We sought to expand past work in the area by using the debates and speeches about these votes given on the floor of Congress to predict how different members of Congress eventually voted to either support the president's use of military force or oppose it. As we use psychological text analysis to measure our predictors, the next section provides a brief overview on language analysis before we discuss the specific linguistic styles measured in the current study. 
 
 ## Psychological Language Analysis
 
@@ -106,12 +107,15 @@ Just as a person's gaze can illuminate where their attention is so can the words
 Another construct which can be automatically measured from language is cognitive complexity. Originally developed by @Pennebaker1999, cognitive complexity measures the extent to which people are drawing distinctions between concepts and integrating ideas. In past studies, cognitive complexity has been found to be related to individual differences measures such as extroversion and conscientiousness [@Pennebaker1999], aggressive behaviors [@Pennebaker2011], and reactions to negative events [@Abe2011]. 
 
 ## Predicting Support from War from Linguistic Style
-We sought to conceptually replicate two studies of the role of linguistic style in predicting war attitudes and behaviors, @Abe2012 and @Matsumoto2013, in the U.S. Congressional context. @Abe2012 used linguistic analysis to examine the relationship between cognitive –affective styles and support for the Iraq in an online discussion forum. Consistent with past work, supporters of the war had a greater external focus and a more simplistic thinking style (Cohen's $d$ ~ 0.35 to 0.41). Opponents of the war were more internally focused, showed greater cognitive processing, and used more negative emotion words. The current work seeks to conceptually replicate @Abe2012 with three changes: (1) extending to a new sample of Congressional speeches, (2) extending to additional conflicts in Kosovo and Libya, and (3) focusing solely on cognitive styles.
 
-@Matsumoto2013 used speeches of world and political group leaders to more directly predict political aggression from language markers. Comparing speeches preceding violent acts of aggression to speeches preceding nonviolent acts of resistance against some outgroups, they found greater external focus (e.g. first person plural pronouns), less internal focus (e.g. first person singular pronouns), and lessened cognitive complexity before aggressive acts (Cohen's $d$ ~ 0.67). The authors extend @Abe2012's work into a wider political context predicting leader’s actual decisions focusing on cognitive linguistic markers. The current work is a more direct replication of @Matsumoto2013 with the only substantive difference being the sample itself and the outcome measure (e.g. voting for war rather than actual acts of aggression). Given the variability between the two studies in terms of effect size magnitude and the generally small effects found for language studies, we sought generally to replicate the direction of the effects. 
+We sought to conceptually replicate two studies of the role of linguistic style in predicting war attitudes and behaviors, @Abe2012 and @Matsumoto2013, in the U.S. Congressional context. @Abe2012 used linguistic analysis to examine the relationship between cognitive – affective styles and support for the Iraq War in an online discussion forum. Consistent with past work, supporters of the war had a greater external focus and a more simplistic thinking style (Cohen's $d$ ~ 0.35 to 0.41). Opponents of the war were more internally focused, showed greater cognitive processing, and used more negative emotion words. The current work seeks to conceptually replicate @Abe2012 with three changes: (1) extending to a new sample of Congressional speeches, (2) extending to additional conflicts in Kosovo and Libya, and (3) focusing solely on cognitive styles.
+
+@Matsumoto2013 used speeches of world and political group leaders to more directly predict political aggression from language markers. Comparing speeches preceding violent acts of aggression to speeches preceding nonviolent acts of resistance against some outgroups, they found greater external focus (e.g., first person plural pronouns), less internal focus (e.g., first person singular pronouns), and lessened cognitive complexity before aggressive acts (Cohen's $d$ ~ 0.67). The authors extend @Abe2012's work into a wider political context predicting leader's actual decisions focusing on cognitive linguistic markers. The current work is a more direct replication of @Matsumoto2013 with the only substantive difference being the sample itself and the outcome measure (e.g., voting for war rather than actual acts of aggression). Given the variability between the two studies in terms of effect size magnitude and the generally small effects found for language studies, we sought generally to replicate the direction of the effects. 
 
 ## Current Study
-The purpose of the current studies is to determine if past studies on war decisions and aggression replicate in the context of the U.S. Congress when voting on war measures. In the last few decades, Congress has had formal votes to authorize the president's use of military action three times. First, in 1999, U.S. allies intervened in a civil war in Serbia, and President Clinton asked Congress for formal approval to send U.S. military troops to assist U.S. allies. Second, in 2002, President Bush requested approval from Congress to continue military action against Iraq due to the supposed threat posed by their WMDs. Third, in 2011, President Obama sought approval to escalate U.S. military involvment in the Libyan civil war. In each of these cases, members of Congress (House and Senate separately) gave speeches opposing or supporting the president's request as well as engaged in debate with each other. The texts of these speeches and debates were analyzed to measure our linguistic style predictor variables. Members of Congress then formally voted (yay or nay) on whether or not to support the use of the U.S. military in each of these conflicts which was the basis of our binary outcome variable. As the study is a conceptual/far replication, successful replication for each hypothesis is defined as effects in the same direction and of similar magnitude (in this case, a $d$ between 0.35 and 0.67) to the original studies. 
+
+The purpose of the current studies is to determine if past studies on war decisions and aggression replicate in the context of the U.S. Congress when voting on war measures. In the last few decades, Congress has had formal votes to authorize the president's use of military action three times. First, in 1999, U.S. allies intervened in a civil war in Serbia, and President Clinton asked Congress for formal approval to send U.S. military troops to assist U.S. allies. Second, in 2002, President Bush requested approval from Congress to continue military action against Iraq due to the supposed threat posed by their WMDs. Third, in 2011, President Obama sought approval to escalate U.S. military involvement in the Libyan civil war. In each of these cases, members of Congress (House and Senate separately) gave speeches opposing or supporting the president's request as well as engaged in debate with each other. The texts of these speeches and debates were analyzed to measure our linguistic style predictor variables. Members of Congress then formally voted (yay or nay) on whether or not to support the use of the U.S. military in each of these conflicts which was the basis of our binary outcome variable. As the study is a conceptual/far replication, successful replication for each hypothesis is defined as effects in the same direction where the confidence interval of the mean difference (i.e., Cohen's $d_s$) does not include zero.
+
 ## Hypotheses
 
   H1: Legislators supporting war measure will have an external focus and use more third person pronouns (particularly 3rd person plural pronouns) [@Abe2012; @Matsumoto2013]. 
@@ -120,7 +124,7 @@ The purpose of the current studies is to determine if past studies on war decisi
   
   H3: Legislators supporting wars measure will exhibit lower cognitive complexity than those opposing the measure [@Matsumoto2013].
 
-# Method
+# General Method
 
 ## Language Samples
 
@@ -134,13 +138,30 @@ Each language sample was analyzed using the Language Inquiry and Word Count [@Pe
 
 ### Military Action
 
-For the purpose of this study, military action was defined as military personnel being sent into another nation to coerce the actions of that nation. In the past 15 years, the U.S. has taken military action against Iraq, Afghanistan, Kosovo, and Libya, although Congress did not explicitly approve action in Afghanistan or Libya. Operational definitions for support for war were voting records (yay, nay) on bills authorizing military action for Iraq, Kosovo, and Libya (only voted on in the House). These bills were House Joint Resolution 114, 107th Congress (2002); Senate Concurrent Resolution 21, 106th Congress (1999); and House Joint Resolution 68, 112th Congress (2011). Oppose or support information was combined with the LIWC percentages described above. 
+```{r summary-table, echo = FALSE, results = 'asis'}
+studysum = data.frame("Study" = c("1A","1B","2A","2B","3"),
+                      "Conflict" = c("Kosovo","Kosovo","Iraq","Iraq","Libya"),
+                      "Chamber" = c("House","Senate","House","Senate","House"),
+                      "Number Speeches" = c(210,49,274,138,104),
+                      "Votes For" = c(213,58,296,77,123),
+                      "Votes Against" = c(213,41,133,23,295),
+                      "Democrats For" = c("86%","93%","40%","58%","60%"),
+                      "Republicans For" = c("16%","30%","97%","98%","6%"),
+                      "Outcome" = c("Failed","Passed","Passed","Passed","Failed"), 
+                      stringsAsFactors = FALSE)
+
+apa_table(studysum, format='latex',
+          align = rep("c", 9),
+          caption = "Summary of Voting Record by Chamber, Political Party, and Area of Conflict")
+```
+
+For the purpose of this study, military action was defined as military personnel being sent into another nation to coerce the actions of that nation. In the past 15 years, the U.S. has taken military action against Iraq, Afghanistan, Kosovo, and Libya, although Congress did not explicitly approve action in Afghanistan or Libya. Operational definitions for support for war were voting records (yay, nay) on bills authorizing military action for Iraq, Kosovo, and Libya (only voted on in the House). These bills were House Joint Resolution 114, 107th Congress (2002); Senate Concurrent Resolution 21, 106th Congress (1999); and House Joint Resolution 68, 112th Congress (2011). Oppose or support information was combined with the LIWC percentages described above. Table \@ref(tab:summary-table) summarizes areas of conflict, number of speeches, and votes for each conflict by political party and the chamber of Congress. 
 
 ## Data Analytic Technique
 
-The data collected include multiple language samples by the same member of Congress and are structured by both party affiliation and conflict region. Rather than analyze data from each conflict region and chamber of Congress together, we chose to analyze them separately in Studies 1A (House vote on Kosovo conflict), 1B (Senate vote on Kosovo conflict), 2A (House vote on Iraq conflict), 2B (Senate vote on Iraq conflict), and 3 (House vote on Libya conflict). The major reason for this was to conservatively test the robustness of any effects and to better demonstrate the reliability of the results. Another minor reason was to examine possible differences based on the unique circumstances of each conflict. The war in Iraq ostensibly involved a direct threat to the U.S. where the conflicts in Kosovo and Libya did not which could argubly impact how members of Congress talked about and voted on them. 
+The data collected include multiple language samples by the same member of Congress and are structured by both party affiliation and conflict region. Rather than analyze data from each conflict region and chamber of Congress together, we chose to analyze them separately in Studies 1A (House vote on Kosovo conflict), 1B (Senate vote on Kosovo conflict), 2A (House vote on Iraq conflict), 2B (Senate vote on Iraq conflict), and 3 (House vote on Libya conflict). The major reason for this was to conservatively test the robustness of any effects and to better demonstrate the reliability of the results. Another minor reason was to examine possible differences based on the unique circumstances of each conflict. The war in Iraq ostensibly involved a direct threat to the U.S. where the conflicts in Kosovo and Libya did not which could arguably impact how members of Congress talked about and voted on them. 
 
-This structure was best analyzed with multilevel modeling, which allowed us to control for the correlated error terms of member of Congress and party affiliation. We used the *nlme* package to calculate the means and standard deviation for each variable by voting recording [@Pinheiro2017]. The intercept was used to predict the dependent variable (LIWC category percent), which creates a mean score for the dependent variable. Party affiliation and member of Congress were controlled as random intercept factors [@Gelman2006]. The standard error of the estimate was translated into standard deviation by multiplying by the square root of n for the sample. This analysis was bootstrapped using the *boot* library 1000 times, and the normal confidence interval for the mean was calculated using this function [@Canty2017]. These values were separated by voting record, Senate/House, and country of interest. The means and confidence intervals are presented in forest plots to show the relative percentages for each combination. The bootstrapped standard deviation values were used to calculate $d_s$ values using the MOTE library with the pooled standard deviation as the denominator [@Lakens2013; @Buchanan2017]. The $d_s$ represent standardized mean differences in each of the LIWC categories between members of Congress that voted for military action versus those that voted against it. 
+This structure was best analyzed with multilevel modeling, which allowed us to control for the correlated error terms of member of Congress and party affiliation. We used the *nlme* package to calculate the means and standard deviation for each variable by voting recording [@Pinheiro2017]. The intercept was used to predict the dependent variable (LIWC category percent), which creates a mean score for the dependent variable. Party affiliation and member of Congress were controlled as random intercept factors [@Gelman2006]. The standard error of the estimate was translated into standard deviation by multiplying by the square root of *n* for the sample. This analysis was bootstrapped using the *boot* library 1000 times, and the normal confidence interval for the mean was calculated using this function [@Canty2017]. These values were separated by voting record, Senate/House, and country of interest. The means and confidence intervals are presented in forest plots to show the relative percentages for each combination. The bootstrapped standard deviation values were used to calculate $d_s$ values using the MOTE library with the pooled standard deviation as the denominator [@Lakens2013; @Buchanan2017]. The $d_s$ represents the effect size, or standardized mean difference, in each of the LIWC categories between members of Congress that voted for military action versus those that voted against it. Instead of using a traditional null-hypothesis test with *p*-values, we examined if the bootstrapped confidence intervals of the effect size, $d_s$, included zero. If the confidence interval included zero, this result would indicate no support for differences in the dependent variable for voting record, while confidence intervals that did not include zero indicated a difference in the dependent variable for voting record.  
 
 The decision to treat the voting record on the war measures (yay or nay for continuing military action) as the IV and the linguistics styles as the DVs despite our interest in predictor support for war was made for multiple reasons. First, while technically debate happens prior to the official voting, the majority of Congress people will have made up their minds hence the debate serves more as a justification for their decisions than as a persuasive function. Second, using the linguistic styles as the DVs is consistent with @Abe2012 which is one of the studies we sought to conceptual replicate. 
 
@@ -186,27 +207,6 @@ hKosovoSupport = subset(houseKosovo, Oppose.Support==1)
 hLibyaOppose = subset(houseLibya, Oppose.Support==0)
 hLibyaSupport = subset(houseLibya, Oppose.Support==1)
 
-####bootstrap function #####
-BSfunction = function (formula, dataset, random) {
-  d = dataset[random, ] ##randomize by row
-  
-  tryCatch({
-    model1 = lme(formula, 
-                 data = d, 
-                 method = "ML", 
-                 na.action = "na.omit",
-                 random = list(~1|Party.Affiliation, ~1|Name),
-                 control=lmeControl(opt = "nlminb")) 
-  
-    meanvalue = summary(model1)$tTable[1]
-    sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
-    attempts = attempts + 1
-    return(c(meanvalue, sdvalue))
-  }, error = function(x){return(c(meanvalue, sdvalue))} 
-  )
-
-}
-
 ####make the table####
 table1 = matrix(NA, ncol = 14, nrow = 35)
 colnames(table1) = c("Chamber", "Region", "DV", "Moppose", 
@@ -216,16 +216,55 @@ colnames(table1) = c("Chamber", "Region", "DV", "Moppose",
 table1 = as.data.frame(table1)
 ```
 
-```{r bootstrap, include=FALSE}
+```{r bootstrap-function, include = FALSE}
+####bootstrap function #####
 
+bootstrap_values <- function(formula, dataset, nsim){
+  
+  store_mean <- rep(NA, nsim)
+  store_sd <- rep(NA, nsim)  
+  attempts <- 0
+  
+  #loop until you have enough
+  while(attempts < nsim){
+    
+    #create a dataset
+    d <- dataset[sample(1:nrow(dataset), 
+                        size = nrow(dataset),
+                        replace = TRUE), ]
+    
+    #test the model
+    tryCatch({
+    
+      model1 = lme(formula, 
+             data = d, 
+             method = "ML", 
+             na.action = "na.omit",
+             random = list(~1|Name),
+             control=lmeControl(opt = "nlminb")) 
+      meanvalue = summary(model1)$tTable[1]
+      sdvalue = summary(model1)$tTable[2] * sqrt(nrow(d))
+      attempts <- attempts + 1
+      store_mean[attempts] <- meanvalue
+      store_sd[attempts] <- sdvalue
+      return(store_mean, store_sd, attempts)
+    }, error = function(x){})
+      
+  }
+  
+  return(list("mean" = store_mean, "sd" = store_sd))
+}
+
+```
+
+
+```{r bootstrap, include=FALSE, warning=FALSE}
 #i, we, shehe, they, complex, internal, external
 ####i####
 ##calculate the bs for oppose for i 
 ##b for boot, H house, K kosove, O oppose, i is DV
-bHKOi = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
+bHKOi = bootstrap_values(i ~ 1, hKosovoOppose, nsim)
+  
 ##House Kosovo Support
 bHKSi = boot(data = hKosovoSupport,
                    statistic = BSfunction,
@@ -308,6 +347,7 @@ dHLi = d.ind.t(m1 = bHLOi$t0[1], m2 = bHLSi$t0[1],
                  sd1 = bHLOi$t0[2], sd2 = bHLSi$t0[2],
                  n1 = length(na.omit(hLibyaOppose$i)), n2 = length(na.omit(hLibyaSupport$i)), 
                  a = .05)
+
 ##ci for forest plots
 ciHKOi = boot.ci(bHKOi, 
                    conf = .95,
@@ -1437,6 +1477,27 @@ table1[35 , ] = c("House", "Libya", "External", bHLOexternal$t0[1],
                  ciHLSexternal$normal[2], ciHLSexternal$normal[3])
 ```
 
+# Study 1A - Kosovo in the House
+
+In early 1998, violence erupted in the Serbian region of Kosovo between ethnic Albanians and the Serbian government. A peace agreement later in the year lasted until the beginning of 1999 when several Albanian civilians were killed, prompting a resurrection of hostilities. When the Serbian government, namely President Slobodan Milosevic, failed to concede to allowing a NATO peacekeeping force in Kosovo during February 1999 negotiations, NATO authorized air strikes against Serbian targets. This decision subsequently prompted debate within the U.S. Congress as to the involvement of the U.S. military in NATO's operations in Serbia and Kosovo [@Woehrel2006].
+
+In this study, we examine this debate in the U.S. House of Representatives to determine if members of Congress who supported U.S. military involvement focused on people or events differently than those who opposed it. 
+
+# Method
+
+```{r house-kosovo, eval=FALSE, include=FALSE}
+nrow(houseKosovo)
+mean(houseKosovo$WC)
+sd(houseKosovo$WC)
+table(houseKosovo$Party.Affiliation)
+length(levels(houseKosovo$Name))
+nrow(houseKosovo) - sum(table(houseKosovo$Oppose.Support))
+```
+
+Speeches made in the House of Representatives pertaining to the use of military force in Kosovo/Serbia were gathered from the Congressional Record available from the U.S. Government Publishing Office. In total, 210 speeches were collected. Speeches were limited to those made in the year preceding the vote on Senate Concurrent Resolution 21 made on April 28, 1999 to allow the President to conduct air and missile strikes against Yugoslavia (Serbia and Montenegro). This resolution failed in the House with 213-213 with 86% of Democrats supporting the resolution and 84% of Republicans opposing. These speeches were made by 156 unique speakers where where Republicans gave 108 speeches, Democrats gave 98 speeches, one Independent, one Non-Partisan, and two non-Representatives. Five speeches were excluded for no voting record. The average word count was 700.51 (*SD* = 814.04).
+  
+# Results
+
 ```{r Ktable, echo = FALSE, results = 'asis'}
 table1[,4] = apa(as.numeric(table1[,4]), 2)
 table1[,5] = apa(as.numeric(table1[,5]), 2)
@@ -1488,44 +1549,7 @@ plot_grid(Khouse + theme(legend.position="none"),
            nrow = 1)
 ```
 
-The table below summarizes the data used in the proceeding studies with more detail provided in the method sections of each study. 
-```{r Study-Summary, echo=FALSE}
-studysum = data.frame("Study" = c("1A","1B","2A","2B","3"),
-                      "Conflict" = c("Kosovo","Kosovo","Iraq","Iraq","Libya"),
-                      "Chamber" = c("House","Senate","House","Senate","House"),
-                      "NumberSpeeches" = c(210,49,274,138,104),
-                      "VotesFor" = c(213,58,296,77,123),
-                      "VotesAgainst" = c(213,41,133,23,295),
-                      "DemocratsFor" = c("86%","93%","40%","58%","60%"),
-                      "RepublicansFor" = c("16%","30%","97%","98%","6%"),
-                      "Outcome" = c("Failed","Passed","Passed","Passed","Failed"), 
-                      stringsAsFactors = FALSE)
-apa_table(studysum, format='latex')
-
-```
-
-# Study 1A - Kosovo in the House
-
-In early 1998, violence erupted in the Serbian region of Kosovo between ethnic Albanians and the Serbian government. A peace agreement later in the year lasted until the beginning of 1999 when several Albanian civilians were killed, prompting a resurrection of hostilities. When the Serbian government, namely President Slobodan Milosevic, failed to concede to allowing a NATO peacekeeping force in Kosovo during February 1999 negotiations, NATO authorized air strikes against Serbian targets. This decision subsequently prompted debate within the U.S. Congress as to the involvement of the U.S. military in NATO's operations in Serbia and Kosovo [@Woehrel2006].
-
-In this study, we examine this debate in the U.S. House of Representatives to determine if members of Congress who supported U.S. military involvement focused on people or events differently than those who opposed it. 
-
-# Method
-
-```{r house-kosovo, eval=FALSE, include=FALSE}
-nrow(houseKosovo)
-mean(houseKosovo$WC)
-sd(houseKosovo$WC)
-table(houseKosovo$Party.Affiliation)
-length(levels(houseKosovo$Name))
-nrow(houseKosovo) - sum(table(houseKosovo$Oppose.Support))
-```
-
-Speeches made in the House of Representatives pertaining to the use of military force in Kosovo/Serbia were gathered from the Congressional Record available from the U.S. Government Publishing Office. In total, 210 speeches were collected. Speeches were limited to those made in the year preceding the vote on Senate Concurrent Resolution 21 made on April 28, 1999 to allow the President to conduct air and missile strikes against Yugoslavia (Serbia and Montenegro). This resolution failed in the House with 213-213 with 86% of Democrats supporting the resolution and 84% of Republicans opposing. These speeches were made by 156 unique speakers where where Republicans gave 108 speeches, Democrats gave 98 speeches, one Independent, one Non-Partisan, and two non-Representatives. Five speeches were excluded for no voting record. The average word count was 700.51 (*SD* = 814.04).
-  
-# Results
-
-A forest plot of the results can be found in Figure \@ref(fig:Kpic), and all descriptive statistics can be found in Table \@ref(tab:Ktable). Results only weakly supported Hypothesis 1. The trend is in the hypothesized direction with supporters of military action displaying greater external focus, but the effect is weaker in magnitude than in the original studies. Hypothesis 2 was not supported; legislators opposing the war measure did not display a greater internal focus (i.e. incorrect direction and magnitude of the hypothesized effect). In fact, supporters of the measure used more 1st person singular pronouns (e.g. I-words) contrary to our hypothesis. Hypothesis 3 was supported with supporters of the war measure showing lower cognitive complexity than those who opposed it and the magnitude of the effect was similar to the original studies.	
+A forest plot of the results can be found in Figure \@ref(fig:Kpic), and all descriptive statistics can be found in Table \@ref(tab:Ktable). Results only weakly supported Hypothesis 1. The trend is in the hypothesized direction with supporters of military action displaying greater external focus, but the effect is weaker in magnitude than in the original studies. Hypothesis 2 was not supported; legislators opposing the war measure did not display a greater internal focus (i.e., incorrect direction and magnitude of the hypothesized effect). In fact, supporters of the measure used more 1st person singular pronouns (e.g., I-words) contrary to our hypothesis. Hypothesis 3 was supported with supporters of the war measure showing lower cognitive complexity than those who opposed it and the magnitude of the effect was similar to the original studies.	
 	
 # Study 1B - Kosovo in the Senate
 
@@ -1576,12 +1600,12 @@ Once again using the Government Publishing Office, we collected speeches given i
 # Results
 
 ```{r Itable, echo = FALSE, results = 'asis'}
-Ktable = table1[1:10]
-Ktable = subset(Ktable, Region == "Iraq")
-colnames(Ktable)[2] = 'Hypothesis'
-Ktable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
-Ktable = Ktable[order(Ktable$Hypothesis), ]
-Ktable$Hypothesis = as.integer(Ktable$Hypothesis)
+Itable = table1[1:10]
+Itable = subset(Itable, Region == "Iraq")
+colnames(Itable)[2] = 'Hypothesis'
+Itable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
+Itable = Itable[order(Itable$Hypothesis), ]
+Itable$Hypothesis = as.integer(Itable$Hypothesis)
 
 apa_table(as.data.frame(Itable),
           align = c("l", rep("c",9)),
@@ -1640,7 +1664,7 @@ In this part of the study, speeches from the Senate were gathered for the 6 mont
   	
 # Results
 
-Analyses were conducted in the same manner as the first part of the study to determine differences between supporters and opponents of military action in Iraq in terms of the use of first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*) as well as composite measure for external focus, internal focus, and cognitive complexity. Figure \@ref(fig:Ipic) displays these results as a forest plot, and all values are in Table \@ref(tab:Itable). Hypothesis 1 was once again supported. Senators supporting the war legislations were more externally focus, and like in the House, tended to use third-person singular pronouns (*he*) at higher rates. The magnitude of the effect was slightly larger than hypothesized.  Once again, we failed to find support for Hypothesis 2 with no differences found in internal focus with both the direction and magnitude of the effect not matching our hypopthesis. Finally, cognitive complexity tended to be lower for Senators supporting the war measure providing at least partial support for Hypothesis 3 (the effect was weaker than hypothesized).
+Analyses were conducted in the same manner as the first part of the study to determine differences between supporters and opponents of military action in Iraq in terms of the use of first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*) as well as composite measure for external focus, internal focus, and cognitive complexity. Figure \@ref(fig:Ipic) displays these results as a forest plot, and all values are in Table \@ref(tab:Itable). Hypothesis 1 was once again supported. Senators supporting the war legislation were more externally focus, and like in the House, tended to use third-person singular pronouns (*he*) at higher rates. The magnitude of the effect was slightly larger than hypothesized.  Once again, we failed to find support for Hypothesis 2 with no differences found in internal focus with both the direction and magnitude of the effect not matching our hypothesis. Finally, cognitive complexity tended to be lower for Senators supporting the war measure providing at least partial support for Hypothesis 3 (the effect was weaker than hypothesized).
 	
 # Discussion
 
@@ -1669,12 +1693,12 @@ In this final study, the Congressional Record was searched for speeches given in
 # Results
 
 ```{r Ltable, echo = FALSE, results = 'asis'}
-Ktable = table1[1:10]
-Ktable = subset(Ktable, Region == "Libya")
-colnames(Ktable)[2] = 'Hypothesis'
-Ktable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
-Ktable = Ktable[order(Ktable$Hypothesis), ]
-Ktable$Hypothesis = as.integer(Ktable$Hypothesis)
+Ltable = table1[1:10]
+Ltable = subset(Ltable, Region == "Libya")
+colnames(Ltable)[2] = 'Hypothesis'
+Ltable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
+Ltable = Ltable[order(Ltable$Hypothesis), ]
+Ltable$Hypothesis = as.integer(Ltable$Hypothesis)
 
 apa_table(as.data.frame(Ltable),
           row.names = F,
