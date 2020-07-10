@@ -53,8 +53,9 @@ library(forestplot)
 library(boot)
 library(nlme)
 library(MOTE)
-knitr::opts_chunk$set(cache = TRUE)
-nsim = 10
+library(tools)
+knitr::opts_chunk$set(cache = FALSE)
+nsim = 1000
 
 library(ggplot2)
 cleanup = theme(panel.grid.major = element_blank(), 
@@ -77,7 +78,7 @@ fplot = function(dataframe, xlab = "Average Text Percent", ylab = "Linguistic Va
     cleanup +
     scale_color_manual(values = c("black", "gray"),
                        name = "Vote") +
-    scale_x_discrete(limits = c("Complex","Internal","We","I","External","They","She/He")) +
+    scale_x_discrete(limits = c("Complexity","Internal","We","I","External","They","She/He")) +
     scale_y_continuous(limits = c(lowerlimit, upperlimit))
 
   return(p)
@@ -181,31 +182,23 @@ houseIraq$complexity = with(houseIraq, scale(excl, center = TRUE, scale = TRUE)+
 houseKosovo$complexity = with(houseKosovo, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
 houseLibya$complexity = with(houseLibya, scale(excl, center = TRUE, scale = TRUE)+scale(negate, center = TRUE, scale = TRUE)+scale(tentat, center = TRUE, scale = TRUE)+scale(conj, center = TRUE, scale = TRUE))
 
-senateIraq$firstperson = with(senateIraq, i + we)
-senateKosovo$firstperson = with(senateKosovo, i + we)
-houseIraq$firstperson = with(houseIraq, i + we)
-houseKosovo$firstperson = with(houseKosovo, i + we)
-houseLibya$firstperson = with(houseLibya, i + we)
+senateIraq$internal = with(senateIraq, i + we)
+senateKosovo$internal = with(senateKosovo, i + we)
+houseIraq$internal = with(houseIraq, i + we)
+houseKosovo$internal = with(houseKosovo, i + we)
+houseLibya$internal = with(houseLibya, i + we)
 
-senateIraq$thirdperson = with(senateIraq, shehe + they)
-senateKosovo$thirdperson = with(senateKosovo, shehe + they)
-houseIraq$thirdperson = with(houseIraq, shehe + they)
-houseKosovo$thirdperson = with(houseKosovo, shehe + they)
-houseLibya$thirdperson = with(houseLibya, shehe + they)
+senateIraq$external = with(senateIraq, shehe + they)
+senateKosovo$external = with(senateKosovo, shehe + they)
+houseIraq$external = with(houseIraq, shehe + they)
+houseKosovo$external = with(houseKosovo, shehe + they)
+houseLibya$external = with(houseLibya, shehe + they)
 
 
 sIraqOppose = subset(senateIraq, Oppose.Support==0)
 sIraqSupport = subset(senateIraq, Oppose.Support==1)
 hIraqOppose = subset(houseIraq, Oppose.Support==0)
 hIraqSupport = subset(houseIraq, Oppose.Support==1)
-
-sKosovoOppose = subset(senateKosovo, Oppose.Support==0)
-sKosovoSupport = subset(senateKosovo, Oppose.Support==1)
-hKosovoOppose = subset(houseKosovo, Oppose.Support==0)
-hKosovoSupport = subset(houseKosovo, Oppose.Support==1)
-
-hLibyaOppose = subset(houseLibya, Oppose.Support==0)
-hLibyaSupport = subset(houseLibya, Oppose.Support==1)
 
 ####make the table####
 table1 = matrix(NA, ncol = 14, nrow = 35)
@@ -224,7 +217,6 @@ bootstrap_values <- function(formula, dataset, nsim){
   store_mean <- rep(NA, nsim)
   store_sd <- rep(NA, nsim)  
   attempts <- 0
-  
   #loop until you have enough
   while(attempts < nsim){
     
@@ -232,7 +224,6 @@ bootstrap_values <- function(formula, dataset, nsim){
     d <- dataset[sample(1:nrow(dataset), 
                         size = nrow(dataset),
                         replace = TRUE), ]
-    
     #test the model
     tryCatch({
     
@@ -249,7 +240,6 @@ bootstrap_values <- function(formula, dataset, nsim){
       store_sd[attempts] <- sdvalue
       return(store_mean, store_sd, attempts)
     }, error = function(x){})
-      
   }
   
   return(list("mean" = store_mean, "sd" = store_sd))
@@ -259,1222 +249,48 @@ bootstrap_values <- function(formula, dataset, nsim){
 
 
 ```{r bootstrap, include=FALSE, warning=FALSE}
-#i, we, shehe, they, complex, internal, external
-####i####
-##calculate the bs for oppose for i 
-##b for boot, H house, K kosove, O oppose, i is DV
-bHKOi = bootstrap_values(i ~ 1, hKosovoOppose, nsim)
-  
-##House Kosovo Support
-bHKSi = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOi = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKSi = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOi = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHISi = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOi = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSISi = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOi = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLSi = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = i ~ 1, 
-                   R = nsim)
-##effect size
-#House Kosovo
-dHKi = d.ind.t(m1 = bHKOi$t0[1], m2 = bHKSi$t0[1], 
-                 sd1 = bHKOi$t0[2], sd2 = bHKSi$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$i)), n2 = length(na.omit(hKosovoSupport$i)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKi = d.ind.t(m1 = bSKOi$t0[1], m2 = bSKSi$t0[1], 
-                 sd1 = bSKOi$t0[2], sd2 = bSKSi$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$i)), n2 = length(na.omit(sKosovoSupport$i)), 
-                 a = .05)
-#House Iraq
-dHIi = d.ind.t(m1 = bHIOi$t0[1], m2 = bHISi$t0[1], 
-                 sd1 = bHIOi$t0[2], sd2 = bHISi$t0[2],
-                 n1 = length(na.omit(hIraqOppose$i)), n2 = length(na.omit(hIraqSupport$i)), 
-                 a = .05)
-
-#Senate Iraq
-dSIi = d.ind.t(m1 = bSIOi$t0[1], m2 = bSISi$t0[1], 
-                 sd1 = bSIOi$t0[2], sd2 = bSISi$t0[2],
-                 n1 = length(na.omit(sIraqOppose$i)), n2 = length(na.omit(sIraqSupport$i)), 
-                 a = .05)
-
-#House Libya
-dHLi = d.ind.t(m1 = bHLOi$t0[1], m2 = bHLSi$t0[1], 
-                 sd1 = bHLOi$t0[2], sd2 = bHLSi$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$i)), n2 = length(na.omit(hLibyaSupport$i)), 
-                 a = .05)
-
-##ci for forest plots
-ciHKOi = boot.ci(bHKOi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKSi = boot.ci(bHKSi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOi = boot.ci(bSKOi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKSi = boot.ci(bSKSi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOi = boot.ci(bHIOi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHISi = boot.ci(bHISi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOi = boot.ci(bSIOi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSISi = boot.ci(bSISi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOi = boot.ci(bHLOi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLSi = boot.ci(bHLSi, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[1 , ] = c("House", "Kosovo", "I", bHKOi$t0[1],
-                 bHKOi$t0[2], bHKSi$t0[1], bHKSi$t0[2], 
-                 dHKi$d, dHKi$dlow, dHKi$dhigh,
-                 ciHKOi$normal[2], ciHKOi$normal[3],
-                 ciHKSi$normal[2], ciHKSi$normal[3])
-
-table1[2 , ] = c("Senate", "Kosovo", "I", bSKOi$t0[1],
-                 bSKOi$t0[2], bSKSi$t0[1], bSKSi$t0[2], 
-                 dSKi$d, dSKi$dlow, dSKi$dhigh,
-                 ciSKOi$normal[2], ciSKOi$normal[3],
-                 ciSKSi$normal[2], ciSKSi$normal[3])
-
-table1[3 , ] = c("House", "Iraq", "I", bHIOi$t0[1],
-                 bHIOi$t0[2], bHISi$t0[1], bHISi$t0[2], 
-                 dHIi$d, dHIi$dlow, dHIi$dhigh,
-                 ciHIOi$normal[2], ciHIOi$normal[3],
-                 ciHISi$normal[2], ciHISi$normal[3])
-
-table1[4 , ] = c("Senate", "Iraq", "I", bSIOi$t0[1],
-                 bSIOi$t0[2], bSISi$t0[1], bSISi$t0[2], 
-                 dSIi$d, dSIi$dlow, dSIi$dhigh,
-                 ciSIOi$normal[2], ciSIOi$normal[3],
-                 ciSISi$normal[2], ciSISi$normal[3])
-
-table1[5 , ] = c("House", "Libya", "I", bHLOi$t0[1],
-                 bHLOi$t0[2], bHLSi$t0[1], bHLSi$t0[2], 
-                 dHLi$d, dHLi$dlow, dHLi$dhigh,
-                 ciHLOi$normal[2], ciHLOi$normal[3],
-                 ciHLSi$normal[2], ciHLSi$normal[3])
-
-####we####
-bHKOwe = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-##House Kosovo Support
-bHKSwe = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOwe = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKSwe = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOwe = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHISwe = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOwe = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSISwe = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOwe = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLSwe = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = we ~ 1, 
-                   R = nsim)
-
-##effect size
-#House Kosovo
-dHKwe = d.ind.t(m1 = bHKOwe$t0[1], m2 = bHKSwe$t0[1], 
-                 sd1 = bHKOwe$t0[2], sd2 = bHKSwe$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$we)), n2 = length(na.omit(hKosovoSupport$we)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKwe = d.ind.t(m1 = bSKOwe$t0[1], m2 = bSKSwe$t0[1], 
-                 sd1 = bSKOwe$t0[2], sd2 = bSKSwe$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$we)), n2 = length(na.omit(sKosovoSupport$we)), 
-                 a = .05)
-#House Iraq
-dHIwe = d.ind.t(m1 = bHIOwe$t0[1], m2 = bHISwe$t0[1], 
-                 sd1 = bHIOwe$t0[2], sd2 = bHISwe$t0[2],
-                 n1 = length(na.omit(hIraqOppose$we)), n2 = length(na.omit(hIraqSupport$we)), 
-                 a = .05)
-
-#Senate Iraq
-dSIwe = d.ind.t(m1 = bSIOwe$t0[1], m2 = bSISwe$t0[1], 
-                 sd1 = bSIOwe$t0[2], sd2 = bSISwe$t0[2],
-                 n1 = length(na.omit(sIraqOppose$we)), n2 = length(na.omit(sIraqSupport$we)), 
-                 a = .05)
-
-#House Libya
-dHLwe = d.ind.t(m1 = bHLOwe$t0[1], m2 = bHLSwe$t0[1], 
-                 sd1 = bHLOwe$t0[2], sd2 = bHLSwe$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$we)), n2 = length(na.omit(hLibyaSupport$we)), 
-                 a = .05)
-
-##ci for forest plots
-ciHKOwe = boot.ci(bHKOwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKSwe = boot.ci(bHKSwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOwe = boot.ci(bSKOwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKSwe = boot.ci(bSKSwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOwe = boot.ci(bHIOwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHISwe = boot.ci(bHISwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOwe = boot.ci(bSIOwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSISwe = boot.ci(bSISwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOwe = boot.ci(bHLOwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLSwe = boot.ci(bHLSwe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[6 , ] = c("House", "Kosovo", "We", bHKOwe$t0[1],
-                 bHKOwe$t0[2], bHKSwe$t0[1], bHKSwe$t0[2], 
-                 dHKwe$d, dHKwe$dlow, dHKwe$dhigh,
-                 ciHKOwe$normal[2], ciHKOwe$normal[3],
-                 ciHKSwe$normal[2], ciHKSwe$normal[3])
-
-table1[7 , ] = c("Senate", "Kosovo", "We", bSKOwe$t0[1],
-                 bSKOwe$t0[2], bSKSwe$t0[1], bSKSwe$t0[2], 
-                 dSKwe$d, dSKwe$dlow, dSKwe$dhigh,
-                 ciSKOwe$normal[2], ciSKOwe$normal[3],
-                 ciSKSwe$normal[2], ciSKSwe$normal[3])
-
-table1[8 , ] = c("House", "Iraq", "We", bHIOwe$t0[1],
-                 bHIOwe$t0[2], bHISwe$t0[1], bHISwe$t0[2], 
-                 dHIwe$d, dHIwe$dlow, dHIwe$dhigh,
-                 ciHIOwe$normal[2], ciHIOwe$normal[3],
-                 ciHISwe$normal[2], ciHISwe$normal[3])
-
-table1[9 , ] = c("Senate", "Iraq", "We", bSIOwe$t0[1],
-                 bSIOwe$t0[2], bSISwe$t0[1], bSISwe$t0[2], 
-                 dSIwe$d, dSIwe$dlow, dSIwe$dhigh,
-                 ciSIOwe$normal[2], ciSIOwe$normal[3],
-                 ciSISwe$normal[2], ciSISwe$normal[3])
-
-table1[10 , ] = c("House", "Libya", "We", bHLOwe$t0[1],
-                 bHLOwe$t0[2], bHLSwe$t0[1], bHLSwe$t0[2], 
-                 dHLwe$d, dHLwe$dlow, dHLwe$dhigh,
-                 ciHLOwe$normal[2], ciHLOwe$normal[3],
-                 ciHLSwe$normal[2], ciHLSwe$normal[3])
-
-####shehe####
-bHKOshehe = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-##House Kosovo Support
-bHKSshehe = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOshehe = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKSshehe = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOshehe = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHISshehe = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOshehe = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSISshehe = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOshehe = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLSshehe = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = shehe ~ 1, 
-                   R = nsim)
-
-##effect size
-#House Kosovo
-dHKshehe = d.ind.t(m1 = bHKOshehe$t0[1], m2 = bHKSshehe$t0[1], 
-                 sd1 = bHKOshehe$t0[2], sd2 = bHKSshehe$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$shehe)), 
-                 n2 = length(na.omit(hKosovoSupport$shehe)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKshehe = d.ind.t(m1 = bSKOshehe$t0[1], m2 = bSKSshehe$t0[1], 
-                 sd1 = bSKOshehe$t0[2], sd2 = bSKSshehe$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$shehe)), 
-                n2 = length(na.omit(sKosovoSupport$shehe)), 
-                 a = .05)
-#House Iraq
-dHIshehe = d.ind.t(m1 = bHIOshehe$t0[1], m2 = bHISshehe$t0[1], 
-                 sd1 = bHIOshehe$t0[2], sd2 = bHISshehe$t0[2],
-                 n1 = length(na.omit(hIraqOppose$shehe)), 
-                 n2 = length(na.omit(hIraqSupport$shehe)), 
-                 a = .05)
-
-#Senate Iraq
-dSIshehe = d.ind.t(m1 = bSIOshehe$t0[1], m2 = bSISshehe$t0[1], 
-                 sd1 = bSIOshehe$t0[2], sd2 = bSISshehe$t0[2],
-                 n1 = length(na.omit(sIraqOppose$shehe)), 
-                n2 = length(na.omit(sIraqSupport$shehe)), 
-                 a = .05)
-
-#House Libya
-dHLshehe = d.ind.t(m1 = bHLOshehe$t0[1], m2 = bHLSshehe$t0[1], 
-                 sd1 = bHLOshehe$t0[2], sd2 = bHLSshehe$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$shehe)), 
-                 n2 = length(na.omit(hLibyaSupport$shehe)), 
-                 a = .05)
-
-##ci for forest plots
-ciHKOshehe = boot.ci(bHKOshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKSshehe = boot.ci(bHKSshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOshehe = boot.ci(bSKOshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKSshehe = boot.ci(bSKSshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOshehe = boot.ci(bHIOshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHISshehe = boot.ci(bHISshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOshehe = boot.ci(bSIOshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSISshehe = boot.ci(bSISshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOshehe = boot.ci(bHLOshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLSshehe = boot.ci(bHLSshehe, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[11 , ] = c("House", "Kosovo", "She/He", bHKOshehe$t0[1],
-                 bHKOshehe$t0[2], bHKSshehe$t0[1], bHKSshehe$t0[2], 
-                 dHKshehe$d, dHKshehe$dlow, dHKshehe$dhigh,
-                 ciHKOshehe$normal[2], ciHKOshehe$normal[3],
-                 ciHKSshehe$normal[2], ciHKSshehe$normal[3])
-
-table1[12 , ] = c("Senate", "Kosovo", "She/He", bSKOshehe$t0[1],
-                 bSKOshehe$t0[2], bSKSshehe$t0[1], bSKSshehe$t0[2], 
-                 dSKshehe$d, dSKshehe$dlow, dSKshehe$dhigh,
-                 ciSKOshehe$normal[2], ciSKOshehe$normal[3],
-                 ciSKSshehe$normal[2], ciSKSshehe$normal[3])
-
-table1[13 , ] = c("House", "Iraq", "She/He", bHIOshehe$t0[1],
-                 bHIOshehe$t0[2], bHISshehe$t0[1], bHISshehe$t0[2], 
-                 dHIshehe$d, dHIshehe$dlow, dHIshehe$dhigh,
-                 ciHIOshehe$normal[2], ciHIOshehe$normal[3],
-                 ciHISshehe$normal[2], ciHISshehe$normal[3])
-
-table1[14 , ] = c("Senate", "Iraq", "She/He", bSIOshehe$t0[1],
-                 bSIOshehe$t0[2], bSISshehe$t0[1], bSISshehe$t0[2], 
-                 dSIshehe$d, dSIshehe$dlow, dSIshehe$dhigh,
-                 ciSIOshehe$normal[2], ciSIOshehe$normal[3],
-                 ciSISshehe$normal[2], ciSISshehe$normal[3])
-
-table1[15 , ] = c("House", "Libya", "She/He", bHLOshehe$t0[1],
-                 bHLOshehe$t0[2], bHLSshehe$t0[1], bHLSshehe$t0[2], 
-                 dHLshehe$d, dHLshehe$dlow, dHLshehe$dhigh,
-                 ciHLOshehe$normal[2], ciHLOshehe$normal[3],
-                 ciHLSshehe$normal[2], ciHLSshehe$normal[3])
-
-####they####
-bHKOthey = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-##House Kosovo Support
-bHKSthey = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOthey = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKSthey = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOthey = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHISthey = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOthey = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSISthey = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOthey = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLSthey = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = they ~ 1, 
-                   R = nsim)
-
-##effect size
-#House Kosovo
-dHKthey = d.ind.t(m1 = bHKOthey$t0[1], m2 = bHKSthey$t0[1], 
-                 sd1 = bHKOthey$t0[2], sd2 = bHKSthey$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$they)), 
-                 n2 = length(na.omit(hKosovoSupport$they)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKthey = d.ind.t(m1 = bSKOthey$t0[1], m2 = bSKSthey$t0[1], 
-                 sd1 = bSKOthey$t0[2], sd2 = bSKSthey$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$they)), 
-                n2 = length(na.omit(sKosovoSupport$they)), 
-                 a = .05)
-#House Iraq
-dHIthey = d.ind.t(m1 = bHIOthey$t0[1], m2 = bHISthey$t0[1], 
-                 sd1 = bHIOthey$t0[2], sd2 = bHISthey$t0[2],
-                 n1 = length(na.omit(hIraqOppose$they)), 
-                 n2 = length(na.omit(hIraqSupport$they)), 
-                 a = .05)
-
-#Senate Iraq
-dSIthey = d.ind.t(m1 = bSIOthey$t0[1], m2 = bSISthey$t0[1], 
-                 sd1 = bSIOthey$t0[2], sd2 = bSISthey$t0[2],
-                 n1 = length(na.omit(sIraqOppose$they)), 
-                n2 = length(na.omit(sIraqSupport$they)), 
-                 a = .05)
-
-#House Libya
-dHLthey = d.ind.t(m1 = bHLOthey$t0[1], m2 = bHLSthey$t0[1], 
-                 sd1 = bHLOthey$t0[2], sd2 = bHLSthey$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$they)), 
-                 n2 = length(na.omit(hLibyaSupport$they)), 
-                 a = .05)
-
-##ci for forest plots
-ciHKOthey = boot.ci(bHKOthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKSthey = boot.ci(bHKSthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOthey = boot.ci(bSKOthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKSthey = boot.ci(bSKSthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOthey = boot.ci(bHIOthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHISthey = boot.ci(bHISthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOthey = boot.ci(bSIOthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSISthey = boot.ci(bSISthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOthey = boot.ci(bHLOthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLSthey = boot.ci(bHLSthey, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[16 , ] = c("House", "Kosovo", "They", bHKOthey$t0[1],
-                 bHKOthey$t0[2], bHKSthey$t0[1], bHKSthey$t0[2], 
-                 dHKthey$d, dHKthey$dlow, dHKthey$dhigh,
-                 ciHKOthey$normal[2], ciHKOthey$normal[3],
-                 ciHKSthey$normal[2], ciHKSthey$normal[3])
-
-table1[17 , ] = c("Senate", "Kosovo", "They", bSKOthey$t0[1],
-                 bSKOthey$t0[2], bSKSthey$t0[1], bSKSthey$t0[2], 
-                 dSKthey$d, dSKthey$dlow, dSKthey$dhigh,
-                 ciSKOthey$normal[2], ciSKOthey$normal[3],
-                 ciSKSthey$normal[2], ciSKSthey$normal[3])
-
-table1[18 , ] = c("House", "Iraq", "They", bHIOthey$t0[1],
-                 bHIOthey$t0[2], bHISthey$t0[1], bHISthey$t0[2], 
-                 dHIthey$d, dHIthey$dlow, dHIthey$dhigh,
-                 ciHIOthey$normal[2], ciHIOthey$normal[3],
-                 ciHISthey$normal[2], ciHISthey$normal[3])
-
-table1[19 , ] = c("Senate", "Iraq", "They", bSIOthey$t0[1],
-                 bSIOthey$t0[2], bSISthey$t0[1], bSISthey$t0[2], 
-                 dSIthey$d, dSIthey$dlow, dSIthey$dhigh,
-                 ciSIOthey$normal[2], ciSIOthey$normal[3],
-                 ciSISthey$normal[2], ciSISthey$normal[3])
-
-table1[20 , ] = c("House", "Libya", "They", bHLOthey$t0[1],
-                 bHLOthey$t0[2], bHLSthey$t0[1], bHLSthey$t0[2], 
-                 dHLthey$d, dHLthey$dlow, dHLthey$dhigh,
-                 ciHLOthey$normal[2], ciHLOthey$normal[3],
-                 ciHLSthey$normal[2], ciHLSthey$normal[3])
-
-####complex####
-bHKOcomplex = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-##House Kosovo Support
-bHKScomplex = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOcomplex = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKScomplex = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOcomplex = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHIScomplex = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOcomplex = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSIScomplex = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOcomplex = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLScomplex = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = complexity ~ 1, 
-                   R = nsim)
-
-
-##effect size
-#House Kosovo
-dHKcomplex = d.ind.t(m1 = bHKOcomplex$t0[1], m2 = bHKScomplex$t0[1], 
-                 sd1 = bHKOcomplex$t0[2], sd2 = bHKSthey$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$complexity)), 
-                 n2 = length(na.omit(hKosovoSupport$complexity)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKcomplex = d.ind.t(m1 = bSKOcomplex$t0[1], m2 = bSKScomplex$t0[1], 
-                 sd1 = bSKOcomplex$t0[2], sd2 = bSKScomplex$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$complexity)), 
-                n2 = length(na.omit(sKosovoSupport$complexity)), 
-                 a = .05)
-#House Iraq
-dHIcomplex = d.ind.t(m1 = bHIOcomplex$t0[1], m2 = bHIScomplex$t0[1], 
-                 sd1 = bHIOcomplex$t0[2], sd2 = bHIScomplex$t0[2],
-                 n1 = length(na.omit(hIraqOppose$complexity)), 
-                 n2 = length(na.omit(hIraqSupport$complexity)), 
-                 a = .05)
-
-#Senate Iraq
-dSIcomplex = d.ind.t(m1 = bSIOcomplex$t0[1], m2 = bSIScomplex$t0[1], 
-                 sd1 = bSIOcomplex$t0[2], sd2 = bSIScomplex$t0[2],
-                 n1 = length(na.omit(sIraqOppose$complexity)), 
-                n2 = length(na.omit(sIraqSupport$complexity)), 
-                 a = .05)
-
-#House Libya
-dHLcomplex = d.ind.t(m1 = bHLOcomplex$t0[1], m2 = bHLScomplex$t0[1], 
-                 sd1 = bHLOcomplex$t0[2], sd2 = bHLScomplex$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$complexity)), 
-                 n2 = length(na.omit(hLibyaSupport$complexity)), 
-                 a = .05)
-
-##ci for forest plots
-ciHKOcomplex = boot.ci(bHKOcomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKScomplex = boot.ci(bHKScomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOcomplex = boot.ci(bSKOcomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKScomplex = boot.ci(bSKScomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOcomplex = boot.ci(bHIOcomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIScomplex = boot.ci(bHIScomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOcomplex = boot.ci(bSIOcomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIScomplex = boot.ci(bSIScomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOcomplex = boot.ci(bHLOcomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLScomplex = boot.ci(bHLScomplex, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[21 , ] = c("House", "Kosovo", "Complex", bHKOcomplex$t0[1],
-                 bHKOcomplex$t0[2], bHKScomplex$t0[1], bHKScomplex$t0[2], 
-                 dHKcomplex$d, dHKcomplex$dlow, dHKcomplex$dhigh,
-                 ciHKOcomplex$normal[2], ciHKOcomplex$normal[3],
-                 ciHKScomplex$normal[2], ciHKScomplex$normal[3])
-
-table1[22 , ] = c("Senate", "Kosovo", "Complex", bSKOcomplex$t0[1],
-                 bSKOcomplex$t0[2], bSKScomplex$t0[1], bSKScomplex$t0[2], 
-                 dSKcomplex$d, dSKcomplex$dlow, dSKcomplex$dhigh,
-                 ciSKOcomplex$normal[2], ciSKOcomplex$normal[3],
-                 ciSKScomplex$normal[2], ciSKScomplex$normal[3])
-
-table1[23 , ] = c("House", "Iraq", "Complex", bHIOcomplex$t0[1],
-                 bHIOcomplex$t0[2], bHIScomplex$t0[1], bHIScomplex$t0[2], 
-                 dHIcomplex$d, dHIcomplex$dlow, dHIcomplex$dhigh,
-                 ciHIOcomplex$normal[2], ciHIOcomplex$normal[3],
-                 ciHIScomplex$normal[2], ciHIScomplex$normal[3])
-
-table1[24 , ] = c("Senate", "Iraq", "Complex", bSIOcomplex$t0[1],
-                 bSIOcomplex$t0[2], bSIScomplex$t0[1], bSIScomplex$t0[2], 
-                 dSIcomplex$d, dSIcomplex$dlow, dSIcomplex$dhigh,
-                 ciSIOcomplex$normal[2], ciSIOcomplex$normal[3],
-                 ciSIScomplex$normal[2], ciSIScomplex$normal[3])
-
-table1[25 , ] = c("House", "Libya", "Complex", bHLOcomplex$t0[1],
-                 bHLOcomplex$t0[2], bHLScomplex$t0[1], bHLScomplex$t0[2], 
-                 dHLcomplex$d, dHLcomplex$dlow, dHLcomplex$dhigh,
-                 ciHLOcomplex$normal[2], ciHLOcomplex$normal[3],
-                 ciHLScomplex$normal[2], ciHLScomplex$normal[3])
-
-####first-person####
-bHKOinternal = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-##House Kosovo Support
-bHKSinternal = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOinternal = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKSinternal = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOinternal = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHISinternal = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOinternal = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSISinternal = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOinternal = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLSinternal = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = firstperson ~ 1, 
-                   R = nsim)
-
-##effect size
-#House Kosovo
-dHKinternal = d.ind.t(m1 = bHKOinternal$t0[1], m2 = bHKSinternal$t0[1], 
-                 sd1 = bHKOinternal$t0[2], sd2 = bHKSinternal$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$firstperson)), 
-                 n2 = length(na.omit(hKosovoSupport$firstperson)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKinternal = d.ind.t(m1 = bSKOinternal$t0[1], m2 = bSKSinternal$t0[1], 
-                 sd1 = bSKOinternal$t0[2], sd2 = bSKSinternal$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$firstperson)), 
-                n2 = length(na.omit(sKosovoSupport$firstperson)), 
-                 a = .05)
-#House Iraq
-dHIinternal = d.ind.t(m1 = bHIOinternal$t0[1], m2 = bHISinternal$t0[1], 
-                 sd1 = bHIOinternal$t0[2], sd2 = bHISinternal$t0[2],
-                 n1 = length(na.omit(hIraqOppose$firstperson)), 
-                 n2 = length(na.omit(hIraqSupport$firstperson)), 
-                 a = .05)
-
-#Senate Iraq
-dSIinternal = d.ind.t(m1 = bSIOinternal$t0[1], m2 = bSISinternal$t0[1], 
-                 sd1 = bSIOinternal$t0[2], sd2 = bSISinternal$t0[2],
-                 n1 = length(na.omit(sIraqOppose$firstperson)), 
-                n2 = length(na.omit(sIraqSupport$firstperson)), 
-                 a = .05)
-
-#House Libya
-dHLinternal = d.ind.t(m1 = bHLOinternal$t0[1], m2 = bHLSinternal$t0[1], 
-                 sd1 = bHLOinternal$t0[2], sd2 = bHLSinternal$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$firstperson)), 
-                 n2 = length(na.omit(hLibyaSupport$firstperson)), 
-                 a = .05)
-
-##ci for forest plots
-ciHKOinternal = boot.ci(bHKOinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKSinternal = boot.ci(bHKSinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOinternal = boot.ci(bSKOinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKSinternal = boot.ci(bSKSinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOinternal = boot.ci(bHIOinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHISinternal = boot.ci(bHISinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOinternal = boot.ci(bSIOinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSISinternal = boot.ci(bSISinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOinternal = boot.ci(bHLOinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLSinternal = boot.ci(bHLSinternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[26 , ] = c("House", "Kosovo", "Internal", bHKOinternal$t0[1],
-                 bHKOinternal$t0[2], bHKSinternal$t0[1], bHKSinternal$t0[2], 
-                 dHKinternal$d, dHKinternal$dlow, dHKinternal$dhigh,
-                 ciHKOinternal$normal[2], ciHKOinternal$normal[3],
-                 ciHKSinternal$normal[2], ciHKSinternal$normal[3])
-
-table1[27 , ] = c("Senate", "Kosovo", "Internal", bSKOinternal$t0[1],
-                 bSKOinternal$t0[2], bSKSinternal$t0[1], bSKSinternal$t0[2], 
-                 dSKinternal$d, dSKinternal$dlow, dSKinternal$dhigh,
-                 ciSKOinternal$normal[2], ciSKOinternal$normal[3],
-                 ciSKSinternal$normal[2], ciSKSinternal$normal[3])
-
-table1[28 , ] = c("House", "Iraq", "Internal", bHIOinternal$t0[1],
-                 bHIOinternal$t0[2], bHISinternal$t0[1], bHISinternal$t0[2], 
-                 dHIinternal$d, dHIinternal$dlow, dHIinternal$dhigh,
-                 ciHIOinternal$normal[2], ciHIOinternal$normal[3],
-                 ciHISinternal$normal[2], ciHISinternal$normal[3])
-
-table1[29 , ] = c("Senate", "Iraq", "Internal", bSIOinternal$t0[1],
-                 bSIOinternal$t0[2], bSISinternal$t0[1], bSISinternal$t0[2], 
-                 dSIinternal$d, dSIinternal$dlow, dSIinternal$dhigh,
-                 ciSIOinternal$normal[2], ciSIOinternal$normal[3],
-                 ciSISinternal$normal[2], ciSISinternal$normal[3])
-
-table1[30 , ] = c("House", "Libya", "Internal", bHLOinternal$t0[1],
-                 bHLOinternal$t0[2], bHLSinternal$t0[1], bHLSinternal$t0[2], 
-                 dHLinternal$d, dHLinternal$dlow, dHLinternal$dhigh,
-                 ciHLOinternal$normal[2], ciHLOinternal$normal[3],
-                 ciHLSinternal$normal[2], ciHLSinternal$normal[3])
-
-####external####
-bHKOexternal = boot(data = hKosovoOppose,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-##House Kosovo Support
-bHKSexternal = boot(data = hKosovoSupport,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Oppose
-bSKOexternal = boot(data = sKosovoOppose,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#Senate Kosovo Support
-bSKSexternal = boot(data = sKosovoSupport,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#House Iraq Oppose
-bHIOexternal = boot(data = hIraqOppose,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#House Iraq Support
-bHISexternal = boot(data = hIraqSupport,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Oppose
-bSIOexternal = boot(data = sIraqOppose,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#Senate Iraq Support
-bSISexternal = boot(data = sIraqSupport,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#House Libya Oppose
-bHLOexternal = boot(data = hLibyaOppose,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-#House Libya Support
-bHLSexternal = boot(data = hLibyaSupport,
-                   statistic = BSfunction,
-                   formula = thirdperson ~ 1, 
-                   R = nsim)
-
-##effect size
-#House Kosovo
-dHKexternal = d.ind.t(m1 = bHKOexternal$t0[1], m2 = bHKSexternal$t0[1], 
-                 sd1 = bHKOexternal$t0[2], sd2 = bHKSexternal$t0[2],
-                 n1 = length(na.omit(hKosovoOppose$thirdperson)), 
-                 n2 = length(na.omit(hKosovoSupport$thirdperson)), 
-                 a = .05)
-
-#Senate Kosovo
-dSKexternal = d.ind.t(m1 = bSKOexternal$t0[1], m2 = bSKSexternal$t0[1], 
-                 sd1 = bSKOexternal$t0[2], sd2 = bSKSexternal$t0[2],
-                 n1 = length(na.omit(sKosovoOppose$thirdperson)), 
-                n2 = length(na.omit(sKosovoSupport$thirdperson)), 
-                 a = .05)
-#House Iraq
-dHIexternal = d.ind.t(m1 = bHIOexternal$t0[1], m2 = bHISexternal$t0[1], 
-                 sd1 = bHIOexternal$t0[2], sd2 = bHISexternal$t0[2],
-                 n1 = length(na.omit(hIraqOppose$thirdperson)), 
-                 n2 = length(na.omit(hIraqSupport$thirdperson)), 
-                 a = .05)
-
-#Senate Iraq
-dSIexternal = d.ind.t(m1 = bSIOexternal$t0[1], m2 = bSISexternal$t0[1], 
-                 sd1 = bSIOexternal$t0[2], sd2 = bSISexternal$t0[2],
-                 n1 = length(na.omit(sIraqOppose$thirdperson)), 
-                n2 = length(na.omit(sIraqSupport$thirdperson)), 
-                 a = .05)
-
-#House Libya
-dHLexternal = d.ind.t(m1 = bHLOexternal$t0[1], m2 = bHLSexternal$t0[1], 
-                 sd1 = bHLOexternal$t0[2], sd2 = bHLSexternal$t0[2],
-                 n1 = length(na.omit(hLibyaOppose$thirdperson)), 
-                 n2 = length(na.omit(hLibyaSupport$thirdperson)), 
-                 a = .05)
-
-
-##ci for forest plots
-ciHKOexternal = boot.ci(bHKOexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHKSexternal = boot.ci(bHKSexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKOexternal = boot.ci(bSKOexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSKSexternal = boot.ci(bSKSexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHIOexternal = boot.ci(bHIOexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHISexternal = boot.ci(bHISexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSIOexternal = boot.ci(bSIOexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciSISexternal = boot.ci(bSISexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLOexternal = boot.ci(bHLOexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-ciHLSexternal = boot.ci(bHLSexternal, 
-                   conf = .95,
-                   type = "norm",
-                   index = 1)
-
-table1[31 , ] = c("House", "Kosovo", "External", bHKOexternal$t0[1],
-                 bHKOexternal$t0[2], bHKSexternal$t0[1], bHKSexternal$t0[2], 
-                 dHKexternal$d, dHKexternal$dlow, dHKexternal$dhigh,
-                 ciHKOexternal$normal[2], ciHKOexternal$normal[3],
-                 ciHKSexternal$normal[2], ciHKSexternal$normal[3])
-
-table1[32 , ] = c("Senate", "Kosovo", "External", bSKOexternal$t0[1],
-                 bSKOexternal$t0[2], bSKSexternal$t0[1], bSKSexternal$t0[2], 
-                 dSKexternal$d, dSKexternal$dlow, dSKexternal$dhigh,
-                 ciSKOexternal$normal[2], ciSKOexternal$normal[3],
-                 ciSKSexternal$normal[2], ciSKSexternal$normal[3])
-
-table1[33 , ] = c("House", "Iraq", "External", bHIOexternal$t0[1],
-                 bHIOexternal$t0[2], bHISexternal$t0[1], bHISexternal$t0[2], 
-                 dHIexternal$d, dHIexternal$dlow, dHIexternal$dhigh,
-                 ciHIOexternal$normal[2], ciHIOexternal$normal[3],
-                 ciHISexternal$normal[2], ciHISexternal$normal[3])
-
-table1[34 , ] = c("Senate", "Iraq", "External", bSIOexternal$t0[1],
-                 bSIOexternal$t0[2], bSISexternal$t0[1], bSISexternal$t0[2], 
-                 dSIexternal$d, dSIexternal$dlow, dSIexternal$dhigh,
-                 ciSIOexternal$normal[2], ciSIOexternal$normal[3],
-                 ciSISexternal$normal[2], ciSISexternal$normal[3])
-
-table1[35 , ] = c("House", "Libya", "External", bHLOexternal$t0[1],
-                 bHLOexternal$t0[2], bHLSexternal$t0[1], bHLSexternal$t0[2], 
-                 dHLexternal$d, dHLexternal$dlow, dHLexternal$dhigh,
-                 ciHLOexternal$normal[2], ciHLOexternal$normal[3],
-                 ciHLSexternal$normal[2], ciHLSexternal$normal[3])
+#Loop though datasets, IV levels, and DVs computing bootstrapped means, sds, and ds for each.
+datasets = list(houseKosovo, senateKosovo, houseIraq, senateIraq, houseLibya)
+groups = c(0, 1)
+DVs = c("i","we",'shehe','they','complexity','internal','external')
+r = 1
+for(dataset in datasets){
+  for(DV in DVs){
+    for(group in groups){
+      data = subset(dataset, Oppose.Support==group)
+      f = as.formula(paste(DV,'~1', sep=''))
+      bs = bootstrap_values(f,data,nsim)
+      table1[r, 1] = levels(dataset$Venue)[1]
+      table1[r, 2] = levels(dataset$Region)[1]
+      table1[r, 3] = toTitleCase(DV)
+      if(DV=='i'){table1[r, 3] = "I"}
+      if(DV=='shehe'){table1[r, 3] = "She/He"}
+      if(group==0){
+        table1[r, 4] = mean(bs$mean)
+        table1[r, 5] = mean(bs$sd)
+        noppose = length(na.omit(data[[DV]]))
+        table1[r, 11] = quantile(bs$mean, 0.025)
+        table1[r, 12] = quantile(bs$mean, 0.975)
+      }
+      if(group==1){
+        table1[r, 6] = mean(bs$mean)
+        table1[r, 7] = mean(bs$sd)
+        nsupport = length(na.omit(data[[DV]]))
+        table1[r, 13] = quantile(bs$mean, 0.025)
+        table1[r, 14] = quantile(bs$mean, 0.975)
+      }
+    }
+    mdiff = d.ind.t(m1 = table1[r,4], m2 = table1[r,6], 
+                  sd1 = table1[r,5], sd2 = table1[r,7],
+                  n1 = noppose, 
+                  n2 = nsupport, 
+                  a = .05)
+    table1[r, 8] = mdiff$d
+    table1[r, 9] = mdiff$dlow
+    table1[r, 10] = mdiff$dhigh
+    r = r + 1
+  }
+}
 ```
 
 # Study 1A - Kosovo in the House
@@ -1510,7 +326,7 @@ table1[,10] = apa(as.numeric(table1[,10]), 2)
 Ktable = table1[1:10]
 Ktable = subset(Ktable, Region == "Kosovo")
 colnames(Ktable)[2] = 'Hypothesis'
-Ktable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
+Ktable$Hypothesis = c(2,2,1,1,3,2,1,2,2,1,1,3,2,1)
 Ktable = Ktable[order(Ktable$Hypothesis), ]
 Ktable$Hypothesis = as.integer(Ktable$Hypothesis)
 
@@ -1578,7 +394,6 @@ The results of this first study fail to provide consistent, strong support for a
 It is difficult to know exactly why this is the case; however there are several possible explanations. First, voting in Congress is exceedingly complex and is influenced by much more than floor debates in a given chamber. In this case, the Senate vote on the resolution occurred before the main debate in the House, which may have influenced what the debate focused on. Second, the Senate and the House are composed differently. Members of the House serve two year terms while Senators serve six year terms. Furthermore, Senators typically have more political experience than members of the House. These, as well as other factors, may help explain the differential effects for the two chambers of Congress. 
 	
 Based on the findings of @Abe2012 and @Matsumoto2015, we expected more consistent support for our hypotheses. However, the results could also be explained by the situation posed by the particular resolution. In this conflict, rather than responding to an act of aggression or a perceived threat, the U.S. was deciding the extent to which the U.S. would be involved in ongoing NATO (a treaty organization of which the U.S. is a member) operations in Kosovo and Serbia. It is possible that some viewed the outgroup as NATO rather than Serbians. In this case, with no clear, immediate threat to the U.S., for those making ingroup-outgroup distinctions, protecting the ingroup may have meant opposing the war rather than supporting it. In order to determine if the situation surrounding the Kosovo conflict may have impacted the first study, we next turned to examine the Iraq War which had more support and also represented a possible clear threat to the U.S.
-
 	
 # Study 2A - Iraq in the House
 
@@ -1603,7 +418,7 @@ Once again using the Government Publishing Office, we collected speeches given i
 Itable = table1[1:10]
 Itable = subset(Itable, Region == "Iraq")
 colnames(Itable)[2] = 'Hypothesis'
-Itable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
+Itable$Hypothesis = c(2,2,1,1,3,2,1,2,2,1,1,3,2,1)
 Itable = Itable[order(Itable$Hypothesis), ]
 Itable$Hypothesis = as.integer(Itable$Hypothesis)
 
@@ -1671,7 +486,6 @@ Analyses were conducted in the same manner as the first part of the study to det
 The results from this second study more closely matched our hypotheses. For both the House and Senate, members of Congress who supported taking military action were more externally focused than those who opposed taking military action. Interestingly, the difference in external focus was driven by third person singular pronouns (*he*) rather than third person plural pronouns (*they*). Although this finding was not quite expected, these differences make sense in light of the situation. In the case of the Iraq War, the threat was seen not as a group of people but rather a single individual, Saddam Hussein. The second hypothesis was not supported. In both the House and Senate, legislators who opposed the war measure were not more internally focused than those who supported it. As was stated previously, this difference in results could be due to voting procedures or compositional differences in the House and Senate. Finally, our third hypothesis was once again consistently supported with the only caveat being the effect was slightly weaker than expected in the Senate. Those who supported the war measures showed less cognitive complexity than those who opposed them in both the House and Senate.
 
 As a final test of our hypotheses, we examined the Congressional debate surrounding U.S. involvement in Libya during its 2011 civil war. We might expect to find similar results to Study 1 as, like the Kosovo war, there was less support for U.S. military involvement as well as a lack of a perceived clear, immediate threat to the U.S.
-
 	
 # Study 3 - Libya in the House
 
@@ -1696,7 +510,7 @@ In this final study, the Congressional Record was searched for speeches given in
 Ltable = table1[1:10]
 Ltable = subset(Ltable, Region == "Libya")
 colnames(Ltable)[2] = 'Hypothesis'
-Ltable$Hypothesis = c(2,2,2,2,1,1,1,1,3,3,2,2,1,1)
+Ltable$Hypothesis = c(2,2,1,1,3,2,1)
 Ltable = Ltable[order(Ltable$Hypothesis), ]
 Ltable$Hypothesis = as.integer(Ltable$Hypothesis)
 
@@ -1707,7 +521,7 @@ apa_table(as.data.frame(Ltable),
           note = "Confidence intervals for $d_s$, which are standardized mean differences, were calculated using 
           non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.",
           small = T,
-          escape = F, row.names = F,
+          escape = F, 
           format = "latex",
           col.names = c("Chamber", "Region", "DV", "$M_O$", "$SD_O$", 
                         "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
@@ -1750,7 +564,6 @@ Our hypotheses regarding internal and external focus were not consistently suppo
 Hypothesis 2 received the weakest, most inconsistent support of any of our hypotheses with strong evidence for the effect found only in the Senate debate of the Kosovo resolution failing to replicate @Abe2012. Unlike Hypotheses 1 and 3 which are at least partially based in @Matsumoto2015's study of executive, Hypothesis 2 is solely based in @Abe2012's study of the war attitudes of ordinary citizens. Our results suggest that findings of @Abe2012 may only generalize to laypeople and fail to capture the processes at work with the war decisions of political elites. 
 
 Additionally, we may have weak support for @Matsumoto2015 is due to changes in the dynamics of war. While @Matsumoto2015 examined events spanning 1830 to 2010, our study focused on three recent conflicts within the context of U.S. legislator bodies. Historically, the U.S. would declare war on another nation (i.e., fighting the Germans in WWI). In WWII, a slight shift occurred where the U.S. was fighting not only another nation but also an ideology (Nazi Germany, Fascist Italy). With the beginning of the Cold War, another movement happened where the U.S. did not directly fight another nation (USSR) but instead fought indirectly with proxy wars (Korean War, Vietnam War) while battling against enemy ideology (Communism). After the Cold War and the fall of the Soviet Union, the focus shifted to the United States' main conflict being the war on terror in which there is no official, recognized government or nation with which to negotiate[@Matthews2014]. Furthermore, @Balas2012 argued that one possible motivation for war, since the end of the Cold War, was the increased emphasis on the international norms of democratization and humanitarianism. Hence, rather than capturing solely support for aggressive actions, our study of congressional debates in this context may have also captured legislators' attitudes toward humanitarianism, globalization, and terrorism. Further work would be necessary to the different reasons why political figures might support or oppose a war measure.
-
 
 ## Limitations
 
