@@ -1,0 +1,27 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{Language-of-War-Markdown_KJ2_files/figure-latex/Kpic-1.pdf}
+\caption{\label{fig:Kpic}House (left) and Senate (right) bootstrapped means and 95\% confidence interval of each linguistic category for Kosovo. Complexity is \emph{z}-scored, and therefore, can be negative.}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{Language-of-War-Markdown_KJ2_files/figure-latex/Ipic-1.pdf}
+\caption{\label{fig:Ipic}House (left) and Senate (right) bootstrapped means and 95\% confidence interval of each linguistic category for Iraq. Complexity is \emph{Z}-scored and can include negative values.}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{Language-of-War-Markdown_KJ2_files/figure-latex/Lpic-1.pdf}
+\caption{\label{fig:Lpic}House (left) and Senate (right) bootstrapped means and 95\% confidence interval of each linguistic category for Libya. Complexity is \emph{Z}-scored and can therefore be negative.}
+\end{figure*}
+\efloatseparator
+ 

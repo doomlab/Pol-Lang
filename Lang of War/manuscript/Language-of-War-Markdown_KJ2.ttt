@@ -1,0 +1,161 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:summary-table}Summary of Voting Record by Chamber, Political Party, and Area of Conflict}
+
+\small{
+
+\begin{tabular}{ccccccccc}
+\toprule
+Study & Conflict & Chamber & \# Speeches & Yay Votes & Nay Votes & Yay Dems & Yay Reps & Outcome\\
+\midrule
+1A & Kosovo & House & 210.00 & 213.00 & 213.00 & 86\% & 16\% & Failed\\
+1B & Kosovo & Senate & 49.00 & 58.00 & 41.00 & 93\% & 30\% & Passed\\
+2A & Iraq & House & 274.00 & 296.00 & 133.00 & 40\% & 97\% & Passed\\
+2B & Iraq & Senate & 138.00 & 77.00 & 23.00 & 58\% & 98\% & Passed\\
+3 & Libya & House & 104.00 & 123.00 & 295.00 & 60\% & 6\% & Failed\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:Ktable}Descriptive statistics for each dependent variable by chamber for Kosovo}
+
+\small{
+
+\begin{tabular}{lccccccccc}
+\toprule
+Chamber & Hypothesis & DV & $M_O$ & $SD_O$ & $M_S$ & $SD_S$ & $d_s$ & $d_s$ LL & $d_s$ UL\\
+\midrule
+House & 1 & She/He & 0.52 & 0.70 & 0.55 & 0.90 & -0.04 & -0.31 & 0.24\\
+House & 1 & They & 0.64 & 0.73 & 0.79 & 1.16 & -0.15 & -0.42 & 0.13\\
+House & 1 & External & 1.17 & 1.14 & 1.34 & 1.37 & -0.13 & -0.41 & 0.14\\
+Senate & 1 & She/He & 0.46 & 0.87 & 0.49 & 0.41 & -0.04 & -0.61 & 0.52\\
+Senate & 1 & They & 0.81 & 0.72 & 0.53 & 0.42 & 0.48 & -0.10 & 1.04\\
+Senate & 1 & External & 1.27 & 1.30 & 1.03 & 0.56 & 0.24 & -0.32 & 0.80\\
+House & 2 & I & 1.86 & 1.39 & 2.32 & 1.96 & -0.27 & -0.55 & 0.01\\
+House & 2 & We & 3.12 & 2.04 & 2.94 & 2.61 & 0.07 & -0.20 & 0.35\\
+House & 2 & Internal & 4.99 & 2.48 & 5.27 & 3.35 & -0.10 & -0.37 & 0.18\\
+Senate & 2 & I & 2.21 & 1.34 & 1.99 & 2.07 & 0.12 & -0.44 & 0.68\\
+Senate & 2 & We & 3.12 & 2.06 & 1.53 & 0.63 & 1.07 & 0.46 & 1.67\\
+Senate & 2 & Internal & 5.32 & 2.50 & 3.54 & 2.25 & 0.75 & 0.17 & 1.33\\
+House & 3 & Complexity & 0.59 & 3.21 & -0.46 & 3.92 & 0.29 & 0.02 & 0.57\\
+Senate & 3 & Complexity & 1.67 & 3.91 & -1.54 & 3.21 & 0.90 & 0.31 & 1.49\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Confidence intervals for $d_s$, which are standardized mean differences, were calculated using non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:Itable}Descriptive statistics for each dependent variable by chamber for Iraq}
+
+\small{
+
+\begin{tabular}{lccccccccc}
+\toprule
+Chamber & Region & DV & $M_O$ & $SD_O$ & $M_S$ & $SD_S$ & $d_s$ & $d_s$ LL & $d_s$ UL\\
+\midrule
+House & 1 & She/He & 0.56 & 0.67 & 1.17 & 1.14 & -0.63 & -0.87 & -0.38\\
+House & 1 & They & 0.46 & 0.61 & 0.55 & 0.72 & -0.13 & -0.37 & 0.11\\
+House & 1 & External & 1.02 & 0.96 & 1.71 & 1.33 & -0.58 & -0.82 & -0.33\\
+Senate & 1 & She/He & 0.60 & 0.57 & 1.20 & 0.79 & -0.83 & -1.20 & -0.45\\
+Senate & 1 & They & 0.48 & 0.40 & 0.56 & 0.51 & -0.16 & -0.53 & 0.20\\
+Senate & 1 & External & 1.08 & 0.71 & 1.76 & 1.00 & -0.73 & -1.11 & -0.36\\
+House & 2 & I & 1.66 & 1.62 & 1.84 & 1.44 & -0.11 & -0.36 & 0.13\\
+House & 2 & We & 3.00 & 1.98 & 2.76 & 1.71 & 0.13 & -0.11 & 0.37\\
+House & 2 & Internal & 4.66 & 2.44 & 4.60 & 2.27 & 0.03 & -0.21 & 0.27\\
+Senate & 2 & I & 1.98 & 1.49 & 1.98 & 1.91 & 0.00 & -0.37 & 0.36\\
+Senate & 2 & We & 2.54 & 1.20 & 2.62 & 1.41 & -0.06 & -0.42 & 0.31\\
+Senate & 2 & Internal & 4.52 & 1.79 & 4.61 & 2.21 & -0.04 & -0.41 & 0.32\\
+House & 3 & Complexity & 0.70 & 3.64 & -0.57 & 3.37 & 0.37 & 0.12 & 0.61\\
+Senate & 3 & Complexity & 0.29 & 3.89 & -0.17 & 3.75 & 0.12 & -0.24 & 0.49\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Confidence intervals for $d_s$, which are standardized mean differences, were calculated using
+          non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:Ltable}Descriptive statistics for each dependent variable by chamber for Libya}
+
+\small{
+
+\begin{tabular}{lccccccccc}
+\toprule
+Chamber & Region & DV & $M_O$ & $SD_O$ & $M_S$ & $SD_S$ & $d_s$ & $d_s$ LL & $d_s$ UL\\
+\midrule
+House & 1 & She/He & 0.60 & 0.97 & 0.64 & 1.04 & -0.04 & -0.46 & 0.38\\
+House & 1 & They & 0.60 & 1.08 & 0.62 & 0.84 & -0.01 & -0.43 & 0.40\\
+House & 1 & External & 1.21 & 1.62 & 1.26 & 1.48 & -0.03 & -0.45 & 0.38\\
+House & 2 & I & 2.42 & 1.97 & 2.32 & 1.42 & 0.06 & -0.36 & 0.48\\
+House & 2 & We & 2.95 & 1.66 & 2.89 & 2.30 & 0.03 & -0.38 & 0.45\\
+House & 2 & Internal & 5.35 & 2.13 & 5.20 & 2.54 & 0.06 & -0.35 & 0.48\\
+House & 3 & Complexity & 0.36 & 3.91 & -0.78 & 3.83 & 0.29 & -0.13 & 0.71\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Confidence intervals for $d_s$, which are standardized mean differences, were calculated using
+          non-central $t$ distribution. O = Oppose, S = Support, LL = Lower Limit, UL = Upper Limit.}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
