@@ -34,7 +34,7 @@ keywords          : "language, war, congress, pronouns, verbs"
 
 bibliography      : ["LangWar.bib"]
 
-figsintext        : yes
+figsintext        : no
 figurelist        : no
 tablelist         : no
 footnotelist      : no
@@ -42,9 +42,9 @@ lineno            : yes
 
 lang              : "english"
 class             : "man"
+#replace_ampersands: yes
 output            : papaja::apa6_pdf
-csl               : apa6.csl
-replace_ampersands: yes
+#csl               : apa6.csl
 ---
 
 ```{r load_packages, include = FALSE}
@@ -54,7 +54,7 @@ library(boot)
 library(nlme)
 library(MOTE)
 library(tools)
-knitr::opts_chunk$set(cache = FALSE)
+knitr::opts_chunk$set(cache = TRUE)
 nsim = 1000
 
 library(ggplot2)
@@ -93,9 +93,11 @@ In the last few years, numerous civil disputes worldwide, which might threaten A
 
 ## Predictors of Support for Military Action
 
-While the current study focuses on linguistic style predictors of support, it is worth briefly reviewing past work on the various factors which predict support for war. When it comes to executive leaders like presidents, there is much variance across time and context, but some predictors emerge. For example, @Keller2012 found presidents high in internal locus of control to be more likely to engage in military conflict, and @Leudar2004 found executives engaging or planning to engage in conflict tended to use more us versus them rhetoric. Despite the executive making the ultimate decision to go to war, public opinion about the war is an important consideration for leaders (at least in a democracy). Furthermore, public opinion is generally easier to measure and has been the focus on much work not only in psychology but also in other fields like political science. Numerous studies have found robust predictors of support for war among citizens/voters including militarism, blind patriotism, and concern for national security [@Cohrs2012; @Friese2009; @McCleary2009]. 
+While the current study focuses on linguistic style predictors of support, it is worth briefly reviewing past work on the various factors which predict support for war. When it comes to executive leaders like presidents, there is much variance across time and context, but some predictors emerge. For example, @Keller2012 found presidents high in internal locus of control to be more likely to engage in military conflict, and @Leudar2004 found executives engaging or planning to engage in conflict tended to use more us versus them rhetoric. Despite the executive making the ultimate decision to go to war, public opinion about the war is an important consideration for leaders (at least in a democracy). Furthermore, public opinion is generally easier to measure and has been the focus on much work not only in psychology but also in other fields like political science. Numerous studies have found robust predictors of support for war among citizens/voters including militarism, blind patriotism, and concern for national security [@Cohrs2002; @Friese2009; @McCleary2009]. 
 
-Less work has been conducted exploring predictors of support for war among legislators. @Kriner2014 did study ongoing support for the Iraq War by members of Congress and found opposition to the war generally related to the number of casualties from the member's home district. Beyond understanding how support for war changes through political rhetoric, it would also be useful to understand how legislators come to support war in the first place. In the wake of several incidences of the U.S. president acting alone to engage the nation in military conflict (i.e., the Vietnam War), Congress enacted the War Powers Act and sought to exert its power by forcing the president to consult with them and gain approval to keep the U.S. military fighting overseas. In other words, Congress becomes involved only after troops have begun fighting and must either vote in support of continuing U.S military involvement (as was the case for the Iraq War) or in opposition to the president's continued use of the military in the conflict [as was the case for the 1999 conflict in Kosovo and the 2011 Libyan conflict; @Bessette2017]. We sought to expand past work in the area by using the debates and speeches about these votes given on the floor of Congress to predict how different members of Congress eventually voted to either support the president's use of military force or oppose it. As we use psychological text analysis to measure our predictors, the next section provides a brief overview on language analysis before we discuss the specific linguistic styles measured in the current study. 
+Less work has been conducted exploring predictors of support for war among legislators. @Kriner2014 studied ongoing support for the Iraq War by members of Congress and found opposition to the war generally related to the number of casualties from the member's home district. Beyond understanding how support for war changes through political rhetoric, it would also be useful to understand how legislators come to support war in the first place. In the wake of several incidences of the U.S. president acting alone to engage the nation in military conflict (i.e., the Vietnam War), Congress enacted the War Powers Act and sought to exert its power by forcing the president to consult with them and gain approval to keep the U.S. military fighting overseas. In other words, Congress becomes involved only after troops have begun fighting and must either vote in support of continuing U.S military involvement (as was the case for the Iraq War) or in opposition to the president's continued use of the military in the conflict [as was the case for the 1999 conflict in Kosovo and the 2011 Libyan conflict; @Bessette2017]. We sought to expand past work in the area by using the debates and speeches about these votes given on the floor of Congress to predict how different members of Congress eventually voted to either support the president's use of military force or oppose it. As we use psychological text analysis to measure our predictors, the next section provides a brief overview on language analysis before we discuss the specific linguistic styles measured in the current study. 
+\newline
+\newline
 
 ## Psychological Language Analysis
 
@@ -139,6 +141,8 @@ Each language sample was analyzed using the Language Inquiry and Word Count [@Pe
 
 ### Military Action
 
+For the purpose of this study, military action was defined as military personnel being sent into another nation to coerce the actions of that nation. In the past 15 years, the U.S. has taken military action against Iraq, Afghanistan, Kosovo, and Libya, although Congress did not explicitly approve action in Afghanistan or Libya. Operational definitions for support for war were voting records (yay, nay) on bills authorizing military action for Iraq, Kosovo, and Libya (only voted on in the House). These bills were House Joint Resolution 114, 107th Congress (2002); Senate Concurrent Resolution 21, 106th Congress (1999); and House Joint Resolution 68, 112th Congress (2011). Oppose or support information was combined with the LIWC percentages described above. Table \@ref(tab:summary-table) summarizes areas of conflict, number of speeches, and votes for each conflict by political party and the chamber of Congress. 
+
 ```{r summary-table, echo = FALSE, results = 'asis'}
 studysum = data.frame("Study" = c("1A","1B","2A","2B","3"),
                       "Conflict" = c("Kosovo","Kosovo","Iraq","Iraq","Libya"),
@@ -152,17 +156,21 @@ studysum = data.frame("Study" = c("1A","1B","2A","2B","3"),
                       stringsAsFactors = FALSE)
 
 apa_table(studysum, format='latex',
+          small = T,
+          escape = F,
+          col.names = c("Study", "Conflict", "Chamber", "\\# Speeches", 
+                        "Yay Votes", "Nay Votes", "Yay Dems", 
+                        "Yay Reps", "Outcome"),
           align = rep("c", 9),
           caption = "Summary of Voting Record by Chamber, Political Party, and Area of Conflict")
 ```
 
-For the purpose of this study, military action was defined as military personnel being sent into another nation to coerce the actions of that nation. In the past 15 years, the U.S. has taken military action against Iraq, Afghanistan, Kosovo, and Libya, although Congress did not explicitly approve action in Afghanistan or Libya. Operational definitions for support for war were voting records (yay, nay) on bills authorizing military action for Iraq, Kosovo, and Libya (only voted on in the House). These bills were House Joint Resolution 114, 107th Congress (2002); Senate Concurrent Resolution 21, 106th Congress (1999); and House Joint Resolution 68, 112th Congress (2011). Oppose or support information was combined with the LIWC percentages described above. Table \@ref(tab:summary-table) summarizes areas of conflict, number of speeches, and votes for each conflict by political party and the chamber of Congress. 
 
 ## Data Analytic Technique
 
 The data collected include multiple language samples by the same member of Congress and are structured by both party affiliation and conflict region. Rather than analyze data from each conflict region and chamber of Congress together, we chose to analyze them separately in Studies 1A (House vote on Kosovo conflict), 1B (Senate vote on Kosovo conflict), 2A (House vote on Iraq conflict), 2B (Senate vote on Iraq conflict), and 3 (House vote on Libya conflict). The major reason for this was to conservatively test the robustness of any effects and to better demonstrate the reliability of the results. Another minor reason was to examine possible differences based on the unique circumstances of each conflict. The war in Iraq ostensibly involved a direct threat to the U.S. where the conflicts in Kosovo and Libya did not which could arguably impact how members of Congress talked about and voted on them. 
 
-This structure was best analyzed with multilevel modeling, which allowed us to control for the correlated error terms of member of Congress and party affiliation. We used the *nlme* package to calculate the means and standard deviation for each variable by voting recording [@Pinheiro2017]. The intercept was used to predict the dependent variable (LIWC category percent), which creates a mean score for the dependent variable. Party affiliation and member of Congress were controlled as random intercept factors [@Gelman2006]. The standard error of the estimate was translated into standard deviation by multiplying by the square root of *n* for the sample. This analysis was bootstrapped using the *boot* library 1000 times, and the normal confidence interval for the mean was calculated using this function [@Canty2017]. These values were separated by voting record, Senate/House, and country of interest. The means and confidence intervals are presented in forest plots to show the relative percentages for each combination. The bootstrapped standard deviation values were used to calculate $d_s$ values using the MOTE library with the pooled standard deviation as the denominator [@Lakens2013; @Buchanan2017]. The $d_s$ represents the effect size, or standardized mean difference, in each of the LIWC categories between members of Congress that voted for military action versus those that voted against it. Instead of using a traditional null-hypothesis test with *p*-values, we examined if the bootstrapped confidence intervals of the effect size, $d_s$, included zero. If the confidence interval included zero, this result would indicate no support for differences in the dependent variable for voting record, while confidence intervals that did not include zero indicated a difference in the dependent variable for voting record.  
+This structure was best analyzed with multilevel modeling, which allowed us to control for the correlated error terms of member of Congress and party affiliation. We used the *nlme* package to calculate the means and standard deviation for each variable by voting recording [@Pinheiro2017]. The intercept was used to predict the dependent variable (LIWC category percent), which creates a mean score for the dependent variable. Party affiliation and member of Congress were controlled as random intercept factors [@Gelman2006]. The standard error of the estimate was translated into standard deviation by multiplying by the square root of *n* for the sample. This analysis was bootstrapped 1000 times, and the normal confidence interval for the mean was calculated using this function. These values were separated by voting record, Senate/House, and country of interest. The means and confidence intervals are presented in forest plots to show the relative percentages for each combination. The bootstrapped standard deviation values were used to calculate $d_s$ values using the MOTE library with the pooled standard deviation as the denominator [@Lakens2013; @Buchanan2017]. The $d_s$ represents the effect size, or standardized mean difference, in each of the LIWC categories between members of Congress that voted for military action versus those that voted against it. Instead of using a traditional null-hypothesis test with *p*-values, we examined if the bootstrapped confidence intervals of the effect size, $d_s$, included zero. If the confidence interval included zero, this result would indicate no support for differences in the dependent variable for voting record, while confidence intervals that did not include zero indicated a difference in the dependent variable for voting record.  
 
 The decision to treat the voting record on the war measures (yay or nay for continuing military action) as the IV and the linguistics styles as the DVs despite our interest in predictor support for war was made for multiple reasons. First, while technically debate happens prior to the official voting, the majority of Congress people will have made up their minds hence the debate serves more as a justification for their decisions than as a persuasive function. Second, using the linguistic styles as the DVs is consistent with @Abe2012 which is one of the studies we sought to conceptual replicate. 
 
@@ -247,7 +255,6 @@ bootstrap_values <- function(formula, dataset, nsim){
 
 ```
 
-
 ```{r bootstrap, include=FALSE, warning=FALSE}
 #Loop though datasets, IV levels, and DVs computing bootstrapped means, sds, and ds for each.
 datasets = list(houseKosovo, senateKosovo, houseIraq, senateIraq, houseLibya)
@@ -314,6 +321,8 @@ Speeches made in the House of Representatives pertaining to the use of military 
   
 # Results
 
+A forest plot of the results can be found in Figure \@ref(fig:Kpic), and all descriptive statistics can be found in Table \@ref(tab:Ktable). Results only weakly supported Hypothesis 1. The trend is in the hypothesized direction with supporters of military action displaying greater external focus, but the effect is weaker in magnitude than in the original studies. Hypothesis 2 was not supported; legislators opposing the war measure did not display a greater internal focus (i.e., incorrect direction and magnitude of the hypothesized effect). In fact, supporters of the measure used more 1st person singular pronouns (e.g., I-words) contrary to our hypothesis. Hypothesis 3 was supported with supporters of the war measure showing lower cognitive complexity than those who opposed it and the magnitude of the effect was similar to the original studies.	
+
 ```{r Ktable, echo = FALSE, results = 'asis'}
 table1[,4] = apa(as.numeric(table1[,4]), 2)
 table1[,5] = apa(as.numeric(table1[,5]), 2)
@@ -342,7 +351,7 @@ apa_table(as.data.frame(Ktable),
              "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
 ```
 
-```{r Kpic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval of each linguistic category for Kosovo.", fig.height=6, fig.width=8}
+```{r Kpic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval of each linguistic category for Kosovo. Complexity is *z*-scored, and therefore, can be negative.", fig.height=6, fig.width=8}
 Kpic = table1[ , c(1:4, 6, 11:14)]
 Kpic = subset(Kpic, Region == "Kosovo")
 KpicO = Kpic[, c(1:4, 6, 7)]
@@ -364,8 +373,6 @@ plot_grid(Khouse + theme(legend.position="none"),
            hjust = -1,
            nrow = 1)
 ```
-
-A forest plot of the results can be found in Figure \@ref(fig:Kpic), and all descriptive statistics can be found in Table \@ref(tab:Ktable). Results only weakly supported Hypothesis 1. The trend is in the hypothesized direction with supporters of military action displaying greater external focus, but the effect is weaker in magnitude than in the original studies. Hypothesis 2 was not supported; legislators opposing the war measure did not display a greater internal focus (i.e., incorrect direction and magnitude of the hypothesized effect). In fact, supporters of the measure used more 1st person singular pronouns (e.g., I-words) contrary to our hypothesis. Hypothesis 3 was supported with supporters of the war measure showing lower cognitive complexity than those who opposed it and the magnitude of the effect was similar to the original studies.	
 	
 # Study 1B - Kosovo in the Senate
 
@@ -414,6 +421,8 @@ Once again using the Government Publishing Office, we collected speeches given i
 
 # Results
 
+As in the first study, bootstrapped means and confidence intervals as well as effect sizes (Cohen's $d_s$) were calculated for speeches of those supporting the measure versus those opposing the measure for the following LIWC categories: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*) as well as composite measure for external focus, internal focus, and cognitive complexity. Results can be seen as a forest plot in Figure \@ref(fig:Ipic) and in Table \@ref(tab:Itable). Support was found for Hypothesis 1. Legislators supporting the war measure were more externally focused and the effect size magnitude somewhat larger than that hypothesized. The largest differences was in third-person singular pronouns (*he*). Hypothesis 2 was very weakly supported; the effect was in the right direction, but magnitude of the effect was much smaller (0.03) than hypothesized. Hypothesis 3 was supported; supporters of the war measure were less cognitively complex than those who opposed it with the hypothesized magnitude.
+
 ```{r Itable, echo = FALSE, results = 'asis'}
 Itable = table1[1:10]
 Itable = subset(Itable, Region == "Iraq")
@@ -434,7 +443,7 @@ apa_table(as.data.frame(Itable),
                        "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
 ```
 
-```{r Ipic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval of each linguistic category for Iraq.", fig.height=6, fig.width=8}
+```{r Ipic, echo=FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval of each linguistic category for Iraq. Complexity is *Z*-scored and can include negative values.", fig.height=6, fig.width=8}
 Ipic = table1[ , c(1:4, 6, 11:14)]
 Ipic = subset(Ipic, Region == "Iraq")
 IpicO = Ipic[, c(1:4, 6, 7)]
@@ -457,13 +466,11 @@ plot_grid( Ihouse + theme(legend.position="none"),
            nrow = 1
 )
 ```
-
-As in the first study, bootstrapped means and confidence intervals as well as effect sizes (Cohen's $d_s$) were calculated for speeches of those supporting the measure versus those opposing the measure for the following LIWC categories: first-person singular (*I*), first-person plural (*we*), third-person singular (*he*, *she*), third-person plural (*they*) as well as composite measure for external focus, internal focus, and cognitive complexity. Results can be seen as a forest plot in Figure \@ref(fig:Ipic) and in Table \@ref(tab:Itable). Support was found for Hypothesis 1. Legislators supporting the war measure were more externally focused and the effect size magnitude somewhat larger than that hypothesized. The largest differences was in third-person singular pronouns (*he*). Hypothesis 2 was very weakly supported; the effect was in the right direction, but magnitude of the effect was much smaller (0.03) than hypothesized. Hypothesis 3 was supported; supporters of the war measure were less cognitively complex than those who opposed it with the hypothesized magnitude.
 	
 # Study 2B - Iraq in the Senate
 
 In the second part of this study, we examined the debate in the Senate. We wished to determine if, like senators who opposed military action in Kosovo, senators who opposed action against Iraq used more group references as well as more reference to current events or if senators were more like House members debating Iraq.
-  
+
 # Method
 
 ```{r senate-Iraq, eval=FALSE, include=FALSE}
@@ -506,6 +513,8 @@ In this final study, the Congressional Record was searched for speeches given in
 	
 # Results
 
+As in the first two studies, analyses consisted on comparing the bootstrapped means, CIs, and effects sizes for those who supported the military measure versus those who opposed it. These results are displayed in Figure \@ref(fig:Lpic) as a forest plot and in Table \@ref(tab:Ltable). For Hypotheses 1 and 2, the effects were in the hypothesized direction, but magnitude of the effects were much weaker than hypothesized. Hypothesis 3 was most strongly supported with an effect size in the right direction and nearly as strong as hypothesized. 
+
 ```{r Ltable, echo = FALSE, results = 'asis'}
 Ltable = table1[1:10]
 Ltable = subset(Ltable, Region == "Libya")
@@ -527,7 +536,7 @@ apa_table(as.data.frame(Ltable),
                         "$M_S$", "$SD_S$", "$d_s$", "$d_s$ LL", "$d_s$ UL"))
 ```
 
-```{r Lpic, echo=FALSE, warning= FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval of each linguistic category for Libya.", fig.height=6, fig.width=8}
+```{r Lpic, echo=FALSE, warning= FALSE, fig.cap="House (left) and Senate (right) bootstrapped means and 95% confidence interval of each linguistic category for Libya. Complexity is *Z*-scored and can therefore be negative.", fig.height=6, fig.width=8}
 Lpic = table1[ , c(1:4, 6, 11:14)]
 Lpic = subset(Lpic, Region == "Libya")
 LpicO = Lpic[, c(1:4, 6, 7)]
@@ -548,8 +557,6 @@ plot_grid( Lhouse + theme(legend.position=c(.85, .95)),
            nrow = 1
 )
 ```
-
-As in the first two studies, analyses consisted on comparing the bootstrapped means, CIs, and effects sizes for those who supported the military measure versus those who opposed it. These results are displayed in Figure \@ref(fig:Lpic) as a forest plot and in Table \@ref(tab:Ltable). For Hypotheses 1 and 2, the effects were in the hypothesized direction, but magnitude of the effects were much weaker than hypothesized. Hypothesis 3 was most strongly supported with an effect size in the right direction and nearly as strong as hypothesized. 
 
 # Discussion
 
