@@ -418,7 +418,13 @@ finalsample$Q12 = factor(finalsample$Q12,
 gender = table(finalsample$Q10)/sum(table(finalsample$Q10))*100
 race = table(finalsample$Q12)/sum(table(finalsample$Q12))*100
 
-##take out the people with less than 50 words
+write.csv(finalsample, 'exp2_finalsample.csv', row.names = FALSE)
+newMFD = read.csv('exp2_finalsample_newMFD.csv')
+colnames(newMFD)[1:41] = colnames(finalsample)[1:41]
+newMFD = newMFD[,c(1,42:55)]
+finalsample = merge(finalsample, newMFD, by="ResponseId")
+
+##take out the people with less than 25 words
 ##use the ngram library to examine the data
 ##preprocess only works on one string at a time, so going to use a loop go through all the rows (apply won't work because we only want to work on one column)
 
