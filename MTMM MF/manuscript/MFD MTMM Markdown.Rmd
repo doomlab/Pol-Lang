@@ -419,6 +419,7 @@ gender = table(finalsample$Q10)/sum(table(finalsample$Q10))*100
 race = table(finalsample$Q12)/sum(table(finalsample$Q12))*100
 
 write.csv(finalsample, 'exp2_finalsample.csv', row.names = FALSE)
+#this part was run through LIWC
 newMFD = read.csv('exp2_finalsample_newMFD.csv')
 colnames(newMFD)[1:41] = colnames(finalsample)[1:41]
 newMFD = newMFD[,c(1,42:55)]
@@ -436,7 +437,7 @@ for (i in 1:nrow(finalsample)) {
 }
 
 #remove small words people
-finalwords = subset(finalsample, wordcount >=50)
+finalwords = subset(finalsample, wordcount >=50) # change this to 25 
 
 ##check out missing data
 #missing by row
