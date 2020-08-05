@@ -1,0 +1,268 @@
+---
+title             : "The title"
+shorttitle        : "Title"
+
+author: 
+  - name          : "First Author"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Postal address"
+    email         : "my@email.com"
+    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
+      - Conceptualization
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
+  - name          : "Ernst-August Doelle"
+    affiliation   : "1,2"
+    role:
+      - Writing - Review & Editing
+
+affiliation:
+  - id            : "1"
+    institution   : "Wilhelm-Wundt-University"
+  - id            : "2"
+    institution   : "Konstanz Business School"
+
+authornote: |
+  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+  Enter author note here.
+
+abstract: |
+  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  
+  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
+  
+  One sentence clearly stating the **general problem** being addressed by  this particular study.
+  
+  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
+  
+  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
+  
+  One or two sentences to put the results into a more **general context**.
+  
+  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+#install.packages(c("devtools", "rio", "lavaan", "mice"))
+#devtools::install_github("crsh/papaja")
+library(papaja)
+library(rio)
+library(lavaan)
+library(mice)
+
+percentmiss <- function(x){ sum(is.na(x))/length(x) *100 }
+```
+
+# Section 1 Hypothesis 1 
+
+- get new codings for the MFD (done!)
+- MTMM of both together and show it's crappy 
+  - exp2_finalsample_newMFD.csv is the data you want to use 
+  - if step X of the mtmm - CFI > .50, TLI > .45, RSMEA < .50, SRMR < .50 - then keep going otherwise, stop
+- CFA on the MFQ to determine if it works ok 
+
+```{r import-exp2, include = F}
+# Import the data
+exp2 <- import("exp2_finalsample_newMFD.csv")
+
+# Only use people with 25+ words
+exp2 <- subset(exp2, WC >= 25)
+
+# Data Screening for the MFQ
+
+# Missing by rows 
+missing <- apply(exp2[ , c(2:31)], 1, percentmiss)
+goodrows <- subset(exp2, missing <= 5)
+# Missing by columns
+# table(round(missing,2))
+# round(apply(goodrows, 2, percentmiss),2)
+
+# Fix the missing MFQ
+goodcolumns <- goodrows[ , c(1:31)]
+badcolumns <- goodrows[ , c(31:ncol(goodrows))]
+
+# Fill in missing data points
+tempnomiss <- mice(goodcolumns)
+nomiss <- complete(tempnomiss, 1)
+nomiss <- cbind(nomiss, badcolumns) 
+
+# Outliers
+mahal <- mahalanobis(nomiss[ , c(2:31)],
+                     colMeans(nomiss[ , c(2:31)], na.rm = T),
+                     cov(nomiss[ , c(2:31)], use = "pairwise.complete.obs"))
+cutoff <- qchisq(1 - .001, ncol(nomiss[ , c(2:31)]))
+summary(mahal < cutoff) 
+noout <- subset(nomiss, mahal < cutoff)
+
+# Additivity
+correlations <- cor(noout[ , c(2:31)], use = "pairwise.complete.obs")
+# symnum(correlations)
+
+# Started assumptions
+random <- rchisq(nrow(noout), 7)
+fake <- lm(random ~ ., data = noout[ , c(2:31)])
+
+# Normal
+standardized <- rstudent(fake)
+hist(standardized, breaks = 15)
+
+# Linear
+{qqnorm(standardized); abline(0,1)}
+
+# Homog + s
+fitvalues <- scale(fake$fitted.values)
+{plot(fitvalues, standardized); abline(0,0); abline(v = 0)}
+
+# Create subscales
+noout$harmMFQ <- apply(noout[ , 2:4], 1, sum)
+noout$fairMFQ <- apply(noout[ , 5:7], 1, sum)
+noout$ingroupMFQ <- apply(noout[ , 8:10], 1, sum)
+noout$authorityMFQ <- apply(noout[ , 11:13], 1, sum)
+noout$purityMFQ <- apply(noout[ , 14:16], 1, sum)
+```
+
+```{r cfa-mfq, include = F}
+model <- "
+harm =~ Q8_1 + Q8_2 + Q8_3
+fair =~ Q8_4 + Q8_5 + Q8_6
+ingroup =~ Q8_7 + Q8_8 + Q8_9
+authority =~ Q8_10 + Q8_11 + Q8_12
+purity =~ Q8_13 + Q8_14 + Q8_15
+"
+
+model.fit <- cfa(model = model,
+                 data = noout)
+
+summary(model.fit,
+        standardized = T,
+        rsquare = T,
+        fit.measures = T)
+```
+
+- Only real thing I notice is the high intercorrelation of the latent variables for a few of them. 
+
+```{r mtmm-model1, include = F}
+model1 <- "harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm1
+fairL =~ Q8_4 + Q8_5 + Q8_6 + Fairness1
+ingroupL =~ Q8_7 + Q8_8 + Q8_9 + Loyalty1
+authorityL =~ Q8_10 + Q8_11 + Q8_12 + Authority1
+purityL=~ Q8_13 + Q8_14 + Q8_15 + Purity1 
+mfq =~ Q8_1 + Q8_2 + Q8_3 + Q8_4 + Q8_5 + Q8_6 + Q8_7 + Q8_8 + Q8_9 + Q8_10 + Q8_11 + Q8_12 + Q8_13 + Q8_14 + Q8_15
+mfd =~ Harm1 + Fairness1 + Loyalty1 + Authority1 + Purity1
+
+# Fix the covariances
+harmL ~~ 0*mfq
+fairL ~~ 0*mfq
+ingroupL ~~ 0*mfq
+authorityL ~~ 0*mfq
+purityL ~~ 0*mfq
+harmL ~~ 0*mfd
+fairL ~~ 0*mfd
+ingroupL ~~ 0*mfd
+authorityL ~~ 0*mfd
+purityL ~~ 0*mfd
+"
+
+model1.fit <- cfa(model = model1, 
+                  data = noout, 
+                  std.lv=TRUE)
+
+summary(model1.fit,
+        rsquare = T,
+        standardized = T,
+        fit.measures = T)
+```
+
+```{r mtmm-model2, include = F}
+model1 <- "harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm1
+fairL =~ Q8_4 + Q8_5 + Q8_6 + Fairness1
+ingroupL =~ Q8_7 + Q8_8 + Q8_9 + Loyalty1
+authorityL =~ Q8_10 + Q8_11 + Q8_12 + Authority1
+purityL=~ Q8_13 + Q8_14 + Q8_15 + Purity1 
+mfq =~ Q8_1 + Q8_2 + Q8_3 + Q8_4 + Q8_5 + Q8_6 + Q8_7 + Q8_8 + Q8_9 + Q8_10 + Q8_11 + Q8_12 + Q8_13 + Q8_14 + Q8_15
+mfd =~ Harm1 + Fairness1 + Loyalty1 + Authority1 + Purity1
+
+# Fix the covariances
+harmL ~~ 0*mfq
+fairL ~~ 0*mfq
+ingroupL ~~ 0*mfq
+authorityL ~~ 0*mfq
+purityL ~~ 0*mfq
+harmL ~~ 0*mfd
+fairL ~~ 0*mfd
+ingroupL ~~ 0*mfd
+authorityL ~~ 0*mfd
+purityL ~~ 0*mfd
+"
+
+model1.fit <- cfa(model = model1, 
+                  data = noout, 
+                  std.lv=TRUE)
+
+summary(model1.fit,
+        rsquare = T,
+        standardized = T,
+        fit.measures = T)
+```
+
+# Section 2
+
+study 2: free association + two free writing samples data to build a new dictionary, build something better like vector space model or word2vec or cluster to see what is being picked up in the writing
+
+# Section 3
+
+study 3: testing study 2 in the congressional dataset that may need some cleaning up
+
+
+
+
+
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+
+## Participants
+
+## Material
+
+## Procedure
+
+## Data analysis
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+
+# Results
+
+# Discussion
+
+
+\newpage
+
+# References
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
