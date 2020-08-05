@@ -163,6 +163,7 @@ summary(model.fit,
 - Only real thing I notice is the high intercorrelation of the latent variables for a few of them. 
 
 ```{r mtmm-model1, include = F}
+# Correlated traits and methods
 model1 <- "harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm1
 fairL =~ Q8_4 + Q8_5 + Q8_6 + Fairness1
 ingroupL =~ Q8_7 + Q8_8 + Q8_9 + Loyalty1
@@ -195,7 +196,26 @@ summary(model1.fit,
 ```
 
 ```{r mtmm-model2, include = F}
-model1 <- "harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm1
+# No traits, correlated methods
+model2 <- "
+mfq =~ Q8_1 + Q8_2 + Q8_3 + Q8_4 + Q8_5 + Q8_6 + Q8_7 + Q8_8 + Q8_9 + Q8_10 + Q8_11 + Q8_12 + Q8_13 + Q8_14 + Q8_15
+mfd =~ Harm1 + Fairness1 + Loyalty1 + Authority1 + Purity1
+"
+
+model2.fit <- cfa(model = model2, 
+                  data = noout, 
+                  std.lv=TRUE)
+
+summary(model2.fit,
+        rsquare = T,
+        standardized = T,
+        fit.measures = T)
+```
+
+```{r mtmm-model3, include = F}
+# Perfectly correlated traits, correlated methods
+model3 <- "
+harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm1
 fairL =~ Q8_4 + Q8_5 + Q8_6 + Fairness1
 ingroupL =~ Q8_7 + Q8_8 + Q8_9 + Loyalty1
 authorityL =~ Q8_10 + Q8_11 + Q8_12 + Authority1
@@ -214,16 +234,72 @@ fairL ~~ 0*mfd
 ingroupL ~~ 0*mfd
 authorityL ~~ 0*mfd
 purityL ~~ 0*mfd
+
+# Correlate traits
+harmL~~1*fairL
+harmL~~1*ingroupL
+harmL~~1*authorityL
+harmL~~1*purityL
+fairL~~1*ingroupL
+fairL~~1*authorityL
+fairL~~1*purityL
+ingroupL~~1*authorityL
+ingroupL~~1*purityL
+authorityL~~1*purityL
 "
 
-model1.fit <- cfa(model = model1, 
+model3.fit <- cfa(model = model3, 
                   data = noout, 
                   std.lv=TRUE)
 
-summary(model1.fit,
+summary(model3.fit,
         rsquare = T,
         standardized = T,
         fit.measures = T)
+```
+
+```{r mtmm-model4, include = F}
+# Correlated traits, uncorrelated methods
+model4 <- "harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm1
+fairL =~ Q8_4 + Q8_5 + Q8_6 + Fairness1
+ingroupL =~ Q8_7 + Q8_8 + Q8_9 + Loyalty1
+authorityL =~ Q8_10 + Q8_11 + Q8_12 + Authority1
+purityL=~ Q8_13 + Q8_14 + Q8_15 + Purity1 
+mfq =~ Q8_1 + Q8_2 + Q8_3 + Q8_4 + Q8_5 + Q8_6 + Q8_7 + Q8_8 + Q8_9 + Q8_10 + Q8_11 + Q8_12 + Q8_13 + Q8_14 + Q8_15
+mfd =~ Harm1 + Fairness1 + Loyalty1 + Authority1 + Purity1
+
+# Fix the covariances
+harmL ~~ 0*mfq
+fairL ~~ 0*mfq
+ingroupL ~~ 0*mfq
+authorityL ~~ 0*mfq
+purityL ~~ 0*mfq
+harmL ~~ 0*mfd
+fairL ~~ 0*mfd
+ingroupL ~~ 0*mfd
+authorityL ~~ 0*mfd
+purityL ~~ 0*mfd
+
+# No method correlation
+mfq ~~ 0*mfd
+"
+
+model4.fit <- cfa(model = model4, 
+                  data = noout, 
+                  std.lv=TRUE)
+
+summary(model4.fit,
+        rsquare = T,
+        standardized = T,
+        fit.measures = T)
+```
+
+```{r compare-models, include = F}
+anova(model1.fit, model2.fit, model3.fit, model4.fit)
+fitmeasures(model1.fit, "cfi")
+fitmeasures(model2.fit, "cfi")
+fitmeasures(model3.fit, "cfi")
+fitmeasures(model4.fit, "cfi")
 ```
 
 # Section 2
