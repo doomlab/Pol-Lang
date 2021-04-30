@@ -302,6 +302,54 @@ fitmeasures(model3.fit, "cfi")
 fitmeasures(model4.fit, "cfi")
 ```
 
+## Same analysis mfd 2
+
+```{r mtmm-model1.2, include = F}
+# Correlated traits and methods
+model1 <- "harmL =~ Q8_1 + Q8_2 + Q8_3 + Harm2
+fairL =~ Q8_4 + Q8_5 + Q8_6 + Fairness2
+ingroupL =~ Q8_7 + Q8_8 + Q8_9 + Loyalty2
+authorityL =~ Q8_10 + Q8_11 + Q8_12 + Authority2
+purityL=~ Q8_13 + Q8_14 + Q8_15 + Purity2
+mfq =~ Q8_1 + Q8_2 + Q8_3 + Q8_4 + Q8_5 + Q8_6 + Q8_7 + Q8_8 + Q8_9 + Q8_10 + Q8_11 + Q8_12 + Q8_13 + Q8_14 + Q8_15
+mfd =~ Harm2 + Fairness2 + Loyalty2 + Authority2 + Purity2
+
+# Fix the covariances
+harmL ~~ 0*mfq
+fairL ~~ 0*mfq
+ingroupL ~~ 0*mfq
+authorityL ~~ 0*mfq
+purityL ~~ 0*mfq
+harmL ~~ 0*mfd
+fairL ~~ 0*mfd
+ingroupL ~~ 0*mfd
+authorityL ~~ 0*mfd
+purityL ~~ 0*mfd
+
+# Fix the Heywood case
+Purity2 ~~ 1.951453*Purity2
+Loyalty2 ~~ 3.739265*Loyalty2
+Q8_4 ~~ 1.158452*Q8_4
+"
+
+model1.fit <- cfa(model = model1, 
+                  data = noout, 
+                  std.lv=TRUE)
+
+summary(model1.fit,
+        rsquare = T,
+        standardized = T,
+        fit.measures = T)
+
+var(noout$Purity2)
+var(noout$Loyalty2)
+var(noout$Q8_4)
+
+inspect(model1.fit, "cor.lv")
+#notice that everything with fair is over 1
+```
+
+
 # Section 2
 
 study 2: free association + two free writing samples data to build a new dictionary, build something better like vector space model or word2vec or cluster to see what is being picked up in the writing
