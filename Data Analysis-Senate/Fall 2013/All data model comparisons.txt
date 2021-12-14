@@ -1,0 +1,1000 @@
+ Name   (Intercept) 78.71    8.872   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -8.9341     6.8416  -1.306    0.192
+i             1.3055     0.9383   1.391    0.164
+we           -0.4156     1.1525  -0.361    0.718
+you          -1.1208     2.9090  -0.385    0.700
+shehe        -1.4324     1.3793  -1.038    0.299
+past         -0.1173     0.8602  -0.136    0.892
+present      -0.5156     0.5953  -0.866    0.386
+negate       -1.4082     1.9106  -0.737    0.461
+social        0.1860     0.6039   0.308    0.758
+posemo        0.3017     0.7677   0.393    0.694
+negemo        0.5961     0.6840   0.871    0.384
+insight      -0.3493     0.9072  -0.385    0.700
+cause         0.5242     1.0716   0.489    0.625
+discrep       0.3630     1.3393   0.271    0.786
+inhib         0.8245     1.2534   0.658    0.511
+incl          0.4789     0.9023   0.531    0.596
+excl          0.8510     1.5348   0.554    0.579
+relig        -0.6193     1.6804  -0.369    0.712
+death         1.7218     1.7329   0.994    0.320
+
+Correlation of Fixed Effects:
+        (Intr) i      we     you    shehe  past   presnt negate social posemo negemo
+i       -0.068                                                                      
+we       0.462  0.156                                                               
+you      0.098 -0.093  0.151                                                        
+shehe    0.281 -0.173  0.224  0.034                                                 
+past    -0.416 -0.034  0.025 -0.035 -0.162                                          
+present -0.248 -0.533 -0.227 -0.073 -0.010  0.169                                   
+negate   0.161 -0.012  0.086  0.000  0.042 -0.144  0.018                            
+social  -0.233  0.017 -0.455 -0.322 -0.413 -0.144 -0.186 -0.201                     
+posemo  -0.459 -0.066 -0.117 -0.033  0.022  0.293  0.133 -0.160  0.004              
+negemo  -0.424  0.235 -0.188  0.085 -0.372  0.184  0.024 -0.066  0.122  0.145       
+insight -0.117 -0.288 -0.138  0.080 -0.106  0.096  0.056  0.006 -0.022 -0.117 -0.102
+cause   -0.271  0.137 -0.040 -0.005 -0.206  0.126 -0.143  0.043  0.181  0.097  0.050
+discrep -0.066  0.131 -0.120 -0.032 -0.031 -0.020 -0.111 -0.048 -0.011 -0.065  0.019
+inhib   -0.149  0.223  0.158 -0.055 -0.108  0.129 -0.024 -0.037 -0.037 -0.220  0.003
+incl    -0.496 -0.046 -0.502  0.119  0.077  0.023  0.095 -0.011 -0.139  0.034  0.053
+excl    -0.165 -0.004 -0.184 -0.043  0.036  0.000 -0.151 -0.651  0.169  0.203 -0.010
+relig   -0.073 -0.088  0.147  0.003 -0.004  0.142  0.216  0.019 -0.218 -0.084  0.121
+death   -0.095  0.144  0.079 -0.043 -0.048  0.021  0.020 -0.027 -0.148  0.251 -0.152
+        insght cause  discrp inhib  incl   excl   relig 
+i                                                       
+we                                                      
+you                                                     
+shehe                                                   
+past                                                    
+present                                                 
+negate                                                  
+social                                                  
+posemo                                                  
+negemo                                                  
+insight                                                 
+cause   -0.137                                          
+discrep -0.032 -0.160                                   
+inhib    0.058 -0.170  0.103                            
+incl     0.127  0.042 -0.006 -0.139                     
+excl    -0.068 -0.091 -0.214 -0.059  0.098              
+relig    0.060 -0.035  0.052  0.202 -0.121 -0.011       
+death   -0.143 -0.065  0.083  0.149 -0.014 -0.032 -0.185
+> anova(m6,m7)
+Data: R.All.Data
+Models:
+m7: PartyAffliation ~ i + we + you + shehe + past + present + negate + 
+m7:     social + posemo + negemo + insight + cause + discrep + inhib + 
+m7:     incl + excl + relig + death + (1 | Name)
+m6: PartyAffliation ~ i + we + you + shehe + past + present + negate + 
+m6:     social + posemo + negemo + insight + cause + discrep + inhib + 
+m6:     incl + excl + money + relig + death + (1 | Name)
+   Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m7 20 242.37 324.87 -101.19   202.37                        
+m6 21 244.41 331.03 -101.21   202.41     0      1          1
+> m8<-(formula=PartyAffliation~i+we+you+shehe+present+negate+social+posemo+negemo+insight+cause+discrep+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+Error: unexpected ',' in "m8<-(formula=PartyAffliation~i+we+you+shehe+present+negate+social+posemo+negemo+insight+cause+discrep+inhib+incl+excl+relig+death+(1|Name),"
+> m8<-glmer(formula=PartyAffliation~i+we+you+shehe+present+negate+social+posemo+negemo+insight+cause+discrep+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m8)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + we + you + shehe + present + negate + social +      posemo + negemo + insight + cause + discrep + inhib + incl +      excl + relig + death + (1 | Name) 
+   Data: R.All.Data 
+
+     AIC      BIC   logLik deviance 
+ 240.338  318.707 -101.169  202.338 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 79.22    8.9     
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -8.9593     6.2237  -1.440    0.150
+i             1.2882     0.9377   1.374    0.169
+we           -0.2814     1.1552  -0.244    0.808
+you          -0.8313     2.9265  -0.284    0.776
+shehe        -1.2900     1.3484  -0.957    0.339
+present      -0.5634     0.5842  -0.964    0.335
+negate       -1.6458     1.9297  -0.853    0.394
+social        0.1364     0.5941   0.230    0.818
+posemo        0.3501     0.7351   0.476    0.634
+negemo        0.5433     0.6668   0.815    0.415
+insight      -0.2634     0.9147  -0.288    0.773
+cause         0.5016     1.0569   0.475    0.635
+discrep       0.2893     1.3496   0.214    0.830
+inhib         0.8985     1.2553   0.716    0.474
+incl          0.4494     0.9060   0.496    0.620
+excl          1.0489     1.5440   0.679    0.497
+relig        -0.6438     1.6183  -0.398    0.691
+death         1.7568     1.7304   1.015    0.310
+
+Correlation of Fixed Effects:
+        (Intr) i      we     you    shehe  presnt negate social posemo negemo insght
+i       -0.093                                                                      
+we       0.517  0.156                                                               
+you      0.078 -0.088  0.134                                                        
+shehe    0.236 -0.178  0.229  0.011                                                 
+present -0.192 -0.542 -0.233 -0.066  0.020                                          
+negate   0.120 -0.020  0.089 -0.002  0.030  0.041                                   
+social  -0.326  0.010 -0.452 -0.322 -0.444 -0.160 -0.229                            
+posemo  -0.398 -0.054 -0.134 -0.034  0.057  0.088 -0.131  0.066                     
+negemo  -0.394  0.231 -0.190  0.104 -0.350 -0.004 -0.038  0.148  0.103              
+insight -0.089 -0.280 -0.143  0.089 -0.095  0.045  0.002 -0.018 -0.148 -0.121       
+cause   -0.229  0.141 -0.038  0.006 -0.177 -0.167  0.075  0.182  0.069  0.024 -0.163
+discrep -0.074  0.140 -0.122 -0.032 -0.028 -0.118 -0.049 -0.011 -0.071  0.023 -0.023
+inhib   -0.108  0.234  0.162 -0.042 -0.083 -0.053 -0.028 -0.024 -0.263 -0.021  0.060
+incl    -0.533 -0.044 -0.505  0.139  0.082  0.087 -0.010 -0.140  0.027  0.053  0.127
+excl    -0.197  0.003 -0.191 -0.056  0.016 -0.153 -0.665  0.193  0.220 -0.002 -0.060
+relig   -0.002 -0.102  0.152 -0.005  0.025  0.221  0.034 -0.207 -0.145  0.107  0.043
+death   -0.092  0.168  0.080 -0.040 -0.047  0.001 -0.037 -0.145  0.263 -0.143 -0.141
+        cause  discrp inhib  incl   excl   relig 
+i                                                
+we                                               
+you                                              
+shehe                                            
+present                                          
+negate                                           
+social                                           
+posemo                                           
+negemo                                           
+insight                                          
+cause                                            
+discrep -0.163                                   
+inhib   -0.211  0.104                            
+incl     0.044 -0.008 -0.141                     
+excl    -0.088 -0.220 -0.049  0.096              
+relig   -0.058  0.054  0.193 -0.141 -0.016       
+death   -0.072  0.072  0.150 -0.022 -0.022 -0.208
+> anova(m7,m8)
+Data: R.All.Data
+Models:
+m8: PartyAffliation ~ i + we + you + shehe + present + negate + social + 
+m8:     posemo + negemo + insight + cause + discrep + inhib + incl + 
+m8:     excl + relig + death + (1 | Name)
+m7: PartyAffliation ~ i + we + you + shehe + past + present + negate + 
+m7:     social + posemo + negemo + insight + cause + discrep + inhib + 
+m7:     incl + excl + relig + death + (1 | Name)
+   Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m8 19 240.34 318.71 -101.17   202.34                        
+m7 20 242.37 324.87 -101.19   202.37     0      1          1
+> m9<-glmer(formula=PartyAffliation~i+we+you+shehe+present+negate+social+posemo+negemo+insight+cause+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m9)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + we + you + shehe + present + negate + social +      posemo + negemo + insight + cause + inhib + incl + excl +      relig + death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 238.6178  312.8621 -101.3089  202.6178 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 79.25    8.902   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -9.0360     6.1844  -1.461    0.144
+i             1.3056     0.9356   1.395    0.163
+we           -0.3428     1.1416  -0.300    0.764
+you          -0.8772     2.9479  -0.298    0.766
+shehe        -1.2136     1.3378  -0.907    0.364
+present      -0.4425     0.5749  -0.770    0.442
+negate       -1.3176     1.9009  -0.693    0.488
+social        0.1063     0.5987   0.178    0.859
+posemo        0.3536     0.7406   0.477    0.633
+negemo        0.6056     0.6678   0.907    0.365
+insight      -0.3384     0.9075  -0.373    0.709
+cause         0.4155     1.0412   0.399    0.690
+inhib         0.9631     1.2467   0.772    0.440
+incl          0.4704     0.8933   0.527    0.598
+excl          0.7702     1.4949   0.515    0.606
+relig        -0.6007     1.6163  -0.372    0.710
+death         1.7308     1.7402   0.995    0.320
+
+Correlation of Fixed Effects:
+        (Intr) i      we     you    shehe  presnt negate social posemo negemo insght
+i       -0.084                                                                      
+we       0.517  0.165                                                               
+you      0.079 -0.078  0.140                                                        
+shehe    0.231 -0.172  0.227  0.029                                                 
+present -0.210 -0.529 -0.250 -0.072  0.006                                          
+negate   0.113 -0.004  0.093  0.008  0.021  0.033                                   
+social  -0.325  0.003 -0.464 -0.327 -0.442 -0.156 -0.258                            
+posemo  -0.409 -0.051 -0.152 -0.029  0.057  0.084 -0.125  0.058                     
+negemo  -0.380  0.257 -0.195  0.087 -0.354 -0.010 -0.032  0.155  0.094              
+insight -0.093 -0.308 -0.145  0.074 -0.086  0.044  0.035 -0.005 -0.148 -0.131       
+cause   -0.248  0.158 -0.057  0.005 -0.183 -0.183  0.061  0.176  0.054  0.022 -0.149
+inhib   -0.099  0.214  0.173 -0.032 -0.078 -0.030 -0.006 -0.043 -0.258 -0.016  0.046
+incl    -0.539 -0.024 -0.504  0.130  0.089  0.089 -0.007 -0.140  0.044  0.040  0.120
+excl    -0.207  0.026 -0.227 -0.064  0.028 -0.182 -0.690  0.203  0.203 -0.006 -0.081
+relig    0.007 -0.100  0.162 -0.005  0.016  0.202  0.035 -0.193 -0.142  0.097  0.042
+death   -0.094  0.126  0.093 -0.020 -0.045  0.036 -0.016 -0.167  0.260 -0.155 -0.135
+        cause  inhib  incl   excl   relig 
+i                                         
+we                                        
+you                                       
+shehe                                     
+present                                   
+negate                                    
+social                                    
+posemo                                    
+negemo                                    
+insight                                   
+cause                                     
+inhib   -0.188                            
+incl     0.046 -0.133                     
+excl    -0.136 -0.042  0.091              
+relig   -0.041  0.193 -0.148  0.007       
+death   -0.067  0.156 -0.005 -0.019 -0.198
+> anova(m8,m9)
+Data: R.All.Data
+Models:
+m9: PartyAffliation ~ i + we + you + shehe + present + negate + social + 
+m9:     posemo + negemo + insight + cause + inhib + incl + excl + 
+m9:     relig + death + (1 | Name)
+m8: PartyAffliation ~ i + we + you + shehe + present + negate + social + 
+m8:     posemo + negemo + insight + cause + discrep + inhib + incl + 
+m8:     excl + relig + death + (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m9 18 238.62 312.86 -101.31   202.62                         
+m8 19 240.34 318.71 -101.17   202.34 0.2798      1     0.5968
+> m10<-glmer(formula=PartyAffliation~i+we+you+shehe+present+negate+posemo+negemo+insight+cause+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m10)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + we + you + shehe + present + negate + posemo +      negemo + insight + cause + inhib + incl + excl + relig +      death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 236.5975  306.7171 -101.2987  202.5975 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 78.94    8.885   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -8.4811     5.8341  -1.454    0.146
+i             1.2861     0.9174   1.402    0.161
+we           -0.1373     1.0068  -0.136    0.892
+you          -0.7070     2.7185  -0.260    0.795
+shehe        -1.2184     1.2006  -1.015    0.310
+present      -0.4906     0.5674  -0.865    0.387
+negate       -1.5551     1.8602  -0.836    0.403
+posemo        0.3387     0.7315   0.463    0.643
+negemo        0.5827     0.6549   0.890    0.374
+insight      -0.3676     0.9228  -0.398    0.690
+cause         0.5334     1.0316   0.517    0.605
+inhib         0.8489     1.2408   0.684    0.494
+incl          0.4885     0.8947   0.546    0.585
+excl          0.9874     1.4698   0.672    0.502
+relig        -0.6044     1.5229  -0.397    0.691
+death         1.7580     1.7094   1.028    0.304
+
+Correlation of Fixed Effects:
+        (Intr) i      we     you    shehe  presnt negate posemo negemo insght cause 
+i       -0.095                                                                      
+we       0.432  0.191                                                               
+you     -0.037 -0.106 -0.019                                                        
+shehe    0.113 -0.171  0.031 -0.150                                                 
+present -0.278 -0.529 -0.366 -0.120 -0.091                                          
+negate   0.049  0.001 -0.030 -0.093 -0.083 -0.003                                   
+posemo  -0.404 -0.032 -0.120 -0.014  0.091  0.090 -0.134                            
+negemo  -0.363  0.240 -0.140  0.155 -0.323  0.021  0.006  0.087                     
+insight -0.085 -0.305 -0.162  0.093 -0.110  0.045  0.010 -0.175 -0.117              
+cause   -0.217  0.173  0.023  0.071 -0.121 -0.162  0.105  0.066  0.007 -0.174       
+inhib   -0.119  0.216  0.183 -0.058 -0.105 -0.027 -0.024 -0.254 -0.017  0.054 -0.184
+incl    -0.620 -0.026 -0.649  0.101  0.025  0.060 -0.050  0.032  0.072  0.114  0.069
+excl    -0.159  0.025 -0.151  0.002  0.122 -0.160 -0.682  0.202 -0.038 -0.080 -0.156
+relig   -0.064 -0.116  0.083 -0.070 -0.086  0.205 -0.025 -0.127  0.150  0.041 -0.019
+death   -0.151  0.143  0.028 -0.099 -0.119  0.006 -0.074  0.288 -0.127 -0.150 -0.031
+        inhib  incl   excl   relig 
+i                                  
+we                                 
+you                                
+shehe                              
+present                            
+negate                             
+posemo                             
+negemo                             
+insight                            
+cause                              
+inhib                              
+incl    -0.144                     
+excl    -0.038  0.130              
+relig    0.208 -0.198  0.056       
+death    0.136 -0.042  0.018 -0.254
+> anova(m9,m10)
+Data: R.All.Data
+Models:
+m10: PartyAffliation ~ i + we + you + shehe + present + negate + posemo + 
+m10:     negemo + insight + cause + inhib + incl + excl + relig + 
+m10:     death + (1 | Name)
+m9: PartyAffliation ~ i + we + you + shehe + present + negate + social + 
+m9:     posemo + negemo + insight + cause + inhib + incl + excl + 
+m9:     relig + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m10 17 236.60 306.72 -101.30   202.60                        
+m9  18 238.62 312.86 -101.31   202.62     0      1          1
+> m11<-glmer(formula=PartyAffliation~i+you+shehe+present+negate+posemo+negemo+insight+cause+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m11)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + you + shehe + present + negate + posemo +      negemo + insight + cause + inhib + incl + excl + relig +      death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 234.6109  300.6058 -101.3054  202.6109 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 80.21    8.956   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -7.8743     5.3094  -1.483    0.138
+i             1.3330     0.9055   1.472    0.141
+you          -0.6896     2.7298  -0.253    0.801
+shehe        -1.1151     1.2068  -0.924    0.355
+present      -0.5285     0.5333  -0.991    0.322
+negate       -1.5733     1.8521  -0.850    0.396
+posemo        0.1612     0.7206   0.224    0.823
+negemo        0.5264     0.6513   0.808    0.419
+insight      -0.3186     0.9062  -0.352    0.725
+cause         0.5300     1.0278   0.516    0.606
+inhib         0.8729     1.2238   0.713    0.476
+incl          0.4330     0.6826   0.634    0.526
+excl          0.9300     1.4522   0.640    0.522
+relig        -0.5329     1.5646  -0.341    0.733
+death         1.6804     1.7059   0.985    0.325
+
+Correlation of Fixed Effects:
+        (Intr) i      you    shehe  presnt negate posemo negemo insght cause  inhib 
+i       -0.198                                                                      
+you     -0.032 -0.113                                                               
+shehe    0.117 -0.175 -0.147                                                        
+present -0.144 -0.509 -0.124 -0.094                                                 
+negate   0.055  0.015 -0.090 -0.085 -0.015                                          
+posemo  -0.392 -0.011 -0.005  0.104  0.060 -0.148                                   
+negemo  -0.332  0.260  0.164 -0.321 -0.029  0.007  0.066                            
+insight -0.029 -0.270  0.085 -0.114 -0.008  0.000 -0.223 -0.138                     
+cause   -0.242  0.181  0.066 -0.119 -0.183  0.110  0.072 -0.002 -0.169              
+inhib   -0.222  0.178 -0.060 -0.110  0.042 -0.018 -0.248  0.008  0.101 -0.203       
+incl    -0.509  0.133  0.106  0.048 -0.249 -0.070 -0.054 -0.020  0.028  0.116 -0.027
+excl    -0.100  0.050 -0.002  0.129 -0.235 -0.696  0.209 -0.065 -0.107 -0.152 -0.011
+relig   -0.114 -0.130 -0.064 -0.097  0.234 -0.009 -0.098  0.162  0.058 -0.037  0.196
+death   -0.178  0.149 -0.097 -0.118  0.018 -0.069  0.281 -0.125 -0.150 -0.020  0.132
+        incl   excl   relig 
+i                           
+you                         
+shehe                       
+present                     
+negate                      
+posemo                      
+negemo                      
+insight                     
+cause                       
+inhib                       
+incl                        
+excl     0.030              
+relig   -0.182  0.069       
+death   -0.028  0.011 -0.245
+> anova(m10,m11)
+Data: R.All.Data
+Models:
+m11: PartyAffliation ~ i + you + shehe + present + negate + posemo + 
+m11:     negemo + insight + cause + inhib + incl + excl + relig + 
+m11:     death + (1 | Name)
+m10: PartyAffliation ~ i + we + you + shehe + present + negate + posemo + 
+m10:     negemo + insight + cause + inhib + incl + excl + relig + 
+m10:     death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m11 16 234.61 300.61 -101.31   202.61                         
+m10 17 236.60 306.72 -101.30   202.60 0.0134      1     0.9077
+> anova(m1,m11)
+Data: R.All.Data
+Models:
+m11: PartyAffliation ~ i + you + shehe + present + negate + posemo + 
+m11:     negemo + insight + cause + inhib + incl + excl + relig + 
+m11:     death + (1 | Name)
+m1: PartyAffliation ~ i + we + you + shehe + they + past + present + 
+m1:     future + negate + social + posemo + negemo + insight + cause + 
+m1:     discrep + tentat + certain + inhib + incl + excl + motion + 
+m1:     achieve + money + relig + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m11 16 234.61 300.61 -101.31   202.61                         
+m1  27 256.25 367.62 -101.13   202.25 0.3585     11          1
+> m12<-glmer(formula=PartyAffliation~i+you+shehe+present+negate+negemo+insight+cause+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m12)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + you + shehe + present + negate + negemo +      insight + cause + inhib + incl + excl + relig + death + (1 |      Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 232.8083  294.6786 -101.4042  202.8083 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 80.86    8.992   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -7.2731     4.9189  -1.479    0.139
+i             1.3252     0.9101   1.456    0.145
+you          -0.6960     2.7509  -0.253    0.800
+shehe        -1.1619     1.2079  -0.962    0.336
+present      -0.5398     0.5349  -1.009    0.313
+negate       -1.5342     1.8257  -0.840    0.401
+negemo        0.5208     0.6533   0.797    0.425
+insight      -0.3370     0.8727  -0.386    0.699
+cause         0.4246     1.0291   0.413    0.680
+inhib         0.9880     1.1969   0.826    0.409
+incl          0.4604     0.6897   0.668    0.504
+excl          0.9170     1.4215   0.645    0.519
+relig        -0.5189     1.5592  -0.333    0.739
+death         1.6073     1.6422   0.979    0.328
+
+Correlation of Fixed Effects:
+        (Intr) i      you    shehe  presnt negate negemo insght cause  inhib  incl  
+i       -0.216                                                                      
+you     -0.031 -0.110                                                               
+shehe    0.178 -0.180 -0.146                                                        
+present -0.126 -0.509 -0.130 -0.098                                                 
+negate  -0.011  0.023 -0.101 -0.084  0.003                                          
+negemo  -0.336  0.262  0.160 -0.334 -0.026  0.013                                   
+insight -0.139 -0.280  0.090 -0.086  0.000 -0.016 -0.121                            
+cause   -0.236  0.178  0.068 -0.132 -0.184  0.128 -0.011 -0.142                     
+inhib   -0.362  0.180 -0.060 -0.081  0.058 -0.054  0.022  0.038 -0.193              
+incl    -0.577  0.127  0.098  0.046 -0.255 -0.087 -0.019  0.030  0.123 -0.035       
+excl    -0.013  0.045  0.007  0.114 -0.260 -0.687 -0.080 -0.069 -0.181  0.045  0.048
+relig   -0.172 -0.133 -0.061 -0.082  0.244 -0.028  0.177  0.037 -0.032  0.179 -0.185
+death   -0.072  0.165 -0.100 -0.154 -0.007 -0.018 -0.147 -0.104 -0.041  0.225 -0.016
+        excl   relig 
+i                    
+you                  
+shehe                
+present              
+negate               
+negemo               
+insight              
+cause                
+inhib                
+incl                 
+excl                 
+relig    0.095       
+death   -0.059 -0.234
+> anova(m11,m12)
+Data: R.All.Data
+Models:
+m12: PartyAffliation ~ i + you + shehe + present + negate + negemo + 
+m12:     insight + cause + inhib + incl + excl + relig + death + (1 | 
+m12:     Name)
+m11: PartyAffliation ~ i + you + shehe + present + negate + posemo + 
+m11:     negemo + insight + cause + inhib + incl + excl + relig + 
+m11:     death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m12 15 232.81 294.68 -101.40   202.81                         
+m11 16 234.61 300.61 -101.31   202.61 0.1974      1     0.6568
+> m13<-glmer(formula=PartyAffliation~i+shehe+present+negate+negemo+insight+cause+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m13)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negate + negemo + insight +      cause + inhib + incl + excl + relig + death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 230.6413  288.3868 -101.3206  202.6413 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 84.75    9.206   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -7.1320     4.9832  -1.431    0.152
+i             1.2449     0.9162   1.359    0.174
+shehe        -1.1128     1.2036  -0.924    0.355
+present      -0.6480     0.5434  -1.192    0.233
+negate       -1.2573     1.8297  -0.687    0.492
+negemo        0.4482     0.6606   0.678    0.497
+insight      -0.1608     0.8755  -0.184    0.854
+cause         0.4473     1.0302   0.434    0.664
+inhib         0.8584     1.2124   0.708    0.479
+incl          0.5463     0.6942   0.787    0.431
+excl          0.7442     1.4437   0.516    0.606
+relig        -0.8413     1.5907  -0.529    0.597
+death         1.5700     1.6512   0.951    0.342
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negate negemo insght cause  inhib  incl   excl  
+i       -0.222                                                                      
+shehe    0.153 -0.190                                                               
+present -0.124 -0.539 -0.091                                                        
+negate  -0.009  0.011 -0.101 -0.003                                                 
+negemo  -0.342  0.274 -0.305 -0.002  0.025                                          
+insight -0.137 -0.262 -0.077 -0.004  0.002 -0.128                                   
+cause   -0.227  0.178 -0.119 -0.167  0.125 -0.022 -0.158                            
+inhib   -0.361  0.179 -0.081  0.031 -0.037  0.014  0.057 -0.199                     
+incl    -0.575  0.145  0.055 -0.258 -0.096 -0.032  0.034  0.112 -0.021              
+excl    -0.014  0.055  0.110 -0.269 -0.692 -0.076 -0.082 -0.174  0.037  0.062       
+relig   -0.170 -0.156 -0.081  0.258 -0.047  0.198  0.026 -0.029  0.176 -0.194  0.101
+death   -0.084  0.175 -0.166 -0.041 -0.004 -0.141 -0.084 -0.030  0.225  0.007 -0.071
+        relig 
+i             
+shehe         
+present       
+negate        
+negemo        
+insight       
+cause         
+inhib         
+incl          
+excl          
+relig         
+death   -0.264
+> anova(m12,m13)
+Data: R.All.Data
+Models:
+m13: PartyAffliation ~ i + shehe + present + negate + negemo + insight + 
+m13:     cause + inhib + incl + excl + relig + death + (1 | Name)
+m12: PartyAffliation ~ i + you + shehe + present + negate + negemo + 
+m12:     insight + cause + inhib + incl + excl + relig + death + (1 | 
+m12:     Name)
+    Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m13 14 230.64 288.39 -101.32   202.64                        
+m12 15 232.81 294.68 -101.40   202.81     0      1          1
+> m14<-glmer(formula=PartyAffliation~i+shehe+present+negate+negemo+cause+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m14)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negate + negemo + cause +      inhib + incl + excl + relig + death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 229.3229  282.9438 -101.6614  203.3229 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 80.43    8.968   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -6.9026     4.7976  -1.439    0.150
+i             1.1358     0.8520   1.333    0.183
+shehe        -1.1804     1.1780  -1.002    0.316
+present      -0.5608     0.5225  -1.073    0.283
+negate       -1.4879     1.8300  -0.813    0.416
+negemo        0.4936     0.6279   0.786    0.432
+cause         0.3571     0.9883   0.361    0.718
+inhib         0.8781     1.1811   0.744    0.457
+incl          0.3788     0.6738   0.562    0.574
+excl          0.9000     1.4204   0.634    0.526
+relig        -0.5602     1.5299  -0.366    0.714
+death         1.4158     1.5851   0.893    0.372
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negate negemo cause  inhib  incl   excl   relig 
+i       -0.273                                                                      
+shehe    0.144 -0.213                                                               
+present -0.123 -0.553 -0.106                                                        
+negate  -0.018  0.001 -0.081 -0.016                                                 
+negemo  -0.370  0.247 -0.318 -0.005  0.024                                          
+cause   -0.248  0.151 -0.143 -0.175  0.134 -0.042                                   
+inhib   -0.366  0.202 -0.076  0.041 -0.058  0.039 -0.199                            
+incl    -0.575  0.155  0.073 -0.260 -0.060 -0.019  0.119 -0.032                     
+excl    -0.023  0.046  0.086 -0.257 -0.702 -0.086 -0.195  0.062  0.037              
+relig   -0.173 -0.143 -0.092  0.253 -0.050  0.192 -0.023  0.184 -0.188  0.107       
+death   -0.101  0.148 -0.171 -0.020 -0.024 -0.139 -0.050  0.227  0.000 -0.067 -0.240
+> anova(m13,m14)
+Data: R.All.Data
+Models:
+m14: PartyAffliation ~ i + shehe + present + negate + negemo + cause + 
+m14:     inhib + incl + excl + relig + death + (1 | Name)
+m13: PartyAffliation ~ i + shehe + present + negate + negemo + insight + 
+m13:     cause + inhib + incl + excl + relig + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m14 13 229.32 282.94 -101.66   203.32                         
+m13 14 230.64 288.39 -101.32   202.64 0.6816      1      0.409
+> m15<-glmer(formula=PartyAffliation~i+shehe+present+negate+negemo+inhib+incl+excl+relig+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m15)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negate + negemo + inhib +      incl + excl + relig + death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 227.5385  277.0347 -101.7692  203.5385 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 81.06    9.003   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -6.6653     4.6331  -1.439    0.150
+i             1.1404     0.8523   1.338    0.181
+shehe        -1.0483     1.1668  -0.898    0.369
+present      -0.5398     0.5148  -1.049    0.294
+negate       -1.5640     1.8389  -0.850    0.395
+negemo        0.5134     0.6253   0.821    0.412
+inhib         1.0716     1.1746   0.912    0.362
+incl          0.3524     0.6726   0.524    0.600
+excl          0.9423     1.3911   0.677    0.498
+relig        -0.4576     1.5377  -0.298    0.766
+death         1.3403     1.6002   0.838    0.402
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negate negemo inhib  incl   excl   relig 
+i       -0.256                                                               
+shehe    0.109 -0.201                                                        
+present -0.161 -0.546 -0.125                                                 
+negate   0.030 -0.011 -0.073  0.000                                          
+negemo  -0.389  0.265 -0.324 -0.017  0.027                                   
+inhib   -0.445  0.233 -0.099  0.003 -0.039  0.018                            
+incl    -0.557  0.150  0.091 -0.260 -0.097 -0.016 -0.012                     
+excl    -0.086  0.072  0.065 -0.292 -0.695 -0.094  0.039  0.066              
+relig   -0.185 -0.141 -0.090  0.251 -0.047  0.187  0.174 -0.182  0.101       
+death   -0.132  0.162 -0.192 -0.028 -0.008 -0.146  0.244  0.004 -0.075 -0.225
+> anova(m14,m15)
+Data: R.All.Data
+Models:
+m15: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m15:     incl + excl + relig + death + (1 | Name)
+m14: PartyAffliation ~ i + shehe + present + negate + negemo + cause + 
+m14:     inhib + incl + excl + relig + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m15 12 227.54 277.04 -101.77   203.54                         
+m14 13 229.32 282.94 -101.66   203.32 0.2156      1     0.6424
+> m16<-glmer(formula=PartyAffliation~i+shehe+present+negate+negemo+inhib+incl+excl+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m16)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negate + negemo + inhib +      incl + excl + death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 225.5107  270.8822 -101.7554  203.5107 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 82.32    9.073   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -7.1964     4.5862  -1.569    0.117
+i             1.1367     0.8597   1.322    0.186
+shehe        -1.1153     1.1680  -0.955    0.340
+present      -0.5025     0.5202  -0.966    0.334
+negate       -1.4878     1.8517  -0.804    0.422
+negemo        0.5363     0.6198   0.865    0.387
+inhib         1.0824     1.1651   0.929    0.353
+incl          0.3614     0.6748   0.536    0.592
+excl          0.9010     1.3932   0.647    0.518
+death         1.3717     1.5865   0.865    0.387
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negate negemo inhib  incl   excl  
+i       -0.271                                                        
+shehe    0.098 -0.212                                                 
+present -0.132 -0.557 -0.107                                          
+negate   0.030  0.017 -0.071 -0.033                                   
+negemo  -0.377  0.262 -0.312 -0.028  0.007                            
+inhib   -0.426  0.229 -0.084 -0.008 -0.048  0.011                     
+incl    -0.592  0.164  0.074 -0.263 -0.072 -0.001 -0.003              
+excl    -0.071  0.064  0.071 -0.286 -0.698 -0.096  0.032  0.061       
+death   -0.176  0.170 -0.216 -0.020  0.021 -0.119  0.258  0.004 -0.082
+> anova(m15,m16)
+Data: R.All.Data
+Models:
+m16: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m16:     incl + excl + death + (1 | Name)
+m15: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m15:     incl + excl + relig + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m16 11 225.51 270.88 -101.75   203.51                        
+m15 12 227.54 277.04 -101.77   203.54     0      1          1
+> m17<-glmer(formula=PartyAffliation~i+shehe+present+negate+negemo+inhib+excl+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m17)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negate + negemo + inhib +      excl + death + (1 | Name) 
+   Data: R.All.Data 
+
+     AIC      BIC   logLik deviance 
+205.8577 247.1045 -92.9289 185.8577 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 458.1    21.4    
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)  
+(Intercept) -13.7629     7.8845  -1.746   0.0809 .
+i            -0.1460     1.4402  -0.101   0.9192  
+shehe        -1.6185     2.4915  -0.650   0.5160  
+present       0.1086     1.0421   0.104   0.9170  
+negate        0.4914     3.1149   0.158   0.8746  
+negemo        0.8945     1.2217   0.732   0.4641  
+inhib         0.9911     2.3495   0.422   0.6732  
+excl          0.1640     2.5738   0.064   0.9492  
+death         0.3657     2.7625   0.132   0.8947  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negate negemo inhib  excl  
+i       -0.132                                                 
+shehe    0.147  0.006                                          
+present -0.414 -0.533 -0.172                                   
+negate  -0.114  0.083 -0.160  0.046                            
+negemo  -0.492  0.217 -0.341 -0.020 -0.043                     
+inhib   -0.469  0.234 -0.060 -0.090  0.111  0.124              
+excl     0.018 -0.044  0.064 -0.317 -0.635 -0.018 -0.092       
+death   -0.356  0.052 -0.125  0.146  0.136  0.026  0.226 -0.189
+> anova(m16,m17)
+Data: R.All.Data
+Models:
+m17: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m17:     excl + death + (1 | Name)
+m16: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m16:     incl + excl + death + (1 | Name)
+    Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)
+m17 10 205.86 247.10  -92.929   185.86                        
+m16 11 225.51 270.88 -101.755   203.51     0      1          1
+> m18<-glmer(formula=PartyAffliation~i+shehe+present+negate+negemo+inhib+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m18)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negate + negemo + inhib +      death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 218.8611  255.9833 -100.4306  200.8611 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 126.9    11.26   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)  
+(Intercept) -8.19499    4.38288  -1.870   0.0615 .
+i            1.13866    0.90440   1.259   0.2080  
+shehe        0.01312    1.38859   0.010   0.9925  
+present     -0.39329    0.55850  -0.704   0.4813  
+negate      -0.08001    1.40263  -0.057   0.9545  
+negemo       0.33687    0.70382   0.479   0.6322  
+inhib        1.03145    1.36004   0.758   0.4482  
+death        0.74646    1.67285   0.446   0.6554  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negate negemo inhib 
+i       -0.217                                          
+shehe    0.115 -0.065                                   
+present -0.422 -0.509 -0.153                            
+negate  -0.101  0.035 -0.106 -0.293                     
+negemo  -0.439  0.282 -0.234 -0.072 -0.066              
+inhib   -0.492  0.194 -0.015 -0.046  0.044 -0.018       
+death   -0.255  0.126 -0.186  0.048  0.072 -0.240  0.269
+> anova(m17,m18)
+Data: R.All.Data
+Models:
+m18: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m18:     death + (1 | Name)
+m17: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m17:     excl + death + (1 | Name)
+    Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m18  9 218.86 255.98 -100.431   200.86                             
+m17 10 205.86 247.10  -92.929   185.86 15.003      1  0.0001073 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m19<-glmer(formula=PartyAffliation~i+present+negate+negemo+inhib+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m19)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + present + negate + negemo + inhib + death +      (1 | Name) 
+   Data: R.All.Data 
+
+     AIC      BIC   logLik deviance 
+190.0579 223.0554 -87.0290 174.0579 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 2403     49.02   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept) -12.9792    15.5690  -0.834    0.404
+i             0.4379     3.0056   0.146    0.884
+present      -0.1212     1.8662  -0.065    0.948
+negate       -0.3659     4.8840  -0.075    0.940
+negemo        0.2470     2.2807   0.108    0.914
+inhib         0.6654     4.5352   0.147    0.883
+death         0.6849     5.6461   0.121    0.903
+
+Correlation of Fixed Effects:
+        (Intr) i      presnt negate negemo inhib 
+i       -0.198                                   
+present -0.379 -0.525                            
+negate  -0.102  0.076 -0.320                     
+negemo  -0.429  0.239 -0.103 -0.113              
+inhib   -0.451  0.204 -0.113  0.073  0.026       
+death   -0.321  0.089  0.091 -0.004 -0.148  0.258
+> anova(m18,m19)
+Data: R.All.Data
+Models:
+m19: PartyAffliation ~ i + present + negate + negemo + inhib + death + 
+m19:     (1 | Name)
+m18: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m18:     death + (1 | Name)
+    Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)
+m19  8 190.06 223.06  -87.029   174.06                        
+m18  9 218.86 255.98 -100.431   200.86     0      1          1
+> m20<-glmer(formula=PartyAffliation~i+shehe+present+negemo+inhib+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m20)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + present + negemo + inhib + death +      (1 | Name) 
+   Data: R.All.Data 
+
+     AIC      BIC   logLik deviance 
+189.8535 222.8509 -86.9267 173.8535 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 2360     48.58   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept) -13.4919    15.9052  -0.848    0.396
+i             0.5955     3.0575   0.195    0.846
+shehe        -0.6194     4.8644  -0.127    0.899
+present      -0.1580     1.8538  -0.085    0.932
+negemo        0.3988     2.3974   0.166    0.868
+inhib         0.6995     4.5607   0.153    0.878
+death         0.7472     5.7120   0.131    0.896
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt negemo inhib 
+i       -0.217                                   
+shehe    0.151 -0.095                            
+present -0.449 -0.500 -0.220                     
+negemo  -0.466  0.299 -0.261 -0.102              
+inhib   -0.461  0.217 -0.018 -0.089  0.063       
+death   -0.342  0.116 -0.198  0.131 -0.099  0.270
+> anova(m18,m20)
+Data: R.All.Data
+Models:
+m20: PartyAffliation ~ i + shehe + present + negemo + inhib + death + 
+m20:     (1 | Name)
+m18: PartyAffliation ~ i + shehe + present + negate + negemo + inhib + 
+m18:     death + (1 | Name)
+    Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)
+m20  8 189.85 222.85  -86.927   173.85                        
+m18  9 218.86 255.98 -100.431   200.86     0      1          1
+> m21<-glmer(formula=PartyAffliation~i+shehe+negemo+inhib+death+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m21)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + negemo + inhib + death + (1 | Name) 
+   Data: R.All.Data 
+
+      AIC       BIC    logLik  deviance 
+ 220.8825  249.7553 -103.4413  206.8825 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 87.38    9.348   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  -8.7577     3.2402  -2.703  0.00688 **
+i             0.7753     0.6612   1.173  0.24098   
+shehe        -1.2003     1.1509  -1.043  0.29697   
+negemo        0.5432     0.5833   0.931  0.35172   
+inhib         1.0108     1.1392   0.887  0.37492   
+death         1.2180     1.4380   0.847  0.39696   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) i      shehe  negemo inhib 
+i      -0.622                            
+shehe   0.120 -0.287                     
+negemo -0.591  0.290 -0.325              
+inhib  -0.602  0.261 -0.082  0.022       
+death  -0.325  0.169 -0.183 -0.096  0.277
+> anova(m20,m21)
+Data: R.All.Data
+Models:
+m21: PartyAffliation ~ i + shehe + negemo + inhib + death + (1 | Name)
+m20: PartyAffliation ~ i + shehe + present + negemo + inhib + death + 
+m20:     (1 | Name)
+    Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m21  7 220.88 249.75 -103.441   206.88                             
+m20  8 189.85 222.85  -86.927   173.85 33.029      1  9.079e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m22<-glmer(formula=PartyAffliation~i+shehe+negemo+inhib+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m22)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + negemo + inhib + (1 | Name) 
+   Data: R.All.Data 
+
+     AIC      BIC   logLik deviance 
+186.1848 210.9329 -87.0924 174.1848 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 2440     49.4    
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept) -13.9525    13.4382  -1.038    0.299
+i             0.4071     2.6142   0.156    0.876
+shehe        -0.5908     4.6537  -0.127    0.899
+negemo        0.4780     2.3282   0.205    0.837
+inhib         0.5599     4.2776   0.131    0.896
+
+Correlation of Fixed Effects:
+       (Intr) i      shehe  negemo
+i      -0.580                     
+shehe  -0.002 -0.202              
+negemo -0.640  0.388 -0.319       
+inhib  -0.494  0.142  0.021  0.058
+> anova(m21,m22)
+Data: R.All.Data
+Models:
+m22: PartyAffliation ~ i + shehe + negemo + inhib + (1 | Name)
+m21: PartyAffliation ~ i + shehe + negemo + inhib + death + (1 | Name)
+    Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)
+m22  6 186.19 210.93  -87.092   174.19                        
+m21  7 220.88 249.75 -103.441   206.88     0      1          1
+> m23<-glmer(formula=PartyAffliation~i+shehe+negemo+(1|Name), data=R.All.Data, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m23)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: PartyAffliation ~ i + shehe + negemo + (1 | Name) 
+   Data: R.All.Data 
+
+     AIC      BIC   logLik deviance 
+184.3909 205.0143 -87.1955 174.3909 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 2479     49.79   
+Number of obs: 457, groups: Name, 120
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept) -13.2277    11.8067  -1.120    0.263
+i             0.3362     2.5757   0.130    0.896
+shehe        -0.6056     4.6146  -0.131    0.896
+negemo        0.5001     2.3648   0.212    0.833
+
+Correlation of Fixed Effects:
+       (Intr) i      shehe 
+i      -0.588              
+shehe  -0.003 -0.196       
+negemo -0.707  0.375 -0.300

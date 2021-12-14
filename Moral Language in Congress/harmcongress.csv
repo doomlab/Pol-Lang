@@ -1,0 +1,1484 @@
+"","ID","Region","Name","Party","Date","Venue","Foundation","Reference","Coverage"
+"3",1456,"Iraq","Abercrombie",1,"10/9/2002","House","Harm",6,0.0539
+"6",1703,"Afghanistan","Ackerman",1,"9/14/2001","House","Harm",2,0.0597
+"10",1874,"North Korea","Ackerman",1,"11/15/2006","House Hearings","Harm",1,0.0308
+"14",1140,"Iran","Ackerman",1,"7/9/2008","House Hearings","Harm",6,0.0446
+"16",1771,"Iran","Ackerman",1,"9/26/2008","House","Harm",3,0.0404
+"19",1139,"Libya","Ackerman",1,"3/31/2011","House Hearings","Harm",15,0.1516
+"23",944,"Iran","Ackerman",1,"7/27/2011","House Hearings","Harm",6,0.0479
+"33",1984,"Afghanistan","AllenME",1,"12/6/2001","Senate Hearings","Harm",4,0.0837
+"37",1995,"Afghanistan","AllenME",1,"6/26/2002","Senate Hearings","Harm",4,0.0643
+"40",1337,"Iraq","AllenME",1,"10/10/2002","House","Harm",2,0.0308
+"43",1675,"Afghanistan","Andrews",1,"9/14/2001","House","Harm",1,0.0743
+"46",460,"Iran","Andrews",1,"3/3/2004","House","Harm",11,0.0182
+"51",691,"Iran","Andrews",1,"6/8/2005","House","Harm",2,0.0053
+"53",541,"Sudan","Andrews",1,"4/5/2006","House","Harm",2,0.0324
+"56",459,"Iran","Andrews",1,"2/8/2007","House","Harm",2,0.0283
+"59",1057,"Libya","Andrews",1,"6/24/2011","House","Harm",2,0.0619
+"63",461,"Iran","Andrews",1,"11/11/2011","House","Harm",2,0.0061
+"67",1622,"Afghanistan","Baca",1,"9/14/2001","House","Harm",1,0.0372
+"72",1457,"Iraq","Baird",1,"10/9/2002","House","Harm",3,0.0377
+"74",1749,"Afghanistan","Baldacci",1,"9/14/2001","House","Harm",1,0.039
+"77",1339,"Iraq","Baldacci",1,"10/10/2002","House","Harm",1,0.0129
+"81",1754,"Afghanistan","Baldwin",1,"9/14/2001","House","Harm",2,0.059
+"85",741,"Iraq","Baldwin",1,"3/6/2003","House","Harm",8,0.1481
+"91",369,"Iraq","Bayh",1,"10/8/2002","Senate","Harm",11,0.0458
+"96",1459,"Iraq","Becerra",1,"10/9/2002","House","Harm",14,0.1729
+"101",6,"Syria","Begich",1,"8/1/2013","Senate","Harm",6,0.0494
+"104",1593,"Afghanistan","Berkley",1,"9/14/2001","House","Harm",3,0.1355
+"106",1460,"Iraq","Berkley",1,"10/9/2002","House","Harm",2,0.0446
+"110",1362,"Iraq","Berman",1,"3/23/2000","House Hearings","Harm",3,0.0744
+"115",1578,"Afghanistan","Berman",1,"9/14/2001","House","Harm",4,0.0658
+"117",1422,"Iraq","Berman",1,"10/10/2002","House","Harm",3,0.062
+"120",1377,"Iran","Berman",1,"3/15/2007","House Hearings","Harm",5,0.0205
+"129",1944,"Russia","Berman",1,"11/9/2008","House Hearings","Harm",3,0.0062
+"134",1141,"Libya","Berman",1,"3/31/2011","House Hearings","Harm",6,0.0367
+"137",1272,"Libya","Berman",1,"5/25/2011","House Hearings","Harm",11,0.08
+"139",997,"Libya","Berman",1,"6/3/2011","House","Harm",8,0.0413
+"143",1067,"Libya","Berman",1,"6/24/2011","House","Harm",3,0.0352
+"147",1965,"Russia","Berman",1,"7/7/2011","House Hearings","Harm",1,0.0073
+"151",13,"Iran","Berman",1,"10/14/2011","House Hearings","Harm",1,0.0064
+"159",194,"Iran","Biden",1,"2/22/2000","Senate","Harm",2,0.0081
+"163",2276,"Russia","Biden",1,"3/1/2000","Senate Hearings","Harm",2,0.0239
+"168",56,"North Korea","Biden",1,"3/7/2001","Senate","Harm",5,0.0141
+"172",2292,"North Korea","Biden",1,"5/23/2001","Senate Hearings","Harm",2,0.014
+"176",12,"Afghanistan","Biden",1,"10/3/2001","Senate","Harm",12,0.0383
+"181",1985,"Afghanistan","Biden",1,"12/6/2001","Senate Hearings","Harm",10,0.0159
+"186",1997,"Afghanistan","Biden",1,"6/26/2002","Senate Hearings","Harm",2,0.0047
+"190",2182,"Iraq","Biden",1,"7/31/2002","Senate Hearings","Harm",22,0.0118
+"195",517,"Iraq","Biden",1,"10/9/2002","Senate","Harm",19,0.0922
+"199",405,"Iraq","Biden",1,"10/10/2002","Senate","Harm",57,0.0593
+"202",10,"Iraq","Biden",1,"1/17/2003","Senate","Harm",4,0.0703
+"207",11,"Iraq","Biden",1,"1/28/2003","Senate","Harm",28,0.0777
+"212",2341,"North Korea","Biden",1,"2/4/2003","Senate Hearings","Harm",2,0.004
+"217",8,"North Korea","Biden",1,"2/6/2003","Senate","Harm",8,0.0175
+"222",2392,"North Korea","Biden",1,"3/6/2003","Senate Hearings","Harm",4,0.009
+"226",2032,"Iran","Biden",1,"10/28/2003","Senate Hearings","Harm",1,0.0035
+"230",2006,"Syria","Biden",1,"10/30/2003","Senate Hearings","Harm",1,0.0022
+"233",2137,"Sudan","Biden",1,"6/15/2004","Senate Hearings","Harm",4,0.0481
+"236",19,"Russia","Biden",1,"6/17/2004","Senate","Harm",1,0.0086
+"243",18,"Iran","Biden",1,"7/22/2004","Senate","Harm",1,0.0102
+"248",2469,"Sudan","Biden",1,"9/9/2004","Senate Hearings","Harm",4,0.0212
+"251",2477,"Sudan","Biden",1,"9/28/2005","Senate Hearings","Harm",2,0.0072
+"256",2050,"Iran","Biden",1,"3/29/2007","Senate Hearings","Harm",3,0.0164
+"260",2408,"Sudan","Biden",1,"4/11/2007","Senate Hearings","Harm",4,0.0084
+"262",93,"Sudan","Biden",1,"5/24/2007","Senate","Harm",1,0.0228
+"263",94,"Iraq","Biden",1,"5/24/2007","Senate","Harm",1,0.0723
+"266",2294,"Russia","Biden",1,"6/21/2007","Senate Hearings","Harm",4,0.0163
+"270",2433,"Sudan","Biden",1,"4/23/2008","Senate Hearings","Harm",6,0.013
+"275",2044,"Iran","Biden",1,"7/9/2008","Senate Hearings","Harm",1,0.0032
+"279",58,"North Korea","Biden",1,"9/22/2008","Senate","Harm",1,0.0127
+"282",188,"Iraq","Biden",1,"2/12/1998","Senate","Harm",7,0.0341
+"286",55,"Kosovo","Biden",1,"3/6/1998","Senate","Harm",2,0.0404
+"290",2148,"Kosovo","Biden",1,"5/6/1998","Senate Hearings","Harm",4,0.0108
+"294",334,"Iran","Biden",1,"5/22/1998","Senate","Harm",4,0.0112
+"299",54,"Kosovo","Biden",1,"6/17/1998","Senate","Harm",8,0.032
+"303",2155,"Kosovo","Biden",1,"6/24/1998","Senate Hearings","Harm",4,0.0185
+"307",57,"Kosovo","Biden",1,"10/14/1998","Senate","Harm",5,0.0177
+"311",247,"Kosovo","Biden",1,"3/22/1999","Senate","Harm",22,0.0311
+"315",289,"Kosovo","Biden",1,"3/23/1999","Senate","Harm",4,0.0251
+"318",413,"Iraq","Bingaman",1,"10/10/2002","Senate","Harm",7,0.0737
+"320",15,"Iraq","Bingaman",1,"1/30/2003","Senate","Harm",8,0.0869
+"321",1461,"Iraq","Bishop",1,"10/9/2002","House","Harm",3,0.0419
+"324",1564,"Afghanistan","Blumenauer",1,"9/14/2001","House","Harm",2,0.1007
+"326",1327,"Iraq","Blumenauer",1,"10/10/2002","House","Harm",3,0.096
+"328",830,"Sudan","Blumenauer",1,"7/21/2004","House","Harm",1,0.0266
+"329",1799,"North Korea","Blumenauer",1,"2/17/2005","House Hearings","Harm",1,0.0205
+"335",713,"Iran","Blumenauer",1,"4/26/2006","House","Harm",4,0.0294
+"339",1776,"Iran","Blumenauer",1,"9/28/2006","House","Harm",1,0.0118
+"352",1739,"Afghanistan","Borski",1,"9/14/2001","House","Harm",4,0.0742
+"355",1226,"Iraq","Borski",1,"10/9/2002","House","Harm",2,0.0302
+"359",1465,"Iraq","Boswell",1,"10/9/2002","House","Harm",2,0.0161
+"363",2493,"Sudan","Boxer",1,"6/11/2002","Senate Hearings","Harm",4,0.1319
+"366",1998,"Afghanistan","Boxer",1,"6/26/2002","Senate Hearings","Harm",1,0.009
+"368",2183,"Iraq","Boxer",1,"7/31/2002","Senate Hearings","Harm",1,0.0193
+"370",427,"Iraq","Boxer",1,"10/10/2002","Senate","Harm",6,0.0403
+"373",2008,"Syria","Boxer",1,"10/30/2003","Senate Hearings","Harm",3,0.0328
+"376",344,"Syria","Boxer",1,"11/11/2003","Senate","Harm",2,0.0139
+"382",2473,"Sudan","Boxer",1,"9/9/2004","Senate Hearings","Harm",3,0.0313
+"383",2233,"Syria","Boxer",1,"11/9/2011","House Hearings","Harm",5,0.0881
+"387",1227,"Iraq","Boyd",1,"10/9/2002","House","Harm",7,0.1233
+"388",1616,"Afghanistan","BrownFL",1,"9/14/2001","House","Harm",1,0.0797
+"392",1228,"Iraq","BrownFL",1,"10/9/2002","House","Harm",14,0.0882
+"396",1325,"Iraq","BrownFL",1,"10/10/2002","House","Harm",4,0.0665
+"398",1321,"Iraq","BrownOH",1,"10/10/2002","House","Harm",4,0.0979
+"399",569,"Iraq","BrownOH",1,"2/5/2003","House","Harm",3,0.191
+"401",570,"Iraq","BrownOH",1,"2/27/2003","House","Harm",1,0.0264
+"404",571,"Iraq","BrownOH",1,"3/11/2003","House","Harm",7,0.0817
+"407",319,"Iraq","Byrd",1,"9/5/2002","Senate","Harm",3,0.0722
+"409",386,"Iraq","Byrd",1,"9/20/2002","Senate","Harm",6,0.0526
+"412",44,"Iraq","Byrd",1,"9/20/2002","Senate","Harm",20,0.0824
+"416",45,"Iraq","Byrd",1,"9/26/2002","Senate","Harm",13,0.0549
+"419",355,"Iraq","Byrd",1,"10/7/2002","Senate","Harm",29,0.1471
+"423",371,"Iraq","Byrd",1,"10/8/2002","Senate","Harm",10,0.0317
+"428",406,"Iraq","Byrd",1,"10/10/2002","Senate","Harm",62,0.0533
+"432",41,"Iraq","Byrd",1,"1/29/2003","Senate","Harm",18,0.1036
+"436",354,"Syria","Byrd",1,"11/11/2003","Senate","Harm",1,0.0184
+"439",64,"Kosovo","Byrd",1,"10/14/1998","Senate","Harm",6,0.0353
+"443",477,"Iraq","Cantwell",1,"10/10/2002","Senate","Harm",11,0.0495
+"447",1231,"Iraq","Capuano",1,"10/9/2002","House","Harm",5,0.0576
+"448",1414,"Iraq","Capuano",1,"10/10/2002","House","Harm",2,0.1227
+"449",847,"Sudan","Capuano",1,"7/21/2004","House","Harm",4,0.095
+"452",537,"Sudan","Capuano",1,"4/5/2006","House","Harm",1,0.0403
+"454",1015,"Libya","Capuano",1,"6/3/2011","House","Harm",7,0.2172
+"457",1700,"Afghanistan","Cardin",1,"9/14/2001","House","Harm",1,0.0252
+"462",1470,"Iraq","Cardin",1,"10/9/2002","House","Harm",2,0.0282
+"464",546,"Sudan","Cardin",1,"4/5/2006","House","Harm",2,0.0535
+"465",724,"Iran","Cardin",1,"4/26/2006","House","Harm",2,0.0175
+"468",2418,"Sudan","Cardin",1,"4/11/2007","Senate Hearings","Harm",4,0.0525
+"469",2441,"Sudan","Cardin",1,"4/23/2008","Senate Hearings","Harm",1,0.0149
+"481",46,"Russia","Cardin",1,"2/16/2012","Senate","Harm",2,0.0128
+"486",203,"Syria","Cardin",1,"2/26/2012","Senate","Harm",5,0.0408
+"490",2254,"Syria","Cardin",1,"4/19/2012","House Hearings","Harm",1,0.0117
+"499",472,"Iraq ","Carper",1,"10/10/2002","Senate","Harm",17,0.0728
+"502",1232,"Iraq","Carson",1,"10/9/2002","House","Harm",16,0.1066
+"504",2053,"Iran","Casey",1,"3/29/2007","Senate Hearings","Harm",1,0.0155
+"508",2305,"Russia","Casey",1,"9/17/2008","Senate Hearings","Harm",1,0.0112
+"512",2385,"North Korea","Casey",1,"6/11/2009","Senate Hearings","Harm",1,0.0266
+"517",2071,"Iran","Casey",1,"5/11/2011","Senate Hearings","Harm",2,0.0059
+"523",2235,"Syria","Casey",1,"11/9/2011","House Hearings","Harm",6,0.0194
+"527",50,"Iran","Casey",1,"12/7/2011","Senate","Harm",1,0.0118
+"536",1709,"Afghanistan","Christensen",1,"9/14/2001","House","Harm",5,0.0855
+"539",1472,"Iraq","Christensen",1,"10/9/2002","House","Harm",10,0.1273
+"542",1326,"Iraq","Christensen",1,"10/10/2002","House","Harm",2,0.0656
+"543",869,"Sudan","Christensen",1,"7/30/2007","House","Harm",2,0.0551
+"548",959,"Syria","Cicilline",1,"3/20/2013","House Hearings","Harm",1,0.0392
+"551",1730,"Afghanistan","Clayton",1,"9/14/2001","House","Harm",1,0.0267
+"553",1314,"Iraq","Clayton",1,"10/10/2002","House","Harm",3,0.1478
+"555",357,"Iraq","Cleland",1,"10/7/2002","Senate","Harm",17,0.1199
+"558",51,"Iraq","Cleland",1,"3/17/1998","Senate","Harm",22,0.065
+"561",1715,"Afghanistan","Clement",1,"9/14/2001","House","Harm",1,0.0585
+"565",66,"Sudan","Clinton",1,"5/25/2006","Senate","Harm",4,0.0153
+"569",65,"Sudan","Clinton",1,"12/7/2006","Senate","Harm",1,0.0163
+"572",464,"Iraq","Clinton",1,"10/10/2002","Senate","Harm",12,0.0489
+"579",1970,"Russia","Cohen",1,"7/7/2011","House Hearings","Harm",3,0.0099
+"586",478,"Iraq","Conrad",1,"10/10/2002","Senate","Harm",15,0.0675
+"590",2391,"Iraq","Conyers",1,"3/23/2000","House Hearings","Harm",5,0.0238
+"595",1758,"Afghanistan","Conyers",1,"9/14/2001","House","Harm",8,0.0613
+"598",1413,"Iraq","Conyers",1,"10/10/2002","House","Harm",3,0.0922
+"599",834,"Sudan","Conyers",1,"7/21/2004","House","Harm",2,0.0284
+"603",2439,"Sudan","Corker",1,"4/23/2008","Senate Hearings","Harm",3,0.0278
+"605",2390,"North Korea","Corker",1,"6/11/2009","Senate Hearings","Harm",3,0.0737
+"607",2453,"Sudan","Corker",1,"7/30/2009","Senate Hearings","Harm",1,0.012
+"610",2222,"Libya","Corker",1,"3/31/2011","Senate Hearings","Harm",3,0.0418
+"612",2261,"Libya","Corker",1,"4/6/2011","Senate Hearings","Harm",3,0.0365
+"615",2211,"Libya","Corker",1,"6/28/2011","Senate Hearings","Harm",6,0.0408
+"620",2094,"Iran","Corker",1,"3/28/2012","Senate Hearings","Harm",1,0.0391
+"625",497,"Syria","Corker",1,"9/9/2013","Senate","Harm",2,0.0104
+"630",529,"Iraq","Corzine",1,"10/9/2002","Senate","Harm",8,0.0402
+"634",430,"Iraq","Corzine",1,"10/10/2002","Senate","Harm",2,0.0459
+"637",348,"Syria","Corzine",1,"11/11/2003","Senate","Harm",2,0.0271
+"644",70,"Sudan","Corzine",1,"7/22/2004","Senate","Harm",6,0.0499
+"646",2465,"Sudan","Corzine",1,"9/9/2004","Senate Hearings","Harm",2,0.0102
+"649",73,"Sudan","Corzine",1,"5/10/2005","Senate","Harm",3,0.0224
+"654",1233,"Iraq","Costello",1,"10/9/2002","House","Harm",6,0.0894
+"660",1662,"Afghanistan","Crowley",1,"9/14/2001","House","Harm",1,0.0134
+"664",716,"Iran","Crowley",1,"4/26/2006","House","Harm",1,0.015
+"667",1151,"Iran","Crowley",1,"7/9/2008","House Hearings","Harm",2,0.0345
+"673",1475,"Iraq","Cummings",1,"10/9/2002","House","Harm",2,0.0301
+"677",823,"Sudan","Cummings",1,"5/13/2004","House","Harm",5,0.0506
+"681",580,"Sudan","Cummings",1,"10/29/2007","House","Harm",2,0.0339
+"684",74,"0","Daschle",1,"9/14/2001","Senate","Harm",3,0.0398
+"689",410,"Iraq","Daschle",1,"10/10/2002","Senate","Harm",13,0.0519
+"692",340,"Syria","Daschle",1,"11/11/2003","Senate","Harm",3,0.0301
+"696",187,"Iraq","Daschle",1,"2/12/1998","Senate","Harm",2,0.0194
+"700",77,"Kosovo","Daschle",1,"10/12/1998","Senate","Harm",3,0.0395
+"704",583,"Iran","DavisCA",1,"9/20/2006","House","Harm",2,0.0408
+"708",582,"Iraq","DavisIL",1,"2/5/2003","House","Harm",2,0.228
+"710",837,"Sudan","DavisIL",1,"7/21/2004","House","Harm",3,0.0254
+"711",584,"Sudan","DavisIL",1,"11/1/2007","House","Harm",2,0.1143
+"713",411,"Iraq","Dayton",1,"10/10/2002","Senate","Harm",15,0.0968
+"716",78,"Iraq","Dayton",1,"2/13/2003","Senate","Harm",8,0.0519
+"719",1138,"Afghanistan","DeFazio",1,"9/14/2001","House","Harm",13,0.1584
+"720",1628,"Afghanistan","DeFazio",1,"9/14/2001","House","Harm",2,0.0902
+"722",587,"Iraq","DeFazio",1,"9/5/2002","House","Harm",6,0.0719
+"724",588,"Iraq","DeFazio",1,"9/10/2002","House","Harm",5,0.0712
+"727",585,"Iraq","DeFazio",1,"9/18/2002","House","Harm",8,0.1066
+"730",589,"Iraq","DeFazio",1,"9/25/2002","House","Harm",8,0.1142
+"734",1365,"Iraq","Delahunt",1,"3/23/2000","House Hearings","Harm",1,0.0196
+"739",1477,"Iraq","Delahunt",1,"10/9/2002","House","Harm",9,0.0356
+"742",1896,"Sudan","Delahunt",1,"6/22/2005","House Hearings","Harm",1,0.1224
+"749",1946,"Russia","Delahunt",1,"11/9/2008","House Hearings","Harm",9,0.0456
+"752",1850,"Russia","Delahunt",1,"5/12/1999","House Hearings","Harm",2,0.0719
+"757",1478,"Iraq","DeLauro",1,"10/9/2002","House","Harm",9,0.1264
+"768",962,"Syria","Deutch",1,"3/20/2013","House Hearings","Harm",1,0.0083
+"771",1480,"Iraq","Dicks",1,"10/9/2002","House","Harm",3,0.0339
+"774",1017,"Libya","Dicks",1,"6/3/2011","House","Harm",2,0.0325
+"775",1053,"Libya","Dicks",1,"6/24/2011","House","Harm",1,0.012
+"777",1481,"Iraq","Dingell",1,"10/9/2002","House","Harm",2,0.0134
+"778",2188,"Iraq","Dodd",1,"7/31/2002","Senate Hearings","Harm",1,0.0075
+"782",515,"Iraq","Dodd",1,"10/9/2002","Senate","Harm",10,0.0266
+"787",85,"Iraq","Dodd",1,"3/7/2003","Senate","Harm",3,0.0103
+"797",86,"Sudan","Dodd",1,"9/14/2006","Senate","Harm",3,0.0158
+"800",82,"Sudan","Dodd",1,"4/24/2007","Senate","Harm",2,0.0146
+"808",83,"Sudan","Dodd",1,"8/2/2007","Senate","Harm",1,0.0123
+"814",2307,"Russia","Dodd",1,"9/17/2008","Senate Hearings","Harm",3,0.0091
+"819",1482,"Iraq","Doggett",1,"10/9/2002","House","Harm",8,0.0965
+"822",1424,"Iraq","Doggett",1,"10/10/2002","House","Harm",2,0.0661
+"825",592,"Iraq","Doggett",1,"3/6/2003","House","Harm",6,0.0815
+"830",75,"Afghanistan","Dorgan",1,"9/14/2001","Senate","Harm",3,0.0337
+"835",480,"Iraq","Dorgan",1,"10/10/2002","Senate","Harm",7,0.0412
+"839",207,"Iraq","Dorgan",1,"3/12/1998","Senate","Harm",16,0.1232
+"842",246,"Kosovo","Dorgan",1,"3/22/1999","Senate","Harm",1,0.009
+"847",1484,"Iraq","Doyle",1,"10/9/2002","House","Harm",3,0.0303
+"850",595,"Sudan","Doyle",1,"9/19/2006","House","Harm",7,0.1183
+"853",594,"Sudan","Doyle",1,"7/26/2007","House","Harm",1,0.0546
+"855",607,"Iraq","Durbin",1,"9/10/2002","House","Harm",29,0.0968
+"860",433,"Iraq","Durbin",1,"10/10/2002","Senate","Harm",41,0.0701
+"863",99,"Iraq","Durbin",1,"3/13/2003","Senate","Harm",15,0.0563
+"866",343,"Syria","Durbin",1,"11/11/2003","Senate","Harm",3,0.0297
+"871",100,"Sudan","Durbin",1,"5/2/2006","Senate","Harm",2,0.0121
+"875",95,"Sudan","Durbin",1,"12/6/2006","Senate","Harm",2,0.0117
+"879",416,"Iran","Durbin",1,"2/16/2007","Senate","Harm",25,0.1037
+"883",96,"Sudan","Durbin",1,"2/16/2007","Senate","Harm",8,0.0477
+"888",98,"Sudan","Durbin",1,"3/1/2007","Senate","Harm",6,0.0343
+"893",101,"Sudan","Durbin",1,"5/10/2007","Senate","Harm",6,0.0286
+"897",92,"Sudan","Durbin",1,"5/24/2007","Senate","Harm",2,0.017
+"901",97,"Sudan","Durbin",1,"6/28/2007","Senate","Harm",2,0.0296
+"905",921,"Sudan","Durbin",1,"7/31/2007","House","Harm",2,0.0119
+"908",102,"Sudan","Durbin",1,"10/4/2007","Senate","Harm",2,0.0269
+"910",103,"Sudan","Durbin",1,"10/26/2007","Senate","Harm",3,0.0472
+"914",104,"Iran","Durbin",1,"10/30/2007","Senate","Harm",16,0.1293
+"918",2223,"Libya","Durbin",1,"3/31/2011","Senate Hearings","Harm",2,0.0527
+"924",244,"Syria","Durbin",1,"3/15/2012","Senate","Harm",11,0.0964
+"929",495,"Syria","Durbin",1,"9/9/2013","Senate","Harm",16,0.0675
+"934",105,"Iraq","EdwardsNC",1,"9/12/2002","Senate","Harm",3,0.0208
+"938",1485,"Iraq","EdwardsTX",1,"10/9/2002","House","Harm",5,0.0798
+"943",481,"Iraq","EdwardsNC",1,"10/10/2002","Senate","Harm",3,0.0215
+"945",562,"Iran","Ellison",1,"4/15/2008","House","Harm",4,0.0254
+"949",608,"Syria","Ellison",1,"6/2/2011","House","Harm",5,0.1066
+"953",1103,"Kosovo","Engel",1,"3/17/1998","House","Harm",4,0.042
+"956",1722,"Afghanistan","Engel",1,"9/14/2001","House","Harm",2,0.1116
+"959",1266,"Syria","Engel",1,"11/20/2003","House","Harm",5,0.0411
+"961",609,"Syria","Engel",1,"4/21/2004","House","Harm",1,0.0429
+"964",722,"Iran","Engel",1,"4/26/2006","House","Harm",3,0.0662
+"972",1155,"Iran","Engel",1,"7/9/2008","House Hearings","Harm",4,0.11
+"976",1973,"Russia","Engel",1,"7/7/2011","House Hearings","Harm",2,0.0703
+"979",795,"North Korea","Engel",1,"2/15/2013","House","Harm",1,0.0185
+"981",616,"Syria","Engel",1,"9/11/2013","House","Harm",1,0.047
+"984",613,"Kosovo","Engel",1,"3/24/1998","House","Harm",1,0.0121
+"989",610,"Kosovo","Engel",1,"6/5/1998","House","Harm",3,0.0358
+"993",611,"Iran","Engel",1,"6/11/1998","House","Harm",2,0.0303
+"995",615,"Kosovo","Engel",1,"10/1/1998","House","Harm",2,0.0228
+"999",614,"Kosovo","Engel",1,"3/24/1999","House","Harm",4,0.181
+"1000",1664,"Afghanistan","Eshoo",1,"9/14/2001","House","Harm",1,0.0491
+"1003",1486,"Iraq","Eshoo",1,"10/9/2002","House","Harm",7,0.1076
+"1004",1591,"Afghanistan","Etheridge",1,"9/14/2001","House","Harm",2,0.0463
+"1007",333,"Iran","Faircloth",1,"5/22/1998","Senate","Harm",1,0.0137
+"1009",1651,"Afghanistan","Faleomavaega",1,"9/14/2001","House","Harm",1,0.0542
+"1011",1488,"Iraq","Faleomavaega",1,"10/9/2002","House","Harm",9,0.0962
+"1014",1804,"North Korea","Faleomavaega",1,"2/17/2005","House Hearings","Harm",2,0.0087
+"1020",1863,"North Korea","Faleomavaega",1,"6/29/2006","House Hearings","Harm",1,0.0038
+"1025",1947,"Russia","Faleomavaega",1,"11/9/2008","House Hearings","Harm",3,0.0303
+"1029",1974,"Russia","Faleomavaega",1,"7/7/2011","House Hearings","Harm",4,0.0546
+"1031",963,"Syria","Faleomavaega",1,"3/20/2013","House Hearings","Harm",3,0.0929
+"1033",1851,"Russia","Faleomavaega",1,"5/12/1999","House Hearings","Harm",4,0.0218
+"1035",1323,"Iraq","Farr",1,"10/10/2002","House","Harm",2,0.0764
+"1036",1026,"Libya","Farr",1,"6/3/2011","House","Harm",1,0.0389
+"1039",1345,"Iraq","Fattah",1,"10/10/2002","House","Harm",2,0.0711
+"1041",111,"Kosovo","Feingold",1,"6/9/1998","Senate","Harm",5,0.0761
+"1045",2279,"Russia","Feingold",1,"3/1/2000","Senate Hearings","Harm",1,0.0214
+"1048",2486,"Sudan","Feingold",1,"6/11/2002","Senate Hearings","Harm",6,0.013
+"1053",110,"Iraq","Feingold",1,"7/25/2002","Senate","Harm",4,0.0534
+"1055",2191,"Iraq","Feingold",1,"7/31/2002","Senate Hearings","Harm",3,0.0166
+"1058",183,"Sudan","Feingold",1,"9/13/2002","Senate","Harm",2,0.0218
+"1061",184,"Iraq","Feingold",1,"9/26/2002","Senate","Harm",2,0.0128
+"1065",373,"Iraq","Feingold",1,"10/9/2002","Senate","Harm",5,0.0139
+"1071",116,"Sudan","Feingold",1,"3/30/2004","Senate","Harm",3,0.0439
+"1075",114,"Sudan","Feingold",1,"5/6/2004","Senate","Harm",1,0.0131
+"1078",2136,"Sudan","Feingold",1,"6/15/2004","Senate Hearings","Harm",1,0.0078
+"1082",109,"Sudan","Feingold",1,"7/22/2004","Senate","Harm",1,0.0107
+"1085",2471,"Sudan","Feingold",1,"9/9/2004","Senate Hearings","Harm",1,0.0091
+"1089",107,"Sudan","Feingold",1,"2/2/2005","Senate","Harm",4,0.0446
+"1092",108,"Russia","Feingold",1,"2/7/2005","Senate","Harm",1,0.0088
+"1102",182,"Sudan","Feingold",1,"9/11/2006","Senate","Harm",1,0.0092
+"1108",180,"Sudan","Feingold",1,"5/17/2007","Senate","Harm",1,0.0103
+"1110",112,"Iran","Feingold",1,"6/22/2007","Senate","Harm",2,0.0398
+"1114",923,"Sudan","Feingold",1,"7/31/2007","House","Harm",1,0.0068
+"1118",181,"Iran","Feingold",1,"11/8/2007","Senate","Harm",1,0.0117
+"1122",2447,"Sudan","Feingold",1,"4/23/2008","Senate Hearings","Harm",1,0.0413
+"1128",2405,"Sudan","Feingold",1,"5/12/2010","Senate Hearings","Harm",1,0.0161
+"1134",2424,"Sudan","Feingold",1,"5/15/1997","Senate Hearings","Harm",4,0.0179
+"1138",196,"Iran","Feinstein",1,"2/22/2000","Senate","Harm",1,0.0113
+"1141",210,"Iraq","Feinstein",1,"9/5/2002","Senate","Harm",18,0.0916
+"1146",581,"Iraq","Feinstein",1,"9/5/2002","Senate","Harm",19,0.0963
+"1151",212,"Iraq","Feinstein",1,"9/25/2002","Senate","Harm",22,0.0941
+"1154",486,"Iraq","Feinstein",1,"10/10/2002","Senate","Harm",3,0.0319
+"1158",185,"North Korea","Feinstein",1,"4/10/2003","Senate","Harm",4,0.016
+"1164",236,"Syria","Feinstein",1,"9/11/2013","Senate","Harm",17,0.0548
+"1168",211,"Kosovo","Feinstein",1,"9/23/1998","Senate","Harm",5,0.0869
+"1170",1309,"Iraq","Filner",1,"10/10/2002","House","Harm",3,0.1904
+"1171",1236,"Iraq","Ford",1,"10/9/2002","House","Harm",3,0.0295
+"1174",624,"Iraq","Frank",1,"12/20/2001","House","Harm",4,0.0433
+"1182",1012,"Libya","Frank",1,"6/3/2011","House","Harm",2,0.0528
+"1189",1426,"Iraq","Frost",1,"10/10/2002","House","Harm",2,0.0345
+"1191",1079,"Libya","Garamendi",1,"6/24/2011","House","Harm",2,0.1195
+"1193",817,"Libya","Garamendi",1,"6/24/2011","House","Harm",1,0.0961
+"1195",1666,"Afghanistan","Gephardt",1,"9/14/2001","House","Harm",1,0.0099
+"1198",1434,"Iraq","Gephardt",1,"10/10/2002","House","Harm",6,0.0238
+"1200",1452,"Iraq","Gonzalez",1,"10/10/2002","House","Harm",3,0.1124
+"1202",1708,"Afghanistan","GrahamSC",1,"9/14/2001","House","Harm",1,0.0489
+"1206",303,"Syria","GrahamSC",1,"5/9/2013","Senate","Harm",20,0.1255
+"1210",1657,"Afghanistan","GreenG",1,"9/14/2001","House","Harm",1,0.0403
+"1213",543,"Sudan","GreenA",1,"4/5/2006","House","Harm",2,0.0769
+"1217",879,"Sudan","GreenA",1,"9/20/2006","House","Harm",1,0.0195
+"1219",646,"Sudan","Hall",1,"6/3/1998","House","Harm",1,0.0716
+"1227",640,"Iraq","Hamilton",1,"10/5/1998","House","Harm",1,0.0072
+"1230",484,"Iraq","Harkin",1,"10/10/2002","Senate","Harm",9,0.0689
+"1233",1496,"Iraq","Harman",1,"10/9/2002","House","Harm",5,0.0377
+"1238",1450,"Iraq","HastingsFL",1,"10/10/2002","House","Harm",9,0.1373
+"1240",1074,"Libya","HastingsFL",1,"6/24/2011","House","Harm",3,0.0882
+"1243",1317,"Iraq","Hinchey",1,"10/10/2002","House","Harm",2,0.1324
+"1246",1580,"Afghanistan","Hinojosa",1,"9/14/2001","House","Harm",4,0.1615
+"1249",1498,"Iraq","Hinojosa",1,"10/9/2002","House","Harm",4,0.0773
+"1251",1349,"Sudan","Hinojosa",1,"2/8/2007","House Hearings","Harm",1,0.0483
+"1254",1089,"Libya","Hirono",1,"6/24/2011","House","Harm",2,0.033
+"1257",1563,"Afghanistan","Hoeffel",1,"9/14/2001","House","Harm",1,0.0331
+"1260",648,"Iraq","Hoeffel",1,"3/4/2003","House","Harm",2,0.0285
+"1263",1500,"Iraq","Holden",1,"10/9/2002","House","Harm",2,0.0504
+"1264",1717,"Afghanistan","Holt",1,"9/14/2001","House","Harm",2,0.0914
+"1266",1412,"Iraq","Holt",1,"10/10/2002","House","Harm",6,0.0314
+"1269",650,"Iraq","Holt",1,"3/5/2003","House","Harm",4,0.0493
+"1272",550,"Sudan","Holt",1,"4/5/2006","House","Harm",4,0.0751
+"1276",1070,"Libya","Holt",1,"6/24/2011","House","Harm",1,0.0398
+"1278",1501,"Iraq","Honda",1,"10/9/2002","House","Harm",5,0.1403
+"1281",1302,"Iraq","Honda",1,"10/10/2002","House","Harm",2,0.2012
+"1284",1691,"Afghanistan","Hooley",1,"9/14/2001","House","Harm",3,0.0402
+"1287",1502,"Iraq","Hooley",1,"10/9/2002","House","Harm",9,0.1938
+"1290",1106,"Kosovo","Hoyer",1,"3/17/1998","House","Harm",3,0.0375
+"1294",1589,"Afghanistan","Hoyer",1,"9/14/2001","House","Harm",6,0.1694
+"1298",1504,"Iraq","Hoyer",1,"10/9/2002","House","Harm",2,0.025
+"1300",845,"Sudan","Hoyer",1,"7/21/2004","House","Harm",2,0.0497
+"1308",1084,"Libya","Hoyer",1,"6/24/2011","House","Harm",1,0.0159
+"1316",1505,"Iraq","Inslee",1,"10/9/2002","House","Harm",3,0.0575
+"1321",657,"Iraq","Inslee",1,"3/5/2003","House","Harm",12,0.1309
+"1325",655,"Iraq","Inslee",1,"3/13/2003","House","Harm",38,0.0662
+"1331",2299,"Russia","Isakson",1,"6/21/2007","Senate Hearings","Harm",1,0.0202
+"1332",2406,"Sudan","Isakson",1,"5/12/2010","Senate Hearings","Harm",2,0.0581
+"1336",2224,"Libya","Isakson",1,"3/31/2011","Senate Hearings","Harm",1,0.0156
+"1338",1693,"Afghanistan","Israel",1,"9/14/2001","House","Harm",4,0.1603
+"1341",1740,"Afghanistan","JacksonIL",1,"9/14/2001","House","Harm",11,0.0907
+"1346",838,"Sudan","JacksonIL",1,"7/21/2004","House","Harm",3,0.0421
+"1351",1350,"Sudan","Jackson-Lee",1,"2/8/2007","House Hearings","Harm",3,0.0304
+"1354",1951,"Russia","Jackson-Lee",1,"11/9/2008","House Hearings","Harm",1,0.0097
+"1359",1111,"Kosovo","Jackson-Lee",1,"3/17/1998","House","Harm",2,0.0334
+"1361",1698,"Afghanistan","Jackson-Lee",1,"9/14/2001","House","Harm",6,0.0953
+"1365",665,"Iraq","Jackson-Lee",1,"6/17/2002","House","Harm",11,0.0759
+"1366",666,"Iraq","Jackson-Lee",1,"9/4/2002","House","Harm",3,0.1816
+"1369",1240,"Iraq","Jackson-Lee",1,"10/9/2002","House","Harm",34,0.1291
+"1372",1307,"Iraq","Jackson-Lee",1,"10/10/2002","House","Harm",5,0.0898
+"1375",667,"Iraq","Jackson-Lee",1,"10/15/2002","House","Harm",2,0.0643
+"1377",659,"Iraq","Jackson-Lee",1,"2/27/2003","House","Harm",2,0.1002
+"1380",668,"Iraq","Jackson-Lee",1,"3/18/2003","House","Harm",10,0.134
+"1382",824,"Sudan","Jackson-Lee",1,"5/13/2004","House","Harm",7,0.027
+"1384",660,"Sudan","Jackson-Lee",1,"7/7/2004","House","Harm",2,0.1
+"1386",661,"Sudan","Jackson-Lee",1,"7/13/2004","House","Harm",6,0.1469
+"1390",662,"Sudan","Jackson-Lee",1,"7/15/2004","House","Harm",1,0.0099
+"1394",836,"Sudan","Jackson-Lee",1,"7/21/2004","House","Harm",3,0.0223
+"1396",664,"Sudan","Jackson-Lee",1,"6/9/2005","House","Harm",1,0.0501
+"1397",539,"Sudan","Jackson-Lee",1,"4/5/2006","House","Harm",1,0.0119
+"1401",1792,"Sudan","Jackson-Lee",1,"9/25/2006","House","Harm",3,0.0335
+"1406",851,"Iran","Jackson-Lee",1,"7/30/2007","House","Harm",1,0.0211
+"1409",866,"Sudan","Jackson-Lee",1,"7/30/2007","House","Harm",3,0.0372
+"1413",563,"Iran","Jackson-Lee",1,"4/15/2008","House","Harm",22,0.105
+"1418",658,"Iran","Jackson-Lee",1,"12/15/2009","House","Harm",2,0.0276
+"1422",671,"Libya","Jackson-Lee",1,"3/17/2011","House","Harm",2,0.0738
+"1425",1042,"Libya","Jackson-Lee",1,"6/3/2011","House","Harm",21,0.0891
+"1430",1047,"Libya","Jackson-Lee",1,"6/24/2011","House","Harm",28,0.0969
+"1434",672,"Syria","Jackson-Lee",1,"3/5/2012","House","Harm",1,0.0432
+"1436",663,"Syria","Jackson-Lee",1,"6/8/2012","House","Harm",2,0.095
+"1439",1158,"Iran","Jackson-Lee",1,"7/9/2008","House Hearings","Harm",3,0.0231
+"1441",1506,"Iraq","Jefferson",1,"10/9/2002","House","Harm",6,0.0748
+"1445",674,"Sudan","Jefferson",1,"9/20/2006","House","Harm",3,0.0407
+"1448",503,"Iraq","Jeffords",1,"10/7/2002","Senate","Harm",9,0.0582
+"1450",432,"Iraq","Jeffords",1,"10/10/2002","Senate","Harm",5,0.0691
+"1452",16,"Iraq","JohnsonSD",1,"1/30/2003","Senate","Harm",5,0.0478
+"1458",1242,"Iraq","JonesOH",1,"10/9/2002","House","Harm",11,0.1465
+"1460",1320,"Iraq","JonesOH",1,"10/10/2002","House","Harm",1,0.0445
+"1464",234,"Syria","Kaine",1,"9/11/2013","Senate","Harm",18,0.0638
+"1468",1507,"Iraq","Kanjorski",1,"10/9/2002","House","Harm",3,0.0426
+"1474",678,"Iraq","Kaptur",1,"10/7/2002","House","Harm",5,0.0595
+"1476",1049,"Libya","Kaptur",1,"6/24/2011","House","Harm",7,0.1244
+"1478",677,"Syria","Kaptur",1,"2/29/2012","House","Harm",4,0.1724
+"1481",750,"Syria","Kaptur",1,"9/10/2013","House","Harm",1,0.0432
+"1492",242,"Iraq","Kennedy",1,"10/7/2002","Senate","Harm",20,0.1414
+"1495",507,"Iraq","Kennedy",1,"10/7/2002","Senate","Harm",46,0.1639
+"1499",402,"Iraq","Kennedy",1,"10/10/2002","Senate","Harm",86,0.1266
+"1503",42,"Iraq","Kennedy",1,"1/29/2003","Senate","Harm",37,0.1412
+"1506",239,"Iraq","Kennedy",1,"3/5/2003","Senate","Harm",2,0.0817
+"1510",240,"Iraq","Kennedy",1,"3/13/2003","Senate","Harm",62,0.1668
+"1514",115,"Sudan","Kennedy",1,"5/6/2004","Senate","Harm",1,0.023
+"1516",1447,"Iraq","KennedyRI",1,"10/10/2002","House","Harm",52,0.1253
+"1519",252,"Iraq","Kerrey",1,"3/2/2000","Senate","Harm",4,0.0387
+"1523",2175,"Iraq","Kerrey",1,"3/1/2001","Senate Hearings","Harm",15,0.0393
+"1527",250,"Iraq","Kerrey",1,"2/25/1998","Senate","Harm",12,0.063
+"1530",251,"Iraq","Kerrey",1,"2/25/1999","Senate","Harm",9,0.0418
+"1533",2198,"Iraq","Kerry",1,"7/31/2002","Senate Hearings","Harm",2,0.0197
+"1537",513,"Iraq","Kerry",1,"10/9/2002","Senate","Harm",44,0.0704
+"1540",2048,"Iran","Kerry",1,"7/9/2008","Senate Hearings","Harm",1,0.0059
+"1545",2129,"Iran","Kerry",1,"3/3/2009","Senate Hearings","Harm",1,0.004
+"1549",2065,"Iran","Kerry",1,"3/5/2009","Senate Hearings","Harm",2,0.0082
+"1555",2448,"Sudan","Kerry",1,"7/30/2009","Senate Hearings","Harm",9,0.0292
+"1559",2402,"Sudan","Kerry",1,"5/12/2010","Senate Hearings","Harm",4,0.019
+"1563",2085,"Iran","Kerry",1,"6/22/2010","Senate Hearings","Harm",2,0.0076
+"1568",2332,"North Korea","Kerry",1,"3/1/2011","Senate Hearings","Harm",2,0.0047
+"1572",2225,"Libya","Kerry",1,"3/31/2011","Senate Hearings","Harm",1,0.0056
+"1576",2263,"Libya","Kerry",1,"4/6/2011","Senate Hearings","Harm",2,0.0071
+"1580",299,"Libya","Kerry",1,"6/21/2011","Senate","Harm",12,0.0514
+"1585",2213,"Libya","Kerry",1,"6/28/2011","Senate Hearings","Harm",15,0.0599
+"1588",2247,"Syria","Kerry",1,"3/1/2012","House Hearings","Harm",2,0.0136
+"1594",2257,"Syria","Kerry",1,"4/19/2012","House Hearings","Harm",7,0.0248
+"1599",1759,"Afghanistan","Kilpatrick",1,"9/14/2001","House","Harm",2,0.0727
+"1603",1509,"Iraq","Kilpatrick",1,"10/9/2002","House","Harm",5,0.0615
+"1606",686,"Sudan","Kilpatrick",1,"9/20/2006","House","Harm",4,0.0248
+"1611",1243,"Iraq","Kind",1,"10/9/2002","House","Harm",2,0.0178
+"1613",656,"Iraq","Kind",1,"3/13/2003","House","Harm",1,0.0106
+"1615",1587,"Afghanistan","Kleczka",1,"9/14/2001","House","Harm",1,0.053
+"1618",1510,"Iraq","Kleczka",1,"10/9/2002","House","Harm",5,0.0624
+"1620",1585,"Afghanistan","Kucinich",1,"9/14/2001","House","Harm",2,0.0678
+"1623",696,"Iraq","Kucinich",1,"9/10/2002","House","Harm",3,0.2125
+"1625",697,"Iraq","Kucinich",1,"9/19/2002","House","Harm",9,0.1595
+"1628",698,"Iraq","Kucinich",1,"10/3/2002","House","Harm",41,0.0599
+"1632",1427,"Iraq","Kucinich",1,"10/10/2002","House","Harm",4,0.0374
+"1635",699,"Iraq","Kucinich",1,"1/8/2003","House","Harm",15,0.1822
+"1638",700,"Iraq","Kucinich",1,"1/27/2003","House","Harm",2,0.1517
+"1640",715,"Iran","Kucinich",1,"4/26/2006","House","Harm",11,0.0618
+"1642",701,"Iran","Kucinich",1,"5/23/2006","House","Harm",3,0.1593
+"1643",702,"Iran","Kucinich",1,"9/27/2006","House","Harm",2,0.1346
+"1645",1779,"Iran","Kucinich",1,"9/28/2006","House","Harm",4,0.1231
+"1646",703,"Iran","Kucinich",1,"9/28/2006","House","Harm",2,0.1045
+"1651",704,"Iran","Kucinich",1,"3/1/2007","House","Harm",3,0.1675
+"1653",705,"Iran","Kucinich",1,"3/15/2007","House","Harm",6,0.2897
+"1655",706,"Iran","Kucinich",1,"3/27/2007","House","Harm",1,0.0807
+"1656",707,"Iran","Kucinich",1,"1/16/2008","House","Harm",5,0.2832
+"1658",1770,"Iran","Kucinich",1,"9/26/2008","House","Harm",1,0.019
+"1660",1018,"Libya","Kucinich",1,"6/3/2011","House","Harm",7,0.1104
+"1663",1048,"Libya","Kucinich",1,"6/24/2011","House","Harm",24,0.2529
+"1664",815,"Libya","Kucinich",1,"6/24/2011","House","Harm",5,0.2366
+"1667",708,"Iran","Kucinich",1,"5/17/2012","House","Harm",9,0.1344
+"1669",1511,"Iraq","Kucinich",1,"10/9/2002","House","Harm",13,0.2132
+"1674",1105,"Kosovo","Lampson",1,"3/17/1998","House","Harm",2,0.0641
+"1678",487,"Iraq","Landrieu",1,"10/10/2002","Senate","Harm",24,0.0743
+"1685",536,"Sudan","Langevin",1,"4/5/2006","House","Harm",2,0.0703
+"1691",1561,"Afghanistan","Lantos",1,"9/14/2001","House","Harm",6,0.0486
+"1694",1514,"Iraq","Lantos",1,"10/9/2002","House","Harm",1,0.1012
+"1696",1310,"Iraq","Lantos",1,"10/10/2002","House","Harm",9,0.0799
+"1699",1265,"Syria","Lantos",1,"11/20/2003","House","Harm",2,0.0342
+"1706",827,"Sudan","Lantos",1,"7/21/2004","House","Harm",5,0.1065
+"1711",1898,"Sudan","Lantos",1,"6/22/2005","House Hearings","Harm",3,0.0219
+"1714",733,"Iran","Lantos",1,"10/27/2005","House","Harm",3,0.2106
+"1719",533,"Sudan","Lantos",1,"4/5/2006","House","Harm",6,0.0778
+"1722",712,"Iran","Lantos",1,"4/26/2006","House","Harm",1,0.0129
+"1726",1836,"Sudan","Lantos",1,"5/18/2006","House Hearings","Harm",2,0.0147
+"1730",1865,"North Korea","Lantos",1,"6/29/2006","House Hearings","Harm",1,0.0074
+"1733",1794,"Sudan","Lantos",1,"9/25/2006","House","Harm",2,0.0286
+"1744",1392,"Iran","Lantos",1,"3/6/2007","House Hearings","Harm",1,0.0058
+"1746",734,"Kosovo","Lantos",1,"3/24/1999","House","Harm",1,0.0653
+"1748",1854,"Russia","Lantos",1,"5/12/1999","House Hearings","Harm",5,0.0513
+"1751",1922,"Russia","Lantos",1,"10/6/1999","House Hearings","Harm",4,0.0245
+"1753",736,"Afghanistan","Larson",1,"9/14/2001","House","Harm",1,0.029
+"1757",1515,"Iraq","Larson",1,"10/9/2002","House","Harm",4,0.0356
+"1760",544,"Sudan","Larson",1,"4/5/2006","House","Harm",1,0.0157
+"1762",266,"Iran","Lautenberg",1,"10/27/2005","Senate","Harm",1,0.0326
+"1764",265,"Libya","Lautenberg",1,"6/28/2006","Senate","Harm",2,0.0273
+"1770",377,"Iraq","Leahy",1,"10/9/2002","Senate","Harm",18,0.0581
+"1774",268,"Iraq","Leahy",1,"1/30/2003","Senate","Harm",17,0.089
+"1778",270,"Iraq","Leahy",1,"3/13/2003","Senate","Harm",15,0.0756
+"1785",271,"Sudan","Leahy",1,"9/19/2006","Senate","Harm",3,0.0215
+"1789",267,"Iraq","Leahy",1,"2/26/1998","Senate","Harm",11,0.0632
+"1792",1202,"Russia","LeeCA",1,"9/27/2000","House Hearings","Harm",3,0.0927
+"1793",1822,"Russia","LeeCA",1,"9/27/2000","House Hearings","Harm",3,0.0916
+"1795",1574,"Afghanistan","LeeCA",1,"9/14/2001","House","Harm",7,0.1031
+"1799",1296,"Iraq","LeeCA",1,"10/10/2002","House","Harm",13,0.1015
+"1802",1900,"Sudan","LeeCA",1,"6/22/2005","House Hearings","Harm",4,0.0525
+"1804",535,"Sudan","LeeCA",1,"4/5/2006","House","Harm",1,0.0163
+"1808",1837,"Sudan","LeeCA",1,"5/18/2006","House Hearings","Harm",1,0.0106
+"1812",738,"Sudan","LeeCA",1,"9/20/2006","House","Harm",3,0.0338
+"1814",860,"Sudan","LeeCA",1,"7/30/2007","House","Harm",1,0.0111
+"1816",561,"Iran","LeeCA",1,"4/15/2008","House","Harm",16,0.0807
+"1820",1160,"Iran","LeeCA",1,"7/9/2008","House Hearings","Harm",1,0.0134
+"1824",1028,"Libya","LeeCA",1,"6/3/2011","House","Harm",2,0.0699
+"1830",520,"Iraq","LevinC",1,"10/9/2002","Senate","Harm",12,0.0393
+"1834",413,"Iraq","LevinC",1,"10/10/2002","Senate","Harm",10,0.0281
+"1838",273,"Iraq","LevinC",1,"1/9/2003","Senate","Harm",4,0.0226
+"1842",275,"Iraq","LevinC",1,"3/17/2003","Senate","Harm",11,0.0652
+"1848",301,"Syria","LevinC",1,"5/9/2013","Senate","Harm",2,0.0194
+"1852",191,"Iraq","LevinC",1,"2/12/1998","Senate","Harm",2,0.0202
+"1854",1109,"Kosovo","LevinS",1,"3/17/1998","House","Harm",1,0.0725
+"1856",1726,"Afghanistan","LevinS",1,"9/14/2001","House","Harm",1,0.0477
+"1859",1409,"Iraq","LevinS",1,"10/10/2002","House","Harm",3,0.0446
+"1861",1077,"Libya","LevinS",1,"6/24/2011","House","Harm",1,0.0737
+"1865",739,"Kosovo","LevinS",1,"7/8/1998","House","Harm",2,0.0243
+"1868",740,"Iraq","LewisGA",1,"3/6/2003","House","Harm",15,0.3086
+"1870",742,"Iraq","LewisGA",1,"3/19/2003","House","Harm",15,0.3001
+"1872",193,"Iran","Lieberman",1,"2/22/2000","Senate","Harm",1,0.0058
+"1876",280,"Iraq","Lieberman",1,"9/13/2002","Senate","Harm",7,0.0502
+"1880",281,"Iraq","Lieberman",1,"10/2/2002","Senate","Harm",5,0.0772
+"1884",504,"Iraq","Lieberman",1,"10/7/2002","Senate","Harm",25,0.0651
+"1887",366,"Iraq","Lieberman",1,"10/8/2002","Senate","Harm",21,0.0732
+"1891",376,"Iraq","Lieberman",1,"10/9/2002","Senate","Harm",6,0.0238
+"1895",403,"Iraq","Lieberman",1,"10/10/2002","Senate","Harm",33,0.0536
+"1902",498,"Iran","Lieberman",1,"9/24/2007","Senate","Harm",14,0.0709
+"1906",305,"Libya","Lieberman",1,"3/14/2011","Senate","Harm",5,0.0244
+"1909",277,"Syria","Lieberman",1,"4/14/2011","Senate","Harm",1,0.0074
+"1913",279,"Syria","Lieberman",1,"5/5/2011","Senate","Harm",2,0.0127
+"1917",190,"Iraq","Lieberman",1,"2/12/1998","Senate","Harm",11,0.0536
+"1921",332,"Iran","Lieberman",1,"5/22/1998","Senate","Harm",1,0.0033
+"1924",1699,"Afghanistan","Lofgren",1,"9/14/2001","House","Harm",3,0.1124
+"1929",1518,"Iraq","Lofgren",1,"10/9/2002","House","Harm",4,0.0808
+"1932",1712,"Afghanistan","Lowey",1,"9/14/2001","House","Harm",4,0.1192
+"1934",557,"Sudan","Lowey",1,"4/5/2006","House","Harm",1,0.0263
+"1937",1992,"Afghanistan","Lugar",1,"12/6/2001","Senate Hearings","Harm",2,0.0365
+"1941",2002,"Afghanistan","Lugar",1,"6/26/2002","Senate Hearings","Harm",2,0.0084
+"1945",2199,"Iraq","Lugar",1,"7/31/2002","Senate Hearings","Harm",21,0.0372
+"1949",2352,"North Korea","Lugar",1,"2/4/2003","Senate Hearings","Harm",5,0.0131
+"1956",2042,"Iran","Lugar",1,"10/28/2003","Senate Hearings","Harm",2,0.0076
+"1959",2015,"Syria","Lugar",1,"10/30/2003","Senate Hearings","Harm",1,0.0039
+"1961",339,"Syria","Lugar",1,"11/11/2003","Senate","Harm",1,0.0098
+"1964",2337,"North Korea","Lugar",1,"7/15/2004","Senate Hearings","Harm",3,0.0121
+"1968",2461,"Sudan","Lugar",1,"9/9/2004","Senate Hearings","Harm",8,0.0383
+"1972",2475,"Sudan","Lugar",1,"9/28/2005","Senate Hearings","Harm",1,0.0053
+"1975",2021,"Iran","Lugar",1,"3/2/2006","Senate Hearings","Harm",4,0.0111
+"1980",2366,"North Korea","Lugar",1,"7/20/2006","Senate Hearings","Harm",5,0.0139
+"1983",2413,"Sudan","Lugar",1,"4/11/2007","Senate Hearings","Harm",1,0.0085
+"1986",2300,"Russia","Lugar",1,"6/21/2007","Senate Hearings","Harm",1,0.005
+"1988",2434,"Sudan","Lugar",1,"4/23/2008","Senate Hearings","Harm",1,0.0073
+"1991",2049,"Iran","Lugar",1,"7/9/2008","Senate Hearings","Harm",3,0.0149
+"1995",2310,"Russia","Lugar",1,"9/17/2008","Senate Hearings","Harm",1,0.004
+"2001",2379,"North Korea","Lugar",1,"6/11/2009","Senate Hearings","Harm",1,0.0051
+"2002",2449,"Sudan","Lugar",1,"7/30/2009","Senate Hearings","Harm",1,0.0066
+"2005",2403,"Sudan","Lugar",1,"5/12/2010","Senate Hearings","Harm",4,0.0465
+"2012",2333,"North Korea","Lugar",1,"3/1/2011","Senate Hearings","Harm",3,0.011
+"2016",2226,"Libya","Lugar",1,"3/31/2011","Senate Hearings","Harm",28,0.1633
+"2019",2264,"Libya","Lugar",1,"4/6/2011","Senate Hearings","Harm",9,0.0725
+"2022",2216,"Libya","Lugar",1,"6/28/2011","Senate Hearings","Harm",36,0.15
+"2025",204,"Libya","Lugar",1,"7/5/2011","Senate","Harm",46,0.1536
+"2032",2248,"Syria","Lugar",1,"3/1/2012","House Hearings","Harm",2,0.019
+"2043",1430,"Iraq","Luther",1,"10/10/2002","House","Harm",3,0.0473
+"2045",1002,"Libya","Lynch",1,"6/3/2011","House","Harm",2,0.0862
+"2048",1052,"Libya","Lynch",1,"6/24/2011","House","Harm",1,0.041
+"2052",744,"Afghanistan","MaloneyC",1,"2/16/2000","House","Harm",1,0.0169
+"2056",1246,"Iraq","MaloneyC",1,"10/9/2002","House","Harm",4,0.071
+"2060",747,"Syria","MaloneyC",1,"9/10/2013","House","Harm",1,0.08
+"2062",1744,"Afghanistan","MaloneyCT",1,"9/14/2001","House","Harm",2,0.06
+"2067",1441,"Iraq","MaloneyCT",1,"10/10/2002","House","Harm",9,0.0791
+"2071",1757,"Afghanistan","Markey",1,"9/14/2001","House","Harm",5,0.1249
+"2075",1406,"Iraq","Markey",1,"10/10/2002","House","Harm",1,0.0084
+"2079",1791,"Iran","Markey",1,"9/28/2006","House","Harm",1,0.0387
+"2081",1520,"Iraq","Matheson",1,"10/9/2002","House","Harm",3,0.1
+"2084",1417,"Iraq","MatsuiR",1,"10/10/2002","House","Harm",5,0.0923
+"2085",1521,"Iraq","McCarthyMO",1,"10/9/2002","House","Harm",2,0.0335
+"2087",1344,"Iraq","McCarthyMO",1,"10/10/2002","House","Harm",6,0.0924
+"2090",1732,"Afghanistan","McCarthyNY",1,"9/14/2001","House","Harm",2,0.0625
+"2101",1796,"Sudan","McCollum",1,"9/25/2006","House","Harm",1,0.0257
+"2105",2427,"Sudan","McCollum",1,"5/15/1997","Senate Hearings","Harm",2,0.0055
+"2107",1653,"Afghanistan","McDermott",1,"9/14/2001","House","Harm",4,0.1368
+"2109",586,"Iraq","McDermott",1,"9/18/2002","House","Harm",3,0.0424
+"2112",1304,"Iraq","McDermott",1,"10/10/2002","House","Harm",48,0.1048
+"2115",1114,"Iraq","McDermott",1,"3/5/2003","House","Harm",8,0.1182
+"2117",752,"Iran","McDermott",1,"4/25/2006","House","Harm",10,0.1183
+"2120",751,"Iran","McDermott",1,"4/18/2007","House","Harm",4,0.0687
+"2122",754,"Iran","McDermott",1,"5/15/2007","House","Harm",6,0.0877
+"2123",753,"Iran","McDermott",1,"7/17/2007","House","Harm",6,0.1019
+"2126",755,"Iran","McDermott",1,"10/2/2007","House","Harm",10,0.2049
+"2127",756,"Iran","McDermott",1,"11/9/2007","House","Harm",6,0.2557
+"2129",757,"Iran","McDermott",1,"3/13/2008","House","Harm",2,0.0945
+"2130",758,"Iran","McDermott",1,"9/10/2008","House","Harm",8,0.1139
+"2133",1075,"Libya","McDermott",1,"6/24/2011","House","Harm",1,0.0442
+"2136",1747,"Afghanistan","McGovern",1,"9/14/2001","House","Harm",1,0.0224
+"2141",760,"Iraq","McGovern",1,"9/5/2002","House","Harm",4,0.0555
+"2143",1416,"Iraq","McGovern",1,"10/10/2002","House","Harm",1,0.048
+"2145",547,"Sudan","McGovern",1,"4/5/2006","House","Harm",2,0.0366
+"2148",761,"Sudan","McGovern",1,"9/21/2006","House","Harm",1,0.0153
+"2150",759,"Sudan","McGovern",1,"2/29/2012","House","Harm",3,0.0403
+"2154",762,"Sudan","McGovern",1,"3/7/2012","House","Harm",1,0.0136
+"2157",1649,"Afghanistan","McKinney",1,"9/14/2001","House","Harm",1,0.0396
+"2159",1523,"Iraq","McKinney",1,"10/9/2002","House","Harm",14,0.1709
+"2161",770,"Iraq","McNulty",1,"10/8/2002","House","Harm",4,0.1134
+"2163",542,"Sudan","McNulty",1,"4/5/2006","House","Harm",3,0.0865
+"2167",1524,"Iraq","Meehan",1,"10/9/2002","House","Harm",1,0.0121
+"2171",1599,"Afghanistan","MeekC",1,"9/14/2001","House","Harm",2,0.0991
+"2174",1525,"Iraq","MeekC",1,"10/9/2002","House","Harm",6,0.0773
+"2176",1902,"Sudan","MeeksNY",1,"6/22/2005","House Hearings","Harm",1,0.043
+"2179",1352,"Sudan","MeeksNY",1,"2/8/2007","House Hearings","Harm",1,0.0355
+"2180",1163,"Libya","MeeksNY",1,"3/31/2011","House Hearings","Harm",1,0.0101
+"2186",1672,"Afghanistan","Menendez",1,"9/14/2001","House","Harm",4,0.0814
+"2189",2417,"Sudan","Menendez",1,"4/11/2007","Senate Hearings","Harm",3,0.031
+"2194",2440,"Sudan","Menendez",1,"4/23/2008","Senate Hearings","Harm",1,0.005
+"2201",2227,"Libya","Menendez",1,"3/31/2011","Senate Hearings","Harm",3,0.0486
+"2206",2266,"Libya","Menendez",1,"4/6/2011","Senate Hearings","Harm",4,0.0786
+"2208",2249,"Syria","Menendez",1,"3/1/2012","House Hearings","Harm",2,0.0636
+"2212",326,"Iran","Menendez",1,"5/21/2012","Senate","Harm",3,0.0442
+"2216",2323,"North Korea","Menendez",1,"3/7/2013","Senate Hearings","Harm",1,0.0046
+"2222",496,"Syria","Menendez",1,"9/9/2013","Senate","Harm",4,0.0161
+"2228",500,"Iraq","Mikulski",1,"10/7/2002","Senate","Harm",17,0.0915
+"2231",475,"Iraq","Mikulski",1,"10/10/2002","Senate","Harm",7,0.0741
+"2234",494,"Syria","Mikulski",1,"9/9/2013","Senate","Harm",5,0.0288
+"2237",1682,"Afghanistan","Millender-McDonald",1,"9/14/2001","House","Harm",2,0.0894
+"2238",1526,"Iraq","Millender-McDonald",1,"10/9/2002","House","Harm",9,0.1167
+"2240",314,"Iraq","Miller",1,"10/3/2002","Senate","Harm",3,0.1032
+"2242",1566,"Afghanistan","MillerGeorge",1,"9/14/2001","House","Harm",3,0.076
+"2245",877,"Sudan","MillerNC",1,"7/30/2007","House","Harm",2,0.0592
+"2248",1597,"Afghanistan","MinkHI",1,"9/14/2001","House","Harm",4,0.2057
+"2249",1455,"Iraq","MooreKS",1,"10/10/2002","House","Harm",3,0.0533
+"2251",773,"Sudan","MooreWI",1,"9/20/2006","House","Harm",6,0.1126
+"2257",1342,"Iraq","MoranVA",1,"10/10/2002","House","Harm",5,0.1163
+"2262",774,"Sudan","MoranVA",1,"9/19/2006","House","Harm",1,0.0487
+"2264",775,"Sudan","MoranVA",1,"7/26/2007","House","Harm",1,0.0711
+"2267",1008,"Libya","MoranVA",1,"6/3/2011","House","Harm",1,0.0111
+"2272",1051,"Libya","MoranVA",1,"6/24/2011","House","Harm",4,0.0484
+"2277",685,"Kosovo","MoranVA",1,"3/24/1998","House","Harm",2,0.0372
+"2287",526,"Iraq","Murray",1,"10/9/2002","Senate","Harm",22,0.0872
+"2291",1107,"Kosovo","Nadler",1,"3/17/1998","House","Harm",4,0.0949
+"2293",1721,"Afghanistan","Nadler",1,"9/14/2001","House","Harm",12,0.1459
+"2297",1332,"Iraq","Nadler",1,"10/10/2002","House","Harm",1,0.0284
+"2299",1004,"Libya","Nadler",1,"6/3/2011","House","Harm",8,0.2068
+"2302",1576,"Afghanistan","Napolitano",1,"9/14/2001","House","Harm",2,0.0796
+"2309",2202,"Iraq","NelsonFL",1,"7/31/2002","Senate Hearings","Harm",4,0.0307
+"2311",385,"Iraq","NelsonFL",1,"9/20/2002","Senate","Harm",10,0.0698
+"2314",364,"Iraq","NelsonNE",1,"10/7/2002","Senate","Harm",19,0.0669
+"2317",387,"North Korea","NelsonFL",1,"1/10/2003","Senate","Harm",1,0.0074
+"2319",2399,"North Korea","NelsonFL",1,"3/6/2003","Senate Hearings","Harm",2,0.074
+"2327",493,"Syria","NelsonFL",1,"9/9/2013","Senate","Harm",2,0.0128
+"2332",820,"Sudan","Norton",1,"4/4/2000","House","Harm",6,0.0179
+"2335",1570,"Afghanistan","Norton",1,"9/14/2001","House","Harm",2,0.1455
+"2339",2482,"Sudan","Obama",1,"9/28/2005","Senate Hearings","Harm",1,0.0236
+"2343",2058,"Iran","Obama",1,"3/29/2007","Senate Hearings","Harm",2,0.0338
+"2347",1301,"Iraq","Oberstar",1,"10/10/2002","House","Harm",6,0.1361
+"2350",781,"Iraq","Obey",1,"3/6/2003","House","Harm",18,0.0722
+"2352",841,"Sudan","Olver",1,"7/21/2004","House","Harm",2,0.0677
+"2355",782,"Kosovo","Olver",1,"2/3/1999","House","Harm",2,0.1244
+"2357",1630,"Afghanistan","Ortiz",1,"9/14/2001","House","Harm",6,0.0916
+"2360",1319,"Iraq","OwensM",1,"10/10/2002","House","Harm",1,0.0511
+"2361",1091,"Iraq","Pallone",1,"3/5/2003","House","Harm",9,0.2053
+"2363",1267,"Syria","Pallone",1,"11/20/2003","House","Harm",1,0.0435
+"2364",783,"Sudan","Pallone",1,"2/14/2006","House","Harm",1,0.0144
+"2368",1453,"Iraq","Pascrell",1,"10/10/2002","House","Harm",7,0.0813
+"2370",784,"Iran","Pascrell",1,"2/13/2007","House","Harm",2,0.1491
+"2373",1632,"Afghanistan","Pastor",1,"9/14/2001","House","Harm",2,0.1423
+"2376",1249,"Iraq","Pastor",1,"10/9/2002","House","Harm",4,0.1309
+"2378",1331,"Iraq","Pastor",1,"10/10/2002","House","Harm",2,0.1172
+"2382",819,"Sudan","PayneD",1,"4/4/2000","House","Harm",9,0.0251
+"2387",821,"Sudan","PayneD",1,"6/12/2001","House","Harm",32,0.0641
+"2390",1670,"Afghanistan","PayneD",1,"9/14/2001","House","Harm",1,0.042
+"2392",1532,"Iraq","PayneD",1,"10/9/2002","House","Harm",10,0.0742
+"2394",1313,"Iraq","PayneD",1,"10/10/2002","House","Harm",1,0.0619
+"2397",822,"Sudan","PayneD",1,"5/13/2004","House","Harm",14,0.0452
+"2401",829,"Sudan","PayneD",1,"7/21/2004","House","Harm",2,0.0334
+"2406",1904,"Sudan","PayneD",1,"6/22/2005","House Hearings","Harm",3,0.0323
+"2408",1215,"Sudan","PayneD",1,"11/1/2005","House Hearings","Harm",7,0.0261
+"2412",1891,"Sudan","PayneD",1,"11/1/2005","House Hearings","Harm",7,0.0262
+"2416",1884,"Sudan","PayneD",1,"3/8/2006","House Hearings","Harm",2,0.0238
+"2420",534,"Sudan","PayneD",1,"4/5/2006","House","Harm",3,0.0478
+"2425",1839,"Sudan","PayneD",1,"5/18/2006","House Hearings","Harm",4,0.0285
+"2430",825,"Sudan","PayneD",1,"9/20/2006","House","Harm",1,0.0127
+"2431",1354,"Sudan","PayneD",1,"2/8/2007","House Hearings","Harm",5,0.0311
+"2437",1956,"Russia","PayneD",1,"11/9/2008","House Hearings","Harm",2,0.0165
+"2440",1168,"Libya","PayneD",1,"3/31/2011","House Hearings","Harm",1,0.0127
+"2443",1679,"Afghanistan","Pelosi",1,"9/14/2001","House","Harm",1,0.0519
+"2447",1410,"Iraq","Pelosi",1,"10/10/2002","House","Harm",9,0.081
+"2451",833,"Sudan","Pelosi",1,"7/21/2004","House","Harm",2,0.0247
+"2454",532,"Sudan","Pelosi",1,"4/5/2006","House","Harm",4,0.0311
+"2458",878,"Sudan","Pelosi",1,"9/20/2006","House","Harm",3,0.0243
+"2461",888,"Syria","PetersMI",1,"6/22/2011","House","Harm",1,0.041
+"2463",889,"Syria","PetersMI",1,"7/27/2011","House","Harm",1,0.0617
+"2465",1634,"Afghanistan","PriceNC",1,"9/14/2001","House","Harm",2,0.1093
+"2469",1534,"Iraq","PriceNC",1,"10/9/2002","House","Harm",3,0.0354
+"2471",934,"Iraq","PriceNC",1,"3/11/2003","House","Harm",13,0.0655
+"2473",601,"Libya","PriceNC",1,"9/12/2012","House","Harm",1,0.0267
+"2474",396,"Sudan","Pryor",1,"2/1/2007","Senate","Harm",2,0.0548
+"2479",1419,"Iraq","Rangel",1,"10/10/2002","House","Harm",4,0.1297
+"2482",552,"Sudan","Rangel",1,"4/5/2006","House","Harm",4,0.0479
+"2485",868,"Sudan","Rangel",1,"7/30/2007","House","Harm",1,0.0387
+"2487",999,"Libya","Rangel",1,"6/3/2011","House","Harm",3,0.0734
+"2489",505,"Iraq","Reid",1,"10/7/2002","Senate","Harm",3,0.0345
+"2492",372,"Iraq","Reid",1,"10/9/2002","Senate","Harm",6,0.0655
+"2496",397,"Syria","Reid",1,"3/6/2013","Senate","Harm",2,0.1265
+"2499",491,"Syria","Reid",1,"9/9/2013","Senate","Harm",17,0.11
+"2502",1659,"Afghanistan","Reyes",1,"9/14/2001","House","Harm",1,0.0873
+"2505",1536,"Iraq","Reyes",1,"10/9/2002","House","Harm",9,0.1128
+"2507",1335,"Iraq","Reyes",1,"10/10/2002","House","Harm",3,0.0934
+"2511",2132,"Iran","Risch",1,"3/3/2009","Senate Hearings","Harm",1,0.017
+"2515",2228,"Libya","Risch",1,"3/31/2011","Senate Hearings","Harm",1,0.0161
+"2519",2217,"Libya","Risch",1,"6/28/2011","Senate Hearings","Harm",2,0.0489
+"2525",2030,"Iran","Robb",1,"5/14/1998","Senate Hearings","Harm",1,0.0059
+"2531",2283,"North Korea","Robb",1,"9/10/1998","Senate Hearings","Harm",1,0.0062
+"2535",470,"Iraq","Rockefeller",1,"10/10/2002","Senate","Harm",12,0.0477
+"2540",1647,"Afghanistan","Roemer",1,"9/14/2001","House","Harm",1,0.0496
+"2541",1537,"Iraq","Roemer",1,"10/9/2002","House","Harm",9,0.1241
+"2544",1710,"Afghanistan","Rothman",1,"9/14/2001","House","Harm",1,0.0703
+"2548",1436,"Iraq","Roybal-Allard",1,"10/10/2002","House","Harm",6,0.1058
+"2553",2205,"Iraq","SarbanesP",1,"7/31/2002","Senate Hearings","Harm",1,0.0071
+"2555",522,"Iraq","SarbanesP",1,"10/9/2002","Senate","Harm",7,0.0271
+"2558",428,"Iraq","SarbanesP",1,"10/10/2002","Senate","Harm",8,0.091
+"2560",2354,"North Korea","SarbanesP",1,"2/4/2003","Senate Hearings","Harm",1,0.032
+"2562",1689,"Afghanistan","Schakowsky",1,"9/14/2001","House","Harm",1,0.071
+"2565",1092,"Iraq","Schakowsky",1,"3/5/2003","House","Harm",11,0.1391
+"2567",1093,"Sudan","Schakowsky",1,"7/21/2004","House","Harm",4,0.2237
+"2569",842,"Sudan","Schakowsky",1,"7/21/2004","House","Harm",1,0.0269
+"2572",843,"Sudan","Schiff",1,"7/21/2004","House","Harm",5,0.0708
+"2576",545,"Sudan","Schiff",1,"4/5/2006","House","Harm",4,0.0493
+"2578",1094,"Syria","Schiff",1,"7/7/2011","House","Harm",2,0.0258
+"2582",469,"Iraq","Schumer",1,"10/10/2002","Senate","Harm",20,0.0973
+"2595",1059,"Libya","ScottD",1,"6/24/2011","House","Harm",1,0.0567
+"2598",1541,"Iraq","ScottVA",1,"10/9/2002","House","Harm",21,0.0716
+"2601",1542,"Iraq","Serrano",1,"10/9/2002","House","Harm",4,0.0445
+"2608",2076,"Iran","Shaheen",1,"5/11/2011","Senate Hearings","Harm",1,0.0461
+"2615",48,"Russia","Shaheen",1,"2/16/2012","Senate","Harm",2,0.021
+"2620",423,"Syria","Shaheen",1,"9/10/2013","Senate","Harm",1,0.0594
+"2623",1294,"North Korea","Sherman",1,"3/16/2000","House Hearings","Harm",7,0.0107
+"2626",1572,"Afghanistan","Sherman",1,"9/14/2001","House","Harm",5,0.1536
+"2628",1254,"Iraq","Sherman",1,"10/9/2002","House","Harm",1,0.0247
+"2629",1807,"North Korea","Sherman",1,"2/17/2005","House Hearings","Harm",1,0.0154
+"2634",1400,"Iran","Sherman",1,"3/6/2007","House Hearings","Harm",1,0.0138
+"2637",1382,"Iran","Sherman",1,"3/15/2007","House Hearings","Harm",1,0.0033
+"2640",849,"Iran","Sherman",1,"7/30/2007","House","Harm",1,0.0086
+"2648",1962,"Russia","Sherman",1,"11/9/2008","House Hearings","Harm",2,0.0303
+"2652",1287,"Libya","Sherman",1,"5/25/2011","House Hearings","Harm",2,0.0478
+"2655",1016,"Libya","Sherman",1,"6/3/2011","House","Harm",9,0.1053
+"2658",1058,"Libya","Sherman",1,"6/24/2011","House","Harm",1,0.0265
+"2662",1982,"Russia","Sherman",1,"7/7/2011","House Hearings","Harm",4,0.1515
+"2664",956,"Iran","Sherman",1,"7/27/2011","House Hearings","Harm",1,0.0399
+"2666",906,"Iran","Sherman",1,"10/14/2011","House Hearings","Harm",3,0.0428
+"2668",1925,"Russia","Sherman",1,"10/6/1999","House Hearings","Harm",4,0.1557
+"2672",1963,"Russia","Sires",1,"11/9/2008","House Hearings","Harm",1,0.0333
+"2675",1582,"Afghanistan","Skelton",1,"9/14/2001","House","Harm",2,0.0402
+"2678",1329,"Iraq","Skelton",1,"10/10/2002","House","Harm",1,0.0139
+"2681",1117,"Iran","Skelton",1,"2/1/2006","House","Harm",3,0.0366
+"2684",1544,"Iraq","SmithWA",1,"10/9/2002","House","Harm",7,0.0566
+"2691",1295,"North Korea","Snyder",1,"3/16/2000","House Hearings","Harm",1,0.0081
+"2694",2138,"Sudan","Snyder",1,"6/15/2004","Senate Hearings","Harm",5,0.0073
+"2698",1620,"Afghanistan","Spratt",1,"9/14/2001","House","Harm",3,0.1094
+"2701",1328,"Iraq","Spratt",1,"10/10/2002","House","Harm",10,0.0724
+"2703",521,"Iraq","Stabenow",1,"10/9/2002","Senate","Harm",2,0.0845
+"2706",1752,"Afghanistan","Stark",1,"9/14/2001","House","Harm",3,0.0782
+"2710",1545,"Iraq","Stark",1,"10/9/2002","House","Harm",8,0.1105
+"2712",1311,"Iraq","Stark",1,"10/10/2002","House","Harm",2,0.0983
+"2714",1789,"Iran","Stark",1,"9/28/2006","House","Harm",1,0.025
+"2717",1072,"Libya","Stark",1,"6/24/2011","House","Harm",8,0.1905
+"2720",362,"Iraq","Stevens",1,"10/7/2002","Senate","Harm",18,0.0711
+"2725",1257,"Iraq","Stupak",1,"10/9/2002","House","Harm",5,0.0529
+"2729",1638,"Afghanistan","Tanner",1,"9/14/2001","House","Harm",5,0.0535
+"2732",1259,"Iraq","Tanner",1,"10/9/2002","House","Harm",3,0.0422
+"2735",1407,"Iraq","Tauscher",1,"10/10/2002","House","Harm",1,0.0353
+"2740",1260,"Iraq","ThompsonCA",1,"10/9/2002","House","Harm",6,0.0753
+"2742",1549,"Iraq","Tierney",1,"10/9/2002","House","Harm",2,0.0232
+"2743",1673,"Afghanistan","TurnerTX",1,"9/14/2001","House","Harm",2,0.1433
+"2747",1550,"Iraq","TurnerTX",1,"10/9/2002","House","Harm",3,0.03
+"2751",1724,"Afghanistan","UdallCO",1,"9/14/2001","House","Harm",1,0.0239
+"2755",1124,"Sudan","UdallCO",1,"2/27/2003","House","Harm",10,0.1315
+"2756",1705,"Afghanistan","UdallNM",1,"9/14/2001","House","Harm",1,0.07
+"2757",1125,"Iraq","UdallNM",1,"10/1/2002","House","Harm",9,0.1286
+"2760",1551,"Iraq","UdallNM",1,"10/9/2002","House","Harm",6,0.1146
+"2763",2124,"Iran","UdallNM",1,"7/25/2012","Senate Hearings","Harm",1,0.0687
+"2766",445,"Syria","UdallNM",1,"6/17/2013","Senate","Harm",9,0.0993
+"2771",1437,"Iraq","Underwood",1,"10/10/2002","House","Harm",7,0.1147
+"2776",976,"Syria","Vargas",1,"3/20/2013","House Hearings","Harm",3,0.0529
+"2782",1552,"Iraq","Velazquez",1,"10/9/2002","House","Harm",10,0.1513
+"2785",1716,"Afghanistan","Velazquez",1,"9/14/2001","House","Harm",1,0.0506
+"2786",1636,"Afghanistan","Waters",1,"9/14/2001","House","Harm",5,0.201
+"2789",538,"Sudan","Waters",1,"4/5/2006","House","Harm",1,0.0374
+"2790",1128,"Syria","Waters",1,"9/20/2006","House","Harm",2,0.027
+"2791",1797,"Sudan","Waters",1,"9/25/2006","House","Harm",2,0.074
+"2792",876,"Sudan","Waters",1,"7/30/2007","House","Harm",1,0.0283
+"2795",560,"Iran","Waters",1,"4/15/2008","House","Harm",47,0.1736
+"2799",1261,"Iraq","Watson",1,"10/9/2002","House","Harm",3,0.0609
+"2804",1910,"Sudan","Watson",1,"6/22/2005","House Hearings","Harm",2,0.1377
+"2807",1219,"Sudan","Watson",1,"11/1/2005","House Hearings","Harm",4,0.0349
+"2812",1887,"Sudan","Watson",1,"11/1/2005","House Hearings","Harm",5,0.0214
+"2817",1844,"Sudan","Watson",1,"5/18/2006","House Hearings","Harm",4,0.0601
+"2819",1129,"Sudan","Watson",1,"5/24/2006","House","Harm",1,0.0523
+"2826",1187,"Iran","Watson",1,"7/9/2008","House Hearings","Harm",3,0.0491
+"2827",1964,"Russia","Watson",1,"11/9/2008","House Hearings","Harm",1,0.0213
+"2830",1415,"Iraq","Waxman",1,"10/10/2002","House","Harm",13,0.07
+"2833",2060,"Iran","Webb",1,"3/29/2007","Senate Hearings","Harm",3,0.0303
+"2838",2220,"Libya","Webb",1,"6/28/2011","Senate Hearings","Harm",3,0.0382
+"2840",1082,"Libya","Welch",1,"6/24/2011","House","Harm",3,0.2313
+"2843",451,"Russia","Wellstone",1,"2/8/2000","Senate","Harm",5,0.0433
+"2848",452,"Russia","Wellstone",1,"2/23/2000","Senate","Harm",5,0.031
+"2853",2281,"Russia","Wellstone",1,"3/1/2000","Senate Hearings","Harm",3,0.0489
+"2857",2164,"Iraq","Wellstone",1,"3/22/2000","Senate Hearings","Harm",4,0.0184
+"2861",454,"Russia","Wellstone",1,"6/21/2000","Senate","Harm",7,0.0745
+"2866",453,"Russia","Wellstone",1,"7/21/2000","Senate","Harm",7,0.0869
+"2874",2208,"Iraq","Wellstone",1,"7/31/2002","Senate Hearings","Harm",1,0.0301
+"2877",455,"Iraq","Wellstone",1,"10/3/2002","Senate","Harm",13,0.0755
+"2881",506,"Iraq","Wellstone",1,"10/7/2002","Senate","Harm",4,0.0502
+"2885",457,"Kosovo","Wellstone",1,"9/23/1998","Senate","Harm",4,0.0264
+"2890",456,"Kosovo","Wellstone",1,"10/8/1998","Senate","Harm",5,0.0354
+"2894",2274,"Russia","Wellstone",1,"11/4/1999","Senate Hearings","Harm",2,0.0648
+"2901",1618,"Afghanistan","Woolsey",1,"9/14/2001","House","Harm",1,0.0635
+"2904",1308,"Iraq","Woolsey",1,"10/10/2002","House","Harm",2,0.1078
+"2905",1136,"Iraq","Woolsey",1,"3/5/2003","House","Harm",5,0.122
+"2906",1361,"Sudan","Woolsey",1,"2/8/2007","House Hearings","Harm",1,0.0427
+"2909",1189,"Iran","Woolsey",1,"7/9/2008","House Hearings","Harm",1,0.0341
+"2912",1135,"Iran","Woolsey",1,"2/25/2009","House","Harm",2,0.0337
+"2913",1137,"Libya","Woolsey",1,"5/25/2011","House","Harm",5,0.1217
+"2915",1006,"Libya","Woolsey",1,"6/3/2011","House","Harm",4,0.1203
+"2918",1728,"Afghanistan","Wu",1,"9/14/2001","House","Harm",4,0.1078
+"2921",635,"Iraq","Wu",1,"9/25/2002","House","Harm",3,0.2195
+"2924",1556,"Iraq","Wu",1,"10/9/2002","House","Harm",10,0.1629
+"2928",1613,"North Korea","Wu",1,"9/29/2006","House","Harm",1,0.0102
+"2929",1385,"Iran","Wu",1,"3/15/2007","House Hearings","Harm",1,0.0332
+"2932",510,"Iraq","Wyden",1,"10/7/2002","Senate","Harm",8,0.0445
+"2935",1687,"Afghanistan","Wynn",1,"9/14/2001","House","Harm",1,0.0386
+"2938",1557,"Iraq","Wynn",1,"10/9/2002","House","Harm",10,0.0936
+"2941",458,"Iran","Adams",0,"3/6/2012","House","Harm",1,0.0465
+"2943",1223,"Iraq","Aderholt",0,"10/9/2002","House","Harm",2,0.0537
+"2946",17,"Iraq","Akaka",0,"4/10/2002","Senate","Harm",4,0.0565
+"2950",431,"Iraq","Akaka",0,"10/10/2002","Senate","Harm",30,0.1304
+"2953",1220,"Iran","Akin",0,"5/20/2009","House","Harm",4,0.0145
+"2955",1765,"Iran","Akin",0,"9/25/2009","House","Harm",1,0.0109
+"2959",2135,"Sudan","Alexander",0,"6/15/2004","Senate Hearings","Harm",5,0.0242
+"2964",502,"Iraq","Allard",0,"10/7/2002","Senate","Harm",4,0.016
+"2968",361,"Iraq","AllenVA",0,"10/7/2002","Senate","Harm",4,0.014
+"2971",2339,"North Korea","AllenVA",0,"2/4/2003","Senate Hearings","Harm",1,0.0232
+"2975",351,"Syria","AllenVA",0,"11/11/2003","Senate","Harm",5,0.0256
+"2983",462,"Sudan","Armey",0,"9/19/2002","House","Harm",4,0.1518
+"2985",1435,"Iraq","Armey",0,"10/10/2002","House","Harm",8,0.0524
+"2990",2422,"Sudan","Ashcroft",0,"5/15/1997","Senate Hearings","Harm",10,0.0216
+"2992",3,"Iraq","Ashcroft",0,"2/27/1998","Senate","Harm",3,0.0513
+"2995",2171,"Iraq","Ashcroft",0,"3/9/1999","Senate Hearings","Harm",2,0.0221
+"2999",1458,"Iraq","Barrett",0,"10/9/2002","House","Harm",7,0.0832
+"3001",1639,"Afghanistan","BarrGA",0,"9/14/2001","House","Harm",5,0.4833
+"3004",467,"Iran","Bartlett",0,"7/10/2008","House","Harm",16,0.0217
+"3007",1033,"Libya","Bartlett",0,"6/3/2011","House","Harm",4,0.2061
+"3010",358,"Iraq","Bennett",0,"10/7/2002","Senate","Harm",7,0.0355
+"3014",1,"Iraq","Bennett",0,"1/28/2003","Senate","Harm",4,0.0219
+"3016",558,"Iraq","Bennett",0,"2/27/2003","Senate","Harm",9,0.0485
+"3020",7,"Iraq","Bennett",0,"3/6/2003","Senate","Harm",16,0.105
+"3024",53,"Kosovo","Bennett",0,"3/19/1999","Senate","Harm",30,0.1709
+"3027",1270,"North Korea","Bereuter",0,"3/16/2000","House Hearings","Harm",1,0.0132
+"3029",559,"North Korea","Bereuter",0,"6/12/2001","House","Harm",2,0.0305
+"3036",1451,"Iraq","BilirakisM",0,"10/10/2002","House","Harm",1,0.0206
+"3039",1966,"Russia","BilirakisG",0,"7/7/2011","House Hearings","Harm",1,0.0857
+"3042",1766,"Iran","BishopUT",0,"9/25/2009","House","Harm",1,0.0051
+"3049",1667,"Afghanistan","Boehlert",0,"9/14/2001","House","Harm",1,0.0588
+"3051",1567,"Afghanistan","Boehner",0,"9/14/2001","House","Harm",1,0.0514
+"3054",1225,"Iraq","Boehner",0,"10/9/2002","House","Harm",1,0.0126
+"3057",1338,"Iraq","Boehner",0,"10/10/2002","House","Harm",1,0.018
+"3060",1027,"Libya","Boehner",0,"6/3/2011","House","Harm",1,0.0193
+"3064",1066,"Libya","Boehner",0,"6/24/2011","House","Harm",2,0.0374
+"3066",23,"Iraq","Bond",0,"10/9/2002","Senate","Harm",2,0.0209
+"3069",22,"Iraq","Bond",0,"1/29/2003","Senate","Harm",5,0.0235
+"3074",21,"Iraq","Bond",0,"1/29/1998","Senate","Harm",1,0.0203
+"3076",1755,"Afghanistan","Bonilla",0,"9/14/2001","House","Harm",1,0.0494
+"3077",1463,"Iraq","Bonilla",0,"10/9/2002","House","Harm",3,0.0733
+"3080",2269,"Russia","Bonner",0,"11/4/1999","Senate Hearings","Harm",3,0.0383
+"3085",1464,"Iraq","Bono",0,"10/9/2002","House","Harm",2,0.0418
+"3089",769,"Iraq","Brady",0,"3/19/2003","House","Harm",18,0.0732
+"3093",568,"Syria","Brooks",0,"9/11/2013","House","Harm",9,0.1619
+"3096",2161,"Iraq","Brownback",0,"3/22/2000","Senate Hearings","Harm",3,0.0095
+"3100",2168,"Iraq","Brownback",0,"6/28/2000","Senate Hearings","Harm",8,0.032
+"3103",2173,"Iraq","Brownback",0,"3/1/2001","Senate Hearings","Harm",4,0.0167
+"3106",27,"Iraq","Brownback",0,"2/13/2002","Senate","Harm",3,0.1307
+"3109",2487,"Sudan","Brownback",0,"6/11/2002","Senate Hearings","Harm",3,0.0407
+"3113",30,"North Korea","Brownback",0,"7/15/2002","Senate","Harm",2,0.0087
+"3116",2184,"Iraq","Brownback",0,"7/31/2002","Senate Hearings","Harm",4,0.0651
+"3119",508,"Iraq","Brownback",0,"10/7/2002","Senate","Harm",10,0.0428
+"3123",2393,"North Korea","Brownback",0,"3/6/2003","Senate Hearings","Harm",1,0.0064
+"3131",2363,"North Korea","Brownback",0,"7/15/2004","Senate Hearings","Harm",1,0.0091
+"3135",31,"Sudan","Brownback",0,"7/22/2004","Senate","Harm",5,0.0392
+"3139",2470,"Sudan","Brownback",0,"9/9/2004","Senate Hearings","Harm",3,0.0215
+"3144",38,"North Korea","Brownback",0,"9/24/2004","Senate","Harm",2,0.0123
+"3150",33,"Iraq","Brownback",0,"3/1/2005","Senate","Harm",3,0.0685
+"3154",34,"Sudan","Brownback",0,"3/1/2005","Senate","Harm",8,0.0414
+"3158",35,"Russia","Brownback",0,"3/15/2005","Senate","Harm",1,0.0088
+"3162",37,"Sudan","Brownback",0,"10/19/2005","Senate","Harm",3,0.0294
+"3165",28,"North Korea","Brownback",0,"7/13/2006","Senate","Harm",3,0.021
+"3169",29,"Iran","Brownback",0,"9/7/2006","Senate","Harm",5,0.0736
+"3172",39,"Sudan","Brownback",0,"9/14/2006","Senate","Harm",4,0.0643
+"3176",49,"Sudan","Brownback",0,"10/25/2007","Senate","Harm",2,0.0357
+"3180",59,"North Korea","Brownback",0,"4/29/2008","Senate","Harm",5,0.0203
+"3185",62,"North Korea","Brownback",0,"6/27/2008","Senate","Harm",4,0.0192
+"3189",63,"Iran","Brownback",0,"11/18/2010","Senate","Harm",2,0.0258
+"3197",26,"Sudan","Brownback",0,"2/3/1999","Senate","Harm",3,0.0314
+"3200",2170,"Iraq","Brownback",0,"3/9/1999","Senate Hearings","Harm",2,0.0082
+"3201",291,"Kosovo","Brownback",0,"3/23/1999","Senate","Harm",2,0.0269
+"3204",60,"Sudan","Brownback",0,"8/5/1999","Senate","Harm",1,0.0119
+"3206",1454,"Iraq","Bryant",0,"10/10/2002","House","Harm",3,0.06
+"3209",317,"Kosovo","Bunning",0,"3/19/1999","Senate","Harm",1,0.0104
+"3212",290,"Kosovo","Bunning",0,"3/23/1999","Senate","Harm",5,0.0576
+"3216",509,"Iraq","Burns",0,"10/7/2002","Senate","Harm",5,0.0307
+"3224",1466,"Iraq","Burr",0,"10/9/2002","House","Harm",5,0.0625
+"3226",575,"Iraq","Burton",0,"3/11/2003","House","Harm",1,0.0165
+"3227",1800,"North Korea","Burton",0,"2/17/2005","House Hearings","Harm",1,0.0118
+"3228",1894,"Sudan","Burton",0,"6/22/2005","House Hearings","Harm",1,0.0547
+"3229",573,"Iran","Burton",0,"4/25/2006","House","Harm",2,0.0874
+"3232",1146,"Iran","Burton",0,"7/9/2008","House Hearings","Harm",3,0.0169
+"3235",577,"Iran","Burton",0,"10/14/2009","House","Harm",2,0.0236
+"3236",574,"Iran","Burton",0,"2/23/2010","House","Harm",1,0.0356
+"3238",572,"Iran","Burton",0,"4/15/2010","House","Harm",1,0.0139
+"3240",576,"Iran","Burton",0,"5/18/2010","House","Harm",8,0.1072
+"3242",1145,"Libya","Burton",0,"3/31/2011","House Hearings","Harm",12,0.1446
+"3245",1274,"Libya","Burton",0,"5/25/2011","House Hearings","Harm",10,0.1279
+"3248",996,"Libya","Burton",0,"6/3/2011","House","Harm",10,0.101
+"3250",1062,"Libya","Burton",0,"6/24/2011","House","Harm",14,0.1483
+"3254",1621,"Afghanistan","Buyer",0,"9/14/2001","House","Harm",3,0.1854
+"3257",1229,"Iraq","Buyer",0,"10/9/2002","House","Harm",11,0.1345
+"3259",1324,"Iraq","Buyer",0,"10/10/2002","House","Harm",4,0.0615
+"3262",578,"Iraq","Buyer",0,"3/6/2003","House","Harm",10,0.0237
+"3264",1573,"Afghanistan","Callahan",0,"9/14/2001","House","Harm",2,0.1049
+"3265",1467,"Iraq","Callahan",0,"10/9/2002","House","Harm",4,0.1605
+"3267",1762,"Afghanistan","Camp",0,"9/14/2001","House","Harm",1,0.0379
+"3271",1230,"Iraq","Camp",0,"10/9/2002","House","Harm",8,0.0769
+"3274",2329,"North Korea","CampbellJ",0,"3/1/2011","Senate Hearings","Harm",1,0.003
+"3278",2285,"North Korea","Campbell",0,"9/10/1998","Senate Hearings","Harm",4,0.0133
+"3282",1848,"Russia","CampbellT",0,"5/12/1999","House Hearings","Harm",5,0.043
+"3287",1914,"Russia","CampbellT",0,"10/6/1999","House Hearings","Harm",3,0.0313
+"3292",1469,"Iraq","Cantor",0,"10/9/2002","House","Harm",4,0.0783
+"3296",718,"Iran","Cantor",0,"4/26/2006","House","Harm",5,0.1244
+"3299",2344,"North Korea","Carter",0,"2/4/2003","Senate Hearings","Harm",13,0.0361
+"3303",2394,"North Korea","Carter",0,"3/6/2003","Senate Hearings","Harm",13,0.0264
+"3307",2364,"North Korea","Carter",0,"7/15/2004","Senate Hearings","Harm",12,0.0256
+"3311",1590,"Afghanistan","Castle",0,"9/14/2001","House","Harm",2,0.0847
+"3314",1471,"Iraq","Castle",0,"10/9/2002","House","Harm",4,0.0594
+"3317",1678,"Afghanistan","Chabot",0,"9/14/2001","House","Harm",1,0.0644
+"3320",1801,"North Korea","Chabot",0,"2/17/2005","House Hearings","Harm",2,0.0512
+"3322",1931,"North Korea","Chabot",0,"4/28/2005","House Hearings","Harm",1,0.022
+"3327",945,"Iran","Chabot",0,"7/27/2011","House Hearings","Harm",2,0.0073
+"3334",958,"Syria","chabot",0,"3/20/2013","House Hearings","Harm",1,0.0376
+"3335",1986,"Afghanistan","Chafee",0,"12/6/2001","Senate Hearings","Harm",1,0.0248
+"3337",2186,"Iraq","Chafee",0,"7/31/2002","Senate Hearings","Harm",1,0.0078
+"3342",523,"Iraq","Chafee",0,"10/9/2002","Senate","Harm",2,0.029
+"3347",2468,"Sudan","Chafee",0,"9/9/2004","Senate Hearings","Harm",1,0.0513
+"3349",1009,"Libya","Chaffetz",0,"6/3/2011","House","Harm",4,0.2521
+"3354",492,"Syria","Coats",0,"9/9/2013","Senate","Harm",8,0.0464
+"3356",1056,"Libya","Cole",0,"6/24/2011","House","Harm",2,0.1042
+"3358",2035,"Iran","Coleman",0,"10/28/2003","Senate Hearings","Harm",1,0.0445
+"3359",2012,"Syria","Coleman",0,"10/30/2003","Senate Hearings","Harm",3,0.0644
+"3363",419,"Iran","Coleman",0,"3/2/2006","Senate","Harm",3,0.0268
+"3365",67,"Iran","Coleman",0,"3/9/2006","Senate","Harm",1,0.0118
+"3366",2054,"Iran","Coleman",0,"3/29/2007","Senate Hearings","Harm",2,0.0353
+"3369",1473,"Iraq","Collins",0,"10/9/2002","House","Harm",11,0.1165
+"3371",466,"Iraq","Collins",0,"10/10/2002","Senate","Harm",13,0.0573
+"3377",69,"Syria","Collins",0,"9/11/2013","Senate","Harm",14,0.0652
+"3380",1150,"Libya","ConnollyVA",0,"3/31/2011","House Hearings","Harm",5,0.1005
+"3382",1276,"Libya","ConnollyVA",0,"5/25/2011","House Hearings","Harm",5,0.082
+"3385",1029,"Libya","ConnollyVA",0,"6/3/2011","House","Harm",8,0.2037
+"3398",243,"Syria","Cornyn",0,"3/15/2012","Senate","Harm",4,0.0368
+"3402",235,"Syria","Cornyn",0,"9/11/2013","Senate","Harm",25,0.0814
+"3407",1315,"Iraq","Cox",0,"10/10/2002","House","Harm",5,0.0395
+"3413",370,"Iraq","Craig",0,"10/8/2002","Senate","Harm",3,0.0153
+"3415",1234,"Iraq","Crane",0,"10/9/2002","House","Harm",1,0.0142
+"3418",1449,"Iraq","Crane",0,"10/10/2002","House","Harm",3,0.0294
+"3422",1474,"Iraq","Crenshaw",0,"10/9/2002","House","Harm",2,0.0723
+"3423",1421,"Iraq","Cubin",0,"10/10/2002","House","Harm",2,0.0422
+"3425",1104,"Kosovo","Cunningham",0,"3/17/1998","House","Harm",1,0.0261
+"3428",1476,"Iraq","Cunningham",0,"10/9/2002","House","Harm",6,0.0913
+"3430",1683,"Afghanistan","DavisT",0,"9/14/2001","House","Harm",2,0.115
+"3436",1600,"Afghanistan","Delay",0,"9/14/2001","House","Harm",1,0.0344
+"3437",1433,"Iraq","Delay",0,"10/10/2002","House","Harm",7,0.0923
+"3440",1479,"Iraq","DeMint",0,"10/9/2002","House","Harm",3,0.0533
+"3443",79,"North Korea","DeMint",0,"6/8/2009","Senate","Harm",2,0.0262
+"3447",621,"Syria","Dent",0,"9/10/2013","House","Harm",8,0.0268
+"3449",688,"Syria","Dent",0,"9/10/2013","House","Harm",2,0.066
+"3453",465,"Iraq","DeWine",0,"10/10/2002","Senate","Harm",26,0.0868
+"3458",80,"Sudan","DeWine",0,"5/6/2004","Senate","Harm",1,0.0164
+"3463",81,"Kosovo","DeWine",0,"10/6/1998","Senate","Harm",6,0.0386
+"3464",1558,"Afghanistan","Diaz-Balart",0,"9/14/2001","House","Harm",2,0.0685
+"3466",593,"Iran","Dold",0,"2/17/2012","House","Harm",1,0.0642
+"3469",2159,"Kosovo","Dole",0,"6/24/1998","Senate Hearings","Harm",9,0.0253
+"3474",87,"Iran","Domenici",0,"2/22/2000","Senate","Harm",1,0.0106
+"3476",360,"Iraq","Domenici",0,"10/7/2002","Senate","Harm",3,0.1684
+"3477",519,"Iraq","Domenici",0,"10/9/2002","Senate","Harm",9,0.0442
+"3478",90,"Iraq","Domenici",0,"1/28/2003","Senate","Harm",1,0.0247
+"3482",2105,"Iraq","Domenici",0,"5/21/1998","Senate Hearings","Harm",3,0.0239
+"3486",335,"Iran","Domenici",0,"5/22/1998","Senate","Harm",3,0.0196
+"3492",88,"Kosovo","Domenici",0,"10/7/1998","Senate","Harm",1,0.0073
+"3496",293,"Kosovo","Domenici",0,"2/23/1999","Senate","Harm",6,0.0508
+"3499",1594,"Afghanistan","Dreier",0,"9/14/2001","House","Harm",2,0.0744
+"3506",596,"Russia","Dreier",0,"1/19/2011","House","Harm",1,0.0157
+"3511",597,"Russia","Dreier",0,"6/22/2011","House","Harm",1,0.0116
+"3517",600,"Libya","Dreier",0,"9/12/2012","House","Harm",3,0.0662
+"3519",603,"Iraq","Duncan",0,"2/26/2003","House","Harm",18,0.202
+"3522",1153,"Libya","Duncan",0,"3/31/2011","House Hearings","Harm",1,0.02
+"3524",602,"Iraq","Duncan",0,"2/12/1998","House","Harm",4,0.2204
+"3527",604,"Kosovo","Duncan",0,"10/5/1998","House","Harm",7,0.106
+"3531",1418,"Iraq","Ehlers",0,"10/10/2002","House","Harm",4,0.0578
+"3535",2423,"Sudan","Emerson",0,"5/15/1997","Senate Hearings","Harm",16,0.0331
+"3540",2027,"Iran","Emerson",0,"5/14/1998","Senate Hearings","Harm",1,0.007
+"3542",1631,"Afghanistan","English",0,"9/14/2001","House","Harm",1,0.0497
+"3543",1235,"Iraq","English",0,"10/9/2002","House","Harm",1,0.0299
+"3547",473,"Iraq","Ensign",0,"10/10/2002","Senate","Harm",21,0.0825
+"3552",527,"Iraq","Enzi",0,"10/9/2002","Senate","Harm",7,0.0242
+"3555",1746,"Afghanistan","Everett",0,"9/14/2001","House","Harm",1,0.0613
+"3557",1487,"Iraq","Everett",0,"10/9/2002","House","Harm",4,0.0748
+"3560",490,"Iraq","Fitzgerald",0,"10/10/2002","Senate","Harm",9,0.0558
+"3564",2126,"Iran","Fitzpatrick",0,"3/3/2009","Senate Hearings","Harm",1,0.0064
+"3568",2331,"North Korea","FlakeGL",0,"3/1/2011","Senate Hearings","Harm",3,0.0086
+"3570",1489,"Iraq","Fletcher",0,"10/9/2002","House","Harm",2,0.0533
+"3573",1650,"Afghanistan","Foley",0,"9/14/2001","House","Harm",1,0.0553
+"3576",1490,"Iraq","Foley",0,"10/9/2002","House","Harm",1,0.0267
+"3578",1756,"Afghanistan","Forbes",0,"9/14/2001","House","Harm",2,0.0676
+"3583",1034,"Libya","Forbes",0,"6/3/2011","House","Harm",2,0.0694
+"3587",1014,"Libya","Fortenberry",0,"6/3/2011","House","Harm",2,0.0605
+"3592",620,"Syria","Fortenberry",0,"9/10/2013","House","Harm",4,0.0253
+"3597",623,"Iran","Foxx",0,"9/20/2006","House","Harm",2,0.1327
+"3600",828,"Sudan","Franks",0,"7/21/2004","House","Harm",1,0.0237
+"3605",629,"Iran","Franks",0,"9/29/2008","House","Harm",1,0.0054
+"3609",1222,"Iran","Franks",0,"5/20/2009","House","Harm",4,0.0193
+"3610",1767,"Iran","Franks",0,"9/25/2009","House","Harm",1,0.0105
+"3613",627,"Iran","Franks",0,"3/25/2010","House","Harm",8,0.0196
+"3617",625,"Iran","Franks",0,"8/2/2012","House","Harm",3,0.0132
+"3621",626,"Iran","Franks",0,"2/15/2013","House","Harm",3,0.0195
+"3622",1676,"Afghanistan","Frelinghuysen",0,"9/14/2001","House","Harm",1,0.0638
+"3625",217,"Sudan","Frist",0,"3/2/2000","Senate","Harm",18,0.0909
+"3628",2483,"Sudan","Frist",0,"6/11/2002","Senate Hearings","Harm",3,0.0174
+"3632",518,"Iraq","Frist",0,"10/9/2002","Senate","Harm",22,0.0964
+"3635",218,"Iraq","Frist",0,"3/7/2003","Senate","Harm",7,0.063
+"3636",216,"Sudan","Frist",0,"6/25/2004","Senate","Harm",1,0.0234
+"3639",2464,"Sudan","Frist",0,"9/9/2004","Senate Hearings","Harm",2,0.0184
+"3642",220,"Sudan","Frist",0,"10/1/2004","Senate","Harm",3,0.0355
+"3647",213,"Sudan","Frist",0,"12/8/2004","Senate","Harm",4,0.0186
+"3651",221,"Sudan","Frist",0,"10/24/2005","Senate","Harm",4,0.0602
+"3655",219,"Sudan","Frist",0,"5/1/2006","Senate","Harm",5,0.0443
+"3659",1753,"Afghanistan","Gallegly",0,"9/14/2001","House","Harm",1,0.0456
+"3661",1491,"Iraq","Gallegly",0,"10/9/2002","House","Harm",2,0.0248
+"3663",852,"Iran","Garrett",0,"7/30/2007","House","Harm",1,0.0185
+"3664",859,"Sudan","Garrett",0,"7/30/2007","House","Harm",2,0.0225
+"3667",1071,"Libya","Garrett",0,"6/24/2011","House","Harm",4,0.2508
+"3669",1289,"North Korea","Gejdenson",0,"3/16/2000","House Hearings","Harm",1,0.018
+"3671",1366,"Iraq","Gejdenson",0,"3/23/2000","House Hearings","Harm",1,0.0094
+"3674",1197,"Russia","Gejdenson",0,"9/27/2000","House Hearings","Harm",3,0.0375
+"3677",1817,"Russia","Gejdenson",0,"9/27/2000","House Hearings","Harm",3,0.0386
+"3680",1852,"Russia","Gejdenson",0,"5/12/1999","House Hearings","Harm",4,0.022
+"3683",1918,"Russia","Gejdenson",0,"10/6/1999","House Hearings","Harm",2,0.0138
+"3685",986,"North Korea","Gejdenson",0,"10/13/1999","House Hearings","Harm",2,0.046
+"3688",1492,"Iraq","Gekas",0,"10/9/2002","House","Harm",1,0.0243
+"3691",619,"Iraq","Gibbons",0,"9/18/2002","House","Harm",1,0.0477
+"3694",633,"Iraq","Gibbons",0,"1/28/2003","House","Harm",1,0.0668
+"3696",1420,"Iraq","Gillmor",0,"10/10/2002","House","Harm",2,0.0524
+"3701",1102,"Kosovo","Gilman",0,"3/17/1998","House","Harm",2,0.0369
+"3704",1290,"North Korea","Gilman",0,"3/16/2000","House Hearings","Harm",1,0.0065
+"3708",1367,"Iraq","Gilman",0,"3/23/2000","House Hearings","Harm",2,0.0112
+"3716",1694,"Afghanistan","Gilman",0,"9/14/2001","House","Harm",1,0.0362
+"3726",1853,"Russia","Gilman",0,"5/12/1999","House Hearings","Harm",2,0.0082
+"3733",987,"North Korea","Gilman",0,"10/13/1999","House Hearings","Harm",6,0.0295
+"3737",1493,"Iraq","Goodlatte",0,"10/9/2002","House","Harm",7,0.1008
+"3740",874,"Sudan","Goodlatte",0,"7/30/2007","House","Harm",1,0.0214
+"3743",1041,"Libya","Goodlatte",0,"6/3/2011","House","Harm",2,0.0509
+"3745",222,"Kosovo","Gorton",0,"3/19/1999","Senate","Harm",8,0.1021
+"3748",288,"Kosovo","Gorton",0,"3/23/1999","Senate","Harm",11,0.161
+"3751",643,"Syria","Gosar",0,"9/10/2013","House","Harm",2,0.1131
+"3754",1494,"Iraq","Goss",0,"10/9/2002","House","Harm",2,0.0378
+"3757",379,"Iraq","GrahamFL",0,"10/9/2002","Senate","Harm",19,0.0454
+"3762",474,"Iraq","GrahamFL",0,"10/10/2002","Senate","Harm",19,0.1045
+"3764",223,"Syria","GrahamFL",0,"11/20/2003","Senate","Harm",5,0.108
+"3766",463,"Iraq","Gramm",0,"10/10/2002","Senate","Harm",1,0.0171
+"3768",224,"Iraq","Grams",0,"2/27/1998","Senate","Harm",7,0.0293
+"3771",225,"Sudan","Grams",0,"7/31/1998","Senate","Harm",5,0.0623
+"3773",226,"Kosovo","Grams",0,"3/24/1999","Senate","Harm",1,0.0194
+"3776",378,"Iraq","Grassley",0,"10/9/2002","Senate","Harm",12,0.0586
+"3781",1303,"Iraq","GreenWI",0,"10/10/2002","House","Harm",2,0.0648
+"3784",1495,"Iraq","Greenwood",0,"10/9/2002","House","Harm",6,0.0903
+"3788",501,"Iraq","Gregg",0,"10/7/2002","Senate","Harm",13,0.0949
+"3792",2349,"North Korea","Gregg",0,"2/4/2003","Senate Hearings","Harm",3,0.0139
+"3795",227,"Iraq","Gregg",0,"2/12/1998","Senate","Harm",4,0.0164
+"3799",228,"Kosovo","Gregg",0,"3/19/1999","Senate","Harm",8,0.0387
+"3803",1083,"Libya","GriffinAR",0,"6/24/2011","House","Harm",2,0.0744
+"3808",645,"Iraq","Grucci",0,"9/25/2002","House","Harm",4,0.0566
+"3811",2001,"Afghanistan","Hagel",0,"6/26/2002","Senate Hearings","Harm",3,0.0246
+"3814",2194,"Iraq","Hagel",0,"7/31/2002","Senate Hearings","Harm",1,0.0101
+"3816",514,"Iraq","Hagel",0,"10/9/2002","Senate","Harm",9,0.0442
+"3822",2056,"Iran","Hagel",0,"3/29/2007","Senate Hearings","Harm",1,0.0212
+"3825",2047,"Iran","Hagel",0,"7/9/2008","Senate Hearings","Harm",2,0.0146
+"3830",1642,"Afghanistan","Hansen",0,"9/14/2001","House","Harm",1,0.0405
+"3833",1559,"Afghanistan","Hastert",0,"9/14/2001","House","Harm",5,0.0986
+"3838",363,"Iraq","Hatch",0,"10/7/2002","Senate","Harm",10,0.0301
+"3841",352,"Syria","Hatch",0,"11/11/2003","Senate","Harm",5,0.0368
+"3843",1648,"Afghanistan","Hayes",0,"9/14/2001","House","Harm",2,0.1018
+"3848",2280,"Russia","Helms",0,"3/1/2000","Senate Hearings","Harm",13,0.085
+"3858",512,"Iraq","Helms",0,"10/9/2002","Senate","Harm",2,0.0184
+"3860",209,"Iraq","Helms",0,"3/12/1998","Senate","Harm",1,0.0222
+"3865",2145,"Iraq","Helms",0,"9/28/1999","Senate Hearings","Harm",2,0.0132
+"3869",1497,"Iraq","Herger",0,"10/9/2002","House","Harm",3,0.051
+"3872",1157,"Libya","Higgins",0,"3/31/2011","House Hearings","Harm",1,0.0475
+"3874",950,"Iran","Higgins",0,"7/27/2011","House Hearings","Harm",1,0.0361
+"3877",1864,"North Korea","Hill",0,"6/29/2006","House Hearings","Harm",1,0.0018
+"3881",2367,"North Korea","Hill",0,"7/20/2006","Senate Hearings","Harm",2,0.0018
+"3885",1729,"Afghanistan","Hilleary",0,"9/14/2001","House","Harm",2,0.0503
+"3888",1444,"Iraq","Hilleary",0,"10/10/2002","House","Harm",8,0.0951
+"3890",1499,"Iraq","Hoekstra",0,"10/9/2002","House","Harm",5,0.1059
+"3894",1442,"Iraq","Houghton",0,"10/10/2002","House","Harm",3,0.0492
+"3897",1238,"Iraq","Hulshof",0,"10/9/2002","House","Harm",1,0.0147
+"3899",1581,"Afghanistan","Hunter",0,"9/14/2001","House","Harm",4,0.3715
+"3903",653,"Iraq","Hunter",0,"1/27/2003","House","Harm",1,0.0053
+"3906",579,"Iraq","Hunter",0,"3/6/2003","House","Harm",17,0.0604
+"3910",524,"Iraq","HutchinsonT",0,"10/9/2002","Senate","Harm",13,0.0453
+"3914",230,"Iraq","HutchinsonT",0,"2/25/1998","Senate","Harm",2,0.0274
+"3918",231,"Kosovo","HutchinsonT",0,"3/19/1999","Senate","Harm",1,0.0118
+"3921",374,"Iraq","Hutchison",0,"10/9/2002","Senate","Harm",15,0.1141
+"3925",205,"Libya","Hutchison",0,"7/5/2011","Senate","Harm",2,0.0179
+"3928",189,"Iraq","Hutchison",0,"2/12/1998","Senate","Harm",4,0.0484
+"3933",245,"Kosovo","Hutchison",0,"3/22/1999","Senate","Harm",12,0.0382
+"3938",1560,"Afghanistan","Hyde",0,"9/14/2001","House","Harm",4,0.0746
+"3941",1297,"Iraq","Hyde",0,"10/10/2002","House","Harm",7,0.0458
+"3944",1897,"Sudan","Hyde",0,"6/22/2005","House Hearings","Harm",10,0.1038
+"3947",1882,"Sudan","Hyde",0,"3/8/2006","House Hearings","Harm",1,0.0137
+"3948",1868,"North Korea","Hyde",0,"11/15/2006","House Hearings","Harm",2,0.0213
+"3951",530,"Iraq","Inhofe",0,"10/9/2002","Senate","Harm",8,0.0229
+"3954",233,"Syria","Inhofe",0,"9/9/2013","Senate","Harm",4,0.03
+"3956",286,"Kosovo","Inhofe",0,"3/23/1999","Senate","Harm",9,0.1204
+"3961",1239,"Iraq","Issa",0,"10/9/2002","House","Harm",5,0.0376
+"3965",1003,"Libya","JohnsonIL",0,"6/3/2011","House","Harm",7,0.2191
+"3969",1738,"Afghanistan","JonesNC",0,"9/14/2001","House","Harm",2,0.0596
+"3977",683,"Kosovo","Kelly",0,"5/22/1998","House","Harm",1,0.0363
+"3981",680,"Kosovo","Kelly",0,"6/5/1998","House","Harm",3,0.0651
+"3986",681,"Kosovo","Kelly",0,"6/25/1998","House","Harm",4,0.0729
+"3990",1431,"Iraq","KennedyMN",0,"10/10/2002","House","Harm",6,0.0776
+"3993",1575,"Afghanistan","Kerns",0,"9/14/2001","House","Harm",2,0.133
+"3995",1087,"Libya","KingIA",0,"6/24/2011","House","Harm",2,0.1272
+"3998",687,"Syria","KingIA",0,"9/10/2013","House","Harm",5,0.0133
+"4001",1244,"Iraq","Kingston",0,"10/9/2002","House","Harm",15,0.069
+"4004",1312,"Iraq","Kingston",0,"10/10/2002","House","Harm",1,0.0178
+"4005",1019,"Libya","Kinzinger",0,"6/3/2011","House","Harm",2,0.1046
+"4006",689,"North Korea","Kinzinger",0,"4/16/2012","House","Harm",1,0.0499
+"4008",965,"Syria","Kinzinger",0,"3/20/2013","House Hearings","Harm",1,0.0118
+"4010",1429,"Iraq","Kirk",0,"10/10/2002","House","Harm",1,0.0339
+"4013",690,"Iran","Kirk",0,"6/8/2005","House","Harm",5,0.0166
+"4016",692,"Iran","Kirk",0,"12/5/2006","House","Harm",7,0.0282
+"4021",253,"Iran","Kirk",0,"10/13/2011","Senate","Harm",5,0.0336
+"4023",1592,"Afghanistan","Knollenberg",0,"9/14/2001","House","Harm",2,0.1995
+"4026",989,"North Korea","Knollenberg",0,"10/13/1999","House Hearings","Harm",1,0.0034
+"4029",468,"Iraq","Kohl",0,"10/10/2002","Senate","Harm",5,0.0495
+"4031",254,"Sudan","Kohl",0,"12/6/2006","Senate","Harm",3,0.0279
+"4035",255,"Russia","Kohl",0,"6/17/1998","Senate","Harm",2,0.0275
+"4036",1584,"Afghanistan","Kolbe",0,"9/14/2001","House","Harm",2,0.0664
+"4039",695,"Sudan","Kolbe",0,"9/22/2004","House","Harm",1,0.0604
+"4044",263,"Iraq","Kyl",0,"9/23/2002","Senate","Harm",1,0.0262
+"4047",359,"Iraq","Kyl",0,"10/7/2002","Senate","Harm",18,0.0444
+"4051",436,"Iraq","Kyl",0,"10/10/2002","Senate","Harm",3,0.0376
+"4055",388,"North Korea","Kyl",0,"1/10/2003","Senate","Harm",6,0.0124
+"4058",257,"North Korea","Kyl",0,"1/15/2003","Senate","Harm",3,0.0111
+"4062",261,"Iraq","Kyl",0,"1/30/2003","Senate","Harm",5,0.0113
+"4064",499,"Iran","Kyl",0,"9/24/2007","Senate","Harm",5,0.0265
+"4066",258,"North Korea","Kyl",0,"6/4/2009","Senate","Harm",1,0.0082
+"4072",264,"Iran","Kyl",0,"9/19/2011","Senate","Harm",1,0.0209
+"4075",259,"Iraq","Kyl",0,"3/2/1998","Senate","Harm",6,0.0262
+"4079",331,"Iran","Kyl",0,"5/22/1998","Senate","Harm",1,0.0083
+"4081",256,"Iraq","Kyl",0,"8/31/1998","Senate","Harm",4,0.0154
+"4085",1512,"Iraq","Lahood",0,"10/9/2002","House","Harm",2,0.0226
+"4086",1623,"Afghanistan","Largent",0,"9/14/2001","House","Harm",5,0.0929
+"4091",1725,"Afghanistan","Leach",0,"9/14/2001","House","Harm",9,0.0969
+"4096",1517,"Iraq","Leach",0,"10/9/2002","House","Harm",82,0.076
+"4101",1936,"North Korea","Leach",0,"4/28/2005","House Hearings","Harm",2,0.0104
+"4105",719,"Iran","Leach",0,"4/26/2006","House","Harm",3,0.0097
+"4109",1866,"North Korea","Leach",0,"6/29/2006","House Hearings","Harm",6,0.0242
+"4112",1881,"North Korea","Leach",0,"11/15/2006","House Hearings","Harm",3,0.0181
+"4114",737,"Kosovo","Leach",0,"3/23/1999","House","Harm",2,0.0579
+"4117",1855,"Russia","Leach",0,"5/12/1999","House Hearings","Harm",5,0.0403
+"4125",2215,"Libya","LeeUT",0,"6/28/2011","Senate Hearings","Harm",5,0.091
+"4126",2119,"Iran","LeeUT",0,"7/25/2012","Senate Hearings","Harm",3,0.0914
+"4128",1322,"Iraq","LewisCA",0,"10/10/2002","House","Harm",2,0.0411
+"4130",1245,"Iraq","LewisKY",0,"10/9/2002","House","Harm",3,0.072
+"4133",489,"Iraq","Lincoln",0,"10/10/2002","Senate","Harm",2,0.0283
+"4135",1714,"Afghanistan","Linder",0,"9/14/2001","House","Harm",2,0.0676
+"4139",1299,"Iraq","Linder",0,"10/10/2002","House","Harm",1,0.0406
+"4142",192,"Iran","Lott",0,"2/22/2000","Senate","Harm",1,0.0042
+"4146",186,"Iraq","Lott",0,"2/12/1998","Senate","Harm",1,0.0041
+"4154",284,"Iraq","Lott",0,"10/7/1998","Senate","Harm",3,0.0427
+"4157",1519,"Iraq","Lucas",0,"10/9/2002","House","Harm",3,0.0642
+"4163",1280,"Libya","Manzullo",0,"5/25/2011","House Hearings","Harm",3,0.1337
+"4166",914,"Iran","Manzullo",0,"10/14/2011","House Hearings","Harm",1,0.042
+"4170",308,"Russia","McCain",0,"9/20/2002","Senate","Harm",6,0.0437
+"4172",5,"Iraq","McCain",0,"10/2/2002","Senate","Harm",6,0.0623
+"4176",367,"Iraq","McCain",0,"10/8/2002","Senate","Harm",5,0.0194
+"4180",381,"Iraq","McCain",0,"10/9/2002","Senate","Harm",9,0.0363
+"4184",404,"Iraq","McCain",0,"10/10/2002","Senate","Harm",20,0.0341
+"4188",43,"Iraq","McCain",0,"1/29/2003","Senate","Harm",4,0.0259
+"4192",309,"Russia","McCain",0,"9/21/2004","Senate","Harm",2,0.0225
+"4196",306,"Russia","McCain",0,"3/17/2010","Senate","Harm",1,0.0102
+"4201",298,"Libya","McCain",0,"6/21/2011","Senate","Harm",3,0.0201
+"4203",322,"Iran","McCain",0,"5/21/2012","Senate","Harm",1,0.0357
+"4206",300,"Syria","McCain",0,"5/9/2013","Senate","Harm",8,0.0459
+"4210",297,"Syria","McCain",0,"7/31/2013","Senate","Harm",6,0.0328
+"4214",295,"Iraq","McCain",0,"2/9/1998","Senate","Harm",3,0.0209
+"4219",296,"Iraq","McCain",0,"2/12/1998","Senate","Harm",2,0.0216
+"4222",310,"Kosovo","McCain",0,"9/23/1998","Senate","Harm",9,0.0502
+"4226",1046,"Libya","McCaul",0,"6/24/2011","House","Harm",5,0.1282
+"4228",1001,"Libya","McClintock",0,"6/3/2011","House","Harm",1,0.0443
+"4229",1063,"Libya","McClintock",0,"6/24/2011","House","Harm",4,0.2903
+"4231",749,"Syria","McClintock",0,"9/10/2013","House","Harm",15,0.243
+"4232",485,"Iraq","McConnell",0,"10/10/2002","Senate","Harm",9,0.0738
+"4236",349,"Syria","McConnell",0,"11/11/2003","Senate","Harm",3,0.0353
+"4240",311,"Libya","McConnell",0,"3/28/2011","Senate","Harm",6,0.0657
+"4243",312,"Syria","McConnell",0,"9/10/2013","Senate","Harm",15,0.043
+"4248",313,"Kosovo","McConnell",0,"9/24/1998","Senate","Harm",4,0.0262
+"4254",765,"Iraq","McInnis",0,"9/9/2002","House","Harm",22,0.0312
+"4258",766,"Iraq","McInnis",0,"3/11/2003","House","Harm",15,0.0245
+"4262",767,"Iraq","McInnis",0,"3/18/2003","House","Harm",25,0.0317
+"4267",768,"Iraq","McInnis",0,"3/19/2003","House","Harm",10,0.0191
+"4270",1764,"Iran","McKeon",0,"9/25/2009","House","Harm",5,0.0447
+"4273",1068,"Libya","McKeon",0,"6/24/2011","House","Harm",2,0.0264
+"4275",1247,"Iraq","Mica",0,"10/9/2002","House","Harm",2,0.0863
+"4277",1527,"Iraq","MillerD",0,"10/9/2002","House","Harm",7,0.0698
+"4282",1528,"Iraq","MillerGary",0,"10/9/2002","House","Harm",3,0.0335
+"4284",1529,"Iraq","MillerJ",0,"10/9/2002","House","Harm",3,0.0812
+"4286",1022,"Libya","MillerJ",0,"6/3/2011","House","Harm",3,0.2042
+"4287",777,"Iran","MoranKS",0,"3/16/2009","House","Harm",2,0.0375
+"4297",780,"Iran","MoranKS",0,"3/16/2010","House","Harm",2,0.0268
+"4302",315,"Iran","MoranKS",0,"4/17/2012","Senate","Harm",4,0.0394
+"4304",1674,"Afghanistan","Morella",0,"9/14/2001","House","Harm",2,0.0892
+"4307",1530,"Iraq","Morella",0,"10/9/2002","House","Harm",5,0.0901
+"4309",320,"Iraq","MurkowskiF",0,"3/4/2002","Senate","Harm",2,0.0124
+"4313",321,"Iraq","MurkowskiF",0,"3/12/2002","Senate","Harm",5,0.0174
+"4316",318,"Iraq","MurkowskiF",0,"9/5/2002","Senate","Harm",4,0.0355
+"4319",488,"Iraq","MurkowskiF",0,"10/10/2002","Senate","Harm",5,0.0369
+"4322",382,"Iraq","MurkowskiF",0,"3/9/1998","Senate","Harm",3,0.0164
+"4326",208,"Iraq","MurkowskiF",0,"3/12/1998","Senate","Harm",7,0.0407
+"4330",2109,"Iraq","MurkowskiF",0,"5/21/1998","Senate Hearings","Harm",11,0.0307
+"4334",384,"North Korea","MurkowskiF",0,"9/25/1998","Senate","Harm",2,0.0165
+"4337",316,"Kosovo","MurkowskiF",0,"3/19/1999","Senate","Harm",2,0.0341
+"4339",1248,"Iraq","Nethercutt",0,"10/9/2002","House","Harm",3,0.0747
+"4342",511,"Iraq","Nickles",0,"10/7/2002","Senate","Harm",10,0.0468
+"4350",389,"Iraq","Nickles",0,"2/25/1999","Senate","Harm",14,0.0501
+"4352",287,"Kosovo","Nickles",0,"3/23/1999","Senate","Harm",15,0.0608
+"4357",1531,"Iraq","Nussle",0,"10/9/2002","House","Harm",4,0.07
+"4359",1761,"Afghanistan","Ose",0,"9/14/2001","House","Harm",1,0.0617
+"4361",1439,"Iraq","Ose",0,"10/10/2002","House","Harm",2,0.1011
+"4365",1446,"Iraq","Otter",0,"10/10/2002","House","Harm",2,0.0328
+"4369",1737,"Afghanistan","Oxley",0,"9/14/2001","House","Harm",4,0.1766
+"4372",1037,"Libya","Palazzo",0,"6/3/2011","House","Harm",4,0.2071
+"4374",1562,"Afghanistan","Paul",0,"9/14/2001","House","Harm",8,0.164
+"4378",807,"Iraq","Paul",0,"9/25/2001","House","Harm",31,0.1032
+"4382",808,"Iraq","Paul",0,"3/20/2002","House","Harm",10,0.1534
+"4384",809,"Iraq","Paul",0,"9/4/2002","House","Harm",5,0.2117
+"4386",811,"Iraq","Paul",0,"9/10/2002","House","Harm",16,0.1622
+"4387",1903,"Sudan","Paul",0,"6/22/2005","House Hearings","Harm",1,0.0735
+"4391",806,"Iran","Paul",0,"4/5/2006","House","Harm",55,0.1063
+"4396",711,"Iran","Paul",0,"4/26/2006","House","Harm",9,0.0462
+"4400",812,"Iran","Paul",0,"6/22/2006","House","Harm",2,0.0315
+"4403",857,"Iran","Paul",0,"7/30/2007","House","Harm",6,0.1374
+"4405",1167,"Iran","Paul",0,"7/9/2008","House Hearings","Harm",4,0.0301
+"4408",813,"Iran","Paul",0,"7/10/2008","House","Harm",3,0.0428
+"4411",1955,"Russia","Paul",0,"11/9/2008","House Hearings","Harm",3,0.0445
+"4413",1166,"Libya","Paul",0,"3/31/2011","House Hearings","Harm",7,0.3869
+"4415",1281,"Libya","Paul",0,"5/25/2011","House Hearings","Harm",15,0.184
+"4417",1010,"Libya","Paul",0,"6/3/2011","House","Harm",2,0.114
+"4419",1061,"Libya","Paul",0,"6/24/2011","House","Harm",11,0.1288
+"4423",818,"Syria","Paul",0,"6/19/2012","House","Harm",12,0.1993
+"4424",785,"Iraq","Paul",0,"1/27/1998","House","Harm",1,0.0487
+"4426",786,"Iraq","Paul",0,"2/4/1998","House","Harm",3,0.2075
+"4429",787,"Iraq","Paul",0,"2/12/1998","House","Harm",3,0.2048
+"4432",639,"Iraq","Paul",0,"10/5/1998","House","Harm",19,0.0788
+"4436",788,"Iraq","Paul",0,"2/2/1999","House","Harm",11,0.2146
+"4440",880,"Iraq","Pence",0,"9/20/2001","House","Harm",3,0.1648
+"4444",1115,"Sudan","Pence",0,"5/2/2002","House","Harm",9,0.0792
+"4448",882,"Iraq","Pence",0,"9/12/2002","House","Harm",2,0.0297
+"4450",883,"Iraq","Pence",0,"9/18/2002","House","Harm",5,0.2375
+"4453",884,"Iraq","Pence",0,"3/6/2003","House","Harm",36,0.0563
+"4462",1170,"Iran","Pence",0,"7/9/2008","House Hearings","Harm",3,0.0269
+"4464",885,"Iran","Pence",0,"7/16/2008","House","Harm",1,0.0405
+"4470",1169,"Libya","Pence",0,"3/31/2011","House Hearings","Harm",10,0.117
+"4472",1043,"Libya","Pence",0,"6/3/2011","House","Harm",3,0.0748
+"4474",969,"Syria","PerryPA",0,"3/20/2013","House Hearings","Harm",1,0.016
+"4476",1250,"Iraq","Pickering",0,"10/9/2002","House","Harm",1,0.0294
+"4481",891,"North Korea","Pitts",0,"6/26/2001","House","Harm",1,0.0442
+"4483",1598,"Afghanistan","Pitts",0,"9/14/2001","House","Harm",3,0.1337
+"4487",893,"Afghanistan","Pitts",0,"10/3/2001","House","Harm",2,0.0933
+"4492",894,"Afghanistan","Pitts",0,"10/4/2001","House","Harm",4,0.2158
+"4496",895,"Sudan","Pitts",0,"3/19/2002","House","Harm",2,0.173
+"4497",771,"Iraq","Pitts",0,"10/8/2002","House","Harm",1,0.0498
+"4498",896,"Russia","Pitts",0,"4/9/2003","House","Harm",1,0.0516
+"4501",897,"Sudan","Pitts",0,"5/6/2003","House","Harm",1,0.0677
+"4502",899,"Sudan","Pitts",0,"6/8/2005","House","Harm",2,0.0965
+"4504",902,"Russia","Pitts",0,"5/2/2007","House","Harm",1,0.0539
+"4506",903,"North Korea","Pitts",0,"5/6/2009","House","Harm",1,0.049
+"4509",1660,"Afghanistan","Platts",0,"9/14/2001","House","Harm",2,0.1033
+"4512",1445,"Iraq","Platts",0,"10/10/2002","House","Harm",7,0.0488
+"4516",1355,"Sudan","Poe",0,"2/8/2007","House Hearings","Harm",1,0.0334
+"4523",925,"Iran","Poe",0,"1/9/2009","House","Harm",4,0.2001
+"4527",927,"Iran","Poe",0,"2/2/2010","House","Harm",4,0.0711
+"4530",928,"Iran","Poe",0,"2/16/2011","House","Harm",2,0.0427
+"4531",929,"Libya","Poe",0,"3/29/2011","House","Harm",3,0.1547
+"4532",1171,"Libya","Poe",0,"3/31/2011","House Hearings","Harm",5,0.2632
+"4534",1282,"Libya","Poe",0,"5/25/2011","House Hearings","Harm",8,0.3755
+"4537",1005,"Libya","Poe",0,"6/3/2011","House","Harm",9,0.3585
+"4539",1076,"Libya","Poe",0,"6/24/2011","House","Harm",17,0.3238
+"4540",816,"Libya","Poe",0,"6/24/2011","House","Harm",5,0.3982
+"4544",931,"Iran","Poe",0,"10/13/2011","House","Harm",1,0.0117
+"4548",970,"Syria","poe",0,"3/20/2013","House Hearings","Harm",1,0.0232
+"4550",932,"Syria","Poe",0,"6/19/2013","House","Harm",12,0.1852
+"4552",933,"Syria","Poe",0,"6/25/2013","House","Harm",9,0.1505
+"4554",1727,"Afghanistan","Portman",0,"9/14/2001","House","Harm",3,0.1557
+"4557",1251,"Iraq","Portman",0,"10/9/2002","House","Harm",2,0.0351
+"4560",1432,"Iraq","Portman",0,"10/10/2002","House","Harm",1,0.0295
+"4563",1629,"Afghanistan","Putnam",0,"9/14/2001","House","Harm",5,0.2506
+"4566",1443,"Iraq","Putnam",0,"10/10/2002","House","Harm",3,0.0376
+"4569",1535,"Iraq","Ramstad",0,"10/9/2002","House","Harm",2,0.0326
+"4573",528,"Iraq","Reed",0,"10/9/2002","Senate","Harm",30,0.0562
+"4577",1671,"Afghanistan","Regula",0,"9/14/2001","House","Harm",1,0.0594
+"4578",1036,"Libya","Rigell",0,"6/3/2011","House","Harm",1,0.0633
+"4579",1283,"Libya","Rivera",0,"5/25/2011","House Hearings","Harm",1,0.0689
+"4585",201,"Kosovo","Roberts",0,"2/23/2000","Senate","Harm",1,0.0059
+"4589",516,"Iraq","Roberts",0,"10/9/2002","Senate","Harm",6,0.0312
+"4592",398,"Iraq","Roberts",0,"2/10/1998","Senate","Harm",23,0.0616
+"4596",399,"Kosovo","Roberts",0,"7/19/1998","Senate","Harm",2,0.0133
+"4599",401,"Kosovo","Roberts",0,"9/30/1998","Senate","Harm",6,0.0293
+"4603",400,"Kosovo","Roberts",0,"3/22/1999","Senate","Harm",7,0.0234
+"4605",1538,"Iraq","RogersKY",0,"10/9/2002","House","Harm",1,0.0536
+"4607",1539,"Iraq","RogersMI",0,"10/9/2002","House","Harm",4,0.0717
+"4608",1000,"Libya","RogersMI",0,"6/3/2011","House","Harm",4,0.0482
+"4613",1205,"Russia","Rohrabacher",0,"9/27/2000","House Hearings","Harm",1,0.025
+"4616",1825,"Russia","Rohrabacher",0,"9/27/2000","House Hearings","Harm",1,0.0215
+"4620",939,"Iraq","Rohrabacher",0,"9/17/2001","House","Harm",35,0.059
+"4624",1336,"Iraq","Rohrabacher",0,"10/10/2002","House","Harm",1,0.0264
+"4625",1905,"Sudan","Rohrabacher",0,"6/22/2005","House Hearings","Harm",1,0.0499
+"4628",1875,"North Korea","Rohrabacher",0,"11/15/2006","House Hearings","Harm",1,0.0097
+"4631",1396,"Iran","Rohrabacher",0,"3/6/2007","House Hearings","Harm",4,0.0635
+"4637",1958,"Russia","Rohrabacher",0,"11/9/2008","House Hearings","Harm",11,0.0568
+"4639",1173,"Libya","Rohrabacher",0,"3/31/2011","House Hearings","Harm",1,0.0111
+"4642",1978,"Russia","Rohrabacher",0,"7/7/2011","House Hearings","Harm",3,0.0248
+"4646",955,"Iran","Rohrabacher",0,"7/27/2011","House Hearings","Harm",5,0.0392
+"4650",917,"Iran","Rohrabacher",0,"10/14/2011","House Hearings","Harm",1,0.0171
+"4653",938,"Iraq","Rohrabacher",0,"2/12/1998","House","Harm",5,0.0636
+"4656",641,"Iraq","Rohrabacher",0,"10/5/1998","House","Harm",7,0.0719
+"4658",1857,"Russia","Rohrabacher",0,"5/12/1999","House Hearings","Harm",5,0.0763
+"4664",1284,"Libya","Rooney",0,"5/25/2011","House Hearings","Harm",26,0.1491
+"4667",1044,"Libya","Rooney",0,"6/24/2011","House","Harm",8,0.09
+"4669",1397,"Iran","Ros-Lehtinen",0,"3/6/2007","House Hearings","Harm",1,0.0123
+"4672",14,"Iran","Ros-Lehtinen",0,"10/14/2011","House Hearings","Harm",3,0.0121
+"4680",1264,"Syria","Ros-Lehtinen",0,"11/20/2003","House","Harm",2,0.0216
+"4685",725,"Iran","Ros-Lehtinen",0,"4/26/2006","House","Harm",1,0.009
+"4689",1356,"Sudan","Ros-Lehtinen",0,"2/8/2007","House Hearings","Harm",1,0.0102
+"4692",853,"Iran","Ros-Lehtinen",0,"7/30/2007","House","Harm",3,0.0699
+"4694",861,"Sudan","Ros-Lehtinen",0,"7/30/2007","House","Harm",2,0.0271
+"4698",1176,"Iran","Ros-Lehtinen",0,"7/9/2008","House Hearings","Harm",1,0.011
+"4706",940,"North Korea","Ros-Lehtinen",0,"4/29/2009","House","Harm",3,0.0427
+"4709",941,"Iran","Ros-Lehtinen",0,"10/26/2009","House","Harm",2,0.0305
+"4714",1175,"Libya","Ros-Lehtinen",0,"3/31/2011","House Hearings","Harm",2,0.0098
+"4717",1285,"Libya","Ros-Lehtinen",0,"5/25/2011","House Hearings","Harm",13,0.0843
+"4720",995,"Libya","Ros-Lehtinen",0,"6/3/2011","House","Harm",2,0.0128
+"4725",1979,"Russia","Ros-Lehtinen",0,"7/7/2011","House Hearings","Harm",1,0.0053
+"4727",942,"North Korea","Ros-Lehtinen",0,"12/31/2012","House","Harm",3,0.0392
+"4735",1669,"Afghanistan","Royce",0,"9/14/2001","House","Harm",2,0.1217
+"4739",848,"Sudan","Royce",0,"7/21/2004","House","Harm",5,0.0991
+"4746",1906,"Sudan","Royce",0,"6/22/2005","House Hearings","Harm",1,0.0763
+"4747",1216,"Sudan","Royce",0,"11/1/2005","House Hearings","Harm",1,0.0081
+"4748",1890,"Sudan","Royce",0,"11/1/2005","House Hearings","Harm",1,0.0081
+"4749",1841,"Sudan","Royce",0,"5/18/2006","House Hearings","Harm",2,0.05
+"4753",1876,"North Korea","Royce",0,"11/15/2006","House Hearings","Harm",1,0.027
+"4756",1398,"Iran","Royce",0,"3/6/2007","House Hearings","Harm",1,0.0093
+"4762",1960,"Russia","Royce",0,"11/9/2008","House Hearings","Harm",6,0.0714
+"4765",1177,"Libya","Royce",0,"3/31/2011","House Hearings","Harm",2,0.0245
+"4773",993,"North Korea","Royce",0,"10/13/1999","House Hearings","Harm",2,0.0503
+"4776",2336,"North Korea","Rubio",0,"3/1/2011","Senate Hearings","Harm",2,0.0162
+"4788",1540,"Iraq","RyanWI",0,"10/9/2002","House","Harm",7,0.0398
+"4792",1751,"Afghanistan","RyanWI",0,"9/14/2001","House","Harm",1,0.056
+"4794",1586,"Afghanistan","JohnsonS",0,"9/14/2001","House","Harm",3,0.2334
+"4796",1372,"Iraq","Sanford",0,"3/23/2000","House Hearings","Harm",2,0.0172
+"4803",2023,"Iran","Santorum",0,"3/2/2006","Senate Hearings","Harm",2,0.0163
+"4813",654,"Iraq","Saxton",0,"1/27/2003","House","Harm",4,0.0279
+"4816",1286,"Libya","Schmidt",0,"5/25/2011","House Hearings","Harm",1,0.0419
+"4819",1654,"Afghanistan","Schrock",0,"9/14/2001","House","Harm",1,0.0615
+"4823",471,"Iraq","Sessions",0,"10/10/2002","Senate","Harm",19,0.0586
+"4827",1663,"Afghanistan","Shadegg",0,"9/14/2001","House","Harm",3,0.1571
+"4830",1252,"Iraq","Shadegg",0,"10/9/2002","House","Harm",19,0.0873
+"4834",1253,"Iraq","Shaw",0,"10/9/2002","House","Harm",3,0.074
+"4836",1784,"Iran","Shaw",0,"9/28/2006","House","Harm",1,0.1325
+"4840",1697,"Afghanistan","Shays",0,"9/14/2001","House","Harm",4,0.0961
+"4843",1095,"Iran","Shays",0,"10/28/2005","House","Harm",1,0.0422
+"4853",863,"Sudan","Shays",0,"7/30/2007","House","Harm",4,0.0463
+"4857",195,"Iran","Shelby",0,"2/22/2000","Senate","Harm",1,0.0086
+"4860",479,"Iraq","Shelby",0,"10/10/2002","Senate","Harm",9,0.0446
+"4864",735,"Kosovo","Shimkus",0,"3/24/1999","House","Harm",3,0.1588
+"4865",1711,"Afghanistan","Simmons",0,"9/14/2001","House","Harm",3,0.2557
+"4868",1440,"Iraq","Simpson",0,"10/10/2002","House","Harm",3,0.0297
+"4870",1733,"Afghanistan","SmithMI",0,"9/14/2001","House","Harm",2,0.1482
+"4872",476,"Iraq","SmithNH",0,"10/10/2002","Senate","Harm",14,0.0861
+"4875",1108,"Kosovo","SmithNJ",0,"3/17/1998","House","Harm",1,0.0167
+"4878",1373,"Iraq","SmithNJ",0,"3/23/2000","House Hearings","Harm",1,0.0121
+"4879",1208,"Russia","SmithNJ",0,"9/27/2000","House Hearings","Harm",3,0.0528
+"4880",1828,"Russia","SmithNJ",0,"9/27/2000","House Hearings","Harm",3,0.0537
+"4888",1941,"North Korea","SmithNJ",0,"4/28/2005","House Hearings","Harm",2,0.0076
+"4891",1908,"Sudan","SmithNJ",0,"6/22/2005","House Hearings","Harm",4,0.0523
+"4894",1217,"Sudan","SmithNJ",0,"11/1/2005","House Hearings","Harm",10,0.0251
+"4899",1892,"Sudan","SmithNJ",0,"11/1/2005","House Hearings","Harm",10,0.0287
+"4902",1885,"Sudan","SmithNJ",0,"3/8/2006","House Hearings","Harm",6,0.064
+"4906",1098,"Syria","SmithNJ",0,"3/16/2006","House","Harm",1,0.0249
+"4909",531,"Sudan","SmithNJ",0,"4/5/2006","House","Harm",4,0.0202
+"4916",1842,"Sudan","SmithNJ",0,"5/18/2006","House Hearings","Harm",7,0.0346
+"4919",1793,"Sudan","SmithNJ",0,"9/25/2006","House","Harm",5,0.0424
+"4925",1358,"Sudan","SmithNJ",0,"2/8/2007","House Hearings","Harm",2,0.0364
+"4927",1401,"Iran","SmithNJ",0,"3/6/2007","House Hearings","Harm",2,0.0286
+"4936",1945,"Russia","SmithNJ",0,"11/9/2008","House Hearings","Harm",2,0.0243
+"4940",1184,"Libya","SmithNJ",0,"3/31/2011","House Hearings","Harm",1,0.0139
+"4943",1080,"Libya","SmithNJ",0,"6/24/2011","House","Harm",6,0.1478
+"4948",1860,"Russia","SmithNJ",0,"5/12/1999","House Hearings","Harm",6,0.043
+"4952",981,"North Korea","SmithNJ",0,"10/13/1999","House Hearings","Harm",1,0.0103
+"4955",483,"Iraq","SmithOR",0,"10/10/2002","Senate","Harm",7,0.0697
+"4956",345,"Syria","SmithOR",0,"11/11/2003","Senate","Harm",3,0.0399
+"4957",424,"Iran","SmithOR",0,"12/15/2005","Senate","Harm",1,0.0338
+"4960",2153,"Kosovo","SmithOR",0,"5/6/1998","Senate Hearings","Harm",3,0.0264
+"4968",2273,"Russia","SmithOR",0,"11/4/1999","Senate Hearings","Harm",7,0.0353
+"4970",1644,"Afghanistan","SmithTX",0,"9/14/2001","House","Harm",1,0.0619
+"4972",1543,"Iraq","SmithTX",0,"10/9/2002","House","Harm",4,0.1494
+"4975",338,"Iran","Snowe",0,"5/22/1998","Senate","Harm",1,0.0116
+"4979",202,"Kosovo","Snowe",0,"2/23/1999","Senate","Harm",2,0.0197
+"4983",1255,"Iraq","Souder",0,"10/9/2002","House","Harm",3,0.0589
+"4987",439,"Iraq","Specter",0,"9/5/2002","Senate","Harm",3,0.0297
+"4990",241,"Iraq","Specter",0,"10/7/2002","Senate","Harm",16,0.0894
+"4995",408,"Iraq","Specter",0,"10/10/2002","Senate","Harm",19,0.0685
+"4999",438,"Syria","Specter",0,"11/11/2003","Senate","Harm",2,0.01
+"5002",425,"Iraq","Specter",0,"2/12/1998","Senate","Harm",5,0.0348
+"5005",206,"Iraq","Specter",0,"3/12/1998","Senate","Harm",15,0.1659
+"5006",440,"Kosovo","Specter",0,"2/23/1999","Senate","Harm",4,0.0675
+"5010",232,"Kosovo","Specter",0,"3/19/1999","Senate","Harm",5,0.0561
+"5013",248,"Kosovo","Specter",0,"3/22/1999","Senate","Harm",11,0.0505
+"5016",426,"Kosovo","Specter",0,"3/23/1999","Senate","Harm",7,0.054
+"5018",1121,"Iran","Stearns",0,"10/23/2000","House","Harm",1,0.0137
+"5019",1735,"Afghanistan","Stearns",0,"9/14/2001","House","Harm",1,0.1284
+"5022",1256,"Iraq","Stearns",0,"10/9/2002","House","Harm",2,0.0328
+"5026",1119,"North Korea","Stearns",0,"3/14/2006","House","Harm",3,0.0443
+"5030",1748,"Afghanistan","Stump",0,"9/14/2001","House","Harm",1,0.0347
+"5032",1661,"Afghanistan","Sununu",0,"9/14/2001","House","Harm",1,0.0611
+"5036",1209,"Russia","Tancredo",0,"9/27/2000","House Hearings","Harm",1,0.1087
+"5037",1829,"Russia","Tancredo",0,"9/27/2000","House Hearings","Harm",1,0.1087
+"5039",1122,"Iran","Tancredo",0,"5/2/2002","House","Harm",8,0.0395
+"5043",1123,"Sudan","Tancredo",0,"7/12/2004","House","Harm",19,0.0466
+"5048",826,"Sudan","Tancredo",0,"7/21/2004","House","Harm",3,0.0306
+"5052",1942,"North Korea","Tancredo",0,"4/28/2005","House Hearings","Harm",1,0.0369
+"5055",1909,"Sudan","Tancredo",0,"6/22/2005","House Hearings","Harm",1,0.0247
+"5060",548,"Sudan","Tancredo",0,"4/5/2006","House","Harm",4,0.0643
+"5065",1359,"Sudan","Tancredo",0,"2/8/2007","House Hearings","Harm",1,0.0309
+"5066",1402,"Iran","Tancredo",0,"3/6/2007","House Hearings","Harm",2,0.0219
+"5068",1383,"Iran","Tancredo",0,"3/15/2007","House Hearings","Harm",2,0.024
+"5071",1579,"Afghanistan","Tauzin",0,"9/14/2001","House","Harm",1,0.0425
+"5073",1438,"Iraq","Tauzin",0,"10/10/2002","House","Harm",1,0.0225
+"5076",1547,"Iraq","Terry",0,"10/9/2002","House","Harm",1,0.0357
+"5081",442,"Iraq","Thomas",0,"1/30/2003","Senate","Harm",3,0.0366
+"5084",525,"Iraq","Thompson",0,"10/9/2002","Senate","Harm",4,0.016
+"5088",1640,"Afghanistan","Thune",0,"9/14/2001","House","Harm",1,0.0467
+"5091",1428,"Iraq","Thune",0,"10/10/2002","House","Harm",1,0.0197
+"5094",444,"Iraq","Thurmond",0,"9/8/1998","Senate","Harm",3,0.055
+"5098",1548,"Iraq","Tiahrt",0,"10/9/2002","House","Harm",3,0.0474
+"5102",1763,"Iran","TurnerOH",0,"9/15/2009","House","Harm",8,0.0224
+"5104",1035,"Libya","TurnerOH",0,"6/3/2011","House","Harm",1,0.0394
+"5106",1050,"Libya","TurnerOH",0,"6/24/2011","House","Harm",1,0.0313
+"5108",1742,"Afghanistan","Vitter",0,"9/14/2001","House","Harm",1,0.0547
+"5113",2372,"North Korea","Voinovich",0,"7/20/2006","Senate Hearings","Harm",2,0.0337
+"5119",1127,"Syria","Walberg",0,"6/23/2011","House","Harm",2,0.0485
+"5122",1554,"Iraq","Walsh",0,"10/9/2002","House","Harm",5,0.066
+"5127",356,"Iraq","Warner",0,"10/7/2002","Senate","Harm",6,0.0127
+"5134",407,"Iraq","Warner",0,"10/10/2002","Senate","Harm",9,0.0538
+"5138",447,"Kosovo","Warner",0,"10/2/1998","Senate","Harm",3,0.0111
+"5142",449,"Kosovo","Warner",0,"10/8/1998","Senate","Harm",6,0.0239
+"5145",450,"Kosovo","Warner",0,"10/19/1998","Senate","Harm",1,0.008
+"5149",446,"Kosovo","Warner",0,"1/19/1999","Senate","Harm",1,0.0147
+"5151",441,"Kosovo","Warner",0,"2/23/1999","Senate","Harm",2,0.0396
+"5152",249,"Kosovo","Warner",0,"3/22/1999","Senate","Harm",2,0.0138
+"5157",1262,"Iraq","WeldonPA",0,"10/9/2002","House","Harm",1,0.0111
+"5158",1318,"Iraq","WeldonPA",0,"10/10/2002","House","Harm",2,0.0343
+"5160",723,"Iran","WeldonPA",0,"4/26/2006","House","Harm",1,0.0199
+"5162",1448,"Iraq","Weller",0,"10/10/2002","House","Harm",3,0.0773
+"5166",1025,"Libya","West",0,"6/3/2011","House","Harm",17,0.1814
+"5169",1085,"Libya","West",0,"6/24/2011","House","Harm",2,0.0794
+"5180",47,"Russia","Wicker",0,"2/16/2012","Senate","Harm",3,0.0206
+"5182",1133,"Iraq","WilsonSC",0,"3/5/2002","House","Harm",3,0.2093
+"5184",1132,"Iran","WilsonSC",0,"2/14/2006","House","Harm",1,0.0707
+"5186",1798,"Sudan","WilsonSC",0,"5/18/2006","House Hearings","Harm",1,0.0566
+"5187",1360,"Sudan","WilsonSC",0,"2/8/2007","House Hearings","Harm",1,0.1001
+"5189",1134,"Sudan","Wolf",0,"5/5/2004","House","Harm",3,0.0491
+"5194",805,"Sudan","Wolf",0,"7/19/2004","House","Harm",4,0.0672
+"5202",1263,"Iraq","YoungFL",0,"10/9/2002","House","Harm",8,0.0693
+"5206",1030,"Libya","YoungFL",0,"6/3/2011","House","Harm",2,0.0309

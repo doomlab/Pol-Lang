@@ -1,0 +1,247 @@
+> m3<-glmer(formula=OpposeSupport~i+we+you+shehe+they+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + they + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+209.7835 234.2350 -97.8918 195.7835 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 118.8    10.9    
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   8.7399     2.4431   3.577 0.000347 ***
+i            -0.9841     0.4419  -2.227 0.025948 *  
+we           -0.6818     0.4875  -1.399 0.161925    
+you          -0.2292     1.4735  -0.156 0.876376    
+shehe         2.2154     0.8014   2.764 0.005701 ** 
+they         -0.6041     0.8316  -0.726 0.467570    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+      (Intr) i      we     you    shehe 
+i     -0.470                            
+we    -0.535  0.094                     
+you   -0.142  0.160 -0.067              
+shehe -0.077 -0.313  0.071  0.155       
+they  -0.158  0.345 -0.177 -0.196 -0.364
+
+
+
+> m4<-glmer(formula=OpposeSupport~past+present+future+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> summary(m4)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ past + present + future + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+      AIC       BIC    logLik  deviance 
+ 219.7483  237.2136 -104.8742  209.7483 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 173.4    13.17   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   9.7111     2.9115   3.335 0.000852 ***
+past          0.4734     0.3919   1.208 0.227147    
+present      -0.4355     0.2446  -1.781 0.074985 .  
+future        0.1409     0.8160   0.173 0.862864    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) past   presnt
+past    -0.357              
+present -0.509  0.039       
+future  -0.277  0.286 -0.261
+> m3<-glmer(formula=OpposeSupport~posemo+negemo+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> summary(m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ posemo + negemo + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+      AIC       BIC    logLik  deviance 
+ 217.4247  231.3969 -104.7123  209.4247 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 191.6    13.84   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   8.3214     2.8352   2.935  0.00333 **
+posemo       -0.8402     0.5675  -1.480  0.13875   
+negemo        0.6082     0.3256   1.868  0.06177 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) posemo
+posemo -0.517       
+negemo -0.323 -0.082
+> m5<-glmer(formula=OpposeSupport~insight+cause+discrep+tentat+certain+inhib+incl+excl+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> summary(m5)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ insight + cause + discrep + tentat + certain +      inhib + incl + excl + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+      AIC       BIC    logLik  deviance 
+ 231.1577  266.0883 -105.5788  211.1577 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 48.54    6.967   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  2.33462    3.24739   0.719    0.472
+insight      0.72739    0.46711   1.557    0.119
+cause        0.65948    0.57763   1.142    0.254
+discrep     -0.93867    0.78876  -1.190    0.234
+tentat       0.07277    0.65023   0.112    0.911
+certain      1.17195    0.84544   1.386    0.166
+inhib        0.91767    0.73189   1.254    0.210
+incl        -0.30221    0.34543  -0.875    0.382
+excl        -0.29326    0.52639  -0.557    0.577
+
+Correlation of Fixed Effects:
+        (Intr) insght cause  discrp tentat certan inhib  incl  
+insight -0.275                                                 
+cause   -0.532 -0.110                                          
+discrep -0.072 -0.017 -0.046                                   
+tentat  -0.141 -0.299  0.166 -0.388                            
+certain -0.344  0.039  0.095 -0.152  0.175                     
+inhib   -0.323  0.096 -0.032 -0.050  0.114  0.156              
+incl    -0.527  0.069  0.249 -0.005 -0.037 -0.129 -0.156       
+excl    -0.131  0.045  0.026 -0.263 -0.342 -0.067  0.092 -0.031
+> m6<-glmer(formula=OpposeSupport~negate+social+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> summary(m6)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ negate + social + motion + achieve + money +      relig + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+      AIC       BIC    logLik  deviance 
+ 227.4246  258.8622 -104.7123  209.4246 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 164.1    12.81   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept) 11.09317    3.67056   3.022  0.00251 **
+negate      -1.22583    0.79473  -1.542  0.12296   
+social      -0.08686    0.19424  -0.447  0.65477   
+motion      -0.30210    0.70994  -0.426  0.67045   
+achieve     -0.07562    0.40082  -0.189  0.85037   
+money       -1.37862    1.01560  -1.357  0.17464   
+relig        2.62876    3.91383   0.672  0.50180   
+death       -0.49070    0.92207  -0.532  0.59461   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) negate social motion achiev money  relig 
+negate  -0.341                                          
+social  -0.510 -0.128                                   
+motion  -0.434 -0.041  0.153                            
+achieve -0.368  0.239  0.047 -0.097                     
+money   -0.359  0.141  0.227  0.219 -0.045              
+relig   -0.140 -0.029  0.083 -0.041  0.007  0.046       
+death   -0.388  0.184  0.162  0.311 -0.053  0.293 -0.031
+> fitted(m6)
+  [1] 0.999246737 0.001113736 0.998941729 0.474977494 0.996768249 0.998147438 0.999973637
+  [8] 0.999726507 0.999257483 0.999923702 0.998204702 0.999208923 0.010862621 0.999882000
+ [15] 0.715246704 0.652081968 0.110938403 0.999864834 0.052616262 0.999943150 0.019160233
+ [22] 0.995881961 0.999632886 0.997920002 0.995508147 0.999339504 0.999921943 0.775600390
+ [29] 0.722177123 0.067852572 0.998506487 0.999852620 0.999861813 0.651260626 0.338728957
+ [36] 0.029158630 0.793771070 0.490682614 0.989210191 0.999814145 0.999477513 0.937232683
+ [43] 0.008061131 0.999779014 0.658630222 0.778624908 0.854203261 0.999770217 0.999907830
+ [50] 0.999962827 0.999901980 0.722302474 0.015686780 0.998175410 0.020538573 0.999773749
+ [57] 0.737190972 0.967413272 0.999716253 0.606921956 0.999746230 0.007095316 0.059963262
+ [64] 0.999869559 0.018743946 0.042196509 0.928814418 0.999695379 0.999554009 0.014736928
+ [71] 0.013536810 0.998674447 0.051979177 0.999651405 0.009248718 0.999564178 0.054530557
+ [78] 0.049571840 0.047548519 0.999725869 0.067474447 0.011054593 0.009970456 0.999850228
+ [85] 0.999079977 0.999456320 0.823934790 0.999834896 0.999749603 0.999823048 0.999585229
+ [92] 0.999536302 0.014196599 0.035820181 0.858615727 0.296517157 0.999895186 0.998862279
+ [99] 0.999898686 0.999709904 0.016171154 0.998925524 0.999792298 0.673302973 0.999311677
+[106] 0.717839045 0.999785709 0.077671153 0.999774672 0.999585927 0.816132660 0.004482458
+[113] 0.999337793 0.056700144 0.999810860 0.999835886 0.066233462 0.999385840 0.999851344
+[120] 0.999876146 0.865804353 0.581459659 0.013363723 0.577678373 0.999667430 0.998979557
+[127] 0.629886794 0.999860654 0.999314442 0.067418447 0.999680904 0.999681693 0.999307478
+[134] 0.846123702 0.999746865 0.999687861 0.999856289 0.999664296 0.137518870 0.070846895
+[141] 0.276570876 0.046830809 0.007403437 0.999669423 0.999923023 0.999785011 0.691951445
+[148] 0.048965163 0.999945762 0.999841794 0.018256009 0.034638570 0.999377703 0.999585896
+[155] 0.022130803 0.999412949 0.999889137 0.999780931 0.999836144 0.999906163 0.999728671
+[162] 0.020059491 0.006313863 0.999714984 0.017732822 0.999575726 0.999667826 0.999485753
+[169] 0.999790855 0.999675915 0.999602491 0.049604176 0.999896267 0.405987418 0.007500943
+[176] 0.356050375 0.026450689 0.999781211 0.999550704 0.999556906 0.999144555 0.012085236
+[183] 0.089987807 0.999720749 0.999833462 0.999791270 0.999951630 0.999707719 0.999793553
+[190] 0.999541995 0.999502693 0.027315691 0.999842223 0.503579130 0.035218936 0.329993465
+[197] 0.316890333 0.006211032 0.677475162 0.815964982 0.054488873 0.668166173 0.999825865
+[204] 0.999770642 0.818862317 0.741432152 0.412993625 0.011100398 0.999849985 0.999813629
+[211] 0.996760833 0.327721253 0.999987711 0.999814864 0.500935721 0.051210105 0.050469042
+[218] 0.999865998 0.999946777 0.466821234 0.999877503 0.012529384 0.999569590 0.999711227
+[225] 0.999779441 0.999823689 0.999774108 0.696784576 0.999816795 0.338633238 0.659399079
+[232] 0.999923747 0.542086939 0.999639476 0.999872469 0.999933421 0.327646963 0.200934774
+[239] 0.420871331 0.999756732 0.999961035 0.049561418 0.999935601
+> fit1<-fitted(m6)
+> summary(fit1)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.001114 0.306700 0.998900 0.687100 0.999800 1.000000 
+> m7<-glmer(formula=OpposeSupport~i+shehe+present+negemo+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> summary(m7)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + shehe + present + negemo + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+206.1808 227.1391 -97.0904 194.1808 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 97.71    9.885   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  8.45570    2.77707   3.045  0.00233 **
+i           -0.29922    0.45640  -0.656  0.51208   
+shehe        2.52872    0.82151   3.078  0.00208 **
+present     -0.63696    0.30883  -2.062  0.03916 * 
+negemo       0.09655    0.36027   0.268  0.78870   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  presnt
+i       -0.022                     
+shehe    0.117 -0.106              
+present -0.644 -0.451 -0.266       
+negemo  -0.534  0.119 -0.174  0.153

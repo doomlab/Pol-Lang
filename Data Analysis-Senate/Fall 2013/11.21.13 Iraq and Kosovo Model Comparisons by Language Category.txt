@@ -1,0 +1,491 @@
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 222.9251  240.3904 -106.4626  212.9251 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 201.8    14.21   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept) 31.71243   19.32604   1.641    0.101
+Dic         -0.28828    0.20638  -1.397    0.162
+WPS          0.01675    0.12031   0.139    0.889
+Sixltr      -0.08337    0.16645  -0.501    0.616
+
+Correlation of Fixed Effects:
+       (Intr) Dic    WPS   
+Dic    -0.981              
+WPS     0.135 -0.194       
+Sixltr -0.854  0.805 -0.386
+> m2<-glmer(formula=OpposeSupport~i+we+you+shehe+they+ipron+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m2)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+     AIC      BIC   logLik deviance 
+209.7886 237.7331 -96.8943 193.7886 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 136.1    11.66   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   7.1879     3.0208   2.379  0.01734 * 
+i            -1.1207     0.4452  -2.517  0.01183 * 
+we           -0.7884     0.5095  -1.547  0.12176   
+you          -1.5070     1.7860  -0.844  0.39879   
+shehe         2.2088     0.8157   2.708  0.00677 **
+they         -0.5253     0.9169  -0.573  0.56672   
+ipron         0.5340     0.4163   1.282  0.19967   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+      (Intr) i      we     you    shehe  they  
+i     -0.274                                   
+we    -0.354  0.058                            
+you    0.211  0.228 -0.017                     
+shehe -0.124 -0.300  0.062  0.058              
+they  -0.221  0.290 -0.236 -0.264 -0.257       
+ipron -0.548 -0.159 -0.111 -0.546  0.077  0.175
+> anova(m1,m2)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m1: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m1  5 222.93 240.39 -106.463   212.93                             
+m2  8 209.79 237.73  -96.894   193.79 19.137      3  0.0002562 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m3<-glmer(formula=OpposeSupport~auxverb+past+present+future+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ auxverb + past + present + future + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 218.0230  238.9814 -103.0115  206.0230 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 214      14.63   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) 11.33935    3.23405   3.506 0.000454 ***
+auxverb     -0.97363    0.54108  -1.799 0.071951 .  
+past         1.17079    0.62043   1.887 0.059152 .  
+present      0.08712    0.37402   0.233 0.815818    
+future       1.29464    1.11963   1.156 0.247553    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) auxvrb past   presnt
+auxverb -0.180                     
+past    -0.128 -0.703              
+present -0.217 -0.704  0.507       
+future  -0.073 -0.633  0.625  0.277
+> anova(m2,m3)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m3: OpposeSupport ~ auxverb + past + present + future + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)   
+m3  6 218.02 238.98 -103.012   206.02                            
+m2  8 209.79 237.73  -96.894   193.79 12.234      2   0.002205 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m1,m3)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m1: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name)
+m3: OpposeSupport ~ auxverb + past + present + future + (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)   
+m1  5 222.93 240.39 -106.46   212.93                            
+m3  6 218.02 238.98 -103.01   206.02 6.9021      1    0.00861 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m4<-glmer(formula=OpposeSupport~article+adverb+preps+conj+negate+quant+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m4)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ article + adverb + preps + conj + negate + quant +      (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 218.6338  246.5783 -101.3169  202.6338 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 175.4    13.24   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  18.5657     6.1099   3.039  0.00238 **
+article      -0.8644     0.4585  -1.885  0.05937 . 
+adverb       -0.7254     0.5026  -1.443  0.14893   
+preps         0.0328     0.3038   0.108  0.91401   
+conj         -0.5064     0.4327  -1.170  0.24186   
+negate       -1.4288     0.8260  -1.730  0.08368 . 
+quant         0.8557     0.7972   1.073  0.28312   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) articl adverb preps  conj   negate
+article -0.640                                   
+adverb  -0.272  0.255                            
+preps   -0.327 -0.292 -0.109                     
+conj    -0.337  0.248 -0.134 -0.178              
+negate  -0.474  0.343  0.124  0.126 -0.075       
+quant   -0.221  0.165 -0.021 -0.211  0.012  0.059
+> anova(m3,m4)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m3: OpposeSupport ~ auxverb + past + present + future + (1 | Name)
+m4: OpposeSupport ~ article + adverb + preps + conj + negate + quant + 
+m4:     (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m3  6 218.02 238.98 -103.01   206.02                         
+m4  8 218.63 246.58 -101.32   202.63 3.3892      2     0.1837
+> anova(m2,m4)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+m4: OpposeSupport ~ article + adverb + preps + conj + negate + quant + 
+m4:     (1 | Name)
+   Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)
+m2  8 209.79 237.73  -96.894   193.79                        
+m4  8 218.63 246.58 -101.317   202.63     0      0          1
+> anova(m1,m4)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m1: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name)
+m4: OpposeSupport ~ article + adverb + preps + conj + negate + quant + 
+m4:     (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)  
+m1  5 222.93 240.39 -106.46   212.93                           
+m4  8 218.63 246.58 -101.32   202.63 10.291      3    0.01625 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m4,m2)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m4: OpposeSupport ~ article + adverb + preps + conj + negate + quant + 
+m4:     (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m4  8 218.63 246.58 -101.317   202.63                             
+m2  8 209.79 237.73  -96.894   193.79 8.8451      0  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m5<-glmer(formula=OpposeSupport~social+posemo+negemo+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m5)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ social + posemo + negemo + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 219.2691  236.7344 -104.6345  209.2691 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 193.7    13.92   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  8.96335    3.29310   2.722  0.00649 **
+social      -0.07189    0.19015  -0.378  0.70537   
+posemo      -0.84280    0.56982  -1.479  0.13912   
+negemo       0.59752    0.32883   1.817  0.06920 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) social posemo
+social -0.500              
+posemo -0.461  0.029       
+negemo -0.325  0.091 -0.077
+> anova(m5,m2)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m5: OpposeSupport ~ social + posemo + negemo + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)   
+m5  5 219.27 236.73 -104.635   209.27                           
+m2  8 209.79 237.73  -96.894   193.79 15.48      3   0.001449 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m6<-glmer(formula=OpposeSupport~insight+cause+discrep+tentat+certain+inhib+incl+excl+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m6)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ insight + cause + discrep + tentat + certain +      inhib + incl + excl + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 231.1577  266.0883 -105.5788  211.1577 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 48.54    6.967   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  2.33462    3.24739   0.719    0.472
+insight      0.72739    0.46711   1.557    0.119
+cause        0.65948    0.57763   1.142    0.254
+discrep     -0.93867    0.78876  -1.190    0.234
+tentat       0.07277    0.65023   0.112    0.911
+certain      1.17195    0.84544   1.386    0.166
+inhib        0.91767    0.73189   1.254    0.210
+incl        -0.30221    0.34543  -0.875    0.382
+excl        -0.29326    0.52639  -0.557    0.577
+
+Correlation of Fixed Effects:
+        (Intr) insght cause  discrp tentat certan inhib  incl  
+insight -0.275                                                 
+cause   -0.532 -0.110                                          
+discrep -0.072 -0.017 -0.046                                   
+tentat  -0.141 -0.299  0.166 -0.388                            
+certain -0.344  0.039  0.095 -0.152  0.175                     
+inhib   -0.323  0.096 -0.032 -0.050  0.114  0.156              
+incl    -0.527  0.069  0.249 -0.005 -0.037 -0.129 -0.156       
+excl    -0.131  0.045  0.026 -0.263 -0.342 -0.067  0.092 -0.031
+> m7<-glmer(formula=OpposeSupport~motion+space+time+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m7)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ motion + space + time + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 224.7980  242.2633 -107.3990  214.7980 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 147.2    12.13   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  11.0886     3.4260   3.237  0.00121 **
+motion       -0.2899     0.6106  -0.475  0.63495   
+space        -0.4952     0.3821  -1.296  0.19490   
+time         -0.1031     0.3475  -0.297  0.76668   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) motion space 
+motion -0.277              
+space  -0.677 -0.028       
+time   -0.366 -0.060  0.009
+> anova(m4,m7)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m7: OpposeSupport ~ motion + space + time + (1 | Name)
+m4: OpposeSupport ~ article + adverb + preps + conj + negate + quant + 
+m4:     (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)   
+m7  5 224.80 242.26 -107.40   214.80                            
+m4  8 218.63 246.58 -101.32   202.63 12.164      3   0.006841 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> m8<-glmer(formula=OpposeSupport~work+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m8)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ work + achieve + money + relig + death + (1 |      Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+      AIC       BIC    logLik  deviance 
+ 227.9821  252.4336 -106.9911  213.9821 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 167.5    12.94   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+             Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  7.357171   2.481738   2.965  0.00303 **
+work         0.198390   0.376601   0.527  0.59834   
+achieve     -0.106675   0.459770  -0.232  0.81652   
+money       -1.067444   0.947377  -1.127  0.25985   
+relig        3.126359   3.545268   0.882  0.37786   
+death        0.007682   0.827877   0.009  0.99260   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) work   achiev money  relig 
+work    -0.164                            
+achieve -0.274 -0.546                     
+money   -0.119 -0.141 -0.026              
+relig   -0.210  0.114 -0.039  0.054       
+death   -0.200  0.075 -0.099  0.173  0.004
+> anova(m6,m8)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m8: OpposeSupport ~ work + achieve + money + relig + death + (1 | 
+m8:     Name)
+m6: OpposeSupport ~ insight + cause + discrep + tentat + certain + 
+m6:     inhib + incl + excl + (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m8  7 227.98 252.43 -106.99   213.98                         
+m6 10 231.16 266.09 -105.58   211.16 2.8245      3     0.4195
+> m9<-glmer(formula=OpposeSupport~i+shehe+auxverb+past+articles+negate+negemo+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+Error in eval(expr, envir, enclos) : object 'articles' not found
+> m9<-glmer(formula=OpposeSupport~i+shehe+auxverb+past+article+negate+negemo+(1|Name), data=R.Iraq.and.Kosovo.More.Predictors, family=binomial, na.action=na.omit)
+> summary(m9)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + shehe + auxverb + past + article + negate +      negemo + (1 | Name) 
+   Data: R.Iraq.and.Kosovo.More.Predictors 
+
+     AIC      BIC   logLik deviance 
+208.2661 239.7037 -95.1331 190.2661 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 30.28    5.503   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept) 10.46428    4.66657   2.242  0.02494 * 
+i           -0.61315    0.38325  -1.600  0.10963   
+shehe        2.45620    0.77934   3.152  0.00162 **
+auxverb     -0.30890    0.30100  -1.026  0.30477   
+past         0.79044    0.42963   1.840  0.06580 . 
+article     -0.73947    0.43806  -1.688  0.09140 . 
+negate      -1.38530    0.86641  -1.599  0.10984   
+negemo       0.04213    0.36009   0.117  0.90686   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) i      shehe  auxvrb past   articl negate
+i       -0.141                                          
+shehe    0.009 -0.185                                   
+auxverb -0.387 -0.194 -0.109                            
+past     0.084 -0.002  0.015 -0.102                     
+article -0.813  0.033  0.008  0.038 -0.275              
+negate  -0.293 -0.001 -0.008 -0.340 -0.172  0.293       
+negemo  -0.467  0.249 -0.192  0.070  0.208  0.144  0.135
+> anova(m3,m9)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m3: OpposeSupport ~ auxverb + past + present + future + (1 | Name)
+m9: OpposeSupport ~ i + shehe + auxverb + past + article + negate + 
+m9:     negemo + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)   
+m3  6 218.02 238.98 -103.012   206.02                            
+m9  9 208.27 239.70  -95.133   190.27 15.757      3   0.001272 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
+
+
+anova(m5,m2)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m5: OpposeSupport ~ social + posemo + negemo + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)   
+m5  5 219.27 236.73 -104.635   209.27                           
+m2  8 209.79 237.73  -96.894   193.79 15.48      3   0.001449 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m2,m3)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m3: OpposeSupport ~ auxverb + past + present + future + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)   
+m3  6 218.02 238.98 -103.012   206.02                            
+m2  8 209.79 237.73  -96.894   193.79 12.234      2   0.002205 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m3,m9)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m3: OpposeSupport ~ auxverb + past + present + future + (1 | Name)
+m9: OpposeSupport ~ i + shehe + auxverb + past + article + negate + 
+m9:     negemo + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)   
+m3  6 218.02 238.98 -103.012   206.02                            
+m9  9 208.27 239.70  -95.133   190.27 15.757      3   0.001272 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m9,m1)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m1: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name)
+m9: OpposeSupport ~ i + shehe + auxverb + past + article + negate + 
+m9:     negemo + (1 | Name)
+   Df    AIC    BIC   logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m1  5 222.93 240.39 -106.463   212.93                             
+m9  9 208.27 239.70  -95.133   190.27 22.659      4  0.0001481 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m1,m7)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m1: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name)
+m7: OpposeSupport ~ motion + space + time + (1 | Name)
+   Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m1  5 222.93 240.39 -106.46   212.93                        
+m7  5 224.80 242.26 -107.40   214.80     0      0          1
+> anova(m7,m1)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m7: OpposeSupport ~ motion + space + time + (1 | Name)
+m1: OpposeSupport ~ Dic + WPS + Sixltr + (1 | Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m7  5 224.80 242.26 -107.40   214.80                             
+m1  5 222.93 240.39 -106.46   212.93 1.8729      0  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m2,m5)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m5: OpposeSupport ~ social + posemo + negemo + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)   
+m5  5 219.27 236.73 -104.635   209.27                           
+m2  8 209.79 237.73  -96.894   193.79 15.48      3   0.001449 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(m5,m2)
+Data: R.Iraq.and.Kosovo.More.Predictors
+Models:
+m5: OpposeSupport ~ social + posemo + negemo + (1 | Name)
+m2: OpposeSupport ~ i + we + you + shehe + they + ipron + (1 | Name)
+   Df    AIC    BIC   logLik deviance Chisq Chi Df Pr(>Chisq)   
+m5  5 219.27 236.73 -104.635   209.27                           
+m2  8 209.79 237.73  -96.894   193.79 15.48      3   0.001449 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

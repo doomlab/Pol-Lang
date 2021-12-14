@@ -1,0 +1,1000 @@
+219.1311 299.4715 -86.5655 173.1311 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 14.82    3.85    
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   2.0490     4.8395   0.423  0.67202   
+i            -0.1354     0.4409  -0.307  0.75878   
+we           -0.8115     0.7665  -1.059  0.28975   
+you           1.4893     1.7566   0.848  0.39654   
+shehe         2.6752     0.9323   2.869  0.00411 **
+present      -0.4783     0.3261  -1.466  0.14252   
+future        1.2173     1.1127   1.094  0.27396   
+negate       -1.3232     1.0138  -1.305  0.19182   
+social        0.2565     0.4276   0.600  0.54869   
+posemo       -1.2636     0.6173  -2.047  0.04065 * 
+negemo        0.1617     0.4271   0.379  0.70497   
+insight       0.7506     0.5516   1.361  0.17356   
+cause         0.3931     0.6197   0.634  0.52578   
+discrep      -1.5742     1.0331  -1.524  0.12759   
+certain       1.9252     1.1017   1.748  0.08054 . 
+inhib         0.6732     0.7832   0.860  0.39003   
+incl          0.5691     0.5551   1.025  0.30525   
+excl          0.2236     0.8337   0.268  0.78851   
+achieve      -0.3785     0.4229  -0.895  0.37087   
+money        -0.9718     0.9767  -0.995  0.31974   
+relig         0.9089     3.1923   0.285  0.77587   
+death        -2.0089     1.1357  -1.769  0.07692 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 22 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
+
+> anova(m5,m6)
+Data: R.Iraq.and.Kosovo
+Models:
+m6: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m6:     social + posemo + negemo + insight + cause + discrep + certain + 
+m6:     inhib + incl + excl + achieve + money + relig + death + (1 | 
+m6:     Name)
+m5: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m5:     social + posemo + negemo + insight + cause + discrep + certain + 
+m5:     inhib + incl + excl + motion + achieve + money + relig + 
+m5:     death + (1 | Name)
+   Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m6 23 219.13 299.47 -86.566   173.13                        
+m5 24 221.11 304.94 -86.554   173.11 0.024      1     0.8769
+> m7<-glmer(formula=OpposeSupport~i+we+you+shehe+present+future+negate+social+posemo+negemo+insight+cause+discrep+certain+inhib+incl+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m7)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + present + future + negate +      social + posemo + negemo + insight + cause + discrep + certain +      inhib + incl + achieve + money + relig + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+217.7084 294.5557 -86.8542 173.7084 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 13.4     3.66    
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   3.4100     4.5737   0.746  0.45593   
+i            -0.1344     0.4233  -0.318  0.75083   
+we           -0.6642     0.7296  -0.910  0.36263   
+you           1.4475     1.6833   0.860  0.38983   
+shehe         2.5655     0.9023   2.843  0.00446 **
+present      -0.4714     0.3050  -1.546  0.12216   
+future        1.0581     1.0715   0.987  0.32343   
+negate       -1.1007     0.7972  -1.381  0.16737   
+social        0.2319     0.4126   0.562  0.57404   
+posemo       -1.2608     0.5819  -2.167  0.03027 * 
+negemo        0.1805     0.4078   0.443  0.65805   
+insight       0.6223     0.5236   1.189  0.23461   
+cause         0.3951     0.5948   0.664  0.50649   
+discrep      -1.4336     0.9421  -1.522  0.12809   
+certain       1.7730     1.0364   1.711  0.08712 . 
+inhib         0.5122     0.7632   0.671  0.50215   
+incl          0.4310     0.5274   0.817  0.41384   
+achieve      -0.3761     0.4063  -0.926  0.35459   
+money        -1.0856     0.9390  -1.156  0.24765   
+relig         0.8924     3.0524   0.292  0.77002   
+death        -2.1261     1.0913  -1.948  0.05138 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 21 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
+
+> anova(m6,m7)
+Data: R.Iraq.and.Kosovo
+Models:
+m7: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m7:     social + posemo + negemo + insight + cause + discrep + certain + 
+m7:     inhib + incl + achieve + money + relig + death + (1 | Name)
+m6: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m6:     social + posemo + negemo + insight + cause + discrep + certain + 
+m6:     inhib + incl + excl + achieve + money + relig + death + (1 | 
+m6:     Name)
+   Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m7 22 217.71 294.56 -86.854   173.71                         
+m6 23 219.13 299.47 -86.566   173.13 0.5773      1     0.4474
+> m8<-glmer(formula=OpposeSupport~i+we+you+shehe+present+future+negate+social+posemo+negemo+insight+cause+discrep+certain+inhib+incl+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+Warning message:
+In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> summary(m8)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + present + future + negate +      social + posemo + negemo + insight + cause + discrep + certain +      inhib + incl + achieve + money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+214.8094 288.1637 -86.4047 172.8094 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 24.54    4.953   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)  
+(Intercept)   3.5459     5.5310   0.641   0.5215  
+i            -0.1244     0.5121  -0.243   0.8081  
+we           -0.8169     0.8682  -0.941   0.3467  
+you           0.8351     1.9315   0.432   0.6655  
+shehe         2.5316     1.0313   2.455   0.0141 *
+present      -0.6008     0.3706  -1.621   0.1050  
+future        0.7469     1.2137   0.615   0.5383  
+negate       -1.1572     0.9771  -1.184   0.2363  
+social        0.3865     0.4796   0.806   0.4203  
+posemo       -1.3673     0.6899  -1.982   0.0475 *
+negemo        0.2790     0.4987   0.560   0.5758  
+insight       0.7259     0.6152   1.180   0.2381  
+cause         0.8621     0.7273   1.185   0.2359  
+discrep      -1.1121     1.0330  -1.077   0.2816  
+certain       1.7788     1.2651   1.406   0.1597  
+inhib         0.4739     0.9473   0.500   0.6169  
+incl          0.3842     0.6280   0.612   0.5407  
+achieve      -0.4405     0.4781  -0.922   0.3568  
+money        -1.0118     1.1200  -0.903   0.3663  
+death        -2.2301     1.2628  -1.766   0.0774 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) i      we     you    shehe  presnt future negate social posemo negemo
+i       -0.076                                                                      
+we       0.465  0.262                                                               
+you      0.011  0.133  0.132                                                        
+shehe    0.207  0.118  0.324  0.381                                                 
+present -0.240 -0.328 -0.124 -0.133 -0.249                                          
+future  -0.048  0.271 -0.040  0.097  0.196 -0.040                                   
+negate  -0.163 -0.044 -0.078  0.193 -0.026 -0.090 -0.092                            
+social  -0.358 -0.167 -0.554 -0.491 -0.508 -0.125 -0.066 -0.073                     
+posemo  -0.288 -0.170  0.035 -0.050 -0.076  0.131 -0.220  0.235 -0.050              
+negemo  -0.483  0.061 -0.362 -0.045 -0.315  0.194 -0.042  0.209  0.268 -0.109       
+insight -0.254 -0.219 -0.123  0.101  0.158 -0.201 -0.085 -0.088  0.162  0.081 -0.118
+cause   -0.341  0.115 -0.182 -0.097 -0.057 -0.160 -0.167 -0.029  0.211  0.142  0.064
+discrep  0.032 -0.259 -0.041 -0.113 -0.143  0.050 -0.630 -0.074 -0.032  0.121 -0.052
+certain -0.210  0.306 -0.223 -0.049  0.039 -0.166  0.201 -0.176  0.217 -0.411  0.183
+inhib   -0.124  0.195  0.197  0.034  0.107  0.194  0.158 -0.161 -0.081 -0.141 -0.011
+incl    -0.456 -0.100 -0.568  0.276  0.068 -0.016  0.116  0.084 -0.071  0.024  0.200
+achieve -0.100  0.191  0.037  0.133 -0.148  0.115  0.031  0.071 -0.069 -0.070  0.020
+money   -0.340 -0.038 -0.085  0.083  0.059  0.145 -0.019  0.146 -0.023  0.157  0.180
+death    0.014 -0.204  0.095 -0.032 -0.123  0.054 -0.281  0.044 -0.043  0.343 -0.398
+        insght cause  discrp certan inhib  incl   achiev money 
+i                                                              
+we                                                             
+you                                                            
+shehe                                                          
+present                                                        
+future                                                         
+negate                                                         
+social                                                         
+posemo                                                         
+negemo                                                         
+insight                                                        
+cause    0.085                                                 
+discrep  0.047  0.018                                          
+certain -0.039  0.002 -0.322                                   
+inhib    0.116 -0.212 -0.112  0.067                            
+incl     0.169  0.225  0.009  0.097 -0.250                     
+achieve -0.302 -0.096 -0.074 -0.008 -0.135 -0.089              
+money    0.287 -0.027  0.053 -0.120  0.109  0.092 -0.107       
+death    0.005 -0.195  0.237 -0.077 -0.063 -0.094  0.050  0.053
+> anova(m7,m8)
+Data: R.Iraq.and.Kosovo
+Models:
+m8: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m8:     social + posemo + negemo + insight + cause + discrep + certain + 
+m8:     inhib + incl + achieve + money + death + (1 | Name)
+m7: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m7:     social + posemo + negemo + insight + cause + discrep + certain + 
+m7:     inhib + incl + achieve + money + relig + death + (1 | Name)
+   Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m8 21 214.81 288.16 -86.405   172.81                        
+m7 22 217.71 294.56 -86.854   173.71     0      1          1
+> m9<-glmer(formula=OpposeSupport~we+you+shehe+present+future+negate+social+posemo+negemo+insight+cause+discrep+certain+inhib+incl+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+Warning message:
+In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> summary(m9)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ we + you + shehe + present + future + negate +      social + posemo + negemo + insight + cause + discrep + certain +      inhib + incl + achieve + money + relig + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+215.4804 288.8347 -86.7402 173.4804 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 14.4     3.795   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   2.8245     4.7036   0.600  0.54817   
+we           -0.6024     0.7189  -0.838  0.40212   
+you           1.4928     1.7362   0.860  0.38989   
+shehe         2.6486     0.9149   2.895  0.00379 **
+present      -0.5395     0.2976  -1.813  0.06988 . 
+future        1.0037     1.0694   0.939  0.34795   
+negate       -1.1383     0.8243  -1.381  0.16731   
+social        0.2449     0.4156   0.589  0.55575   
+posemo       -1.3357     0.5907  -2.261  0.02373 * 
+negemo        0.2039     0.4216   0.484  0.62872   
+insight       0.7393     0.5274   1.402  0.16098   
+cause         0.4986     0.6094   0.818  0.41320   
+discrep      -1.4609     0.9464  -1.544  0.12267   
+certain       1.9014     1.0418   1.825  0.06799 . 
+inhib         0.7330     0.7556   0.970  0.33202   
+incl          0.4253     0.5409   0.786  0.43172   
+achieve      -0.4216     0.4142  -1.018  0.30868   
+money        -1.0319     0.9697  -1.064  0.28726   
+relig         0.8814     3.0618   0.288  0.77343   
+death        -2.1060     1.1055  -1.905  0.05678 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) we     you    shehe  presnt future negate social posemo negemo insght
+we       0.506                                                                      
+you      0.060  0.152                                                               
+shehe    0.238  0.333  0.401                                                        
+present -0.273 -0.106 -0.109 -0.229                                                 
+future  -0.024 -0.166  0.069  0.139  0.090                                          
+negate  -0.151 -0.044  0.165 -0.041 -0.109 -0.094                                   
+social  -0.387 -0.540 -0.512 -0.514 -0.156 -0.001 -0.104                            
+posemo  -0.271  0.065 -0.025 -0.070  0.038 -0.180  0.225 -0.084                     
+negemo  -0.443 -0.366 -0.049 -0.338  0.235 -0.012  0.205  0.254 -0.091              
+insight -0.286 -0.049  0.119  0.169 -0.293 -0.079 -0.097  0.100  0.021 -0.097       
+cause   -0.317 -0.177 -0.123 -0.092 -0.152 -0.203 -0.011  0.233  0.129 -0.012  0.139
+discrep -0.028  0.076 -0.093 -0.113 -0.039 -0.660 -0.069 -0.071  0.116 -0.052  0.046
+certain -0.168 -0.319 -0.096  0.003 -0.062  0.177 -0.181  0.294 -0.412  0.139  0.010
+inhib   -0.109  0.072  0.004  0.095  0.235  0.174 -0.119 -0.004 -0.109 -0.031  0.127
+incl    -0.463 -0.525  0.286  0.089 -0.018  0.167  0.070 -0.119  0.014  0.171  0.172
+achieve -0.116 -0.027  0.100 -0.151  0.177 -0.003  0.080 -0.010 -0.045  0.047 -0.268
+money   -0.352 -0.055  0.049  0.021  0.154 -0.059  0.127 -0.036  0.156  0.175  0.269
+relig   -0.089  0.090  0.029  0.043  0.014 -0.308 -0.009 -0.059 -0.068 -0.041  0.102
+death   -0.066  0.112 -0.071 -0.103 -0.012 -0.258  0.036 -0.029  0.355 -0.359 -0.026
+        cause  discrp certan inhib  incl   achiev money  relig 
+we                                                             
+you                                                            
+shehe                                                          
+present                                                        
+future                                                         
+negate                                                         
+social                                                         
+posemo                                                         
+negemo                                                         
+insight                                                        
+cause                                                          
+discrep  0.061                                                 
+certain -0.053 -0.303                                          
+inhib   -0.216 -0.138  0.050                                   
+incl     0.193 -0.058  0.087 -0.163                            
+achieve -0.130 -0.052  0.000 -0.193 -0.077                     
+money   -0.009  0.131 -0.144  0.096  0.078 -0.114              
+relig    0.118  0.344 -0.110 -0.162  0.000  0.017  0.140       
+death   -0.093  0.222 -0.045 -0.042 -0.097  0.053  0.081 -0.007
+> anova(m7,m9)
+Data: R.Iraq.and.Kosovo
+Models:
+m9: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m9:     social + posemo + negemo + insight + cause + discrep + certain + 
+m9:     inhib + incl + achieve + money + relig + death + (1 | Name)
+m7: OpposeSupport ~ i + we + you + shehe + present + future + negate + 
+m7:     social + posemo + negemo + insight + cause + discrep + certain + 
+m7:     inhib + incl + achieve + money + relig + death + (1 | Name)
+   Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m9 21 215.48 288.83 -86.740   173.48                        
+m7 22 217.71 294.56 -86.854   173.71     0      1          1
+> m10<-glmer(formula=OpposeSupport~we+you+shehe+present+future+negate+social+posemo+negemo+insight+cause+discrep+certain+inhib+incl+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m10)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ we + you + shehe + present + future + negate +      social + posemo + negemo + insight + cause + discrep + certain +      inhib + incl + achieve + money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+213.3775 283.2388 -86.6888 173.3775 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 15.93    3.991   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   3.4757     4.7973   0.724  0.46875   
+we           -0.4956     0.7284  -0.680  0.49626   
+you           1.8210     1.7650   1.032  0.30222   
+shehe         2.9251     0.9534   3.068  0.00215 **
+present      -0.5471     0.2997  -1.825  0.06794 . 
+future        1.3263     1.0510   1.262  0.20697   
+negate       -1.1070     0.8356  -1.325  0.18526   
+social        0.1325     0.4166   0.318  0.75054   
+posemo       -1.2411     0.5929  -2.093  0.03633 * 
+negemo        0.1779     0.4289   0.415  0.67819   
+insight       0.6378     0.5283   1.207  0.22736   
+cause         0.3486     0.6134   0.568  0.56991   
+discrep      -1.5574     0.8964  -1.737  0.08232 . 
+certain       1.8856     1.0473   1.800  0.07180 . 
+inhib         0.6581     0.7767   0.847  0.39679   
+incl          0.4103     0.5457   0.752  0.45212   
+achieve      -0.3862     0.4185  -0.923  0.35611   
+money        -0.9239     0.9695  -0.953  0.34059   
+death        -1.9961     1.1149  -1.790  0.07339 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) we     you    shehe  presnt future negate social posemo negemo insght
+we       0.515                                                                      
+you      0.072  0.146                                                               
+shehe    0.241  0.327  0.410                                                        
+present -0.295 -0.109 -0.106 -0.239                                                 
+future  -0.051 -0.137  0.079  0.179  0.072                                          
+negate  -0.158 -0.061  0.145 -0.049 -0.119 -0.115                                   
+social  -0.408 -0.537 -0.514 -0.511 -0.138 -0.014 -0.076                            
+posemo  -0.296  0.059 -0.055 -0.072  0.043 -0.220  0.219 -0.048                     
+negemo  -0.459 -0.373 -0.055 -0.338  0.248 -0.022  0.214  0.256 -0.092              
+insight -0.257 -0.040  0.131  0.169 -0.289 -0.047 -0.083  0.092  0.058 -0.118       
+cause   -0.316 -0.184 -0.129 -0.100 -0.128 -0.171  0.002  0.227  0.149  0.006  0.107
+discrep -0.004  0.018 -0.121 -0.167 -0.034 -0.622 -0.073 -0.029  0.129 -0.041  0.016
+certain -0.177 -0.306 -0.079  0.016 -0.056  0.154 -0.180  0.276 -0.405  0.148 -0.010
+inhib   -0.125  0.108  0.020  0.100  0.261  0.128 -0.110 -0.040 -0.097 -0.040  0.163
+incl    -0.450 -0.528  0.292  0.089 -0.013  0.178  0.067 -0.122 -0.002  0.193  0.142
+achieve -0.108 -0.031  0.086 -0.144  0.177 -0.016  0.077 -0.009 -0.041  0.038 -0.280
+money   -0.356 -0.078  0.045  0.014  0.128 -0.023  0.130 -0.005  0.192  0.179  0.292
+death   -0.059  0.105 -0.068 -0.101 -0.024 -0.292  0.038 -0.015  0.346 -0.360 -0.016
+        cause  discrp certan inhib  incl   achiev money 
+we                                                      
+you                                                     
+shehe                                                   
+present                                                 
+future                                                  
+negate                                                  
+social                                                  
+posemo                                                  
+negemo                                                  
+insight                                                 
+cause                                                   
+discrep  0.037                                          
+certain -0.046 -0.274                                   
+inhib   -0.222 -0.089  0.012                            
+incl     0.190 -0.055  0.095 -0.184                     
+achieve -0.118 -0.045 -0.012 -0.189 -0.077              
+money    0.014  0.080 -0.143  0.120  0.088 -0.141       
+death   -0.101  0.233 -0.026 -0.031 -0.106  0.064  0.071
+> anova(m9,m10)
+Data: R.Iraq.and.Kosovo
+Models:
+m10: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m10:     social + posemo + negemo + insight + cause + discrep + certain + 
+m10:     inhib + incl + achieve + money + death + (1 | Name)
+m9: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m9:     social + posemo + negemo + insight + cause + discrep + certain + 
+m9:     inhib + incl + achieve + money + relig + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m10 20 213.38 283.24 -86.689   173.38                        
+m9  21 215.48 288.83 -86.740   173.48     0      1          1
+> m11<-glmer(formula=OpposeSupport~we+you+shehe+present+future+negate+posemo+negemo+insight+cause+discrep+certain+inhib+incl+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+Warning message:
+In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> summary(m11)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ we + you + shehe + present + future + negate +      posemo + negemo + insight + cause + discrep + certain + inhib +      incl + achieve + money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+211.7219 278.0901 -86.8610 173.7219 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 17.61    4.196   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   3.3417     4.5675   0.732 0.464394    
+we           -0.4406     0.6474  -0.681 0.496175    
+you           2.0083     1.5814   1.270 0.204091    
+shehe         2.9794     0.8304   3.588 0.000333 ***
+present      -0.5402     0.3116  -1.734 0.082939 .  
+future        0.9433     1.0739   0.878 0.379730    
+negate       -0.9326     0.8623  -1.082 0.279436    
+posemo       -1.2702     0.6123  -2.074 0.038045 *  
+negemo        0.2670     0.4358   0.613 0.540145    
+insight       0.7533     0.5483   1.374 0.169427    
+cause         0.5694     0.6249   0.911 0.362233    
+discrep      -1.4927     0.9259  -1.612 0.106933    
+certain       1.9711     1.0592   1.861 0.062746 .  
+inhib         0.8242     0.7849   1.050 0.293708    
+incl          0.5276     0.5658   0.932 0.351121    
+achieve      -0.5873     0.4347  -1.351 0.176628    
+money        -0.8701     1.0216  -0.852 0.394401    
+death        -2.1611     1.1785  -1.834 0.066684 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) we     you    shehe  presnt future negate posemo negemo insght cause 
+we       0.389                                                                      
+you     -0.187 -0.189                                                               
+shehe    0.032  0.043  0.216                                                        
+present -0.396 -0.205 -0.224 -0.377                                                 
+future  -0.062 -0.167  0.091  0.169  0.053                                          
+negate  -0.211 -0.109  0.164 -0.075 -0.117 -0.103                                   
+posemo  -0.327  0.054 -0.097 -0.130  0.047 -0.216  0.208                            
+negemo  -0.408 -0.290  0.093 -0.227  0.305 -0.022  0.255 -0.090                     
+insight -0.257 -0.018  0.215  0.304 -0.265 -0.027 -0.092  0.039 -0.134              
+cause   -0.249 -0.084  0.003  0.062 -0.110 -0.174  0.009  0.143 -0.048  0.099       
+discrep -0.006 -0.001 -0.180 -0.203 -0.037 -0.607 -0.090  0.126 -0.047 -0.004  0.047
+certain -0.087 -0.201  0.077  0.185 -0.026  0.138 -0.161 -0.410  0.093 -0.004 -0.100
+inhib   -0.167  0.084 -0.006  0.119  0.259  0.116 -0.118 -0.086 -0.020  0.176 -0.195
+incl    -0.552 -0.720  0.291  0.058 -0.036  0.186  0.049 -0.031  0.228  0.180  0.233
+achieve -0.120 -0.031  0.093 -0.227  0.183 -0.016  0.086 -0.027  0.039 -0.281 -0.141
+money   -0.396 -0.090  0.054  0.049  0.140 -0.014  0.126  0.173  0.196  0.295  0.013
+death   -0.052  0.135 -0.099 -0.153 -0.017 -0.265  0.019  0.347 -0.392 -0.040 -0.116
+        discrp certan inhib  incl   achiev money 
+we                                               
+you                                              
+shehe                                            
+present                                          
+future                                           
+negate                                           
+posemo                                           
+negemo                                           
+insight                                          
+cause                                            
+discrep                                          
+certain -0.275                                   
+inhib   -0.086  0.028                            
+incl    -0.060  0.151 -0.163                     
+achieve -0.037 -0.021 -0.218 -0.083              
+money    0.057 -0.127  0.128  0.083 -0.135       
+death    0.209 -0.014 -0.052 -0.128  0.089  0.063
+> anova(m10,m11)
+Data: R.Iraq.and.Kosovo
+Models:
+m11: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m11:     posemo + negemo + insight + cause + discrep + certain + inhib + 
+m11:     incl + achieve + money + death + (1 | Name)
+m10: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m10:     social + posemo + negemo + insight + cause + discrep + certain + 
+m10:     inhib + incl + achieve + money + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m11 19 211.72 278.09 -86.861   173.72                         
+m10 20 213.38 283.24 -86.689   173.38 0.3444      1     0.5573
+> m12<-glmer(formula=OpposeSupport~we+you+shehe+present+future+negate+posemo+insight+cause+discrep+certain+inhib+incl+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m12)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ we + you + shehe + present + future + negate +      posemo + insight + cause + discrep + certain + inhib + incl +      achieve + money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+210.8273 273.7025 -87.4137 174.8273 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 12.6     3.55    
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   4.2365     3.7358   1.134   0.2568    
+we           -0.3230     0.5550  -0.582   0.5606    
+you           1.7639     1.4042   1.256   0.2091    
+shehe         2.9094     0.7287   3.993 6.53e-05 ***
+present      -0.4992     0.2647  -1.886   0.0593 .  
+future        1.3280     0.9732   1.365   0.1724    
+negate       -1.1501     0.7604  -1.513   0.1304    
+posemo       -1.2136     0.5550  -2.187   0.0288 *  
+insight       0.6657     0.4868   1.368   0.1715    
+cause         0.4536     0.5557   0.816   0.4144    
+discrep      -1.6760     0.8531  -1.965   0.0495 *  
+certain       1.6911     0.9392   1.801   0.0718 .  
+inhib         0.7701     0.7123   1.081   0.2796    
+incl          0.4462     0.4984   0.895   0.3707    
+achieve      -0.4741     0.4007  -1.183   0.2367    
+money        -0.9051     0.8997  -1.006   0.3144    
+death        -1.9965     0.9965  -2.004   0.0451 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) we     you    shehe  presnt future negate posemo insght cause  discrp
+we       0.327                                                                      
+you     -0.150 -0.140                                                               
+shehe   -0.064 -0.006  0.236                                                        
+present -0.313 -0.175 -0.258 -0.315                                                 
+future  -0.080 -0.195  0.109  0.193  0.089                                          
+negate  -0.119 -0.040  0.101 -0.053 -0.223 -0.124                                   
+posemo  -0.389  0.005 -0.085 -0.143  0.051 -0.229  0.241                            
+insight -0.334 -0.052  0.202  0.240 -0.234 -0.039 -0.055  0.030                     
+cause   -0.276 -0.099  0.019  0.036 -0.099 -0.153  0.027  0.121  0.092              
+discrep -0.031  0.014 -0.182 -0.222 -0.035 -0.617 -0.059  0.148  0.005  0.005       
+certain -0.049 -0.160  0.076  0.197 -0.035  0.165 -0.198 -0.414 -0.028 -0.096 -0.283
+inhib   -0.190  0.066  0.001  0.098  0.263  0.118 -0.100 -0.107  0.171 -0.210 -0.080
+incl    -0.528 -0.691  0.247  0.104 -0.075  0.198 -0.006 -0.002  0.210  0.247 -0.080
+achieve -0.122 -0.023  0.104 -0.174  0.165 -0.017  0.071 -0.033 -0.273 -0.145 -0.051
+money   -0.350 -0.053  0.027  0.064  0.079 -0.024  0.074  0.209  0.325  0.016  0.102
+death   -0.276  0.015 -0.099 -0.265  0.121 -0.312  0.135  0.356 -0.081 -0.134  0.244
+        certan inhib  incl   achiev money 
+we                                        
+you                                       
+shehe                                     
+present                                   
+future                                    
+negate                                    
+posemo                                    
+insight                                   
+cause                                     
+discrep                                   
+certain                                   
+inhib    0.041                            
+incl     0.107 -0.150                     
+achieve  0.019 -0.201 -0.094              
+money   -0.173  0.134  0.051 -0.147       
+death   -0.012 -0.044 -0.035  0.087  0.159
+> anova(m11,m12)
+Data: R.Iraq.and.Kosovo
+Models:
+m12: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m12:     posemo + insight + cause + discrep + certain + inhib + incl + 
+m12:     achieve + money + death + (1 | Name)
+m11: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m11:     posemo + negemo + insight + cause + discrep + certain + inhib + 
+m11:     incl + achieve + money + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m12 18 210.83 273.70 -87.414   174.83                         
+m11 19 211.72 278.09 -86.861   173.72 1.1054      1     0.2931
+> m13<-glmer(formula=OpposeSupport~you+shehe+present+future+negate+posemo+insight+cause+discrep+certain+inhib+incl+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m13)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ you + shehe + present + future + negate + posemo +      insight + cause + discrep + certain + inhib + incl + achieve +      money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+208.5579 267.9399 -87.2789 174.5579 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 17.49    4.183   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   3.6543     3.9476   0.926 0.354601    
+you           1.8426     1.5806   1.166 0.243710    
+shehe         3.1276     0.8064   3.879 0.000105 ***
+present      -0.5505     0.2958  -1.861 0.062703 .  
+future        0.8635     1.0516   0.821 0.411595    
+negate       -1.2149     0.8438  -1.440 0.149928    
+posemo       -1.1151     0.6034  -1.848 0.064624 .  
+insight       0.7260     0.5347   1.358 0.174486    
+cause         0.6745     0.6233   1.082 0.279194    
+discrep      -1.4531     0.9248  -1.571 0.116122    
+certain       1.7692     1.0371   1.706 0.088028 .  
+inhib         0.8535     0.7810   1.093 0.274464    
+incl          0.3356     0.3986   0.842 0.399884    
+achieve      -0.4749     0.4337  -1.095 0.273545    
+money        -1.0751     0.9881  -1.088 0.276549    
+death        -1.9442     1.0887  -1.786 0.074135 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) you    shehe  presnt future negate posemo insght cause  discrp certan
+you     -0.148                                                                      
+shehe   -0.081  0.236                                                               
+present -0.261 -0.308 -0.322                                                        
+future  -0.026  0.094  0.179  0.033                                                 
+negate  -0.103  0.141 -0.038 -0.223 -0.124                                          
+posemo  -0.408 -0.073 -0.115  0.037 -0.216  0.245                                   
+insight -0.345  0.228  0.277 -0.267 -0.027 -0.057  0.061                            
+cause   -0.272  0.028  0.039 -0.134 -0.197  0.003  0.136  0.080                     
+discrep -0.008 -0.220 -0.219 -0.019 -0.618 -0.081  0.108 -0.019  0.028              
+certain -0.040  0.040  0.179 -0.034  0.111 -0.209 -0.400 -0.030 -0.103 -0.265       
+inhib   -0.245  0.006  0.089  0.294  0.133 -0.110 -0.102  0.192 -0.208 -0.074  0.069
+incl    -0.439  0.269  0.161 -0.321  0.111 -0.056  0.015  0.263  0.279 -0.118  0.000
+achieve -0.141  0.100 -0.195  0.176 -0.032  0.073 -0.032 -0.278 -0.120 -0.031 -0.004
+money   -0.333  0.014  0.075  0.103 -0.009  0.100  0.194  0.311 -0.025  0.057 -0.155
+death   -0.292 -0.067 -0.267  0.128 -0.304  0.145  0.332 -0.099 -0.148  0.216  0.061
+        inhib  incl   achiev money 
+you                                
+shehe                              
+present                            
+future                             
+negate                             
+posemo                             
+insight                            
+cause                              
+discrep                            
+certain                            
+inhib                              
+incl    -0.139                     
+achieve -0.198 -0.137              
+money    0.125 -0.013 -0.138       
+death   -0.031 -0.065  0.123  0.164
+> anova(m12,13)
+Analysis of Variance Table
+        Df Sum Sq Mean Sq F value
+we       1 0.9907  0.9907  0.9907
+you      1 0.0014  0.0014  0.0014
+shehe    1 6.5209  6.5209  6.5209
+present  1 3.4362  3.4362  3.4362
+future   1 0.0624  0.0624  0.0624
+negate   1 0.6540  0.6540  0.6540
+posemo   1 1.0804  1.0804  1.0804
+insight  1 1.1332  1.1332  1.1332
+cause    1 0.4584  0.4584  0.4584
+discrep  1 1.0375  1.0375  1.0375
+certain  1 2.2524  2.2524  2.2524
+inhib    1 1.1524  1.1524  1.1524
+incl     1 0.5992  0.5992  0.5992
+achieve  1 1.3026  1.3026  1.3026
+money    1 0.4839  0.4839  0.4839
+death    1 4.0142  4.0142  4.0142
+> anova(m12,m13)
+Data: R.Iraq.and.Kosovo
+Models:
+m13: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m13:     insight + cause + discrep + certain + inhib + incl + achieve + 
+m13:     money + death + (1 | Name)
+m12: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m12:     posemo + insight + cause + discrep + certain + inhib + incl + 
+m12:     achieve + money + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m13 17 208.56 267.94 -87.279   174.56                        
+m12 18 210.83 273.70 -87.414   174.83     0      1          1
+> m14<-glmer(formula=OpposeSupport~we+you+shehe+present+future+negate+posemo+insight+discrep+certain+inhib+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m14)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ we + you + shehe + present + future + negate +      posemo + insight + discrep + certain + inhib + achieve +      money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+207.3042 263.1932 -87.6521 175.3042 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 15.61    3.951   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  5.59236    3.37614   1.656   0.0976 .  
+we          -0.02543    0.41418  -0.061   0.9511    
+you          2.11829    1.45303   1.458   0.1449    
+shehe        3.01178    0.77372   3.893 9.92e-05 ***
+present     -0.45601    0.27239  -1.674   0.0941 .  
+future       1.40825    0.99860   1.410   0.1585    
+negate      -1.15432    0.76488  -1.509   0.1313    
+posemo      -1.33826    0.57247  -2.338   0.0194 *  
+insight      0.54745    0.49560   1.105   0.2693    
+discrep     -1.82994    0.90032  -2.033   0.0421 *  
+certain      2.01934    0.99062   2.038   0.0415 *  
+inhib        1.09010    0.72772   1.498   0.1341    
+achieve     -0.22442    0.41195  -0.545   0.5859    
+money       -1.20807    0.91627  -1.318   0.1873    
+death       -1.90673    1.05170  -1.813   0.0698 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) we     you    shehe  presnt future negate posemo insght discrp certan
+we      -0.068                                                                      
+you     -0.041  0.041                                                               
+shehe   -0.026  0.113  0.225                                                        
+present -0.454 -0.291 -0.205 -0.305                                                 
+future  -0.022 -0.062  0.029  0.193  0.087                                          
+negate  -0.113 -0.062  0.064 -0.036 -0.224 -0.132                                   
+posemo  -0.399  0.005 -0.107 -0.120  0.069 -0.212  0.219                            
+insight -0.261  0.158  0.186  0.198 -0.234 -0.067 -0.060  0.031                     
+discrep -0.079 -0.073 -0.148 -0.264 -0.027 -0.623 -0.052  0.133  0.003              
+certain -0.095 -0.113  0.043  0.209 -0.015  0.111 -0.175 -0.391 -0.015 -0.257       
+inhib   -0.407 -0.005  0.052  0.099  0.300  0.156 -0.125 -0.122  0.187 -0.111  0.083
+achieve -0.232 -0.133  0.110 -0.135  0.152 -0.014  0.067 -0.066 -0.244 -0.029  0.018
+money   -0.374  0.032  0.008  0.030  0.062 -0.036  0.080  0.219  0.317  0.104 -0.187
+death   -0.403 -0.011 -0.061 -0.257  0.101 -0.361  0.153  0.356 -0.066  0.266  0.041
+        inhib  achiev money 
+we                          
+you                         
+shehe                       
+present                     
+future                      
+negate                      
+posemo                      
+insight                     
+discrep                     
+certain                     
+inhib                       
+achieve -0.192              
+money    0.150 -0.144       
+death   -0.040  0.087  0.185
+> anova(m12,m14)
+Data: R.Iraq.and.Kosovo
+Models:
+m14: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m14:     posemo + insight + discrep + certain + inhib + achieve + 
+m14:     money + death + (1 | Name)
+m12: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m12:     posemo + insight + cause + discrep + certain + inhib + incl + 
+m12:     achieve + money + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m14 16 207.30 263.19 -87.652   175.30                         
+m12 18 210.83 273.70 -87.414   174.83 0.4769      2     0.7879
+> m15<-glmer(formula=OpposeSupport~you+shehe+present+future+negate+posemo+insight+discrep+certain+inhib+achieve+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m15)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ you + shehe + present + future + negate + posemo +      insight + discrep + certain + inhib + achieve + money + death +      (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+205.2973 257.6932 -87.6487 175.2973 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 15.16    3.893   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   6.2289     3.2945   1.891   0.0587 .  
+you           1.9586     1.4013   1.398   0.1622    
+shehe         3.0558     0.7707   3.965 7.34e-05 ***
+present      -0.5764     0.2619  -2.201   0.0278 *  
+future        1.1533     0.9702   1.189   0.2346    
+negate       -0.9972     0.7404  -1.347   0.1781    
+posemo       -1.2801     0.5608  -2.283   0.0224 *  
+insight       0.7035     0.4874   1.443   0.1489    
+discrep      -1.5605     0.8737  -1.786   0.0741 .  
+certain       1.8447     0.9539   1.934   0.0531 .  
+inhib         0.9568     0.7012   1.365   0.1724    
+achieve      -0.3730     0.4114  -0.907   0.3646    
+money        -1.0686     0.9196  -1.162   0.2452    
+death        -1.7897     1.0328  -1.733   0.0831 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) you    shehe  presnt future negate posemo insght discrp certan inhib 
+you     -0.019                                                                      
+shehe   -0.001  0.223                                                               
+present -0.519 -0.231 -0.312                                                        
+future  -0.037  0.010  0.168  0.074                                                 
+negate  -0.092  0.079 -0.016 -0.243 -0.105                                          
+posemo  -0.412 -0.102 -0.132  0.098 -0.187  0.188                                   
+insight -0.233  0.183  0.217 -0.197 -0.046 -0.106 -0.005                            
+discrep -0.055 -0.137 -0.224 -0.067 -0.626 -0.079  0.113  0.003                     
+certain -0.105  0.060  0.217 -0.066  0.078 -0.147 -0.372  0.034 -0.264              
+inhib   -0.373  0.016  0.104  0.300  0.152 -0.156 -0.117  0.163 -0.097  0.075       
+achieve -0.263  0.108 -0.157  0.144 -0.030  0.069 -0.041 -0.224 -0.049 -0.010 -0.224
+money   -0.377  0.010  0.038  0.096 -0.021  0.047  0.201  0.309  0.085 -0.160  0.141
+death   -0.392 -0.048 -0.255  0.111 -0.359  0.140  0.365 -0.078  0.242  0.033 -0.066
+        achiev money 
+you                  
+shehe                
+present              
+future               
+negate               
+posemo               
+insight              
+discrep              
+certain              
+inhib                
+achieve              
+money   -0.126       
+death    0.096  0.177
+> anova(m14,m15)
+Data: R.Iraq.and.Kosovo
+Models:
+m15: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m15:     insight + discrep + certain + inhib + achieve + money + death + 
+m15:     (1 | Name)
+m14: OpposeSupport ~ we + you + shehe + present + future + negate + 
+m14:     posemo + insight + discrep + certain + inhib + achieve + 
+m14:     money + death + (1 | Name)
+    Df   AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)
+m15 15 205.3 257.69 -87.649    175.3                        
+m14 16 207.3 263.19 -87.652    175.3     0      1          1
+> m16<-glmer(formula=OpposeSupport~you+shehe+present+future+negate+posemo+insight+discrep+certain+inhib+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m16)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ you + shehe + present + future + negate + posemo +      insight + discrep + certain + inhib + money + death + (1 |      Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+204.9094 253.8122 -88.4547 176.9094 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 12.4     3.521   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   5.7333     3.0315   1.891   0.0586 .  
+you           1.6086     1.2926   1.244   0.2133    
+shehe         2.8236     0.7115   3.969 7.23e-05 ***
+present      -0.4539     0.2388  -1.900   0.0574 .  
+future        1.0290     0.9224   1.116   0.2646    
+negate       -1.2091     0.7328  -1.650   0.0990 .  
+posemo       -1.3171     0.5410  -2.435   0.0149 *  
+insight       0.4754     0.4566   1.041   0.2978    
+discrep      -1.4839     0.8350  -1.777   0.0756 .  
+certain       1.7721     0.9118   1.943   0.0520 .  
+inhib         0.7337     0.6590   1.113   0.2655    
+money        -1.1801     0.8641  -1.366   0.1720    
+death        -1.7536     0.9716  -1.805   0.0711 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) you    shehe  presnt future negate posemo insght discrp certan inhib 
+you     -0.005                                                                      
+shehe   -0.049  0.221                                                               
+present -0.464 -0.247 -0.278                                                        
+future  -0.030  0.036  0.176  0.090                                                 
+negate  -0.133  0.073 -0.048 -0.260 -0.119                                          
+posemo  -0.453 -0.071 -0.108  0.080 -0.185  0.240                                   
+insight -0.327  0.189  0.145 -0.193 -0.074 -0.024  0.003                            
+discrep -0.091 -0.128 -0.232 -0.060 -0.638 -0.070  0.110  0.012                     
+certain -0.094  0.046  0.227 -0.046  0.101 -0.190 -0.381 -0.001 -0.260              
+inhib   -0.450  0.049  0.054  0.311  0.113 -0.091 -0.143  0.160 -0.095  0.057       
+money   -0.412  0.028 -0.018  0.083 -0.066  0.090  0.193  0.290  0.116 -0.195  0.162
+death   -0.400 -0.067 -0.219  0.101 -0.353  0.139  0.374 -0.047  0.261  0.008 -0.019
+        money 
+you           
+shehe         
+present       
+future        
+negate        
+posemo        
+insight       
+discrep       
+certain       
+inhib         
+money         
+death    0.190
+> anova(m15,m16)
+Data: R.Iraq.and.Kosovo
+Models:
+m16: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m16:     insight + discrep + certain + inhib + money + death + (1 | 
+m16:     Name)
+m15: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m15:     insight + discrep + certain + inhib + achieve + money + death + 
+m15:     (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m16 14 204.91 253.81 -88.455   176.91                         
+m15 15 205.30 257.69 -87.649   175.30 1.6121      1     0.2042
+> m17<-glmer(formula=OpposeSupport~you+shehe+present+future+negate+posemo+discrep+certain+inhib+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> summary(m17)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ you + shehe + present + future + negate + posemo +      discrep + certain + inhib + money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+203.8133 249.2231 -88.9066 177.8133 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 13.72    3.704   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   6.5708     2.9715   2.211   0.0270 *  
+you           1.9222     1.3417   1.433   0.1520    
+shehe         2.8565     0.7320   3.902 9.53e-05 ***
+present      -0.4124     0.2477  -1.665   0.0959 .  
+future        1.2357     0.9688   1.276   0.2021    
+negate       -1.2052     0.7354  -1.639   0.1012    
+posemo       -1.3272     0.5468  -2.427   0.0152 *  
+discrep      -1.6245     0.8758  -1.855   0.0636 .  
+certain       1.7686     0.9199   1.923   0.0545 .  
+inhib         0.9332     0.6828   1.367   0.1717    
+money        -1.5423     0.8324  -1.853   0.0639 .  
+death        -1.8509     0.9984  -1.854   0.0638 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) you    shehe  presnt future negate posemo discrp certan inhib  money 
+you      0.066                                                                      
+shehe   -0.003  0.218                                                               
+present -0.573 -0.178 -0.261                                                        
+future  -0.074  0.066  0.218  0.083                                                 
+negate  -0.144  0.014 -0.033 -0.279 -0.142                                          
+posemo  -0.459 -0.126 -0.115  0.077 -0.204  0.237                                   
+discrep -0.084 -0.147 -0.266 -0.070 -0.649 -0.032  0.119                            
+certain -0.120  0.080  0.238 -0.050  0.127 -0.190 -0.359 -0.261                     
+inhib   -0.425  0.068  0.045  0.348  0.142 -0.064 -0.155 -0.122  0.043              
+money   -0.356 -0.051 -0.090  0.171 -0.009  0.108  0.198  0.094 -0.205  0.106       
+death   -0.436 -0.086 -0.216  0.089 -0.347  0.140  0.362  0.261  0.036 -0.023  0.217
+> m18<-glmer(formula=OpposeSupport~you+shehe+present+negate+posemo+discrep+certain+inhib+money+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, verbose=FALSE, na.action=na.omit)
+> anova(m16,m17)
+Data: R.Iraq.and.Kosovo
+Models:
+m17: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m17:     discrep + certain + inhib + money + death + (1 | Name)
+m16: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m16:     insight + discrep + certain + inhib + money + death + (1 | 
+m16:     Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m17 13 203.81 249.22 -88.907   177.81                         
+m16 14 204.91 253.81 -88.455   176.91 0.9039      1     0.3417
+> summary(m18)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ you + shehe + present + negate + posemo + discrep +      certain + inhib + money + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+204.2942 246.2109 -90.1471 180.2942 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 10.89    3.301   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   6.2076     2.7280   2.276   0.0229 *  
+you           1.3710     1.2120   1.131   0.2580    
+shehe         2.6177     0.6713   3.899 9.65e-05 ***
+present      -0.3776     0.2288  -1.651   0.0988 .  
+negate       -1.0854     0.6959  -1.560   0.1188    
+posemo       -1.1304     0.5063  -2.232   0.0256 *  
+discrep      -0.9759     0.6231  -1.566   0.1173    
+certain       1.8826     0.8586   2.193   0.0283 *  
+inhib         0.6255     0.6231   1.004   0.3155    
+money        -1.4537     0.7778  -1.869   0.0616 .  
+death        -1.4897     0.8789  -1.695   0.0901 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+        (Intr) you    shehe  presnt negate posemo discrp certan inhib  money 
+you      0.085                                                               
+shehe    0.001  0.209                                                        
+present -0.569 -0.241 -0.277                                                 
+negate  -0.163  0.072  0.004 -0.258                                          
+posemo  -0.494 -0.081 -0.067  0.089  0.205                                   
+discrep -0.161 -0.122 -0.159 -0.049 -0.191 -0.010                            
+certain -0.101  0.068  0.217 -0.042 -0.171 -0.357 -0.237                     
+inhib   -0.397 -0.006  0.003  0.330 -0.037 -0.146 -0.035  0.023              
+money   -0.350 -0.053 -0.096  0.170  0.097  0.200  0.107 -0.212  0.119       
+death   -0.487 -0.068 -0.146  0.149  0.076  0.340  0.054  0.033 -0.006  0.204
+> anova(m17,m18)
+Data: R.Iraq.and.Kosovo
+Models:
+m18: OpposeSupport ~ you + shehe + present + negate + posemo + discrep + 
+m18:     certain + inhib + money + death + (1 | Name)
+m17: OpposeSupport ~ you + shehe + present + future + negate + posemo + 
+m17:     discrep + certain + inhib + money + death + (1 | Name)
+    Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m18 12 204.29 246.21 -90.147   180.29                         
+m17 13 203.81 249.22 -88.907   177.81 2.4809      1     0.1152

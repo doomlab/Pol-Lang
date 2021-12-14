@@ -1,0 +1,30 @@
+#Standardize all gender-relevant function word categories across both sexes (NOT within sex)
+
+data$zshehe = scale(data$shehe)
+data$zi = scale(data$i)
+data$zadverb = scale(data$adverb)
+data$zauxverb = scale(data$auxverb)
+data$zconj = scale(data$conj)
+data$zarticle = scale(data$article)
+data$zpreps = scale(data$preps)
+data$zquant = scale(data$quant)
+
+#Calculate femininity as a single bipolar variable, where negative values are masculine and positive numbers are feminine
+
+data$fem = (data$zshehe + data$zi + data$zadverb + data$zauxverb + data$zconj - data$zarticle - data$zpreps - data$zquant) / 8
+
+#Alternately, calculate feminine and masculine language styles separately as unipolar variables
+
+data$fem = (data$zshehe + data$zi + data$zadverb + data$zauxverb + data$zconj) / 5
+data$masc = (data$zarticle + data$zpreps + data$zquant) / 3
+
+#I might run a logistic regression to see whether feminity predicts sex, as a function of political party and time in Congress
+
+model = glm(sex ~ fem*party*time,family=binomial("logit"),data=data)
+
+#Or a multi-level model nesting members of congress within geographic regions (such as the 10 standard federal regions), looking at femininity as the outcome (vs the predictor)
+
+library(nlme)
+model = lme(fem ~ sex*party*time,random=~sex|region,data=data)
+
+#Just some ideas...clearly there are dozens of defensible ways to analyze data like this, and I'm not sure which is best off the top of my head

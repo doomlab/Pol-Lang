@@ -1,0 +1,641 @@
+> m1<-lmer(formula=OpposeSupport~i+we+you+shehe+they+(1|Name), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, na.action=na.omit)
+> summary(m1)
+Linear mixed model fit by REML ['lmerMod']
+Formula: OpposeSupport ~ i + we + you + shehe + they + (1 | Name) 
+   Data: Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo 
+
+REML criterion at convergence: 213.5553 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Name     (Intercept) 0.13085  0.3617  
+ Residual             0.07132  0.2670  
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept)  0.7387888  0.0904065   8.172
+i           -0.0496458  0.0209557  -2.369
+we          -0.0374815  0.0221801  -1.690
+you         -0.0005289  0.0831067  -0.006
+shehe        0.1402069  0.0333192   4.208
+they        -0.0061520  0.0469362  -0.131
+
+Correlation of Fixed Effects:
+      (Intr) i      we     you    shehe 
+i     -0.458                            
+we    -0.618  0.025                     
+you    0.041 -0.198 -0.090              
+shehe -0.327 -0.076  0.106  0.009       
+they  -0.236  0.201 -0.128 -0.135 -0.200
+> fixef(m1)
+  (Intercept)             i            we           you         shehe          they 
+ 0.7387887642 -0.0496458082 -0.0374815135 -0.0005289486  0.1402068998 -0.0061520491 
+> ranef(m1)
+$Name
+             (Intercept)
+Akaka       -0.528706978
+Allard       0.181415388
+Allen        0.209322570
+Baucus       0.083299743
+Bayh         0.362069876
+Bennett      0.014322198
+Biden        0.303074241
+Bingaman    -0.518380812
+Bond         0.174500703
+Boxer       -0.482091674
+Brownback    0.035943598
+Bunning     -0.465862515
+Burns        0.119232459
+Byrd        -0.556758996
+Cantwell     0.187614097
+Carper       0.211374436
+Chafee      -0.374906112
+Cleland      0.306435087
+Clinton, H.  0.129359289
+Cochran      0.303702132
+Collins      0.154236493
+Conrad      -0.429741692
+Corzine     -0.451574190
+Craig        0.250182417
+Daschle      0.209382105
+Dayton      -0.532989869
+Dewine       0.204865302
+Dodd         0.347588446
+Domenici    -0.101038731
+Dorgan       0.287881509
+Durbin      -0.457547599
+Edwards      0.181327556
+Ensign       0.086220575
+Enzi         0.162029448
+Feingold    -0.511582252
+Feinstein    0.285135922
+Fitzgerald   0.159581490
+Frist        0.133839981
+Gorton      -0.460829374
+Graham, FL  -0.478436711
+Gramm        0.297330200
+Grams       -0.385936640
+Grassley     0.227586175
+Gregg        0.024341508
+Hagel        0.256979388
+Harkin       0.148254601
+Hatch        0.193620610
+Helms        0.196923870
+Hutchinson   0.016715627
+Hutchison   -0.059482522
+Inhofe      -0.152425496
+Jeffords    -0.504473573
+Johnson      0.231898847
+Kennedy     -0.654139073
+Kerry        0.148845200
+Kohl         0.173847228
+Kyl          0.255277451
+Landrieu     0.075024804
+Leahy       -0.640196060
+Levin       -0.628350410
+Lieberman    0.249706862
+Lincoln      0.133224974
+Lott         0.236571215
+McCain       0.240647945
+McConnell    0.208360063
+Mikulski    -0.436399998
+Miller       0.480518690
+Murkowski    0.165787191
+Murray      -0.322374866
+Nelson       0.254482603
+Nickles     -0.001174677
+Reed        -0.476394430
+Reid         0.292618838
+Roberts     -0.273206687
+Rockefeller  0.189370199
+Santorum     0.159326350
+Sarbanes    -0.516486739
+Schumer      0.281408567
+Sessions     0.122720772
+Shelby       0.068632984
+Smith, NH    0.127051843
+Smith, OR    0.134891766
+Snowe        0.232019962
+Specter      0.326362884
+Stabenow    -0.359391550
+Stevens      0.162772755
+Thomas       0.318040687
+Thompson     0.189109983
+Thurmond    -0.077415853
+Warner       0.410901163
+Wellstone   -0.069606601
+Wyden       -0.407208188
+
+attr(,"class")
+[1] "ranef.mer"
+> coef(m1)
+$Name
+            (Intercept)           i          we           you     shehe         they
+Akaka        0.21008179 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Allard       0.92020415 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Allen        0.94811133 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Baucus       0.82208851 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Bayh         1.10085864 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Bennett      0.75311096 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Biden        1.04186300 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Bingaman     0.22040795 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Bond         0.91328947 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Boxer        0.25669709 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Brownback    0.77473236 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Bunning      0.27292625 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Burns        0.85802122 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Byrd         0.18202977 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Cantwell     0.92640286 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Carper       0.95016320 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Chafee       0.36388265 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Cleland      1.04522385 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Clinton, H.  0.86814805 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Cochran      1.04249090 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Collins      0.89302526 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Conrad       0.30904707 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Corzine      0.28721457 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Craig        0.98897118 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Daschle      0.94817087 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Dayton       0.20579889 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Dewine       0.94365407 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Dodd         1.08637721 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Domenici     0.63775003 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Dorgan       1.02667027 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Durbin       0.28124117 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Edwards      0.92011632 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Ensign       0.82500934 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Enzi         0.90081821 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Feingold     0.22720651 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Feinstein    1.02392469 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Fitzgerald   0.89837025 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Frist        0.87262875 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Gorton       0.27795939 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Graham, FL   0.26035205 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Gramm        1.03611896 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Grams        0.35285212 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Grassley     0.96637494 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Gregg        0.76313027 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Hagel        0.99576815 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Harkin       0.88704337 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Hatch        0.93240937 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Helms        0.93571263 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Hutchinson   0.75550439 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Hutchison    0.67930624 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Inhofe       0.58636327 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Jeffords     0.23431519 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Johnson      0.97068761 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Kennedy      0.08464969 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Kerry        0.88763396 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Kohl         0.91263599 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Kyl          0.99406621 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Landrieu     0.81381357 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Leahy        0.09859270 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Levin        0.11043835 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Lieberman    0.98849563 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Lincoln      0.87201374 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Lott         0.97535998 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+McCain       0.97943671 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+McConnell    0.94714883 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Mikulski     0.30238877 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Miller       1.21930745 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Murkowski    0.90457596 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Murray       0.41641390 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Nelson       0.99327137 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Nickles      0.73761409 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Reed         0.26239433 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Reid         1.03140760 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Roberts      0.46558208 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Rockefeller  0.92815896 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Santorum     0.89811511 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Sarbanes     0.22230203 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Schumer      1.02019733 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Sessions     0.86150954 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Shelby       0.80742175 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Smith, NH    0.86584061 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Smith, OR    0.87368053 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Snowe        0.97080873 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Specter      1.06515165 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Stabenow     0.37939721 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Stevens      0.90156152 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Thomas       1.05682945 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Thompson     0.92789875 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Thurmond     0.66137291 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Warner       1.14968993 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Wellstone    0.66918216 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+Wyden        0.33158058 -0.04964581 -0.03748151 -0.0005289486 0.1402069 -0.006152049
+
+attr(,"class")
+[1] "coef.mer"
+> fit1<-fitted(m1)
+> summary(fit1)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.1035  0.3463  0.8712  0.6790  0.9540  1.2730 
+> resid1<-resid(m1)
+> summary)(resid1)
+Error: unexpected ')' in "summary)"
+> summary(resid1)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.87110 -0.09767  0.02840  0.00000  0.10240  0.92600 
+> mnull<-lmer(opposesupport~1+(1|Name), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, na.action=na.omit)
+Error in eval(expr, envir, enclos) : object 'opposesupport' not found
+> mnull<-lmer(OpposeSupport~1+(1|Name), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, na.action=na.omit)
+> summary(mnull)
+Linear mixed model fit by REML ['lmerMod']
+Formula: OpposeSupport ~ 1 + (1 | Name) 
+   Data: Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo 
+
+REML criterion at convergence: 215.7077 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Name     (Intercept) 0.14392  0.3794  
+ Residual             0.07769  0.2787  
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  0.68263    0.04547   15.01
+
+
+
+
+
+
+
+> m2<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name/Regions), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> m2<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name/Regions), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> m2<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+> summary(m2)
+
+
+
+
+> m3<-lmer(formula=PartyAffliation~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name/Regions), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> 
+> 
+> m3<-lmer(formula=PartyAffliation~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=Predictors.Only.Senate.Language.Data.ONLY.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+
+
+
+> library(lme4)
+Loading required package: lattice
+Loading required package: Matrix
+> library(lattice)
+> library(Matrix)
+> m3<-lmer(formula=PartyAffliation~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name/Regions), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> ??Downdated VtV
+Error: unexpected symbol in "??Downdated VtV"
+> ??fn(nM$xeval())
+Error in help.search(c("fn", "nM$xeval()"), package = NULL) : 
+  argument ‘pattern’ must be a single character string
+> library(NULL)
+Error in library(NULL) : 'package' must be of length 1
+> m3<-lmer(formula=PartyAffliation~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name/Regions), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> ??Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+Error: unexpected 'in' in "??Error in"
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+(1|Name/Regions), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+(1|Name/Regions), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in fn(nM$xeval()) : Downdated VtV is not positive definite
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+(1|Name), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, REML=TRUE, verbose=FALSE, na.action=na.omit)
+> summary (m3)
+Linear mixed model fit by REML ['lmerMod']
+Formula: OpposeSupport ~ i + we + you + shehe + they + past + present +      future + negate + social + posemo + negemo + insight + cause +      discrep + tentat + certain + inhib + incl + excl + motion +      achieve + money + relig + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+REML criterion at convergence: 278.6258 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Name     (Intercept) 0.12757  0.3572  
+ Residual             0.06865  0.2620  
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept)  0.7963891  0.3053045   2.609
+i           -0.0100051  0.0286914  -0.349
+we           0.0131685  0.0439903   0.299
+you          0.0604163  0.0979890   0.617
+shehe        0.1657629  0.0486775   3.405
+they         0.0614510  0.0600333   1.024
+past         0.0147211  0.0288995   0.509
+present     -0.0331887  0.0197421  -1.681
+future       0.0325912  0.0637781   0.511
+negate      -0.0924270  0.0603121  -1.532
+social      -0.0075282  0.0254805  -0.295
+posemo      -0.0819499  0.0339431  -2.414
+negemo       0.0102582  0.0257424   0.398
+insight      0.0590811  0.0320216   1.845
+cause        0.0297001  0.0363456   0.817
+discrep     -0.0667689  0.0563139  -1.186
+tentat      -0.0234417  0.0460672  -0.509
+certain      0.0610169  0.0491559   1.241
+inhib        0.0694688  0.0439911   1.579
+incl         0.0003865  0.0325181   0.012
+excl         0.0246620  0.0530941   0.464
+motion       0.0317727  0.0461843   0.688
+achieve     -0.0300469  0.0268571  -1.119
+money       -0.0652784  0.0658247  -0.992
+relig        0.1067173  0.1530683   0.697
+death       -0.0857112  0.0631998  -1.356
+
+Correlation matrix not shown by default, as p = 26 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
+
+> logLik(m3)
+'log Lik.' -139.3129 (df=28)
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=poisson, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning messages:
+1: In lmer(formula = OpposeSupport ~ i + we + you + shehe + they +  :
+  calling lmer with 'family' is deprecated; please use glmer() instead
+2: In checkArgs("glmer", REML = TRUE) :
+  extra argument(s) ‘REML’ disregarded
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial,REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning messages:
+1: In lmer(formula = OpposeSupport ~ i + we + you + shehe + they +  :
+  calling lmer with 'family' is deprecated; please use glmer() instead
+2: In checkArgs("glmer", REML = TRUE) :
+  extra argument(s) ‘REML’ disregarded
+3: In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> 
+> summary (m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + they + past + present +      future + negate + social + posemo + negemo + insight + cause +      discrep + tentat + certain + inhib + incl + excl + motion +      achieve + money + relig + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+227.5857 321.8984 -86.7929 173.5857 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 13.16    3.628   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  2.33466    5.59622   0.417  0.67654   
+i           -0.19685    0.43494  -0.453  0.65085   
+we          -0.71426    0.77702  -0.919  0.35797   
+you          1.49596    1.70634   0.877  0.38064   
+shehe        2.50689    0.91831   2.730  0.00634 **
+they        -0.14408    1.05784  -0.136  0.89166   
+past         0.11854    0.55372   0.214  0.83048   
+present     -0.41595    0.34507  -1.205  0.22804   
+future       1.19305    1.17170   1.018  0.30857   
+negate      -1.34513    1.11494  -1.206  0.22764   
+social       0.24693    0.45385   0.544  0.58638   
+posemo      -1.16756    0.64971  -1.797  0.07233 . 
+negemo       0.21089    0.44473   0.474  0.63536   
+insight      0.65460    0.54971   1.191  0.23373   
+cause        0.34463    0.60151   0.573  0.56668   
+discrep     -1.53528    1.00828  -1.523  0.12784   
+tentat      -0.06780    0.74086  -0.092  0.92708   
+certain      1.75939    1.07200   1.641  0.10075   
+inhib        0.59598    0.76261   0.782  0.43451   
+incl         0.43177    0.53877   0.801  0.42289   
+excl         0.25127    0.96722   0.260  0.79503   
+motion       0.03989    0.82437   0.048  0.96141   
+achieve     -0.35508    0.42595  -0.834  0.40449   
+money       -0.90759    0.99261  -0.914  0.36053   
+relig        0.93556    3.11525   0.300  0.76394   
+death       -2.08478    1.13874  -1.831  0.06714 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 26 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
+
+
+
+
+
+
+
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in checkFormulaData(formula, data) : 
+  'data' not found, and some variables missing from formula environment
+In addition: Warning messages:
+1: In lmer(formula = OpposeSupport ~ i + we + you + shehe + they +  :
+  calling lmer with 'family' is deprecated; please use glmer() instead
+2: In checkArgs("glmer", REML = TRUE) :
+  extra argument(s) ‘REML’ disregarded
+> m3<-lmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.IK.No.Outliers, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning messages:
+1: In lmer(formula = OpposeSupport ~ i + we + you + shehe + they +  :
+  calling lmer with 'family' is deprecated; please use glmer() instead
+2: In checkArgs("glmer", REML = TRUE) :
+  extra argument(s) ‘REML’ disregarded
+3: In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> summary(m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + they + past + present +      future + negate + social + posemo + negemo + insight + cause +      discrep + tentat + certain + inhib + incl + excl + motion +      achieve + money + relig + death + (1 | Name) 
+   Data: R.IK.No.Outliers 
+
+     AIC      BIC   logLik deviance 
+209.5022 301.8566 -77.7511 155.5022 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 15.52    3.939   
+Number of obs: 226, groups: Name, 89
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  2.65675    7.59054   0.350  0.72633   
+i           -0.73951    0.68076  -1.086  0.27735   
+we          -1.23390    1.02139  -1.208  0.22703   
+you         -0.38308    2.41729  -0.158  0.87408   
+shehe        3.23021    1.10694   2.918  0.00352 **
+they         0.72577    1.54794   0.469  0.63917   
+past        -0.17150    0.71102  -0.241  0.80940   
+present     -0.84734    0.46404  -1.826  0.06785 . 
+future       1.31931    1.58582   0.832  0.40544   
+negate      -1.35836    1.39692  -0.972  0.33085   
+social       0.60322    0.57466   1.050  0.29386   
+posemo      -0.92992    0.78191  -1.189  0.23432   
+negemo       0.14475    0.50526   0.286  0.77451   
+insight      1.18092    0.84912   1.391  0.16430   
+cause       -0.20888    0.86689  -0.241  0.80959   
+discrep     -1.62204    1.40239  -1.157  0.24743   
+tentat       0.44588    1.08683   0.410  0.68162   
+certain      1.53336    1.32785   1.155  0.24819   
+inhib        0.30858    1.03560   0.298  0.76572   
+incl         0.84020    0.83646   1.004  0.31515   
+excl        -0.19271    1.18671  -0.162  0.87100   
+motion       0.43008    1.07325   0.401  0.68862   
+achieve     -0.38882    0.63359  -0.614  0.53943   
+money       -1.06581    1.50246  -0.709  0.47809   
+relig        0.05619    4.00051   0.014  0.98879   
+death       -3.44835    1.53548  -2.246  0.02472 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 26 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
+
+> 
+> > library(lme4)
+Error: unexpected '>' in ">"
+> Loading required package: lattice
+Error: unexpected symbol in "Loading required"
+> Loading required package: Matrix
+Error: unexpected symbol in "Loading required"
+> > library(lattice)
+Error: unexpected '>' in ">"
+> > library(Matrix)
+Error: unexpected '>' in ">"
+> 
+>                                                                                                   
+> 
+> m3<-glmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in checkFormulaData(formula, data) : 
+  'data' not found, and some variables missing from formula environment
+In addition: Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> m3<-glmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.IK.No.Outliers, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning messages:
+1: In checkArgs("glmer", REML = TRUE) :
+  extra argument(s) ‘REML’ disregarded
+2: In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> summary(m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + they + past + present +      future + negate + social + posemo + negemo + insight + cause +      discrep + tentat + certain + inhib + incl + excl + motion +      achieve + money + relig + death + (1 | Name) 
+   Data: R.IK.No.Outliers 
+
+     AIC      BIC   logLik deviance 
+209.5022 301.8566 -77.7511 155.5022 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 15.52    3.939   
+Number of obs: 226, groups: Name, 89
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  2.65675    7.59054   0.350  0.72633   
+i           -0.73951    0.68076  -1.086  0.27735   
+we          -1.23390    1.02139  -1.208  0.22703   
+you         -0.38308    2.41729  -0.158  0.87408   
+shehe        3.23021    1.10694   2.918  0.00352 **
+they         0.72577    1.54794   0.469  0.63917   
+past        -0.17150    0.71102  -0.241  0.80940   
+present     -0.84734    0.46404  -1.826  0.06785 . 
+future       1.31931    1.58582   0.832  0.40544   
+negate      -1.35836    1.39692  -0.972  0.33085   
+social       0.60322    0.57466   1.050  0.29386   
+posemo      -0.92992    0.78191  -1.189  0.23432   
+negemo       0.14475    0.50526   0.286  0.77451   
+insight      1.18092    0.84912   1.391  0.16430   
+cause       -0.20888    0.86689  -0.241  0.80959   
+discrep     -1.62204    1.40239  -1.157  0.24743   
+tentat       0.44588    1.08683   0.410  0.68162   
+certain      1.53336    1.32785   1.155  0.24819   
+inhib        0.30858    1.03560   0.298  0.76572   
+incl         0.84020    0.83646   1.004  0.31515   
+excl        -0.19271    1.18671  -0.162  0.87100   
+motion       0.43008    1.07325   0.401  0.68862   
+achieve     -0.38882    0.63359  -0.614  0.53943   
+money       -1.06581    1.50246  -0.709  0.47809   
+relig        0.05619    4.00051   0.014  0.98879   
+death       -3.44835    1.53548  -2.246  0.02472 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 26 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
+
+
+
+
+
+
+
+
+> library(lme4)
+Loading required package: lattice
+Loading required package: Matrix
+> library(lattice)
+> library(Matrix)
+> m3<-glmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Error in checkFormulaData(formula, data) : 
+  'data' not found, and some variables missing from formula environment
+In addition: Warning message:
+In checkArgs("glmer", REML = TRUE) : extra argument(s) ‘REML’ disregarded
+> R.Iraq.and.Kosovo <- read.csv("C:/Users/Kayla/Dropbox/Kayla war ling analysis/SWPA/R Iraq and Kosovo.csv")
+>   View(R.Iraq.and.Kosovo)
+> m3<-glmer(formula=OpposeSupport~i+we+you+shehe+they+past+present+future+negate+social+posemo+negemo+insight+cause+discrep+tentat+certain+inhib+incl+excl+motion+achieve+money+relig+death+(1|Name), data=R.Iraq.and.Kosovo, family=binomial, REML=TRUE, verbose=FALSE, na.action=na.omit)
+Warning messages:
+1: In checkArgs("glmer", REML = TRUE) :
+  extra argument(s) ‘REML’ disregarded
+2: In (function (fn, par, lower = rep.int(-Inf, n), upper = rep.int(Inf,  :
+  failure to converge in 10000 evaluations
+> 
+> summary(m3)
+Generalized linear mixed model fit by maximum likelihood ['glmerMod']
+ Family: binomial ( logit )
+Formula: OpposeSupport ~ i + we + you + shehe + they + past + present +      future + negate + social + posemo + negemo + insight + cause +      discrep + tentat + certain + inhib + incl + excl + motion +      achieve + money + relig + death + (1 | Name) 
+   Data: R.Iraq.and.Kosovo 
+
+     AIC      BIC   logLik deviance 
+227.5857 321.8984 -86.7929 173.5857 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ Name   (Intercept) 13.16    3.628   
+Number of obs: 243, groups: Name, 92
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  2.33466    5.59622   0.417  0.67654   
+i           -0.19685    0.43494  -0.453  0.65085   
+we          -0.71426    0.77702  -0.919  0.35797   
+you          1.49596    1.70634   0.877  0.38064   
+shehe        2.50689    0.91831   2.730  0.00634 **
+they        -0.14408    1.05784  -0.136  0.89166   
+past         0.11854    0.55372   0.214  0.83048   
+present     -0.41595    0.34507  -1.205  0.22804   
+future       1.19305    1.17170   1.018  0.30857   
+negate      -1.34513    1.11494  -1.206  0.22764   
+social       0.24693    0.45385   0.544  0.58638   
+posemo      -1.16756    0.64971  -1.797  0.07233 . 
+negemo       0.21089    0.44473   0.474  0.63536   
+insight      0.65460    0.54971   1.191  0.23373   
+cause        0.34463    0.60151   0.573  0.56668   
+discrep     -1.53528    1.00828  -1.523  0.12784   
+tentat      -0.06780    0.74086  -0.092  0.92708   
+certain      1.75939    1.07200   1.641  0.10075   
+inhib        0.59598    0.76261   0.782  0.43451   
+incl         0.43177    0.53877   0.801  0.42289   
+excl         0.25127    0.96722   0.260  0.79503   
+motion       0.03989    0.82437   0.048  0.96141   
+achieve     -0.35508    0.42595  -0.834  0.40449   
+money       -0.90759    0.99261  -0.914  0.36053   
+relig        0.93556    3.11525   0.300  0.76394   
+death       -2.08478    1.13874  -1.831  0.06714 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 26 > 20.
+Use print(...., correlation=TRUE)  or
+    vcov(....)	 if you need it
